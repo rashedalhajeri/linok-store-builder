@@ -10,7 +10,7 @@ import {
   Sparkles,
   Glasses,
   FlaskConical,
-  CheckCircle
+  BadgeCheck
 } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
@@ -205,7 +205,22 @@ const StoreTemplate1 = () => {
                 <div>
                   <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 flex items-center gap-2">
                     {t.storeName}
-                    <CheckCircle className="w-5 h-5 text-primary" />
+                    <motion.div
+                      initial={{ scale: 1 }}
+                      animate={{ 
+                        scale: [1, 1.1, 1],
+                      }}
+                      transition={{ 
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        ease: "easeInOut"
+                      }}
+                      className="relative"
+                    >
+                      <div className="absolute -inset-1 bg-primary/20 rounded-full blur-sm animate-pulse" />
+                      <BadgeCheck className="w-6 h-6 text-primary relative z-10 drop-shadow-md" />
+                    </motion.div>
                   </h1>
                   <p className="text-sm md:text-base text-gray-500 font-medium">
                     @yourstorehandle
