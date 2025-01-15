@@ -87,7 +87,7 @@ const StoreTemplate1 = () => {
                 <AvatarFallback>LS</AvatarFallback>
               </Avatar>
               
-              <div className="flex gap-2 md:gap-3 mt-2">
+              <div className="flex gap-2 md:gap-3 mt-4">
                 {socialLinks.map((link) => (
                   <Button
                     key={link.id}
