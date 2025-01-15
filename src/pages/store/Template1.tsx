@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import { translations } from "@/utils/translations";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
 const products = [
   {
@@ -48,11 +49,42 @@ const products = [
 ];
 
 const categories = [
-  { id: 1, name: "bestSellers", icon: Sparkles },
-  { id: 2, name: "bags", icon: ShoppingBag },
-  { id: 3, name: "watches", icon: Star },
-  { id: 4, name: "sunglasses", icon: Glasses },
-  { id: 5, name: "perfumes", icon: FlaskConical },
+  { 
+    id: 1, 
+    name: "bestSellers", 
+    icon: Sparkles,
+    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3"
+  },
+  { 
+    id: 2, 
+    name: "bags", 
+    icon: ShoppingBag,
+    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314"
+  },
+  { 
+    id: 3, 
+    name: "watches", 
+    icon: Star,
+    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f"
+  },
+  { 
+    id: 4, 
+    name: "sunglasses", 
+    icon: Glasses,
+    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f"
+  },
+  { 
+    id: 5, 
+    name: "perfumes", 
+    icon: FlaskConical,
+    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f"
+  },
+  { 
+    id: 6, 
+    name: "accessories", 
+    icon: Star,
+    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314"
+  }
 ];
 
 const StoreTemplate1 = () => {
@@ -227,6 +259,44 @@ const StoreTemplate1 = () => {
               </div>
             </div>
           </motion.div>
+        </div>
+
+        {/* Categories Slider */}
+        <div className="bg-white shadow-sm rounded-2xl mb-6 overflow-hidden">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {categories.map((category) => (
+                <CarouselItem key={category.id} className="pl-2 md:pl-4 basis-1/3 md:basis-1/5">
+                  <button
+                    className="w-full group focus:outline-none"
+                  >
+                    <div className="relative aspect-square rounded-xl overflow-hidden mb-2">
+                      <img 
+                        src={category.image} 
+                        alt={t[category.name]}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
+                    </div>
+                    <div className="flex flex-col items-center gap-1">
+                      <category.icon className="h-4 w-4 md:h-5 md:w-5 text-primary" />
+                      <span className="text-xs md:text-sm font-medium text-gray-700 group-hover:text-primary transition-colors">
+                        {t[category.name]}
+                      </span>
+                    </div>
+                  </button>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="-left-3 md:-left-4 bg-white/90 backdrop-blur-sm" />
+            <CarouselNext className="-right-3 md:-right-4 bg-white/90 backdrop-blur-sm" />
+          </Carousel>
         </div>
 
         <nav className="bg-white shadow-sm rounded-2xl mb-6 overflow-hidden">
