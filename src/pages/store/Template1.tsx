@@ -129,7 +129,7 @@ const StoreTemplate1 = () => {
               <div className="flex flex-wrap items-center gap-4 md:gap-6 text-gray-500 text-xs md:text-sm mt-4 md:mt-6">
                 <span className="flex items-center gap-1.5">
                   <MapPin className="w-4 h-4" />
-                  الرياض، السعودية
+                  العاصمة، الكويت
                 </span>
               </div>
             </div>
