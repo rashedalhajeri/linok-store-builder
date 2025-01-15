@@ -11,7 +11,7 @@ import {
   ShoppingBag,
   Sparkles,
   Glasses,
-  Spray
+  Flask
 } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
@@ -52,7 +52,7 @@ const categories = [
   { id: 2, name: "bags", icon: ShoppingBag },
   { id: 3, name: "watches", icon: Star },
   { id: 4, name: "sunglasses", icon: Glasses },
-  { id: 5, name: "perfumes", icon: Spray },
+  { id: 5, name: "perfumes", icon: Flask },
 ];
 
 const StoreTemplate1 = () => {
