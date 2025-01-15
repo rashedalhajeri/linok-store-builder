@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { Upload } from "lucide-react";
@@ -79,19 +78,20 @@ const ProductTemplate1 = () => {
 
   return (
     <div className="container mx-auto px-4 py-8 min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <Card className="overflow-hidden bg-white shadow-lg rounded-3xl">
+      <Card className="overflow-hidden bg-white shadow-lg rounded-3xl border-0 ring-1 ring-gray-100">
         <div className="grid lg:grid-cols-2 gap-8 p-6">
           {/* Product Images */}
           <div className="space-y-6">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="relative aspect-square overflow-hidden rounded-2xl border shadow-md"
+              transition={{ duration: 0.5 }}
+              className="relative aspect-square overflow-hidden rounded-2xl border-0 ring-1 ring-gray-100 shadow-sm"
             >
               <img 
                 src={selectedImage} 
                 alt={product.name} 
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
             </motion.div>
             <div className="grid grid-cols-4 gap-4">
@@ -101,8 +101,8 @@ const ProductTemplate1 = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setSelectedImage(image)}
-                  className={`relative aspect-square rounded-xl overflow-hidden border-2 transition-all duration-300
-                    ${selectedImage === image ? 'border-primary ring-2 ring-primary/20' : 'border-gray-200 hover:border-primary/50'}`}
+                  className={`relative aspect-square rounded-xl overflow-hidden ring-1 transition-all duration-300
+                    ${selectedImage === image ? 'ring-primary ring-2 shadow-md' : 'ring-gray-100 hover:ring-primary/50'}`}
                 >
                   <img 
                     src={image} 
@@ -119,20 +119,21 @@ const ProductTemplate1 = () => {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="space-y-4"
             >
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
                 {product.name}
               </h1>
-              <p className="text-2xl font-bold text-primary">
+              <p className="text-2xl font-semibold text-primary">
                 {calculatePrice()} د.ك
               </p>
-              <div className="text-gray-600 leading-relaxed">
+              <div className="prose text-gray-600 leading-relaxed">
                 {showFullDescription ? product.description : truncatedDescription}
                 {hasMoreDescription && !showFullDescription && (
                   <button
                     onClick={() => setShowFullDescription(true)}
-                    className="text-primary hover:text-primary/80 mr-1 text-sm font-medium"
+                    className="text-primary hover:text-primary/80 mr-1 text-sm font-medium transition-colors"
                   >
                     المزيد
                   </button>
@@ -140,46 +141,34 @@ const ProductTemplate1 = () => {
               </div>
             </motion.div>
             
-            <div className="space-y-4">
-              {/* Sizes */}
-              <div className="space-y-2">
-                <Label className="text-sm font-medium text-gray-700">
-                  المقاس: {product.sizes[currentSizeIndex].label}
-                </Label>
-                <Slider
-                  value={[currentSizeIndex]}
-                  max={product.sizes.length - 1}
-                  step={1}
-                  onValueChange={handleSizeSliderChange}
-                  className="w-full"
-                />
-                <div className="flex justify-between text-sm text-gray-500">
-                  {product.sizes.map((size) => (
-                    <span key={size.id}>{size.label}</span>
-                  ))}
+            <div className="space-y-6">
+              <div className="flex gap-8">
+                {/* Sizes */}
+                <div className="flex-1 space-y-2">
+                  <Label className="text-sm font-medium text-gray-700">
+                    المقاس: {product.sizes[currentSizeIndex].label}
+                  </Label>
+                  <Slider
+                    value={[currentSizeIndex]}
+                    max={product.sizes.length - 1}
+                    step={1}
+                    onValueChange={handleSizeSliderChange}
+                    className="w-full"
+                  />
                 </div>
-              </div>
 
-              {/* Colors */}
-              <div className="space-y-2">
-                <Label className="text-sm font-medium text-gray-700">
-                  اللون: {product.colors[currentColorIndex].label}
-                </Label>
-                <Slider
-                  value={[currentColorIndex]}
-                  max={product.colors.length - 1}
-                  step={1}
-                  onValueChange={handleColorSliderChange}
-                  className="w-full"
-                />
-                <div className="flex justify-between">
-                  {product.colors.map((color) => (
-                    <span
-                      key={color.id}
-                      className="w-6 h-6 rounded-full border shadow-sm"
-                      style={{ backgroundColor: color.value }}
-                    />
-                  ))}
+                {/* Colors */}
+                <div className="flex-1 space-y-2">
+                  <Label className="text-sm font-medium text-gray-700">
+                    اللون: {product.colors[currentColorIndex].label}
+                  </Label>
+                  <Slider
+                    value={[currentColorIndex]}
+                    max={product.colors.length - 1}
+                    step={1}
+                    onValueChange={handleColorSliderChange}
+                    className="w-full"
+                  />
                 </div>
               </div>
 
@@ -193,7 +182,7 @@ const ProductTemplate1 = () => {
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
                   placeholder="الرجاء إدخال اسمك"
-                  className="h-9 rounded-lg border-gray-200 focus:border-primary/50"
+                  className="h-10 rounded-lg border-gray-200 focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
                 />
               </div>
 
@@ -213,8 +202,8 @@ const ProductTemplate1 = () => {
                   <Label
                     htmlFor="imageUpload"
                     className="flex flex-col items-center justify-center w-full h-32 rounded-lg border-2 border-dashed
-                      border-gray-300 hover:border-primary/50 cursor-pointer transition-colors bg-gray-50/50
-                      hover:bg-gray-50"
+                      border-gray-200 hover:border-primary/50 cursor-pointer transition-colors bg-gray-50/50
+                      hover:bg-gray-50 group"
                   >
                     {previewUrl ? (
                       <img
@@ -224,8 +213,8 @@ const ProductTemplate1 = () => {
                       />
                     ) : (
                       <div className="flex flex-col items-center space-y-2">
-                        <Upload className="h-8 w-8 text-gray-400" />
-                        <span className="text-sm text-gray-500">اضغط هنا لرفع صورة</span>
+                        <Upload className="h-8 w-8 text-gray-400 group-hover:text-primary/70 transition-colors" />
+                        <span className="text-sm text-gray-500 group-hover:text-gray-600 transition-colors">اضغط هنا لرفع صورة</span>
                       </div>
                     )}
                   </Label>
@@ -237,7 +226,7 @@ const ProductTemplate1 = () => {
             <div className="flex gap-3 pt-4">
               <Button 
                 size="lg"
-                className="flex-1 rounded-lg bg-primary hover:bg-primary/90 transition-colors"
+                className="flex-1 rounded-lg bg-primary hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
                 onClick={() => navigate("/cart")}
               >
                 إضافة للسلة
@@ -245,7 +234,7 @@ const ProductTemplate1 = () => {
               <Button 
                 size="lg"
                 variant="outline"
-                className="rounded-lg hover:bg-gray-50 border-2"
+                className="rounded-lg hover:bg-gray-50 border-2 transition-all"
                 onClick={() => window.history.back()}
               >
                 رجوع
