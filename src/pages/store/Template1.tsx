@@ -336,6 +336,23 @@ const StoreTemplate1 = () => {
           ))}
         </div>
       </div>
+
+      {/* Platform Signature */}
+      <div className="w-full py-6 bg-white border-t">
+        <div className="max-w-[90%] md:max-w-4xl mx-auto text-center">
+          <p className="text-sm text-gray-500">
+            Powered by{' '}
+            <a 
+              href="/" 
+              className="text-primary hover:underline font-medium"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Lovable
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
