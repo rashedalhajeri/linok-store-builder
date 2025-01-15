@@ -53,37 +53,43 @@ const categories = [
     id: 1, 
     name: "bestSellers", 
     icon: Sparkles,
-    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3"
+    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3",
+    showImage: false
   },
   { 
     id: 2, 
     name: "bags", 
     icon: ShoppingBag,
-    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314"
+    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314",
+    showImage: false
   },
   { 
     id: 3, 
     name: "watches", 
     icon: Star,
-    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f"
+    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
+    showImage: false
   },
   { 
     id: 4, 
     name: "sunglasses", 
     icon: Glasses,
-    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f"
+    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f",
+    showImage: false
   },
   { 
     id: 5, 
     name: "perfumes", 
     icon: FlaskConical,
-    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f"
+    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
+    showImage: false
   },
   { 
     id: 6, 
     name: "accessories", 
     icon: Star,
-    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314"
+    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314",
+    showImage: false
   }
 ];
 
@@ -267,6 +273,7 @@ const StoreTemplate1 = () => {
             opts={{
               align: "start",
               loop: true,
+              dragFree: true,
             }}
             className="w-full"
           >
@@ -276,15 +283,17 @@ const StoreTemplate1 = () => {
                   <button
                     className="w-full group focus:outline-none"
                   >
-                    <div className="relative aspect-square rounded-xl overflow-hidden mb-2">
-                      <img 
-                        src={category.image} 
-                        alt={t[category.name]}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
-                    </div>
-                    <div className="flex flex-col items-center">
+                    {category.showImage ? (
+                      <div className="relative aspect-square rounded-xl overflow-hidden mb-2">
+                        <img 
+                          src={category.image} 
+                          alt={t[category.name]}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
+                      </div>
+                    ) : null}
+                    <div className="flex flex-col items-center py-3">
                       <span className="text-sm md:text-base font-medium text-gray-700 group-hover:text-primary transition-colors">
                         {t[category.name]}
                       </span>
@@ -293,8 +302,8 @@ const StoreTemplate1 = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="-left-3 md:-left-4 bg-white/90 backdrop-blur-sm" />
-            <CarouselNext className="-right-3 md:-right-4 bg-white/90 backdrop-blur-sm" />
+            <CarouselPrevious className="-left-2 md:-left-3 bg-white/90 backdrop-blur-sm" />
+            <CarouselNext className="-right-2 md:-right-3 bg-white/90 backdrop-blur-sm" />
           </Carousel>
         </div>
 
