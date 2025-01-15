@@ -10,17 +10,19 @@ import {
   Sparkles,
   Glasses,
   FlaskConical,
-  BadgeCheck
+  BadgeCheck,
+  Search
 } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { translations } from "@/utils/translations";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Input } from "@/components/ui/input";
 
 const products = [
   {
@@ -99,6 +101,8 @@ const StoreTemplate1 = () => {
   const isMobile = useIsMobile();
   const [isExpanded, setIsExpanded] = useState(false);
   const [language, setLanguage] = useState<'en' | 'ar'>('ar');
+  const [showSearch, setShowSearch] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
   
   const t = translations[language];
 
@@ -132,6 +136,13 @@ const StoreTemplate1 = () => {
 
   const handleMapClick = () => {
     window.open('https://maps.google.com/?q=Kuwait+Capital+Governorate+Kuwait', '_blank');
+  };
+
+  const handleSearchClick = () => {
+    setShowSearch(true);
+    setTimeout(() => {
+      searchRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   };
 
   return (
@@ -182,6 +193,14 @@ const StoreTemplate1 = () => {
               </div>
               
               <div className="flex gap-2 md:gap-3 mt-4">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-2 rounded-full shadow-sm transition-all duration-300 bg-white"
+                  onClick={handleSearchClick}
+                >
+                  <Search className="w-5 h-5 md:w-6 md:h-6" />
+                </motion.button>
                 {socialLinks.map((link) => (
                   <motion.button
                     key={link.id}
@@ -205,21 +224,10 @@ const StoreTemplate1 = () => {
                 <div>
                   <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 flex items-center gap-2">
                     {t.storeName}
-                    <motion.div
-                      initial={{ opacity: 0.5 }}
-                      animate={{ 
-                        opacity: [0.5, 1, 0.5],
-                      }}
-                      transition={{ 
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                      className="relative"
-                    >
-                      <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full blur-sm opacity-40" />
+                    <div className="relative">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full blur-sm opacity-30 animate-pulse" />
                       <BadgeCheck className="w-6 h-6 text-primary relative z-10" />
-                    </motion.div>
+                    </div>
                   </h1>
                   <p className="text-sm md:text-base text-gray-500 font-medium">
                     @yourstorehandle
@@ -316,6 +324,19 @@ const StoreTemplate1 = () => {
             </CarouselContent>
           </Carousel>
         </div>
+
+        {showSearch && (
+          <div 
+            ref={searchRef}
+            className="bg-white rounded-2xl shadow-sm p-4 mb-6 animate-fade-in"
+          >
+            <Input
+              placeholder="ابحث عن المنتجات..."
+              className="w-full"
+              autoFocus
+            />
+          </div>
+        )}
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 pb-8">
           {products.map((product, index) => (
