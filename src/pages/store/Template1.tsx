@@ -66,38 +66,24 @@ const StoreTemplate1 = () => {
   const socialLinks = [
     { 
       id: 1, 
-      icon: "/lovable-uploads/a6db0202-5d25-41a7-9704-99d6448198f8.png", 
-      label: "Snapchat", 
-      href: "https://snapchat.com/add/yourusername",
-      bgColor: "bg-yellow-400"
-    },
-    { 
-      id: 2, 
       icon: "/lovable-uploads/5d02b4d3-9041-47ca-8ac3-08cf337c2be1.png", 
       label: "Instagram", 
       href: "https://instagram.com/yourusername",
-      bgColor: "bg-gradient-to-r from-pink-500 via-red-500 to-purple-500"
+      bgColor: "bg-white"
     },
     { 
-      id: 3, 
-      icon: "/lovable-uploads/f4e6c555-66b3-45c1-a211-25bca9083a81.png", 
-      label: "Phone", 
-      href: "tel:+96500000000",
-      bgColor: "bg-green-500"
-    },
-    { 
-      id: 4, 
+      id: 2, 
       icon: "/lovable-uploads/17454f1f-bb90-4fcd-91fc-664c8942f958.png", 
       label: "WhatsApp", 
       href: "https://wa.me/96500000000",
-      bgColor: "bg-green-500"
+      bgColor: "bg-white"
     },
     { 
-      id: 5, 
+      id: 3, 
       icon: "/lovable-uploads/b7fc8d57-a3ea-476d-a1c2-c5f272c432e9.png", 
       label: "TikTok", 
       href: "https://tiktok.com/@yourusername",
-      bgColor: "bg-black"
+      bgColor: "bg-white"
     }
   ];
 
@@ -116,11 +102,11 @@ const StoreTemplate1 = () => {
         <div className="absolute top-4 left-4 z-10">
           <Button
             variant="outline"
-            size={isMobile ? "sm" : "default"}
-            className="rounded-full border-2 bg-white/95 hover:bg-white text-gray-900 font-medium shadow-md backdrop-blur-sm"
+            size="sm"
+            className="rounded-full border border-gray-200 bg-white/95 hover:bg-white text-gray-700 font-medium shadow-sm backdrop-blur-sm h-8 px-3"
             onClick={toggleLanguage}
           >
-            <Globe className="h-4 w-4 md:h-5 md:w-5 ml-1 md:ml-2" />
+            <Globe className="h-3.5 w-3.5 ml-1" />
             {language === 'en' ? 'العربية' : 'English'}
           </Button>
         </div>
@@ -160,13 +146,13 @@ const StoreTemplate1 = () => {
                     key={link.id}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`p-2 rounded-full shadow-lg transition-all duration-300 ${link.bgColor}`}
+                    className={`p-2 rounded-full shadow-sm transition-all duration-300 ${link.bgColor}`}
                     onClick={() => window.open(link.href, '_blank')}
                   >
                     <img 
                       src={link.icon} 
                       alt={link.label}
-                      className="w-6 h-6 md:w-7 md:h-7 object-contain"
+                      className="w-5 h-5 md:w-6 md:h-6 object-contain"
                     />
                   </motion.button>
                 ))}
