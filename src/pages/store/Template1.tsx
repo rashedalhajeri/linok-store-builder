@@ -45,21 +45,21 @@ const StoreTemplate1 = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFFFFF]">
-      {/* Header Background */}
-      <div className="relative h-[250px] bg-gradient-to-b from-gray-900/70 to-gray-900/50">
+    <div className="min-h-screen bg-[#F7F9FA]">
+      {/* Header */}
+      <div className="relative h-[300px] bg-gradient-to-b from-gray-900/70 to-gray-900/50">
         <img 
           src="https://images.unsplash.com/photo-1441986300917-64674bd600d8"
           alt="Store Cover"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30" />
       </div>
 
       {/* Main Content */}
-      <div className="max-w-3xl mx-auto px-4 relative">
+      <div className="max-w-4xl mx-auto px-4 relative">
         {/* Profile Section */}
-        <div className="relative -mt-24 mb-8">
+        <div className="relative -mt-32 mb-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ const StoreTemplate1 = () => {
           >
             {/* Avatar & Actions */}
             <div className="flex justify-between items-end">
-              <Avatar className="w-36 h-36 border-4 border-white rounded-full shadow-xl">
+              <Avatar className="w-40 h-40 border-4 border-white rounded-full shadow-xl">
                 <AvatarImage 
                   src="https://images.unsplash.com/photo-1441986300917-64674bd600d8" 
                   className="object-cover"
@@ -76,11 +76,11 @@ const StoreTemplate1 = () => {
                 <AvatarFallback>LS</AvatarFallback>
               </Avatar>
               
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <Button 
                   variant="outline"
                   size="lg"
-                  className="rounded-full border-2 bg-white hover:bg-gray-50 text-gray-900"
+                  className="rounded-full border-2 bg-white/95 hover:bg-white text-gray-900 font-medium shadow-sm"
                 >
                   <MessageSquare className="h-5 w-5 ml-2" />
                   راسلنا
@@ -88,7 +88,7 @@ const StoreTemplate1 = () => {
                 <Button 
                   variant="outline"
                   size="lg"
-                  className="rounded-full border-2 bg-white hover:bg-gray-50 text-gray-900"
+                  className="rounded-full border-2 bg-white/95 hover:bg-white text-gray-900 font-medium shadow-sm"
                 >
                   <Phone className="h-5 w-5 ml-2" />
                   اتصل بنا
@@ -97,8 +97,8 @@ const StoreTemplate1 = () => {
             </div>
 
             {/* Store Info */}
-            <div className="bg-white rounded-2xl shadow-sm p-6">
-              <div className="flex justify-between items-start">
+            <div className="bg-white rounded-2xl shadow-sm p-8">
+              <div className="flex justify-between items-start mb-4">
                 <div>
                   <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
                     Luxury Store
@@ -108,12 +108,12 @@ const StoreTemplate1 = () => {
                       </svg>
                     </span>
                   </h1>
-                  <p className="text-gray-500 text-sm">@luxurystore</p>
+                  <p className="text-gray-500 text-sm mt-1">@luxurystore</p>
                 </div>
                 <Button
                   variant="outline"
                   size="sm"
-                  className="rounded-full"
+                  className="rounded-full hover:bg-gray-50"
                 >
                   <ExternalLink className="h-4 w-4" />
                 </Button>
@@ -123,23 +123,23 @@ const StoreTemplate1 = () => {
                 متجر متخصص في المنتجات الفاخرة والإكسسوارات العصرية
               </p>
               
-              <div className="flex items-center gap-6 text-gray-500 text-sm mt-4">
-                <span className="flex items-center gap-1">
+              <div className="flex items-center gap-6 text-gray-500 text-sm mt-6">
+                <span className="flex items-center gap-1.5">
                   <MapPin className="w-4 h-4" />
                   الرياض، السعودية
                 </span>
-                <span className="flex items-center gap-1">
+                <span className="flex items-center gap-1.5">
                   <Calendar className="w-4 h-4" />
                   انضم في 2024
                 </span>
               </div>
               
-              <div className="flex gap-6 mt-4 text-sm border-t pt-4">
+              <div className="flex gap-6 mt-6 pt-6 border-t text-sm">
                 <span className="text-gray-500">
-                  <strong className="text-gray-900">٥٢٣</strong> يتابع
+                  <strong className="text-gray-900 font-semibold">٥٢٣</strong> يتابع
                 </span>
                 <span className="text-gray-500">
-                  <strong className="text-gray-900">١,٢٤٥</strong> متابع
+                  <strong className="text-gray-900 font-semibold">١,٢٤٥</strong> متابع
                 </span>
               </div>
             </div>
@@ -147,23 +147,23 @@ const StoreTemplate1 = () => {
         </div>
 
         {/* Navigation */}
-        <nav className="bg-white shadow-sm rounded-xl mb-6">
+        <nav className="bg-white shadow-sm rounded-2xl mb-6 overflow-hidden">
           <div className="flex overflow-x-auto scrollbar-hide">
             {categories.map((category) => (
               <button
                 key={category.id}
-                className="flex-1 min-w-[120px] text-gray-500 hover:text-gray-900 hover:bg-gray-50 py-4 px-6 font-medium text-sm transition-colors relative group"
+                className="flex-1 min-w-[120px] text-gray-600 hover:text-gray-900 hover:bg-gray-50/80 py-4 px-6 font-medium text-sm transition-colors relative group"
               >
-                <category.icon className="h-5 w-5 mx-auto mb-1" />
+                <category.icon className="h-5 w-5 mx-auto mb-1.5" />
                 <span className="block text-center">{category.name}</span>
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform" />
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform" />
               </button>
             ))}
           </div>
         </nav>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-2 gap-4 pb-8">
+        <div className="grid grid-cols-2 gap-5 pb-8">
           {products.map((product, index) => (
             <motion.div
               key={product.id}
@@ -173,7 +173,7 @@ const StoreTemplate1 = () => {
               whileHover={{ y: -4 }}
             >
               <Card 
-                className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer border-0 rounded-2xl"
+                className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer border-0 rounded-2xl bg-white"
                 onClick={() => navigate(`/product/template1/${product.id}`)}
               >
                 <div className="relative aspect-square">
