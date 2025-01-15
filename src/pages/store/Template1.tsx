@@ -5,47 +5,51 @@ import { Phone, MessageSquare, Star, Search, ShoppingBag, MapPin, ExternalLink }
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useState } from "react";
 
-  const products = [
-    {
-      id: 1,
-      name: "حقيبة يد فاخرة",
-      price: "1,299 ريال",
-      image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3"
-    },
-    {
-      id: 2,
-      name: "ساعة كلاسيكية",
-      price: "2,499 ريال",
-      image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314"
-    },
-    {
-      id: 3,
-      name: "نظارة شمسية",
-      price: "799 ريال",
-      image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f"
-    },
-    {
-      id: 4,
-      name: "عطر فاخر",
-      price: "999 ريال",
-      image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f"
-    }
-  ];
+const products = [
+  {
+    id: 1,
+    name: "حقيبة يد فاخرة",
+    price: "1,299 ريال",
+    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3"
+  },
+  {
+    id: 2,
+    name: "ساعة كلاسيكية",
+    price: "2,499 ريال",
+    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314"
+  },
+  {
+    id: 3,
+    name: "نظارة شمسية",
+    price: "799 ريال",
+    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f"
+  },
+  {
+    id: 4,
+    name: "عطر فاخر",
+    price: "999 ريال",
+    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f"
+  }
+];
 
-  const categories = [
-    { id: 1, name: "الأكثر مبيعاً", icon: Star },
-    { id: 2, name: "الحقائب", icon: ShoppingBag },
-    { id: 3, name: "الساعات", icon: Star },
-    { id: 4, name: "النظارات", icon: Star },
-    { id: 5, name: "العطور", icon: Star },
-  ];
+const categories = [
+  { id: 1, name: "الأكثر مبيعاً", icon: Star },
+  { id: 2, name: "الحقائب", icon: ShoppingBag },
+  { id: 3, name: "الساعات", icon: Star },
+  { id: 4, name: "النظارات", icon: Star },
+  { id: 5, name: "العطور", icon: Star },
+];
 
 const StoreTemplate1 = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
+  const [isExpanded, setIsExpanded] = useState(false);
   
-  // تم تقليل عدد وسائل التواصل إلى اثنتين فقط
+  const description = "متجر متخصص في المنتجات الفاخرة والإكسسوارات العصرية، نقدم لكم أفضل الماركات العالمية بأسعار منافسة وجودة عالية";
+  const MAX_LENGTH = 20;
+  
   const socialLinks = [
     { id: 1, icon: Phone, label: "اتصل بنا", href: "tel:+966500000000" },
     { id: 2, icon: MessageSquare, label: "واتساب", href: "https://wa.me/966500000000" },
@@ -123,7 +127,15 @@ const StoreTemplate1 = () => {
               </div>
               
               <p className="text-sm md:text-base text-gray-700 mt-4 leading-relaxed">
-                متجر متخصص في المنتجات الفاخرة والإكسسوارات العصرية
+                {isExpanded ? description : description.slice(0, MAX_LENGTH)}
+                {description.length > MAX_LENGTH && (
+                  <button
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="mr-1 text-primary hover:underline focus:outline-none"
+                  >
+                    {isExpanded ? "عرض أقل" : "المزيد"}
+                  </button>
+                )}
               </p>
               
               <div className="flex flex-wrap items-center gap-4 md:gap-6 text-gray-500 text-xs md:text-sm mt-4 md:mt-6">
