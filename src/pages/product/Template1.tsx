@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 const ProductTemplate1 = () => {
   const navigate = useNavigate();
@@ -44,114 +45,128 @@ const ProductTemplate1 = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="grid md:grid-cols-2 gap-8">
-        <div className="space-y-4">
-          <div className="relative aspect-square overflow-hidden rounded-lg">
-            <img 
-              src={selectedImage} 
-              alt={product.name} 
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="grid grid-cols-4 gap-2">
-            {product.images.map((image, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedImage(image)}
-                className={`aspect-square rounded-lg overflow-hidden border-2 ${
-                  selectedImage === image ? 'border-primary' : 'border-transparent'
-                }`}
-              >
-                <img 
-                  src={image} 
-                  alt={`${product.name} ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="space-y-6">
-          <div>
-            <h1 className="text-4xl font-bold">{product.name}</h1>
-            <p className="text-2xl text-primary mt-2">{product.price}</p>
-          </div>
-          
-          <p className="text-gray-600">{product.description}</p>
-
+      <Card className="overflow-hidden">
+        <div className="grid md:grid-cols-2 gap-8 p-6">
+          {/* صور المنتج */}
           <div className="space-y-4">
-            <div>
-              <Label>المقاس</Label>
-              <RadioGroup
-                value={selectedSize}
-                onValueChange={setSelectedSize}
-                className="flex gap-4 mt-2"
-              >
-                {product.sizes.map((size) => (
-                  <div key={size.id} className="flex items-center space-x-2 space-x-reverse">
-                    <RadioGroupItem value={size.id} id={`size-${size.id}`} />
-                    <Label htmlFor={`size-${size.id}`} className="cursor-pointer">
-                      {size.label} - {size.price}
-                    </Label>
-                  </div>
-                ))}
-              </RadioGroup>
-            </div>
-
-            <div>
-              <Label>اللون</Label>
-              <RadioGroup
-                value={selectedColor}
-                onValueChange={setSelectedColor}
-                className="flex gap-4 mt-2"
-              >
-                {product.colors.map((color) => (
-                  <div key={color.id} className="flex items-center space-x-2 space-x-reverse">
-                    <RadioGroupItem value={color.id} id={`color-${color.id}`} />
-                    <div 
-                      className="w-6 h-6 rounded-full border"
-                      style={{ backgroundColor: color.value }}
-                    />
-                    <Label htmlFor={`color-${color.id}`} className="cursor-pointer">
-                      {color.label}
-                    </Label>
-                  </div>
-                ))}
-              </RadioGroup>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="customerName">اسمك</Label>
-              <Input
-                id="customerName"
-                value={customerName}
-                onChange={(e) => setCustomerName(e.target.value)}
-                placeholder="الرجاء إدخال اسمك"
+            <div className="relative aspect-square overflow-hidden rounded-2xl border shadow-sm">
+              <img 
+                src={selectedImage} 
+                alt={product.name} 
+                className="w-full h-full object-cover transition-all duration-300 hover:scale-105"
               />
             </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="customerImage">إرفاق صورة</Label>
-              <Input
-                id="customerImage"
-                type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-              />
+            <div className="grid grid-cols-4 gap-3">
+              {product.images.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedImage(image)}
+                  className={`aspect-square rounded-xl overflow-hidden border-2 transition-all duration-200 hover:shadow-md ${
+                    selectedImage === image ? 'border-primary ring-2 ring-primary/20' : 'border-border hover:border-primary/50'
+                  }`}
+                >
+                  <img 
+                    src={image} 
+                    alt={`${product.name} ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
             </div>
           </div>
 
-          <div className="space-x-4 space-x-reverse mt-8">
-            <Button onClick={() => navigate("/cart")}>
-              إضافة للسلة
-            </Button>
-            <Button variant="outline" onClick={() => window.history.back()}>
-              رجوع
-            </Button>
+          {/* تفاصيل المنتج */}
+          <div className="space-y-8">
+            <div className="space-y-2">
+              <h1 className="text-3xl font-bold text-foreground">{product.name}</h1>
+              <p className="text-2xl font-semibold text-primary">{product.price}</p>
+              <p className="text-muted-foreground leading-relaxed">{product.description}</p>
+            </div>
+            
+            <div className="space-y-6">
+              <div className="space-y-4">
+                <Label className="text-lg font-medium">المقاس</Label>
+                <RadioGroup
+                  value={selectedSize}
+                  onValueChange={setSelectedSize}
+                  className="grid grid-cols-3 gap-4"
+                >
+                  {product.sizes.map((size) => (
+                    <div
+                      key={size.id}
+                      className={`relative flex items-center justify-center p-4 rounded-lg border-2 cursor-pointer transition-all duration-200
+                        ${selectedSize === size.id ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'}`}
+                    >
+                      <RadioGroupItem value={size.id} id={`size-${size.id}`} className="absolute inset-0 opacity-0" />
+                      <Label htmlFor={`size-${size.id}`} className="cursor-pointer text-center">
+                        <div className="font-medium">{size.label}</div>
+                        <div className="text-sm text-muted-foreground">{size.price}</div>
+                      </Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </div>
+
+              <div className="space-y-4">
+                <Label className="text-lg font-medium">اللون</Label>
+                <RadioGroup
+                  value={selectedColor}
+                  onValueChange={setSelectedColor}
+                  className="grid grid-cols-3 gap-4"
+                >
+                  {product.colors.map((color) => (
+                    <div
+                      key={color.id}
+                      className={`relative flex items-center space-x-3 space-x-reverse p-4 rounded-lg border-2 cursor-pointer transition-all duration-200
+                        ${selectedColor === color.id ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'}`}
+                    >
+                      <RadioGroupItem value={color.id} id={`color-${color.id}`} className="absolute inset-0 opacity-0" />
+                      <div 
+                        className="w-6 h-6 rounded-full border shadow-sm"
+                        style={{ backgroundColor: color.value }}
+                      />
+                      <Label htmlFor={`color-${color.id}`} className="cursor-pointer">
+                        {color.label}
+                      </Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </div>
+
+              <div className="space-y-4">
+                <Label className="text-lg font-medium" htmlFor="customerName">اسمك</Label>
+                <Input
+                  id="customerName"
+                  value={customerName}
+                  onChange={(e) => setCustomerName(e.target.value)}
+                  placeholder="الرجاء إدخال اسمك"
+                  className="text-lg"
+                />
+              </div>
+
+              <div className="space-y-4">
+                <Label className="text-lg font-medium" htmlFor="customerImage">إرفاق صورة</Label>
+                <Input
+                  id="customerImage"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="text-lg"
+                />
+              </div>
+            </div>
+
+            <div className="flex gap-4 pt-6">
+              <Button size="lg" className="flex-1" onClick={() => navigate("/cart")}>
+                إضافة للسلة
+              </Button>
+              <Button size="lg" variant="outline" onClick={() => window.history.back()}>
+                رجوع
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      </Card>
     </div>
   );
 };
