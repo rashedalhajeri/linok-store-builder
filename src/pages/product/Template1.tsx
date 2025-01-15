@@ -99,9 +99,6 @@ const ProductTemplate1 = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <span className="text-xs text-gray-600 text-center">
-                    صورة {index + 1}
-                  </span>
                 </motion.button>
               ))}
             </div>
