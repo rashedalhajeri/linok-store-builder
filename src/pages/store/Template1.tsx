@@ -11,25 +11,25 @@ const products = [
   {
     id: 1,
     name: "حقيبة يد فاخرة",
-    price: "1,299 ريال",
+    price: "125 د.ك",
     image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3"
   },
   {
     id: 2,
     name: "ساعة كلاسيكية",
-    price: "2,499 ريال",
+    price: "250 د.ك",
     image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314"
   },
   {
     id: 3,
     name: "نظارة شمسية",
-    price: "799 ريال",
+    price: "75 د.ك",
     image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f"
   },
   {
     id: 4,
     name: "عطر فاخر",
-    price: "999 ريال",
+    price: "95 د.ك",
     image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f"
   }
 ];
