@@ -50,6 +50,13 @@ const products = [
 
 const categories = [
   { 
+    id: 0, // Making "All" the first category with id 0
+    name: "allProducts", 
+    icon: Sparkles,
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+    showImage: true
+  },
+  { 
     id: 1, 
     name: "bestSellers", 
     icon: Sparkles,
@@ -279,7 +286,10 @@ const StoreTemplate1 = () => {
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {categories.map((category) => (
-                <CarouselItem key={category.id} className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5">
+                <CarouselItem 
+                  key={category.id} 
+                  className={`pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5 ${category.id === 0 ? 'order-first' : ''}`}
+                >
                   <button
                     className="w-full group focus:outline-none"
                   >
@@ -293,7 +303,7 @@ const StoreTemplate1 = () => {
                       <category.icon className="absolute bottom-2 right-2 h-5 w-5 text-white" />
                     </div>
                     <div className="flex flex-col items-center">
-                      <span className="text-sm md:text-base font-medium text-gray-700 group-hover:text-primary transition-colors">
+                      <span className={`text-sm md:text-base font-medium ${category.id === 0 ? 'text-primary' : 'text-gray-700'} group-hover:text-primary transition-colors`}>
                         {t[category.name]}
                       </span>
                     </div>
