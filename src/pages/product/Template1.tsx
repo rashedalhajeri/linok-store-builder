@@ -64,7 +64,7 @@ const ProductTemplate1 = () => {
   const hasMoreDescription = words.length > 10;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#F2FCE2] to-[#E5DEFF] py-12">
+    <div className="min-h-screen bg-gradient-to-br from-[#E5DEFF] via-[#FDE1D3] to-[#F2FCE2] py-12">
       <Card className="max-w-6xl mx-auto overflow-hidden bg-white/80 backdrop-blur-sm shadow-2xl rounded-[2rem] border-0">
         <div className="grid lg:grid-cols-2 gap-12 p-8">
           {/* Product Images */}
