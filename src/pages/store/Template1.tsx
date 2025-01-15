@@ -193,14 +193,6 @@ const StoreTemplate1 = () => {
               </div>
               
               <div className="flex gap-2 md:gap-3 mt-4">
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="p-2 rounded-full shadow-sm transition-all duration-300 bg-white"
-                  onClick={handleSearchClick}
-                >
-                  <Search className="w-5 h-5 md:w-6 md:h-6" />
-                </motion.button>
                 {socialLinks.map((link) => (
                   <motion.button
                     key={link.id}
