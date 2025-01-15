@@ -202,10 +202,10 @@ const StoreTemplate1 = () => {
             <div className="bg-white rounded-2xl shadow-sm p-4 md:p-8">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
+                  <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 flex items-center gap-2">
                     {t.storeName}
                   </h1>
-                  <p className="text-sm md:text-base text-gray-500">
+                  <p className="text-sm md:text-base text-gray-500 font-medium">
                     {t.storeHandle}
                   </p>
                 </div>
@@ -217,7 +217,7 @@ const StoreTemplate1 = () => {
                   <ExternalLink className="h-4 w-4" />
                 </Button>
               </div>
-              
+
               <p className="text-sm md:text-base text-gray-700 mt-4 leading-relaxed">
                 {isExpanded ? t.storeDescription : t.storeDescription.slice(0, 75)}
                 {t.storeDescription.length > 75 && (
@@ -383,3 +383,4 @@ const StoreTemplate1 = () => {
 };
 
 export default StoreTemplate1;
+
