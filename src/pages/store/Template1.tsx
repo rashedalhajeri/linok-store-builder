@@ -140,13 +140,11 @@ const StoreTemplate1 = () => {
 
   const handleSearchClick = () => {
     setShowSearch(true);
-    setTimeout(() => {
-      searchRef.current?.scrollIntoView({ behavior: 'smooth' });
-      const inputElement = searchRef.current?.querySelector('input');
-      if (inputElement) {
-        inputElement.focus();
-      }
-    }, 100);
+    searchRef.current?.scrollIntoView({ behavior: 'instant' });
+    const inputElement = searchRef.current?.querySelector('input');
+    if (inputElement) {
+      inputElement.focus();
+    }
   };
 
   return (
@@ -296,11 +294,12 @@ const StoreTemplate1 = () => {
         <div className="bg-white shadow-sm rounded-2xl mb-6 overflow-hidden">
           <Carousel
             opts={{
-              align: "start",
+              align: "end",
               loop: true,
               dragFree: true,
             }}
             className="w-full p-4"
+            dir="rtl"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {categories.map((category) => (
@@ -320,7 +319,7 @@ const StoreTemplate1 = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent group-hover:from-black/40 transition-colors" />
                     </div>
                     <div className="flex flex-col items-center">
-                      <span className={`text-xs md:text-sm font-medium ${category.id === 0 ? 'text-primary' : 'text-gray-700'} group-hover:text-primary transition-colors`}>
+                      <span className={`text-xs md:text-sm font-medium ${category.id === 0 ? 'text-[#33C3F0]' : 'text-gray-700'} group-hover:text-[#33C3F0] transition-colors`}>
                         {t[category.name]}
                       </span>
                     </div>
@@ -334,7 +333,7 @@ const StoreTemplate1 = () => {
         {showSearch && (
           <div 
             ref={searchRef}
-            className="bg-white rounded-2xl shadow-sm p-4 mb-6 animate-fade-in"
+            className="bg-white rounded-2xl shadow-sm p-4 mb-6 animate-fade-in border border-[#33C3F0]"
           >
             <Input
               placeholder="ابحث عن المنتجات..."
