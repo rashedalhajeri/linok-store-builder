@@ -68,7 +68,7 @@ const ProductTemplate1 = () => {
       <Card className="max-w-6xl mx-auto overflow-hidden bg-white/80 backdrop-blur-sm shadow-2xl rounded-[2rem] border-0">
         <div className="grid lg:grid-cols-2 gap-12 p-8">
           {/* Product Images */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -81,21 +81,27 @@ const ProductTemplate1 = () => {
                 className="w-full h-full object-cover transition-all duration-700 hover:scale-105"
               />
             </motion.div>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-3">
               {product.images.map((image, index) => (
                 <motion.button
                   key={index}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setSelectedImage(image)}
-                  className={`relative aspect-square rounded-2xl overflow-hidden shadow-lg transition-all duration-300
-                    ${selectedImage === image ? 'ring-4 ring-[#9b87f5] scale-105' : 'hover:ring-2 hover:ring-[#9b87f5]/50'}`}
+                  className="flex flex-col items-center space-y-2"
                 >
-                  <img 
-                    src={image} 
-                    alt={`${product.name} ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
+                  <div className={`relative aspect-square w-full rounded-xl overflow-hidden shadow-md transition-all duration-300
+                    ${selectedImage === image ? 'ring-2 ring-[#9b87f5] scale-105' : 'hover:ring-2 hover:ring-[#9b87f5]/50'}`}
+                  >
+                    <img 
+                      src={image} 
+                      alt={`${product.name} ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <span className="text-xs text-gray-600 text-center">
+                    صورة {index + 1}
+                  </span>
                 </motion.button>
               ))}
             </div>
