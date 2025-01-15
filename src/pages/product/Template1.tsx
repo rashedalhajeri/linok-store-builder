@@ -7,6 +7,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { Upload } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
 
 const ProductTemplate1 = () => {
   const navigate = useNavigate();
@@ -16,6 +17,8 @@ const ProductTemplate1 = () => {
   const [uploadedImage, setUploadedImage] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const [currentSizeIndex, setCurrentSizeIndex] = useState(0);
+  const [currentColorIndex, setCurrentColorIndex] = useState(0);
   
   const product = {
     name: "اسم المنتج",
@@ -60,8 +63,19 @@ const ProductTemplate1 = () => {
     return finalPrice.toFixed(3);
   };
 
-  const truncatedDescription = product.description.slice(0, 40);
-  const hasMoreDescription = product.description.length > 40;
+  const words = product.description.split(' ');
+  const truncatedDescription = words.slice(0, 10).join(' ');
+  const hasMoreDescription = words.length > 10;
+
+  const handleSizeSliderChange = (value: number[]) => {
+    setCurrentSizeIndex(value[0]);
+    setSelectedSize(product.sizes[value[0]].id);
+  };
+
+  const handleColorSliderChange = (value: number[]) => {
+    setCurrentColorIndex(value[0]);
+    setSelectedColor(product.colors[value[0]].id);
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -130,74 +144,43 @@ const ProductTemplate1 = () => {
               {/* Sizes */}
               <div className="space-y-2">
                 <Label className="text-sm font-medium text-gray-700">
-                  المقاس
+                  المقاس: {product.sizes[currentSizeIndex].label}
                 </Label>
-                <RadioGroup
-                  value={selectedSize}
-                  onValueChange={setSelectedSize}
-                  className="flex flex-wrap gap-2"
-                >
+                <Slider
+                  value={[currentSizeIndex]}
+                  max={product.sizes.length - 1}
+                  step={1}
+                  onValueChange={handleSizeSliderChange}
+                  className="w-full"
+                />
+                <div className="flex justify-between text-sm text-gray-500">
                   {product.sizes.map((size) => (
-                    <motion.div
-                      key={size.id}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="flex-1 min-w-[60px] max-w-[80px]"
-                    >
-                      <RadioGroupItem
-                        value={size.id}
-                        id={size.id}
-                        className="peer sr-only"
-                      />
-                      <Label
-                        htmlFor={size.id}
-                        className="flex h-9 items-center justify-center rounded-lg border-2 cursor-pointer
-                          transition-all duration-300 peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary/5
-                          hover:border-primary/50 hover:bg-gray-50 text-sm"
-                      >
-                        {size.label}
-                      </Label>
-                    </motion.div>
+                    <span key={size.id}>{size.label}</span>
                   ))}
-                </RadioGroup>
+                </div>
               </div>
 
               {/* Colors */}
               <div className="space-y-2">
                 <Label className="text-sm font-medium text-gray-700">
-                  اللون
+                  اللون: {product.colors[currentColorIndex].label}
                 </Label>
-                <RadioGroup
-                  value={selectedColor}
-                  onValueChange={setSelectedColor}
-                  className="flex flex-wrap gap-2"
-                >
+                <Slider
+                  value={[currentColorIndex]}
+                  max={product.colors.length - 1}
+                  step={1}
+                  onValueChange={handleColorSliderChange}
+                  className="w-full"
+                />
+                <div className="flex justify-between">
                   {product.colors.map((color) => (
-                    <motion.div
+                    <span
                       key={color.id}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="flex-1 min-w-[60px] max-w-[80px]"
-                    >
-                      <RadioGroupItem
-                        value={color.id}
-                        id={color.id}
-                        className="peer sr-only"
-                      />
-                      <Label
-                        htmlFor={color.id}
-                        className="flex h-9 items-center justify-center rounded-lg border-2 cursor-pointer
-                          transition-all duration-300 peer-data-[state=checked]:border-primary peer-data-[state=checked]:ring-2
-                          peer-data-[state=checked]:ring-primary/20 hover:border-primary/50"
-                      >
-                        <span 
-                          className="w-6 h-6 rounded-full border shadow-sm"
-                          style={{ backgroundColor: color.value }}
-                        />
-                      </Label>
-                    </motion.div>
+                      className="w-6 h-6 rounded-full border shadow-sm"
+                      style={{ backgroundColor: color.value }}
+                    />
                   ))}
-                </RadioGroup>
+                </div>
               </div>
 
               {/* Customer Name */}
