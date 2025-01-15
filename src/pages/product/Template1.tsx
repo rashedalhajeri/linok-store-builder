@@ -42,7 +42,6 @@ const ProductTemplate1 = () => {
     }
   };
 
-  // حساب السعر النهائي بناءً على المقاس المختار
   const calculatePrice = () => {
     const selectedSizeData = product.sizes.find(size => size.id === selectedSize);
     const priceAdjustment = selectedSizeData ? selectedSizeData.priceAdjustment : 0;
@@ -51,30 +50,30 @@ const ProductTemplate1 = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Card className="overflow-hidden">
+      <Card className="overflow-hidden bg-gradient-to-br from-white to-gray-50">
         <div className="grid md:grid-cols-2 gap-8 p-6">
           {/* صور المنتج */}
-          <div className="space-y-4">
-            <div className="relative aspect-square overflow-hidden rounded-2xl border shadow-sm">
+          <div className="space-y-6">
+            <div className="relative aspect-square overflow-hidden rounded-3xl border shadow-lg hover:shadow-xl transition-shadow duration-300">
               <img 
                 src={selectedImage} 
                 alt={product.name} 
-                className="w-full h-full object-cover transition-all duration-300 hover:scale-105"
+                className="w-full h-full object-cover transition-all duration-500 hover:scale-110"
               />
             </div>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-4 gap-4">
               {product.images.map((image, index) => (
                 <button
                   key={index}
                   onClick={() => setSelectedImage(image)}
-                  className={`aspect-square rounded-xl overflow-hidden border-2 transition-all duration-200 hover:shadow-md ${
-                    selectedImage === image ? 'border-primary ring-2 ring-primary/20' : 'border-border hover:border-primary/50'
+                  className={`aspect-square rounded-2xl overflow-hidden border-2 transition-all duration-300 hover:shadow-lg ${
+                    selectedImage === image ? 'border-primary ring-4 ring-primary/20' : 'border-border hover:border-primary/50'
                   }`}
                 >
                   <img 
                     src={image} 
                     alt={`${product.name} ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   />
                 </button>
               ))}
@@ -83,15 +82,23 @@ const ProductTemplate1 = () => {
 
           {/* تفاصيل المنتج */}
           <div className="space-y-8">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold text-foreground">{product.name}</h1>
-              <p className="text-2xl font-semibold text-primary">{calculatePrice()} د.ك</p>
-              <p className="text-muted-foreground leading-relaxed">{product.description}</p>
+            <div className="space-y-4 bg-white/50 p-6 rounded-2xl backdrop-blur-sm">
+              <h1 className="text-4xl font-bold text-foreground bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                {product.name}
+              </h1>
+              <p className="text-3xl font-bold text-primary animate-fade-in">
+                {calculatePrice()} د.ك
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                {product.description}
+              </p>
             </div>
             
-            <div className="space-y-6">
+            <div className="space-y-8">
               <div className="space-y-4">
-                <Label className="text-lg font-medium">المقاس</Label>
+                <Label className="text-xl font-semibold inline-block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  المقاس
+                </Label>
                 <RadioGroup
                   value={selectedSize}
                   onValueChange={setSelectedSize}
@@ -100,12 +107,12 @@ const ProductTemplate1 = () => {
                   {product.sizes.map((size) => (
                     <div
                       key={size.id}
-                      className={`relative flex items-center justify-center p-4 rounded-lg border-2 cursor-pointer transition-all duration-200
-                        ${selectedSize === size.id ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'}`}
+                      className={`relative flex items-center justify-center p-4 rounded-2xl border-2 cursor-pointer transition-all duration-300 hover:shadow-md
+                        ${selectedSize === size.id ? 'border-primary bg-primary/5 shadow-lg' : 'border-border hover:border-primary/50'}`}
                     >
                       <RadioGroupItem value={size.id} id={`size-${size.id}`} className="absolute inset-0 opacity-0" />
                       <Label htmlFor={`size-${size.id}`} className="cursor-pointer text-center">
-                        <div className="font-medium">{size.label}</div>
+                        <div className="text-xl font-semibold">{size.label}</div>
                       </Label>
                     </div>
                   ))}
@@ -113,7 +120,9 @@ const ProductTemplate1 = () => {
               </div>
 
               <div className="space-y-4">
-                <Label className="text-lg font-medium">اللون</Label>
+                <Label className="text-xl font-semibold inline-block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  اللون
+                </Label>
                 <RadioGroup
                   value={selectedColor}
                   onValueChange={setSelectedColor}
@@ -122,12 +131,12 @@ const ProductTemplate1 = () => {
                   {product.colors.map((color) => (
                     <div
                       key={color.id}
-                      className={`relative flex items-center justify-center p-4 rounded-lg border-2 cursor-pointer transition-all duration-200
-                        ${selectedColor === color.id ? 'border-primary' : 'border-border hover:border-primary/50'}`}
+                      className={`relative flex items-center justify-center p-6 rounded-2xl border-2 cursor-pointer transition-all duration-300 hover:shadow-md
+                        ${selectedColor === color.id ? 'border-primary shadow-lg scale-105' : 'border-border hover:border-primary/50'}`}
                     >
                       <RadioGroupItem value={color.id} id={`color-${color.id}`} className="absolute inset-0 opacity-0" />
                       <div 
-                        className="w-8 h-8 rounded-full border shadow-sm"
+                        className="w-10 h-10 rounded-full border shadow-lg transition-transform duration-300 hover:scale-110"
                         style={{ backgroundColor: color.value }}
                       />
                     </div>
@@ -136,33 +145,46 @@ const ProductTemplate1 = () => {
               </div>
 
               <div className="space-y-4">
-                <Label className="text-lg font-medium" htmlFor="customerName">اسمك</Label>
+                <Label className="text-xl font-semibold inline-block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent" htmlFor="customerName">
+                  اسمك
+                </Label>
                 <Input
                   id="customerName"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
                   placeholder="الرجاء إدخال اسمك"
-                  className="text-lg"
+                  className="text-lg rounded-xl border-2 focus:border-primary/50 transition-all duration-300"
                 />
               </div>
 
               <div className="space-y-4">
-                <Label className="text-lg font-medium" htmlFor="customerImage">إرفاق صورة</Label>
+                <Label className="text-xl font-semibold inline-block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent" htmlFor="customerImage">
+                  إرفاق صورة
+                </Label>
                 <Input
                   id="customerImage"
                   type="file"
                   accept="image/*"
                   onChange={handleImageUpload}
-                  className="text-lg"
+                  className="text-lg rounded-xl border-2 focus:border-primary/50 transition-all duration-300"
                 />
               </div>
             </div>
 
             <div className="flex gap-4 pt-6">
-              <Button size="lg" className="flex-1" onClick={() => navigate("/cart")}>
+              <Button 
+                size="lg" 
+                className="flex-1 rounded-xl bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all duration-300 text-lg font-semibold"
+                onClick={() => navigate("/cart")}
+              >
                 إضافة للسلة
               </Button>
-              <Button size="lg" variant="outline" onClick={() => window.history.back()}>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="rounded-xl hover:bg-primary/5 transition-all duration-300 text-lg font-semibold"
+                onClick={() => window.history.back()}
+              >
                 رجوع
               </Button>
             </div>
