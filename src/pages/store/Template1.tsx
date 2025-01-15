@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { Phone, MessageSquare, Instagram, Star, Search, ShoppingBag, MapPin, Calendar, ExternalLink } from "lucide-react";
+import { Phone, MessageSquare, Instagram, Star, Search, ShoppingBag, MapPin, ExternalLink } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
@@ -129,19 +129,6 @@ const StoreTemplate1 = () => {
                 <span className="flex items-center gap-1.5">
                   <MapPin className="w-4 h-4" />
                   الرياض، السعودية
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Calendar className="w-4 h-4" />
-                  انضم في 2024
-                </span>
-              </div>
-              
-              <div className="flex gap-4 md:gap-6 mt-4 md:mt-6 pt-4 md:pt-6 border-t text-xs md:text-sm">
-                <span className="text-gray-500">
-                  <strong className="text-gray-900 font-semibold">٥٢٣</strong> يتابع
-                </span>
-                <span className="text-gray-500">
-                  <strong className="text-gray-900 font-semibold">١,٢٤٥</strong> متابع
                 </span>
               </div>
             </div>
