@@ -1,25 +1,46 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export const Hero = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/10 to-background">
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 items-center">
-          <div className="flex flex-col justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+          <div className="flex flex-col justify-center space-y-8 text-center">
+            <div className="space-y-4">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
+              >
                 أنشئ متجرك الإلكتروني في ثوانٍ
-              </h1>
-              <p className="max-w-[600px] text-zinc-500 md:text-xl dark:text-zinc-400 mx-auto">
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="max-w-[600px] text-zinc-500 md:text-xl dark:text-zinc-400 mx-auto"
+              >
                 منصة linok.me تتيح لك إنشاء متجر احترافي بسهولة تامة. اختر قالبك المفضل وابدأ البيع اليوم!
-              </p>
+              </motion.p>
             </div>
-            <div className="w-full max-w-sm space-y-2 mx-auto">
-              <Button className="w-full bg-primary hover:bg-primary/90" size="lg">
-                ابدأ الآن مجاناً
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="w-full max-w-sm space-y-4 mx-auto"
+            >
+              <Button 
+                className="w-full bg-primary hover:bg-primary/90 group" 
+                size="lg"
+              >
+                <span>ابدأ الآن مجاناً</span>
+                <ArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
-            </div>
+              <p className="text-sm text-zinc-500">لا تحتاج إلى بطاقة ائتمان للبدء</p>
+            </motion.div>
           </div>
         </div>
       </div>
