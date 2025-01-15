@@ -130,7 +130,7 @@ const StoreTemplate1 = () => {
   };
 
   const handleMapClick = () => {
-    window.open('https://maps.google.com/?q=Kuwait+City+Kuwait', '_blank');
+    window.open('https://maps.google.com/?q=Kuwait+Capital+Governorate+Kuwait', '_blank');
   };
 
   return (
@@ -258,7 +258,7 @@ const StoreTemplate1 = () => {
                     <div className="absolute -inset-1 bg-primary/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300" />
                   </motion.div>
                   <span className="relative">
-                    {t.location}
+                    العاصمة، الكويت
                     <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
                   </span>
                 </motion.button>
@@ -341,4 +341,3 @@ const StoreTemplate1 = () => {
 };
 
 export default StoreTemplate1;
-
