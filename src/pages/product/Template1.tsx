@@ -129,19 +129,19 @@ const ProductTemplate1 = () => {
             </motion.div>
             
             <div className="space-y-8 bg-[#F1F0FB] p-6 rounded-2xl">
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-2 gap-6">
                 {/* Sizes */}
-                <div className="space-y-3">
+                <div className="space-y-2">
                   <Label className="text-sm font-medium text-[#1A1F2C]">المقاس</Label>
-                  <div className="grid grid-cols-5 gap-2">
+                  <div className="grid grid-cols-5 gap-1.5">
                     {product.sizes.map((size) => (
                       <Button
                         key={size.id}
                         variant={selectedSize === size.id ? "default" : "outline"}
-                        className={`h-10 ${
+                        className={`h-8 px-2 text-sm ${
                           selectedSize === size.id
                             ? "bg-[#9b87f5] hover:bg-[#7E69AB]"
-                            : "hover:bg-[#F1F0FB] border-2 border-[#D6BCFA]"
+                            : "hover:bg-[#F1F0FB] border border-[#D6BCFA]"
                         }`}
                         onClick={() => setSelectedSize(size.id)}
                       >
@@ -152,14 +152,14 @@ const ProductTemplate1 = () => {
                 </div>
 
                 {/* Colors */}
-                <div className="space-y-3">
+                <div className="space-y-2">
                   <Label className="text-sm font-medium text-[#1A1F2C]">اللون</Label>
-                  <div className="grid grid-cols-5 gap-2">
+                  <div className="grid grid-cols-5 gap-1.5">
                     {product.colors.map((color) => (
                       <Button
                         key={color.id}
                         variant={selectedColor === color.id ? "default" : "outline"}
-                        className={`h-10 relative ${
+                        className={`h-8 px-2 text-sm relative ${
                           selectedColor === color.id
                             ? "ring-2 ring-[#9b87f5]"
                             : "hover:ring-2 hover:ring-[#9b87f5]/50"
