@@ -223,10 +223,6 @@ const StoreTemplate1 = () => {
                 <div>
                   <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 flex items-center gap-2">
                     {t.storeName}
-                    <div className="relative">
-                      <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full blur-sm opacity-30 animate-pulse" />
-                      <Star className="w-6 h-6 text-primary relative z-10" />
-                    </div>
                   </h1>
                   <p className="text-sm md:text-base text-gray-500 font-medium">
                     @yourstorehandle
