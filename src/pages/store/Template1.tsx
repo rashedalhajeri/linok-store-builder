@@ -4,13 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Phone, MessageSquare, Instagram, Star, Search, ShoppingBag, MapPin, ExternalLink } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
-import { Input } from "@/components/ui/input";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const StoreTemplate1 = () => {
-  const navigate = useNavigate();
-  const isMobile = useIsMobile();
-  
   const products = [
     {
       id: 1,
@@ -46,9 +41,21 @@ const StoreTemplate1 = () => {
     { id: 5, name: "العطور", icon: Star },
   ];
 
+const StoreTemplate1 = () => {
+  const navigate = useNavigate();
+  const isMobile = useIsMobile();
+  
+  // This will later be controlled through the admin panel
+  const socialLinks = [
+    { id: 1, icon: Phone, label: "اتصل بنا", href: "tel:+966500000000" },
+    { id: 2, icon: MessageSquare, label: "واتساب", href: "https://wa.me/966500000000" },
+    { id: 3, icon: Instagram, label: "انستغرام", href: "https://instagram.com/store" },
+    { id: 4, icon: Star, label: "سناب شات", href: "https://snapchat.com/add/store" },
+  ];
+
   return (
     <div className="min-h-screen bg-[#F7F9FA]">
-      {/* Header - Responsive height */}
+      {/* Header Section */}
       <div className="relative h-[200px] md:h-[300px] bg-gradient-to-b from-gray-900/70 to-gray-900/50">
         <img 
           src="https://images.unsplash.com/photo-1441986300917-64674bd600d8"
@@ -58,9 +65,9 @@ const StoreTemplate1 = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30" />
       </div>
 
-      {/* Main Content - Responsive padding and width */}
+      {/* Main Content */}
       <div className="max-w-[90%] md:max-w-4xl mx-auto px-4 relative">
-        {/* Profile Section - Responsive positioning and sizing */}
+        {/* Profile Section */}
         <div className="relative -mt-20 md:-mt-32 mb-6 md:mb-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -68,7 +75,7 @@ const StoreTemplate1 = () => {
             transition={{ duration: 0.5 }}
             className="flex flex-col gap-4 md:gap-6"
           >
-            {/* Avatar & Actions - Responsive layout */}
+            {/* Avatar & Social Links */}
             <div className="flex justify-between items-end">
               <Avatar className="w-28 h-28 md:w-40 md:h-40 border-4 border-white rounded-full shadow-xl">
                 <AvatarImage 
@@ -79,26 +86,22 @@ const StoreTemplate1 = () => {
               </Avatar>
               
               <div className="flex gap-2 md:gap-3">
-                <Button 
-                  variant="outline"
-                  size={isMobile ? "sm" : "lg"}
-                  className="rounded-full border-2 bg-white/95 hover:bg-white text-gray-900 font-medium shadow-sm"
-                >
-                  <MessageSquare className="h-4 w-4 md:h-5 md:w-5 ml-1 md:ml-2" />
-                  {!isMobile && "راسلنا"}
-                </Button>
-                <Button 
-                  variant="outline"
-                  size={isMobile ? "sm" : "lg"}
-                  className="rounded-full border-2 bg-white/95 hover:bg-white text-gray-900 font-medium shadow-sm"
-                >
-                  <Phone className="h-4 w-4 md:h-5 md:w-5 ml-1 md:ml-2" />
-                  {!isMobile && "اتصل بنا"}
-                </Button>
+                {socialLinks.map((link) => (
+                  <Button
+                    key={link.id}
+                    variant="outline"
+                    size={isMobile ? "sm" : "lg"}
+                    className="rounded-full border-2 bg-white/95 hover:bg-white text-gray-900 font-medium shadow-sm"
+                    onClick={() => window.open(link.href, '_blank')}
+                  >
+                    <link.icon className="h-4 w-4 md:h-5 md:w-5 ml-1 md:ml-2" />
+                    {!isMobile && link.label}
+                  </Button>
+                ))}
               </div>
             </div>
 
-            {/* Store Info - Responsive padding and text sizes */}
+            {/* Store Info */}
             <div className="bg-white rounded-2xl shadow-sm p-4 md:p-8">
               <div className="flex justify-between items-start mb-4">
                 <div>
@@ -132,10 +135,11 @@ const StoreTemplate1 = () => {
                 </span>
               </div>
             </div>
+
           </motion.div>
         </div>
 
-        {/* Navigation - Responsive scrolling */}
+        {/* Navigation */}
         <nav className="bg-white shadow-sm rounded-2xl mb-6 overflow-hidden">
           <div className="flex overflow-x-auto scrollbar-hide">
             {categories.map((category) => (
@@ -151,7 +155,7 @@ const StoreTemplate1 = () => {
           </div>
         </nav>
 
-        {/* Products Grid - Responsive grid */}
+        {/* Products Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 pb-8">
           {products.map((product, index) => (
             <motion.div
