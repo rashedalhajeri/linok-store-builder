@@ -142,6 +142,10 @@ const StoreTemplate1 = () => {
     setShowSearch(true);
     setTimeout(() => {
       searchRef.current?.scrollIntoView({ behavior: 'smooth' });
+      const inputElement = searchRef.current?.querySelector('input');
+      if (inputElement) {
+        inputElement.focus();
+      }
     }, 100);
   };
 
