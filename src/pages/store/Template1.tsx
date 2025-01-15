@@ -54,42 +54,42 @@ const categories = [
     name: "bestSellers", 
     icon: Sparkles,
     image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3",
-    showImage: false
+    showImage: true
   },
   { 
     id: 2, 
     name: "bags", 
     icon: ShoppingBag,
     image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314",
-    showImage: false
+    showImage: true
   },
   { 
     id: 3, 
     name: "watches", 
     icon: Star,
     image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
-    showImage: false
+    showImage: true
   },
   { 
     id: 4, 
     name: "sunglasses", 
     icon: Glasses,
     image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f",
-    showImage: false
+    showImage: true
   },
   { 
     id: 5, 
     name: "perfumes", 
     icon: FlaskConical,
     image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
-    showImage: false
+    showImage: true
   },
   { 
     id: 6, 
     name: "accessories", 
     icon: Star,
     image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314",
-    showImage: false
+    showImage: true
   }
 ];
 
@@ -275,25 +275,24 @@ const StoreTemplate1 = () => {
               loop: true,
               dragFree: true,
             }}
-            className="w-full"
+            className="w-full p-4"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {categories.map((category) => (
-                <CarouselItem key={category.id} className="pl-2 md:pl-4 basis-1/3 md:basis-1/5">
+                <CarouselItem key={category.id} className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5">
                   <button
                     className="w-full group focus:outline-none"
                   >
-                    {category.showImage ? (
-                      <div className="relative aspect-square rounded-xl overflow-hidden mb-2">
-                        <img 
-                          src={category.image} 
-                          alt={t[category.name]}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
-                      </div>
-                    ) : null}
-                    <div className="flex flex-col items-center py-3">
+                    <div className="relative aspect-square rounded-xl overflow-hidden mb-2 bg-gray-50">
+                      <img 
+                        src={category.image} 
+                        alt={t[category.name]}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent group-hover:from-black/40 transition-colors" />
+                      <category.icon className="absolute bottom-2 right-2 h-5 w-5 text-white" />
+                    </div>
+                    <div className="flex flex-col items-center">
                       <span className="text-sm md:text-base font-medium text-gray-700 group-hover:text-primary transition-colors">
                         {t[category.name]}
                       </span>
