@@ -102,6 +102,7 @@ const StoreTemplate1 = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [language, setLanguage] = useState<'en' | 'ar'>('ar');
   const [showSearch, setShowSearch] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(0); // للفئة "الكل"
   const searchRef = useRef<HTMLDivElement>(null);
   
   const t = translations[language];
@@ -139,11 +140,16 @@ const StoreTemplate1 = () => {
   };
 
   const handleSearchClick = () => {
-    setShowSearch(true);
-    searchRef.current?.scrollIntoView({ behavior: 'instant' });
-    const inputElement = searchRef.current?.querySelector('input');
-    if (inputElement) {
-      inputElement.focus();
+    if (showSearch) {
+      setShowSearch(false);
+      setSelectedCategory(0); // العودة إلى فئة "الكل"
+    } else {
+      setShowSearch(true);
+      searchRef.current?.scrollIntoView({ behavior: 'instant' });
+      const inputElement = searchRef.current?.querySelector('input');
+      if (inputElement) {
+        inputElement.focus();
+      }
     }
   };
 
@@ -333,7 +339,7 @@ const StoreTemplate1 = () => {
         {showSearch && (
           <div 
             ref={searchRef}
-            className="bg-white rounded-2xl shadow-sm p-4 mb-6 animate-fade-in border border-[#33C3F0]"
+            className="bg-white rounded-2xl shadow-sm p-4 mb-6 animate-fade-in border border-[#33C3F0] border-[0.5px]"
           >
             <Input
               placeholder="ابحث عن المنتجات..."
