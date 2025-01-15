@@ -331,6 +331,54 @@ const StoreTemplate1 = () => {
         </div>
       </div>
 
+      <div className="w-full py-8 bg-gradient-to-r from-white via-gray-50 to-white border-t">
+        <div className="max-w-[90%] md:max-w-4xl mx-auto text-center">
+          <div className="flex flex-col items-center justify-center space-y-2">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center gap-2"
+            >
+              <span className="text-sm text-gray-500">صنع بكل</span>
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{ 
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              >
+                ❤️
+              </motion.div>
+              <span className="text-sm text-gray-500">في</span>
+            </motion.div>
+            
+            <motion.a
+              href="https://linok.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center justify-center"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-300 opacity-70" />
+              <div className="relative bg-white px-4 py-1.5 rounded-lg border border-gray-100 shadow-sm">
+                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent font-bold">
+                  linok.me
+                </span>
+              </div>
+            </motion.a>
+            
+            <p className="text-xs text-gray-400 mt-2">
+              منصة متخصصة في إنشاء المتاجر الإلكترونية
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="w-full py-6 bg-white border-t">
         <div className="max-w-[90%] md:max-w-4xl mx-auto text-center">
           <p className="text-sm text-gray-500">
