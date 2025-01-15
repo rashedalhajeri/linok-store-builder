@@ -197,13 +197,33 @@ const StoreTemplate1 = () => {
               </p>
               
               <div className="flex flex-wrap items-center gap-4 md:gap-6 text-gray-500 text-xs md:text-sm mt-4 md:mt-6">
-                <button 
+                <motion.button 
                   onClick={handleMapClick}
-                  className="flex items-center gap-1.5 hover:text-primary transition-colors"
+                  className="flex items-center gap-1.5 hover:text-primary transition-colors group relative"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <MapPin className="w-4 h-4" />
-                  {t.location}
-                </button>
+                  <motion.div
+                    className="relative"
+                    initial={{ scale: 1 }}
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      rotate: [0, -10, 10, -10, 0]
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatDelay: 3
+                    }}
+                  >
+                    <MapPin className="w-4 h-4 text-primary" />
+                    <div className="absolute -inset-1 bg-primary/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300" />
+                  </motion.div>
+                  <span className="relative">
+                    {t.location}
+                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+                  </span>
+                </motion.button>
               </div>
             </div>
           </motion.div>
