@@ -45,53 +45,69 @@ const StoreTemplate1 = () => {
   ];
 
   return (
-    <div className="flex flex-col w-full min-h-screen bg-gray-50">
-      {/* Hero Section with Cover Image */}
-      <div className="relative h-80 bg-gradient-to-r from-purple-900 to-blue-600 overflow-hidden">
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <div className="relative h-[50vh] md:h-[60vh] bg-gradient-to-r from-primary/90 to-secondary/90">
         <div 
-          className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1441986300917-64674bd600d8')] bg-cover bg-center"
-          style={{ backgroundBlendMode: 'overlay' }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ 
+            backgroundImage: "url('https://images.unsplash.com/photo-1441986300917-64674bd600d8')",
+            backgroundBlendMode: 'overlay'
+          }}
         />
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 -mt-40 relative z-10 pb-20">
+      <div className="relative px-4 lg:px-8 -mt-32 pb-20 max-w-[1400px] mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-white rounded-2xl shadow-xl p-8 mb-8"
+          className="bg-white rounded-3xl shadow-xl p-6 md:p-8 mb-8"
         >
-          {/* Store Profile Section */}
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
-            <Avatar className="w-32 h-32 border-4 border-white shadow-xl">
-              <AvatarImage src="https://images.unsplash.com/photo-1441986300917-64674bd600d8" />
-              <AvatarFallback>DS</AvatarFallback>
+          {/* Store Profile */}
+          <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
+            <Avatar className="w-28 h-28 md:w-36 md:h-36 border-4 border-white shadow-xl">
+              <AvatarImage src="https://images.unsplash.com/photo-1441986300917-64674bd600d8" className="object-cover" />
+              <AvatarFallback>LS</AvatarFallback>
             </Avatar>
             
-            <div className="flex-1">
-              <div className="flex items-center gap-3 mb-3">
-                <h1 className="text-4xl font-bold text-gray-900">Luxury Store</h1>
-                <span className="text-blue-500 bg-blue-100 p-1.5 rounded-full">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
-                  </svg>
-                </span>
+            <div className="flex-1 space-y-6">
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <h1 className="text-3xl md:text-4xl font-bold text-gray-900">Luxury Store</h1>
+                  <span className="text-primary bg-primary/10 p-1.5 rounded-full">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                    </svg>
+                  </span>
+                </div>
+                <p className="text-gray-600 text-lg mb-6">متجر متخصص في المنتجات الفاخرة والإكسسوارات العصرية</p>
               </div>
-              <p className="text-gray-600 text-lg mb-6">متجر متخصص في المنتجات الفاخرة والإكسسوارات العصرية</p>
               
-              {/* Contact Buttons */}
-              <div className="flex gap-4">
-                <Button variant="outline" size="lg" className="rounded-xl hover:bg-primary hover:text-white transition-colors">
+              <div className="flex flex-wrap gap-3">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="rounded-xl hover:bg-primary hover:text-white transition-all duration-300 border-2"
+                >
                   <Phone className="h-5 w-5 ml-2" />
                   اتصل بنا
                 </Button>
-                <Button variant="outline" size="lg" className="rounded-xl hover:bg-primary hover:text-white transition-colors">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="rounded-xl hover:bg-primary hover:text-white transition-all duration-300 border-2"
+                >
                   <MessageSquare className="h-5 w-5 ml-2" />
                   راسلنا
                 </Button>
-                <Button variant="outline" size="lg" className="rounded-xl hover:bg-primary hover:text-white transition-colors">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="rounded-xl hover:bg-primary hover:text-white transition-all duration-300 border-2"
+                >
                   <Instagram className="h-5 w-5 ml-2" />
                   تابعنا
                 </Button>
@@ -105,7 +121,7 @@ const StoreTemplate1 = () => {
           <Input
             type="text"
             placeholder="ابحث عن المنتجات..."
-            className="w-full px-6 py-4 pr-14 text-lg rounded-2xl border-2 border-gray-100 focus:border-primary/20 shadow-sm"
+            className="w-full px-6 py-6 pr-14 text-lg rounded-2xl border-2 border-gray-100 focus:border-primary/20 shadow-sm transition-all duration-300"
           />
           <Search className="absolute left-6 top-1/2 -translate-y-1/2 h-6 w-6 text-gray-400" />
         </div>
@@ -116,7 +132,7 @@ const StoreTemplate1 = () => {
             <Button
               key={category.id}
               variant="outline"
-              className="rounded-xl flex gap-2 whitespace-nowrap px-6 py-6 hover:bg-primary hover:text-white border-2 border-gray-100"
+              className="rounded-xl flex gap-2 whitespace-nowrap px-6 py-6 hover:bg-primary hover:text-white transition-all duration-300 border-2 text-base"
             >
               <category.icon className="h-5 w-5" />
               {category.name}
@@ -125,16 +141,17 @@ const StoreTemplate1 = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {products.map((product) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3 }}
+              whileHover={{ y: -5 }}
             >
               <Card 
-                className="overflow-hidden hover:shadow-xl transition-all cursor-pointer group border-0"
+                className="overflow-hidden hover:shadow-2xl transition-all duration-500 cursor-pointer group border-0 rounded-2xl"
                 onClick={() => navigate(`/product/template1/${product.id}`)}
               >
                 <div className="relative aspect-square overflow-hidden rounded-2xl">
