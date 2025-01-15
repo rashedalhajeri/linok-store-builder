@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { Phone, MessageSquare, Instagram, Star, Search, ShoppingBag, MapPin, ExternalLink } from "lucide-react";
+import { Phone, MessageSquare, Star, Search, ShoppingBag, MapPin, ExternalLink } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -45,12 +45,10 @@ const StoreTemplate1 = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
   
-  // This will later be controlled through the admin panel
+  // تم تقليل عدد وسائل التواصل إلى اثنتين فقط
   const socialLinks = [
     { id: 1, icon: Phone, label: "اتصل بنا", href: "tel:+966500000000" },
     { id: 2, icon: MessageSquare, label: "واتساب", href: "https://wa.me/966500000000" },
-    { id: 3, icon: Instagram, label: "انستغرام", href: "https://instagram.com/store" },
-    { id: 4, icon: Star, label: "سناب شات", href: "https://snapchat.com/add/store" },
   ];
 
   return (
