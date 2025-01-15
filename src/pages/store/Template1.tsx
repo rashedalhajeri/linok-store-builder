@@ -205,22 +205,11 @@ const StoreTemplate1 = () => {
                 <div>
                   <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 flex items-center gap-2">
                     {t.storeName}
-                    <motion.div
-                      initial={{ scale: 1 }}
-                      animate={{ 
-                        scale: [1, 1.1, 1],
-                      }}
-                      transition={{ 
-                        duration: 2,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "easeInOut"
-                      }}
-                      className="relative"
-                    >
-                      <div className="absolute -inset-1 bg-primary/20 rounded-full blur-sm animate-pulse" />
+                    <div className="relative">
+                      <div className="absolute -inset-2 bg-gradient-to-r from-primary/40 via-accent/40 to-primary/40 rounded-full blur-lg opacity-75 group-hover:opacity-100 animate-pulse transition-opacity duration-500" />
+                      <div className="absolute -inset-1.5 bg-gradient-to-r from-primary/30 via-accent/30 to-primary/30 rounded-full blur-md animate-pulse" />
                       <BadgeCheck className="w-6 h-6 text-primary relative z-10 drop-shadow-md" />
-                    </motion.div>
+                    </div>
                   </h1>
                   <p className="text-sm md:text-base text-gray-500 font-medium">
                     @yourstorehandle
