@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, MessageSquare, Star, Search, ShoppingBag, MapPin, ExternalLink, Globe } from "lucide-react";
+import { Phone, MessageSquare, Instagram, MapPin, ExternalLink, Globe } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -52,12 +52,17 @@ const StoreTemplate1 = () => {
   const t = translations[language];
   
   const socialLinks = [
-    { id: 1, icon: Phone, label: t.contactUs, href: "tel:+966500000000" },
-    { id: 2, icon: MessageSquare, label: t.whatsapp, href: "https://wa.me/966500000000" },
+    { id: 1, icon: Phone, label: t.contactUs, href: "tel:+96500000000" },
+    { id: 2, icon: MessageSquare, label: t.whatsapp, href: "https://wa.me/96500000000" },
+    { id: 3, icon: Instagram, label: t.instagram, href: "https://instagram.com/luxury_store" },
   ];
 
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'en' ? 'ar' : 'en');
+  };
+
+  const handleMapClick = () => {
+    window.open('https://maps.google.com/?q=Kuwait+City+Kuwait', '_blank');
   };
 
   return (
@@ -121,14 +126,12 @@ const StoreTemplate1 = () => {
             <div className="bg-white rounded-2xl shadow-sm p-4 md:p-8">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h1 className="text-xl md:text-2xl font-bold text-gray-900 flex items-center gap-2">
-                    {language === 'ar' ? 'متجر_لاكشري@' : '@luxury_store'}
-                    <span className="inline-block">
-                      <svg className="w-5 h-5 md:w-6 md:h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
-                      </svg>
-                    </span>
+                  <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
+                    {t.storeName}
                   </h1>
+                  <p className="text-sm md:text-base text-gray-500">
+                    {t.storeHandle}
+                  </p>
                 </div>
                 <Button
                   variant="outline"
@@ -152,16 +155,18 @@ const StoreTemplate1 = () => {
               </p>
               
               <div className="flex flex-wrap items-center gap-4 md:gap-6 text-gray-500 text-xs md:text-sm mt-4 md:mt-6">
-                <span className="flex items-center gap-1.5">
+                <button 
+                  onClick={handleMapClick}
+                  className="flex items-center gap-1.5 hover:text-primary transition-colors"
+                >
                   <MapPin className="w-4 h-4" />
                   {t.location}
-                </span>
+                </button>
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Navigation */}
         <nav className="bg-white shadow-sm rounded-2xl mb-6 overflow-hidden">
           <div className="flex overflow-x-auto scrollbar-hide">
             {categories.map((category) => (
