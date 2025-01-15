@@ -132,13 +132,19 @@ const StoreTemplate1 = () => {
           >
             {/* Avatar & Social Links */}
             <div className="flex justify-between items-end">
-              <Avatar className="w-28 h-28 md:w-40 md:h-40 border-4 border-white rounded-full shadow-xl">
-                <AvatarImage 
-                  src="https://images.unsplash.com/photo-1441986300917-64674bd600d8" 
-                  className="object-cover"
+              <div className="relative group">
+                <Avatar className="w-28 h-28 md:w-40 md:h-40 border-4 border-white rounded-full shadow-xl bg-white">
+                  <AvatarImage 
+                    src="https://images.unsplash.com/photo-1441986300917-64674bd600d8" 
+                    className="object-cover"
+                  />
+                  <AvatarFallback>LS</AvatarFallback>
+                </Avatar>
+                <motion.div 
+                  className="absolute inset-0 rounded-full bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                  whileHover={{ scale: 1.05 }}
                 />
-                <AvatarFallback>LS</AvatarFallback>
-              </Avatar>
+              </div>
               
               <div className="flex gap-2 md:gap-3 mt-4">
                 {socialLinks.map((link) => (
