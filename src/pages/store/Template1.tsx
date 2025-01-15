@@ -1,6 +1,18 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, MessageSquare, Instagram, MapPin, ExternalLink, Globe } from "lucide-react";
+import { 
+  Phone, 
+  MessageSquare, 
+  Instagram, 
+  MapPin, 
+  ExternalLink, 
+  Globe,
+  Star,
+  ShoppingBag,
+  Sparkles,
+  Glasses,
+  Spray
+} from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -36,11 +48,11 @@ const products = [
 ];
 
 const categories = [
-  { id: 1, name: "bestSellers", icon: Star },
+  { id: 1, name: "bestSellers", icon: Sparkles },
   { id: 2, name: "bags", icon: ShoppingBag },
   { id: 3, name: "watches", icon: Star },
-  { id: 4, name: "sunglasses", icon: Star },
-  { id: 5, name: "perfumes", icon: Star },
+  { id: 4, name: "sunglasses", icon: Glasses },
+  { id: 5, name: "perfumes", icon: Spray },
 ];
 
 const StoreTemplate1 = () => {
