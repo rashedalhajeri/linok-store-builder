@@ -62,7 +62,7 @@ const StoreTemplate1 = () => {
   const [language, setLanguage] = useState<'en' | 'ar'>('ar');
   
   const t = translations[language];
-  
+
   const socialLinks = [
     { 
       id: 1, 
@@ -111,14 +111,27 @@ const StoreTemplate1 = () => {
 
   return (
     <div className="min-h-screen bg-[#F7F9FA]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
-      {/* Header Section */}
-      <div className="relative h-[200px] md:h-[300px] bg-gradient-to-b from-gray-900/70 to-gray-900/50">
-        <img 
-          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8"
-          alt="Store Cover"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30" />
+      {/* Header Section with Language Selector */}
+      <div className="relative">
+        <div className="absolute top-4 left-4 z-10">
+          <Button
+            variant="outline"
+            size={isMobile ? "sm" : "default"}
+            className="rounded-full border-2 bg-white/95 hover:bg-white text-gray-900 font-medium shadow-md backdrop-blur-sm"
+            onClick={toggleLanguage}
+          >
+            <Globe className="h-4 w-4 md:h-5 md:w-5 ml-1 md:ml-2" />
+            {language === 'en' ? 'العربية' : 'English'}
+          </Button>
+        </div>
+        <div className="h-[200px] md:h-[300px] bg-gradient-to-b from-gray-900/70 to-gray-900/50">
+          <img 
+            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8"
+            alt="Store Cover"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30" />
+        </div>
       </div>
 
       {/* Main Content */}
@@ -142,15 +155,6 @@ const StoreTemplate1 = () => {
               </Avatar>
               
               <div className="flex gap-2 md:gap-3 mt-4">
-                <Button
-                  variant="outline"
-                  size={isMobile ? "sm" : "lg"}
-                  className="rounded-full border-2 bg-white/95 hover:bg-white text-gray-900 font-medium shadow-sm"
-                  onClick={toggleLanguage}
-                >
-                  <Globe className="h-4 w-4 md:h-5 md:w-5 ml-1 md:ml-2" />
-                  {!isMobile && (language === 'en' ? 'العربية' : 'English')}
-                </Button>
                 {socialLinks.map((link) => (
                   <motion.button
                     key={link.id}
@@ -169,7 +173,6 @@ const StoreTemplate1 = () => {
               </div>
             </div>
 
-            {/* Store Info */}
             <div className="bg-white rounded-2xl shadow-sm p-4 md:p-8">
               <div className="flex justify-between items-start mb-4">
                 <div>
