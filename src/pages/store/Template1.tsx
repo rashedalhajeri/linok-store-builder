@@ -284,9 +284,8 @@ const StoreTemplate1 = () => {
                       />
                       <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors" />
                     </div>
-                    <div className="flex flex-col items-center gap-1">
-                      <category.icon className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                      <span className="text-xs md:text-sm font-medium text-gray-700 group-hover:text-primary transition-colors">
+                    <div className="flex flex-col items-center">
+                      <span className="text-sm md:text-base font-medium text-gray-700 group-hover:text-primary transition-colors">
                         {t[category.name]}
                       </span>
                     </div>
