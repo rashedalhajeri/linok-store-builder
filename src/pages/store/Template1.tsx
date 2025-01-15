@@ -233,13 +233,23 @@ const StoreTemplate1 = () => {
                     @yourstorehandle
                   </p>
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="rounded-full hover:bg-gray-50"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                </Button>
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="rounded-full hover:bg-gray-50"
+                    onClick={handleSearchClick}
+                  >
+                    <Search className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="rounded-full hover:bg-gray-50"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                  </Button>
+                </div>
               </div>
 
               <p className="text-sm md:text-base text-gray-700 mt-4 leading-relaxed">
