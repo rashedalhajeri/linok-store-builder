@@ -129,9 +129,9 @@ const ProductTemplate1 = () => {
             </motion.div>
             
             <div className="space-y-8 bg-[#F1F0FB] p-6 rounded-2xl">
-              <div className="grid grid-cols-2 gap-6">
+              <div className="flex flex-col md:grid md:grid-cols-2 gap-6">
                 {/* Sizes */}
-                <div className="space-y-2">
+                <div className="space-y-2 w-full">
                   <Label className="text-sm font-medium text-[#1A1F2C]">المقاس</Label>
                   <div className="grid grid-cols-5 gap-1.5">
                     {product.sizes.map((size) => (
@@ -152,26 +152,25 @@ const ProductTemplate1 = () => {
                 </div>
 
                 {/* Colors */}
-                <div className="space-y-2">
+                <div className="space-y-2 w-full">
                   <Label className="text-sm font-medium text-[#1A1F2C]">اللون</Label>
-                  <div className="grid grid-cols-5 gap-1.5">
+                  <div className="flex flex-wrap gap-2">
                     {product.colors.map((color) => (
                       <Button
                         key={color.id}
-                        variant={selectedColor === color.id ? "default" : "outline"}
-                        className={`h-8 px-2 text-sm relative ${
+                        variant="outline"
+                        className={`w-8 h-8 p-0 rounded-full transition-all duration-200 ${
                           selectedColor === color.id
-                            ? "ring-2 ring-[#9b87f5]"
-                            : "hover:ring-2 hover:ring-[#9b87f5]/50"
+                            ? "ring-2 ring-[#9b87f5] scale-110"
+                            : "hover:ring-2 hover:ring-[#9b87f5]/50 hover:scale-105"
                         }`}
-                        onClick={() => setSelectedColor(color.id)}
                         style={{
                           backgroundColor: color.value,
-                          color: color.value === '#FFFFFF' ? '#000000' : '#FFFFFF'
+                          border: color.value === '#FFFFFF' ? '1px solid #E5E7EB' : 'none'
                         }}
-                      >
-                        {color.label}
-                      </Button>
+                        onClick={() => setSelectedColor(color.id)}
+                        title={color.label}
+                      />
                     ))}
                   </div>
                 </div>
