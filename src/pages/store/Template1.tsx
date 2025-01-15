@@ -339,7 +339,7 @@ const StoreTemplate1 = () => {
         {showSearch && (
           <div 
             ref={searchRef}
-            className="bg-white rounded-2xl shadow-sm p-4 mb-6 animate-fade-in border border-[#33C3F0] border-[0.5px]"
+            className="bg-white rounded-2xl shadow-sm p-4 mb-6 animate-fade-in"
           >
             <Input
               placeholder="ابحث عن المنتجات..."
