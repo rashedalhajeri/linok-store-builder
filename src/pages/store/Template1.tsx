@@ -5,12 +5,12 @@ import {
   MapPin, 
   ExternalLink, 
   Globe,
-  Star,
   ShoppingBag,
   Sparkles,
   Glasses,
   FlaskConical,
-  Search
+  Search,
+  CircleCheck
 } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
@@ -223,6 +223,7 @@ const StoreTemplate1 = () => {
                 <div>
                   <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 flex items-center gap-2">
                     {t.storeName}
+                    <CircleCheck className="w-5 h-5 text-[#1DA1F2] inline-block" />
                   </h1>
                   <p className="text-sm md:text-base text-gray-500 font-medium">
                     @yourstorehandle
