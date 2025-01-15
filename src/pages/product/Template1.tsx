@@ -6,6 +6,7 @@ import { useState } from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import { Upload } from "lucide-react";
 
 const ProductTemplate1 = () => {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ const ProductTemplate1 = () => {
   const [selectedColor, setSelectedColor] = useState("");
   const [customerName, setCustomerName] = useState("");
   const [uploadedImage, setUploadedImage] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   
   const product = {
     name: "اسم المنتج",
@@ -39,7 +41,10 @@ const ProductTemplate1 = () => {
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setUploadedImage(e.target.files[0]);
+      const file = e.target.files[0];
+      setUploadedImage(file);
+      const fileUrl = URL.createObjectURL(file);
+      setPreviewUrl(fileUrl);
     }
   };
 
@@ -88,16 +93,16 @@ const ProductTemplate1 = () => {
           </div>
 
           {/* Product Details */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="space-y-4"
             >
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-gray-900">
                 {product.name}
               </h1>
-              <p className="text-2xl md:text-3xl font-bold text-primary">
+              <p className="text-2xl font-bold text-primary">
                 {calculatePrice()} د.ك
               </p>
               <p className="text-gray-600 leading-relaxed">
@@ -105,22 +110,23 @@ const ProductTemplate1 = () => {
               </p>
             </motion.div>
             
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* Sizes */}
-              <div className="space-y-4">
-                <Label className="text-lg font-semibold text-gray-900">
+              <div className="space-y-2">
+                <Label className="text-sm font-medium text-gray-700">
                   المقاس
                 </Label>
                 <RadioGroup
                   value={selectedSize}
                   onValueChange={setSelectedSize}
-                  className="grid grid-cols-3 gap-3"
+                  className="flex gap-2"
                 >
                   {product.sizes.map((size) => (
                     <motion.div
                       key={size.id}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
+                      className="flex-1"
                     >
                       <RadioGroupItem
                         value={size.id}
@@ -129,11 +135,11 @@ const ProductTemplate1 = () => {
                       />
                       <Label
                         htmlFor={size.id}
-                        className="flex items-center justify-center px-4 py-3 rounded-xl border-2 cursor-pointer
+                        className="flex h-9 items-center justify-center rounded-lg border-2 cursor-pointer
                           transition-all duration-300 peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary/5
-                          hover:border-primary/50 hover:bg-gray-50"
+                          hover:border-primary/50 hover:bg-gray-50 text-sm"
                       >
-                        <span className="text-lg font-medium">{size.label}</span>
+                        {size.label}
                       </Label>
                     </motion.div>
                   ))}
@@ -141,20 +147,21 @@ const ProductTemplate1 = () => {
               </div>
 
               {/* Colors */}
-              <div className="space-y-4">
-                <Label className="text-lg font-semibold text-gray-900">
+              <div className="space-y-2">
+                <Label className="text-sm font-medium text-gray-700">
                   اللون
                 </Label>
                 <RadioGroup
                   value={selectedColor}
                   onValueChange={setSelectedColor}
-                  className="grid grid-cols-3 gap-3"
+                  className="flex gap-2"
                 >
                   {product.colors.map((color) => (
                     <motion.div
                       key={color.id}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
+                      className="flex-1"
                     >
                       <RadioGroupItem
                         value={color.id}
@@ -163,12 +170,12 @@ const ProductTemplate1 = () => {
                       />
                       <Label
                         htmlFor={color.id}
-                        className="flex flex-col items-center justify-center p-4 rounded-xl border-2 cursor-pointer
-                          transition-all duration-300 peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary/5
-                          hover:border-primary/50 hover:bg-gray-50"
+                        className="flex h-9 items-center justify-center rounded-lg border-2 cursor-pointer
+                          transition-all duration-300 peer-data-[state=checked]:border-primary peer-data-[state=checked]:ring-2
+                          peer-data-[state=checked]:ring-primary/20 hover:border-primary/50"
                       >
                         <span 
-                          className="w-8 h-8 rounded-full border shadow-sm"
+                          className="w-6 h-6 rounded-full border shadow-sm"
                           style={{ backgroundColor: color.value }}
                         />
                       </Label>
@@ -178,8 +185,8 @@ const ProductTemplate1 = () => {
               </div>
 
               {/* Customer Name */}
-              <div className="space-y-4">
-                <Label className="text-lg font-semibold text-gray-900" htmlFor="customerName">
+              <div className="space-y-2">
+                <Label className="text-sm font-medium text-gray-700" htmlFor="customerName">
                   اسمك
                 </Label>
                 <Input
@@ -187,30 +194,51 @@ const ProductTemplate1 = () => {
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
                   placeholder="الرجاء إدخال اسمك"
-                  className="rounded-xl border-gray-200 focus:border-primary/50"
+                  className="h-9 rounded-lg border-gray-200 focus:border-primary/50"
                 />
               </div>
 
               {/* Image Upload */}
-              <div className="space-y-4">
-                <Label className="text-lg font-semibold text-gray-900" htmlFor="customerImage">
+              <div className="space-y-2">
+                <Label className="text-sm font-medium text-gray-700">
                   إرفاق صورة
                 </Label>
-                <Input
-                  id="customerImage"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  className="rounded-xl border-gray-200 focus:border-primary/50"
-                />
+                <div className="relative">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                    id="imageUpload"
+                  />
+                  <Label
+                    htmlFor="imageUpload"
+                    className="flex flex-col items-center justify-center w-full h-32 rounded-lg border-2 border-dashed
+                      border-gray-300 hover:border-primary/50 cursor-pointer transition-colors bg-gray-50/50
+                      hover:bg-gray-50"
+                  >
+                    {previewUrl ? (
+                      <img
+                        src={previewUrl}
+                        alt="Preview"
+                        className="h-full w-full object-contain rounded-lg"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center space-y-2">
+                        <Upload className="h-8 w-8 text-gray-400" />
+                        <span className="text-sm text-gray-500">اضغط هنا لرفع صورة</span>
+                      </div>
+                    )}
+                  </Label>
+                </div>
               </div>
             </div>
 
             {/* Actions */}
-            <div className="flex gap-4 pt-6">
+            <div className="flex gap-3 pt-4">
               <Button 
                 size="lg"
-                className="flex-1 rounded-xl bg-primary hover:bg-primary/90 transition-colors duration-300"
+                className="flex-1 rounded-lg bg-primary hover:bg-primary/90 transition-colors"
                 onClick={() => navigate("/cart")}
               >
                 إضافة للسلة
@@ -218,7 +246,7 @@ const ProductTemplate1 = () => {
               <Button 
                 size="lg"
                 variant="outline"
-                className="rounded-xl hover:bg-gray-50 border-2"
+                className="rounded-lg hover:bg-gray-50 border-2"
                 onClick={() => window.history.back()}
               >
                 رجوع
