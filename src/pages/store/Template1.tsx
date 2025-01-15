@@ -50,7 +50,7 @@ const products = [
 
 const categories = [
   { 
-    id: 0, // Making "All" the first category with id 0
+    id: 0,
     name: "allProducts", 
     image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
     showImage: true
@@ -135,7 +135,6 @@ const StoreTemplate1 = () => {
 
   return (
     <div className="min-h-screen bg-[#F7F9FA]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
-      {/* Header Section with Language Selector */}
       <div className="relative">
         <div className="absolute top-4 left-4 z-10">
           <Button
@@ -158,9 +157,7 @@ const StoreTemplate1 = () => {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="max-w-[90%] md:max-w-4xl mx-auto px-4 relative">
-        {/* Profile Section */}
         <div className="relative -mt-20 md:-mt-32 mb-6 md:mb-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -168,7 +165,6 @@ const StoreTemplate1 = () => {
             transition={{ duration: 0.5 }}
             className="flex flex-col gap-4 md:gap-6"
           >
-            {/* Avatar & Social Links */}
             <div className="flex justify-between items-end">
               <div className="relative group">
                 <Avatar className="w-28 h-28 md:w-40 md:h-40 border-4 border-white rounded-full shadow-xl bg-white">
@@ -267,7 +263,6 @@ const StoreTemplate1 = () => {
           </motion.div>
         </div>
 
-        {/* Categories Slider */}
         <div className="bg-white shadow-sm rounded-2xl mb-6 overflow-hidden">
           <Carousel
             opts={{
@@ -306,7 +301,6 @@ const StoreTemplate1 = () => {
           </Carousel>
         </div>
 
-        {/* Products Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 pb-8">
           {products.map((product, index) => (
             <motion.div
@@ -337,7 +331,6 @@ const StoreTemplate1 = () => {
         </div>
       </div>
 
-      {/* Platform Signature */}
       <div className="w-full py-6 bg-white border-t">
         <div className="max-w-[90%] md:max-w-4xl mx-auto text-center">
           <p className="text-sm text-gray-500">
