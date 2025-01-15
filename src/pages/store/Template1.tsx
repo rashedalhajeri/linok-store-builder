@@ -1,62 +1,67 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, MessageSquare, Star, Search, ShoppingBag, MapPin, ExternalLink } from "lucide-react";
+import { Phone, MessageSquare, Star, Search, ShoppingBag, MapPin, ExternalLink, Globe } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { translations } from "@/utils/translations";
 
 const products = [
   {
     id: 1,
-    name: "حقيبة يد فاخرة",
+    name: "luxuryBags",
     price: "125 د.ك",
     image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3"
   },
   {
     id: 2,
-    name: "ساعة كلاسيكية",
+    name: "classicWatch",
     price: "250 د.ك",
     image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314"
   },
   {
     id: 3,
-    name: "نظارة شمسية",
+    name: "sunglassesProduct",
     price: "75 د.ك",
     image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f"
   },
   {
     id: 4,
-    name: "عطر فاخر",
+    name: "luxuryPerfume",
     price: "95 د.ك",
     image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f"
   }
 ];
 
 const categories = [
-  { id: 1, name: "الأكثر مبيعاً", icon: Star },
-  { id: 2, name: "الحقائب", icon: ShoppingBag },
-  { id: 3, name: "الساعات", icon: Star },
-  { id: 4, name: "النظارات", icon: Star },
-  { id: 5, name: "العطور", icon: Star },
+  { id: 1, name: "bestSellers", icon: Star },
+  { id: 2, name: "bags", icon: ShoppingBag },
+  { id: 3, name: "watches", icon: Star },
+  { id: 4, name: "sunglasses", icon: Star },
+  { id: 5, name: "perfumes", icon: Star },
 ];
 
 const StoreTemplate1 = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
   const [isExpanded, setIsExpanded] = useState(false);
+  const [language, setLanguage] = useState<'en' | 'ar'>('en');
   
-  const description = "متجر متخصص في المنتجات الفاخرة والإكسسوارات العصرية، نقدم لكم أفضل الماركات العالمية بأسعار منافسة وجودة عالية";
-  const MAX_LENGTH = 75;
+  const t = translations[language];
   
   const socialLinks = [
-    { id: 1, icon: Phone, label: "اتصل بنا", href: "tel:+966500000000" },
-    { id: 2, icon: MessageSquare, label: "واتساب", href: "https://wa.me/966500000000" },
+    { id: 1, icon: Phone, label: t.contactUs, href: "tel:+966500000000" },
+    { id: 2, icon: MessageSquare, label: t.whatsapp, href: "https://wa.me/966500000000" },
   ];
 
+  const toggleLanguage = () => {
+    setLanguage(prev => prev === 'en' ? 'ar' : 'en');
+  };
+
   return (
-    <div className="min-h-screen bg-[#F7F9FA]">
+    <div className="min-h-screen bg-[#F7F9FA]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       {/* Header Section */}
       <div className="relative h-[200px] md:h-[300px] bg-gradient-to-b from-gray-900/70 to-gray-900/50">
         <img 
@@ -88,6 +93,15 @@ const StoreTemplate1 = () => {
               </Avatar>
               
               <div className="flex gap-2 md:gap-3 mt-4">
+                <Button
+                  variant="outline"
+                  size={isMobile ? "sm" : "lg"}
+                  className="rounded-full border-2 bg-white/95 hover:bg-white text-gray-900 font-medium shadow-sm"
+                  onClick={toggleLanguage}
+                >
+                  <Globe className="h-4 w-4 md:h-5 md:w-5 ml-1 md:ml-2" />
+                  {!isMobile && (language === 'en' ? 'العربية' : 'English')}
+                </Button>
                 {socialLinks.map((link) => (
                   <Button
                     key={link.id}
@@ -108,14 +122,13 @@ const StoreTemplate1 = () => {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h1 className="text-xl md:text-2xl font-bold text-gray-900 flex items-center gap-2">
-                    Luxury Store
+                    {language === 'ar' ? 'متجر_لاكشري@' : '@luxury_store'}
                     <span className="inline-block">
                       <svg className="w-5 h-5 md:w-6 md:h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
                       </svg>
                     </span>
                   </h1>
-                  <p className="text-sm text-gray-500 mt-1">@luxurystore</p>
                 </div>
                 <Button
                   variant="outline"
@@ -127,13 +140,13 @@ const StoreTemplate1 = () => {
               </div>
               
               <p className="text-sm md:text-base text-gray-700 mt-4 leading-relaxed">
-                {isExpanded ? description : description.slice(0, MAX_LENGTH)}
-                {description.length > MAX_LENGTH && (
+                {isExpanded ? t.storeDescription : t.storeDescription.slice(0, 75)}
+                {t.storeDescription.length > 75 && (
                   <button
                     onClick={() => setIsExpanded(!isExpanded)}
                     className="mr-1 text-primary hover:underline focus:outline-none"
                   >
-                    {isExpanded ? "عرض أقل" : "المزيد"}
+                    {isExpanded ? t.showLess : t.showMore}
                   </button>
                 )}
               </p>
@@ -141,11 +154,10 @@ const StoreTemplate1 = () => {
               <div className="flex flex-wrap items-center gap-4 md:gap-6 text-gray-500 text-xs md:text-sm mt-4 md:mt-6">
                 <span className="flex items-center gap-1.5">
                   <MapPin className="w-4 h-4" />
-                  العاصمة، الكويت
+                  {t.location}
                 </span>
               </div>
             </div>
-
           </motion.div>
         </div>
 
@@ -158,7 +170,7 @@ const StoreTemplate1 = () => {
                 className="flex-1 min-w-[100px] md:min-w-[120px] text-gray-600 hover:text-gray-900 hover:bg-gray-50/80 py-3 md:py-4 px-4 md:px-6 font-medium text-xs md:text-sm transition-colors relative group"
               >
                 <category.icon className="h-4 w-4 md:h-5 md:w-5 mx-auto mb-1 md:mb-1.5" />
-                <span className="block text-center">{category.name}</span>
+                <span className="block text-center">{t[category.name]}</span>
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform" />
               </button>
             ))}
@@ -182,12 +194,12 @@ const StoreTemplate1 = () => {
                 <div className="relative aspect-square">
                   <img 
                     src={product.image} 
-                    alt={product.name} 
+                    alt={t[product.name]} 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-3 md:p-4">
-                  <h3 className="font-medium text-sm md:text-base text-gray-900">{product.name}</h3>
+                  <h3 className="font-medium text-sm md:text-base text-gray-900">{t[product.name]}</h3>
                   <p className="text-primary mt-1 font-bold text-sm md:text-base">{product.price}</p>
                 </div>
               </Card>
