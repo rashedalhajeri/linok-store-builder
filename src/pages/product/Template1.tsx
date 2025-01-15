@@ -6,7 +6,6 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { Upload } from "lucide-react";
-import { Slider } from "@/components/ui/slider";
 
 const ProductTemplate1 = () => {
   const navigate = useNavigate();
@@ -16,8 +15,6 @@ const ProductTemplate1 = () => {
   const [uploadedImage, setUploadedImage] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [showFullDescription, setShowFullDescription] = useState(false);
-  const [currentSizeIndex, setCurrentSizeIndex] = useState(0);
-  const [currentColorIndex, setCurrentColorIndex] = useState(0);
   
   const product = {
     name: "اسم المنتج",
@@ -65,16 +62,6 @@ const ProductTemplate1 = () => {
   const words = product.description.split(' ');
   const truncatedDescription = words.slice(0, 10).join(' ');
   const hasMoreDescription = words.length > 10;
-
-  const handleSizeSliderChange = (value: number[]) => {
-    setCurrentSizeIndex(value[0]);
-    setSelectedSize(product.sizes[value[0]].id);
-  };
-
-  const handleColorSliderChange = (value: number[]) => {
-    setCurrentColorIndex(value[0]);
-    setSelectedColor(product.colors[value[0]].id);
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#F2FCE2] to-[#E5DEFF] py-12">
@@ -142,33 +129,51 @@ const ProductTemplate1 = () => {
             </motion.div>
             
             <div className="space-y-8 bg-[#F1F0FB] p-6 rounded-2xl">
-              <div className="flex gap-8">
+              <div className="grid grid-cols-2 gap-8">
                 {/* Sizes */}
-                <div className="flex-1 space-y-3">
-                  <Label className="text-sm font-medium text-[#1A1F2C]">
-                    المقاس: {product.sizes[currentSizeIndex].label}
-                  </Label>
-                  <Slider
-                    value={[currentSizeIndex]}
-                    max={product.sizes.length - 1}
-                    step={1}
-                    onValueChange={handleSizeSliderChange}
-                    className="w-full"
-                  />
+                <div className="space-y-3">
+                  <Label className="text-sm font-medium text-[#1A1F2C]">المقاس</Label>
+                  <div className="grid grid-cols-5 gap-2">
+                    {product.sizes.map((size) => (
+                      <Button
+                        key={size.id}
+                        variant={selectedSize === size.id ? "default" : "outline"}
+                        className={`h-10 ${
+                          selectedSize === size.id
+                            ? "bg-[#9b87f5] hover:bg-[#7E69AB]"
+                            : "hover:bg-[#F1F0FB] border-2 border-[#D6BCFA]"
+                        }`}
+                        onClick={() => setSelectedSize(size.id)}
+                      >
+                        {size.label}
+                      </Button>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Colors */}
-                <div className="flex-1 space-y-3">
-                  <Label className="text-sm font-medium text-[#1A1F2C]">
-                    اللون: {product.colors[currentColorIndex].label}
-                  </Label>
-                  <Slider
-                    value={[currentColorIndex]}
-                    max={product.colors.length - 1}
-                    step={1}
-                    onValueChange={handleColorSliderChange}
-                    className="w-full"
-                  />
+                <div className="space-y-3">
+                  <Label className="text-sm font-medium text-[#1A1F2C]">اللون</Label>
+                  <div className="grid grid-cols-5 gap-2">
+                    {product.colors.map((color) => (
+                      <Button
+                        key={color.id}
+                        variant={selectedColor === color.id ? "default" : "outline"}
+                        className={`h-10 relative ${
+                          selectedColor === color.id
+                            ? "ring-2 ring-[#9b87f5]"
+                            : "hover:ring-2 hover:ring-[#9b87f5]/50"
+                        }`}
+                        onClick={() => setSelectedColor(color.id)}
+                        style={{
+                          backgroundColor: color.value,
+                          color: color.value === '#FFFFFF' ? '#000000' : '#FFFFFF'
+                        }}
+                      >
+                        {color.label}
+                      </Button>
+                    ))}
+                  </div>
                 </div>
               </div>
 
