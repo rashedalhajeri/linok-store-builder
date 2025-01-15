@@ -52,49 +52,42 @@ const categories = [
   { 
     id: 0, // Making "All" the first category with id 0
     name: "allProducts", 
-    icon: Sparkles,
     image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
     showImage: true
   },
   { 
     id: 1, 
     name: "bestSellers", 
-    icon: Sparkles,
     image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3",
     showImage: true
   },
   { 
     id: 2, 
     name: "bags", 
-    icon: ShoppingBag,
     image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314",
     showImage: true
   },
   { 
     id: 3, 
     name: "watches", 
-    icon: Star,
     image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
     showImage: true
   },
   { 
     id: 4, 
     name: "sunglasses", 
-    icon: Glasses,
     image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f",
     showImage: true
   },
   { 
     id: 5, 
     name: "perfumes", 
-    icon: FlaskConical,
     image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
     showImage: true
   },
   { 
     id: 6, 
     name: "accessories", 
-    icon: Star,
     image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314",
     showImage: true
   }
@@ -288,22 +281,21 @@ const StoreTemplate1 = () => {
               {categories.map((category) => (
                 <CarouselItem 
                   key={category.id} 
-                  className={`pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5 ${category.id === 0 ? 'order-first' : ''}`}
+                  className={`pl-2 md:pl-4 basis-1/4 md:basis-1/5 lg:basis-1/6 ${category.id === 0 ? 'order-first' : ''}`}
                 >
                   <button
                     className="w-full group focus:outline-none"
                   >
-                    <div className="relative aspect-square rounded-xl overflow-hidden mb-2 bg-gray-50">
+                    <div className="relative aspect-square rounded-lg overflow-hidden mb-2 bg-gray-50">
                       <img 
                         src={category.image} 
                         alt={t[category.name]}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent group-hover:from-black/40 transition-colors" />
-                      <category.icon className="absolute bottom-2 right-2 h-5 w-5 text-white" />
                     </div>
                     <div className="flex flex-col items-center">
-                      <span className={`text-sm md:text-base font-medium ${category.id === 0 ? 'text-primary' : 'text-gray-700'} group-hover:text-primary transition-colors`}>
+                      <span className={`text-xs md:text-sm font-medium ${category.id === 0 ? 'text-primary' : 'text-gray-700'} group-hover:text-primary transition-colors`}>
                         {t[category.name]}
                       </span>
                     </div>
@@ -349,3 +341,4 @@ const StoreTemplate1 = () => {
 };
 
 export default StoreTemplate1;
+
