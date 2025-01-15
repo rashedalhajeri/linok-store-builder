@@ -4,8 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 
 const ProductTemplate1 = () => {
   const navigate = useNavigate();
@@ -16,7 +15,7 @@ const ProductTemplate1 = () => {
   
   const product = {
     name: "اسم المنتج",
-    price: "25.000 د.ك",
+    basePrice: 25.000,
     description: "وصف تفصيلي للمنتج يوضح مميزاته وخصائصه",
     images: [
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
@@ -24,14 +23,14 @@ const ProductTemplate1 = () => {
       "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
     ],
     sizes: [
-      { id: 'small', label: 'S', price: '25.000 د.ك' },
-      { id: 'medium', label: 'M', price: '27.000 د.ك' },
-      { id: 'large', label: 'L', price: '29.000 د.ك' }
+      { id: 'small', label: 'S', priceAdjustment: 0 },
+      { id: 'medium', label: 'M', priceAdjustment: 2 },
+      { id: 'large', label: 'L', priceAdjustment: 4 }
     ],
     colors: [
-      { id: 'white', label: 'أبيض', value: '#FFFFFF' },
-      { id: 'black', label: 'أسود', value: '#000000' },
-      { id: 'blue', label: 'أزرق', value: '#2563EB' }
+      { id: 'white', value: '#FFFFFF' },
+      { id: 'black', value: '#000000' },
+      { id: 'blue', value: '#2563EB' }
     ]
   };
 
@@ -41,6 +40,13 @@ const ProductTemplate1 = () => {
     if (e.target.files && e.target.files[0]) {
       setUploadedImage(e.target.files[0]);
     }
+  };
+
+  // حساب السعر النهائي بناءً على المقاس المختار
+  const calculatePrice = () => {
+    const selectedSizeData = product.sizes.find(size => size.id === selectedSize);
+    const priceAdjustment = selectedSizeData ? selectedSizeData.priceAdjustment : 0;
+    return (product.basePrice + priceAdjustment).toFixed(3);
   };
 
   return (
@@ -79,7 +85,7 @@ const ProductTemplate1 = () => {
           <div className="space-y-8">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold text-foreground">{product.name}</h1>
-              <p className="text-2xl font-semibold text-primary">{product.price}</p>
+              <p className="text-2xl font-semibold text-primary">{calculatePrice()} د.ك</p>
               <p className="text-muted-foreground leading-relaxed">{product.description}</p>
             </div>
             
@@ -100,7 +106,6 @@ const ProductTemplate1 = () => {
                       <RadioGroupItem value={size.id} id={`size-${size.id}`} className="absolute inset-0 opacity-0" />
                       <Label htmlFor={`size-${size.id}`} className="cursor-pointer text-center">
                         <div className="font-medium">{size.label}</div>
-                        <div className="text-sm text-muted-foreground">{size.price}</div>
                       </Label>
                     </div>
                   ))}
@@ -117,17 +122,14 @@ const ProductTemplate1 = () => {
                   {product.colors.map((color) => (
                     <div
                       key={color.id}
-                      className={`relative flex items-center space-x-3 space-x-reverse p-4 rounded-lg border-2 cursor-pointer transition-all duration-200
-                        ${selectedColor === color.id ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'}`}
+                      className={`relative flex items-center justify-center p-4 rounded-lg border-2 cursor-pointer transition-all duration-200
+                        ${selectedColor === color.id ? 'border-primary' : 'border-border hover:border-primary/50'}`}
                     >
                       <RadioGroupItem value={color.id} id={`color-${color.id}`} className="absolute inset-0 opacity-0" />
                       <div 
-                        className="w-6 h-6 rounded-full border shadow-sm"
+                        className="w-8 h-8 rounded-full border shadow-sm"
                         style={{ backgroundColor: color.value }}
                       />
-                      <Label htmlFor={`color-${color.id}`} className="cursor-pointer">
-                        {color.label}
-                      </Label>
                     </div>
                   ))}
                 </RadioGroup>
