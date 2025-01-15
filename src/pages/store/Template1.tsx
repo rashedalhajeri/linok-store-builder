@@ -18,6 +18,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { translations } from "@/utils/translations";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 const products = [
   {
