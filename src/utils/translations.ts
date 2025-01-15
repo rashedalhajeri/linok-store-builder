@@ -1,6 +1,6 @@
 export const translations = {
   en: {
-    storeName: "Store Name (توثيق)",
+    storeName: "Store Name (Verified)",
     storeHandle: "@yourstorehandle",
     storeDescription: "This is a description of your store.",
     showMore: "Show more",
