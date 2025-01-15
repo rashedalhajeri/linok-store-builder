@@ -15,25 +15,30 @@ const ProductTemplate1 = () => {
   const [customerName, setCustomerName] = useState("");
   const [uploadedImage, setUploadedImage] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [showFullDescription, setShowFullDescription] = useState(false);
   
   const product = {
     name: "اسم المنتج",
     basePrice: 25.000,
-    description: "وصف تفصيلي للمنتج يوضح مميزاته وخصائصه",
+    description: "وصف تفصيلي للمنتج يوضح مميزاته وخصائصه بشكل مفصل ودقيق مع ذكر جميع المواصفات المهمة التي يحتاج العميل معرفتها",
     images: [
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
       "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
       "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
     ],
     sizes: [
+      { id: 'xs', label: 'XS' },
       { id: 'small', label: 'S' },
       { id: 'medium', label: 'M' },
-      { id: 'large', label: 'L' }
+      { id: 'large', label: 'L' },
+      { id: 'xl', label: 'XL' }
     ],
     colors: [
       { id: 'white', value: '#FFFFFF', label: 'أبيض' },
       { id: 'black', value: '#000000', label: 'أسود' },
-      { id: 'blue', value: '#2563EB', label: 'أزرق' }
+      { id: 'blue', value: '#2563EB', label: 'أزرق' },
+      { id: 'red', value: '#DC2626', label: 'أحمر' },
+      { id: 'green', value: '#059669', label: 'أخضر' }
     ]
   };
 
@@ -54,6 +59,9 @@ const ProductTemplate1 = () => {
     if (selectedSize === 'large') finalPrice += 4;
     return finalPrice.toFixed(3);
   };
+
+  const truncatedDescription = product.description.slice(0, 40);
+  const hasMoreDescription = product.description.length > 40;
 
   return (
     <div className="container mx-auto px-4 py-8 min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -105,9 +113,17 @@ const ProductTemplate1 = () => {
               <p className="text-2xl font-bold text-primary">
                 {calculatePrice()} د.ك
               </p>
-              <p className="text-gray-600 leading-relaxed">
-                {product.description}
-              </p>
+              <div className="text-gray-600 leading-relaxed">
+                {showFullDescription ? product.description : truncatedDescription}
+                {hasMoreDescription && !showFullDescription && (
+                  <button
+                    onClick={() => setShowFullDescription(true)}
+                    className="text-primary hover:text-primary/80 mr-1 text-sm font-medium"
+                  >
+                    المزيد
+                  </button>
+                )}
+              </div>
             </motion.div>
             
             <div className="space-y-4">
@@ -119,14 +135,14 @@ const ProductTemplate1 = () => {
                 <RadioGroup
                   value={selectedSize}
                   onValueChange={setSelectedSize}
-                  className="flex gap-2"
+                  className="flex flex-wrap gap-2"
                 >
                   {product.sizes.map((size) => (
                     <motion.div
                       key={size.id}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="flex-1"
+                      className="flex-1 min-w-[60px] max-w-[80px]"
                     >
                       <RadioGroupItem
                         value={size.id}
@@ -154,14 +170,14 @@ const ProductTemplate1 = () => {
                 <RadioGroup
                   value={selectedColor}
                   onValueChange={setSelectedColor}
-                  className="flex gap-2"
+                  className="flex flex-wrap gap-2"
                 >
                   {product.colors.map((color) => (
                     <motion.div
                       key={color.id}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="flex-1"
+                      className="flex-1 min-w-[60px] max-w-[80px]"
                     >
                       <RadioGroupItem
                         value={color.id}
