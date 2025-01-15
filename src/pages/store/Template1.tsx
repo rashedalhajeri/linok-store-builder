@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 import { translations } from "@/utils/translations";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 const products = [
   {
@@ -302,25 +302,8 @@ const StoreTemplate1 = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="-left-2 md:-left-3 bg-white/90 backdrop-blur-sm" />
-            <CarouselNext className="-right-2 md:-right-3 bg-white/90 backdrop-blur-sm" />
           </Carousel>
         </div>
-
-        <nav className="bg-white shadow-sm rounded-2xl mb-6 overflow-hidden">
-          <div className="flex overflow-x-auto scrollbar-hide">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                className="flex-1 min-w-[100px] md:min-w-[120px] text-gray-600 hover:text-gray-900 hover:bg-gray-50/80 py-3 md:py-4 px-4 md:px-6 font-medium text-xs md:text-sm transition-colors relative group"
-              >
-                <category.icon className="h-4 w-4 md:h-5 md:w-5 mx-auto mb-1 md:mb-1.5" />
-                <span className="block text-center">{t[category.name]}</span>
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform" />
-              </button>
-            ))}
-          </div>
-        </nav>
 
         {/* Products Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 pb-8">
