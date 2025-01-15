@@ -10,7 +10,6 @@ import {
   Sparkles,
   Glasses,
   FlaskConical,
-  BadgeCheck,
   Search
 } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -226,7 +225,7 @@ const StoreTemplate1 = () => {
                     {t.storeName}
                     <div className="relative">
                       <div className="absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full blur-sm opacity-30 animate-pulse" />
-                      <BadgeCheck className="w-6 h-6 text-primary relative z-10" />
+                      <Star className="w-6 h-6 text-primary relative z-10" />
                     </div>
                   </h1>
                   <p className="text-sm md:text-base text-gray-500 font-medium">
