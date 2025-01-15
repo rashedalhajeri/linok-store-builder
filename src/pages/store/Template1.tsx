@@ -1,11 +1,11 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 import { Phone, MessageSquare, Star, Search, ShoppingBag, MapPin, ExternalLink } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const products = [
   {
@@ -48,7 +48,7 @@ const StoreTemplate1 = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   
   const description = "متجر متخصص في المنتجات الفاخرة والإكسسوارات العصرية، نقدم لكم أفضل الماركات العالمية بأسعار منافسة وجودة عالية";
-  const MAX_LENGTH = 20;
+  const MAX_LENGTH = 75;
   
   const socialLinks = [
     { id: 1, icon: Phone, label: "اتصل بنا", href: "tel:+966500000000" },
