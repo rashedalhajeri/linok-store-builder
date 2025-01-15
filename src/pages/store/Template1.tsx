@@ -1,5 +1,3 @@
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { 
   Phone, 
   MessageSquare, 
@@ -19,6 +17,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { translations } from "@/utils/translations";
+import { Button } from "@/components/ui/button";
 
 const products = [
   {
@@ -59,14 +58,46 @@ const StoreTemplate1 = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
   const [isExpanded, setIsExpanded] = useState(false);
-  const [language, setLanguage] = useState<'en' | 'ar'>('en');
+  const [language, setLanguage] = useState<'en' | 'ar'>('ar');
   
   const t = translations[language];
   
   const socialLinks = [
-    { id: 1, icon: Phone, label: t.contactUs, href: "tel:+96500000000" },
-    { id: 2, icon: MessageSquare, label: t.whatsapp, href: "https://wa.me/96500000000" },
-    { id: 3, icon: Instagram, label: t.instagram, href: "https://instagram.com/luxury_store" },
+    { 
+      id: 1, 
+      icon: "/lovable-uploads/a6db0202-5d25-41a7-9704-99d6448198f8.png", 
+      label: "Snapchat", 
+      href: "https://snapchat.com/add/yourusername",
+      bgColor: "bg-yellow-400"
+    },
+    { 
+      id: 2, 
+      icon: "/lovable-uploads/5d02b4d3-9041-47ca-8ac3-08cf337c2be1.png", 
+      label: "Instagram", 
+      href: "https://instagram.com/yourusername",
+      bgColor: "bg-gradient-to-r from-pink-500 via-red-500 to-purple-500"
+    },
+    { 
+      id: 3, 
+      icon: "/lovable-uploads/f4e6c555-66b3-45c1-a211-25bca9083a81.png", 
+      label: "Phone", 
+      href: "tel:+96500000000",
+      bgColor: "bg-green-500"
+    },
+    { 
+      id: 4, 
+      icon: "/lovable-uploads/17454f1f-bb90-4fcd-91fc-664c8942f958.png", 
+      label: "WhatsApp", 
+      href: "https://wa.me/96500000000",
+      bgColor: "bg-green-500"
+    },
+    { 
+      id: 5, 
+      icon: "/lovable-uploads/b7fc8d57-a3ea-476d-a1c2-c5f272c432e9.png", 
+      label: "TikTok", 
+      href: "https://tiktok.com/@yourusername",
+      bgColor: "bg-black"
+    }
   ];
 
   const toggleLanguage = () => {
@@ -120,16 +151,19 @@ const StoreTemplate1 = () => {
                   {!isMobile && (language === 'en' ? 'العربية' : 'English')}
                 </Button>
                 {socialLinks.map((link) => (
-                  <Button
+                  <motion.button
                     key={link.id}
-                    variant="outline"
-                    size={isMobile ? "sm" : "lg"}
-                    className="rounded-full border-2 bg-white/95 hover:bg-white text-gray-900 font-medium shadow-sm"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`p-2 rounded-full shadow-lg transition-all duration-300 ${link.bgColor}`}
                     onClick={() => window.open(link.href, '_blank')}
                   >
-                    <link.icon className="h-4 w-4 md:h-5 md:w-5 ml-1 md:ml-2" />
-                    {!isMobile && link.label}
-                  </Button>
+                    <img 
+                      src={link.icon} 
+                      alt={link.label}
+                      className="w-6 h-6 md:w-7 md:h-7 object-contain"
+                    />
+                  </motion.button>
                 ))}
               </div>
             </div>
