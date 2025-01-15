@@ -301,7 +301,7 @@ const StoreTemplate1 = () => {
           </Carousel>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 pb-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 pb-8">
           {products.map((product, index) => (
             <motion.div
               key={product.id}
@@ -311,7 +311,7 @@ const StoreTemplate1 = () => {
               whileHover={{ y: -4 }}
             >
               <Card 
-                className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer border-0 rounded-2xl bg-white"
+                className="overflow-hidden transition-all duration-300 cursor-pointer border-0 rounded-2xl bg-white hover:shadow-lg"
                 onClick={() => navigate(`/product/template1/${product.id}`)}
               >
                 <div className="relative aspect-square">
@@ -321,9 +321,13 @@ const StoreTemplate1 = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-3 md:p-4">
-                  <h3 className="font-medium text-sm md:text-base text-gray-900">{t[product.name]}</h3>
-                  <p className="text-primary mt-1 font-bold text-sm md:text-base">{product.price}</p>
+                <div className="p-4">
+                  <h3 className="font-medium text-sm md:text-base text-gray-900 mb-2">
+                    {t[product.name]}
+                  </h3>
+                  <p className="text-primary font-bold text-base md:text-lg">
+                    {product.price}
+                  </p>
                 </div>
               </Card>
             </motion.div>
@@ -383,4 +387,3 @@ const StoreTemplate1 = () => {
 };
 
 export default StoreTemplate1;
-
