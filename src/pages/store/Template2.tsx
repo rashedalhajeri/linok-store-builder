@@ -7,6 +7,41 @@ import { Input } from "@/components/ui/input";
 const StoreTemplate2 = () => {
   const navigate = useNavigate();
   
+  const categories = [
+    {
+      name: "تويوتا",
+      logo: "https://www.carlogos.org/car-logos/toyota-logo-2020-europe.png"
+    },
+    {
+      name: "لكزس",
+      logo: "https://www.carlogos.org/car-logos/lexus-logo-2013.png"
+    },
+    {
+      name: "نيسان",
+      logo: "https://www.carlogos.org/car-logos/nissan-logo-2020-black.png"
+    },
+    {
+      name: "هونداي",
+      logo: "https://www.carlogos.org/car-logos/hyundai-logo-2011.png"
+    },
+    {
+      name: "كيا",
+      logo: "https://www.carlogos.org/car-logos/kia-logo-2021.png"
+    },
+    {
+      name: "مرسيدس",
+      logo: "https://www.carlogos.org/car-logos/mercedes-benz-logo-2011.png"
+    },
+    {
+      name: "بي ام دبليو",
+      logo: "https://www.carlogos.org/car-logos/bmw-logo-2020.png"
+    },
+    {
+      name: "أودي",
+      logo: "https://www.carlogos.org/car-logos/audi-logo-2016.png"
+    },
+  ];
+
   const ads = [
     {
       id: 1,
@@ -58,14 +93,22 @@ const StoreTemplate2 = () => {
       {/* Categories */}
       <div className="container mx-auto px-4 py-8">
         <h2 className="text-xl font-semibold mb-4 text-gray-800">الفئات</h2>
-        <div className="grid grid-cols-4 md:grid-cols-8 gap-2">
-          {["إلكترونيات", "هواتف", "كمبيوترات", "اكسسوارات", "أجهزة", "كاميرات", "ساعات", "سماعات"].map((category) => (
-            <button
-              key={category}
-              className="px-3 py-2 text-sm bg-white hover:bg-gray-50 text-gray-700 rounded-lg border border-gray-200 transition-colors"
+        <div className="grid grid-cols-4 md:grid-cols-8 gap-4">
+          {categories.map((category) => (
+            <motion.button
+              key={category.name}
+              whileHover={{ scale: 1.05 }}
+              className="flex flex-col items-center p-2 bg-white rounded-xl shadow-sm hover:shadow-md transition-all"
             >
-              {category}
-            </button>
+              <div className="w-12 h-12 mb-2">
+                <img
+                  src={category.logo}
+                  alt={category.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <span className="text-xs text-gray-700">{category.name}</span>
+            </motion.button>
           ))}
         </div>
       </div>
