@@ -1,33 +1,45 @@
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Search, MapPin } from "lucide-react";
+import { Search, MapPin, Clock } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { LanguageToggle } from "@/components/store/LanguageToggle";
 import { useState } from "react";
-import { translations } from "@/utils/translations";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const StoreTemplate2 = () => {
   const navigate = useNavigate();
   const [language, setLanguage] = useState<'en' | 'ar'>('ar');
   
-  const categories = [
-    { name: "تويوتا لاند كروزر" },
-    { name: "لكزس الفطيم" },
-    { name: "نيسان العربية" },
-    { name: "هونداي الوكالة" },
-    { name: "كيا الجبر" },
-    { name: "مرسيدس الغانم" },
-    { name: "بي ام دبليو الناغي" },
-    { name: "أودي سماكو" },
+  const agencies = [
+    { 
+      name: "تويوتا الكويت",
+      nameEn: "Toyota Kuwait",
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+    },
+    { 
+      name: "لكزس الكويت",
+      nameEn: "Lexus Kuwait",
+      image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952"
+    },
+    { 
+      name: "نيسان الكويت",
+      nameEn: "Nissan Kuwait",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+    },
+    { 
+      name: "هونداي الكويت",
+      nameEn: "Hyundai Kuwait",
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e"
+    },
   ];
 
   const ads = [
     {
       id: 1,
       title: {
-        ar: "كاميرا كانون احترافية",
-        en: "Professional Canon Camera"
+        ar: "كاميرا كانون احترافية مع عدسة وملحقات",
+        en: "Professional Canon Camera with Lens and Accessories"
       },
       price: {
         ar: "450 د.ك",
@@ -41,6 +53,7 @@ const StoreTemplate2 = () => {
         ar: "منذ 3 أيام",
         en: "3 days ago"
       },
+      agency: agencies[0],
       description: {
         ar: "كاميرا احترافية بحالة ممتازة مع جميع الملحقات",
         en: "Professional camera in excellent condition with all accessories"
@@ -113,7 +126,7 @@ const StoreTemplate2 = () => {
           </div>
           <div className="max-w-xl mx-auto flex gap-2">
             <Input 
-              placeholder={language === 'ar' ? "ابحث عن سيارة..." : "Search for a car..."}
+              placeholder={language === 'ar' ? "ابحث عن منتج..." : "Search for a product..."}
               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
             />
             <button className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition-colors">
@@ -127,14 +140,20 @@ const StoreTemplate2 = () => {
         <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
           {language === 'ar' ? 'الوكلاء المعتمدون' : 'Authorized Dealers'}
         </h2>
-        <div className="grid grid-cols-4 md:grid-cols-8 gap-2">
-          {categories.map((category) => (
+        <div className="grid grid-cols-4 md:grid-cols-8 gap-4">
+          {agencies.map((agency) => (
             <motion.div
-              key={category.name}
+              key={agency.name}
               whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center p-2 bg-white rounded-lg hover:shadow-sm transition-all border border-gray-100"
+              className="flex flex-col items-center gap-2"
             >
-              <span className="text-xs font-medium text-gray-800 text-center">{category.name}</span>
+              <Avatar className="w-12 h-12">
+                <AvatarImage src={agency.image} alt={agency.name} />
+                <AvatarFallback>{agency.name[0]}</AvatarFallback>
+              </Avatar>
+              <span className="text-xs font-medium text-gray-800 text-center">
+                {language === 'ar' ? agency.name : agency.nameEn}
+              </span>
             </motion.div>
           ))}
         </div>
@@ -165,15 +184,26 @@ const StoreTemplate2 = () => {
                   />
                 </div>
                 <div className="p-4 flex flex-col flex-grow">
-                  <h3 className="text-sm font-medium mb-2 text-gray-800 line-clamp-2">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Avatar className="w-6 h-6">
+                      <AvatarImage src={ad.agency.image} alt={ad.agency.name} />
+                      <AvatarFallback>{ad.agency.name[0]}</AvatarFallback>
+                    </Avatar>
+                    <span className="text-xs text-gray-600">
+                      {language === 'ar' ? ad.agency.name : ad.agency.nameEn}
+                    </span>
+                  </div>
+                  <h3 className="text-sm font-medium text-gray-800 line-clamp-2 mb-2 h-10">
                     {ad.title[language]}
                   </h3>
-                  <div className="flex items-center gap-2 text-gray-500 text-sm mb-2">
-                    <MapPin className="w-4 h-4" />
+                  <div className="flex items-center gap-2 text-gray-500 text-xs mb-2">
+                    <MapPin className="w-3 h-3" />
                     <span>{ad.location[language]}</span>
+                    <Clock className="w-3 h-3 ml-2" />
+                    <span>{ad.date[language]}</span>
                   </div>
                   <div className="mt-auto text-left">
-                    <span className="text-green-500 font-bold text-base">
+                    <span className="text-green-500 font-bold text-sm">
                       {ad.price[language]}
                     </span>
                   </div>
