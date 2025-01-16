@@ -101,22 +101,22 @@ const StoreTemplate2 = () => {
       {/* Categories */}
       <div className="container mx-auto px-4 py-8">
         <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">الوكلاء المعتمدون</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+        <div className="grid grid-cols-4 md:grid-cols-8 gap-2">
           {categories.map((category) => (
             <motion.div
               key={category.name}
               whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100"
+              className="flex flex-col items-center p-2 bg-white rounded-lg hover:shadow-sm transition-all border border-gray-100"
             >
-              <div className="w-16 h-16 mb-3">
+              <div className="w-10 h-10 mb-2">
                 <img
                   src={category.logo}
                   alt={category.name}
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-sm font-medium text-gray-800 text-center mb-1">{category.name}</span>
-              <span className="text-xs text-gray-500">{category.description}</span>
+              <span className="text-xs font-medium text-gray-800 text-center mb-0.5 line-clamp-1">{category.name}</span>
+              <span className="text-[10px] text-gray-500">{category.description}</span>
             </motion.div>
           ))}
         </div>
