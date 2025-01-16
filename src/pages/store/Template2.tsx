@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Search, MapPin, Calendar } from "lucide-react";
+import { Search, MapPin, Calendar, Plus } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 const StoreTemplate2 = () => {
@@ -11,42 +11,45 @@ const StoreTemplate2 = () => {
   const ads = [
     {
       id: 1,
-      title: "ايفون 15 برو ماكس - جديد",
-      price: "4,500 د.ك",
+      title: "كاميرا كانون احترافية",
+      price: "450 د.ك",
       location: "حولي",
       date: "منذ 3 أيام",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+      description: "كاميرا احترافية بحالة ممتازة مع جميع الملحقات",
+      image: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd"
     },
     {
       id: 2,
-      title: "شقة فاخرة للإيجار",
+      title: "لابتوب ماك برو 2023",
       price: "800 د.ك",
       location: "السالمية",
       date: "منذ يومين",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
+      description: "جهاز جديد لم يستخدم - ضمان سنة",
+      image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8"
     },
     {
       id: 3,
-      title: "طاولة طعام خشب زان",
-      price: "220 د.ك",
+      title: "ساعة آبل الجيل الثامن",
+      price: "120 د.ك",
       location: "الجهراء",
       date: "منذ 5 أيام",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475"
+      description: "ساعة آبل الإصدار الأخير مع جميع الملحقات",
+      image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a"
     }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-green-800 to-green-600 text-white py-16">
+      <div className="bg-gradient-to-r from-black to-gray-800 text-white py-16">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-8">أفضل منصة للإعلانات المبوبة</h1>
+          <h1 className="text-4xl font-bold text-center mb-8">اعرض منتجاتك بسهولة</h1>
           <div className="max-w-2xl mx-auto flex gap-4">
             <Input 
-              placeholder="ابحث عن إعلان..." 
+              placeholder="ابحث عن منتج..." 
               className="bg-white text-black"
             />
-            <Button className="bg-black hover:bg-gray-800">
+            <Button className="bg-green-600 hover:bg-green-700">
               <Search className="ml-2" />
               بحث
             </Button>
@@ -58,7 +61,7 @@ const StoreTemplate2 = () => {
       <div className="container mx-auto px-4 py-12">
         <h2 className="text-2xl font-semibold mb-8 text-center">تصفح حسب الفئة</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {["إلكترونيات", "عقارات", "أثاث", "سيارات"].map((category) => (
+          {["إلكترونيات", "هواتف", "كمبيوترات", "اكسسوارات"].map((category) => (
             <Button
               key={category}
               variant="outline"
@@ -72,7 +75,7 @@ const StoreTemplate2 = () => {
 
       {/* Listings */}
       <div className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl font-semibold mb-8">أحدث الإعلانات</h2>
+        <h2 className="text-2xl font-semibold mb-8">أحدث المنتجات</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {ads.map((ad) => (
             <motion.div
@@ -81,13 +84,13 @@ const StoreTemplate2 = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+              <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group"
                     onClick={() => navigate(`/product/template2/${ad.id}`)}>
                 <div className="aspect-video relative">
                   <img 
                     src={ad.image} 
                     alt={ad.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full">
                     {ad.price}
@@ -95,6 +98,7 @@ const StoreTemplate2 = () => {
                 </div>
                 <div className="p-4">
                   <h3 className="text-xl font-semibold mb-2">{ad.title}</h3>
+                  <p className="text-gray-600 mb-3 line-clamp-2">{ad.description}</p>
                   <div className="flex items-center gap-4 text-gray-600">
                     <div className="flex items-center">
                       <MapPin className="w-4 h-4 ml-1" />
@@ -112,13 +116,14 @@ const StoreTemplate2 = () => {
         </div>
       </div>
 
-      {/* Add Listing Button */}
+      {/* Add Product Button */}
       <div className="fixed bottom-8 left-8">
         <Button 
-          className="bg-green-600 hover:bg-green-700 text-white rounded-full h-16 px-8 text-lg shadow-lg"
-          onClick={() => navigate("/add-listing")}
+          className="bg-black hover:bg-gray-800 text-white rounded-full h-16 px-8 text-lg shadow-lg flex items-center gap-2"
+          onClick={() => navigate("/add-product")}
         >
-          + أضف إعلانك
+          <Plus className="w-6 h-6" />
+          أضف منتجك
         </Button>
       </div>
     </div>
