@@ -1,8 +1,7 @@
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Search, MapPin, Calendar, Plus } from "lucide-react";
+import { Search, MapPin, Calendar } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 const StoreTemplate2 = () => {
@@ -39,73 +38,74 @@ const StoreTemplate2 = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-black to-gray-800 text-white py-16">
+      <div className="bg-gradient-to-r from-gray-900 to-black text-white py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-8">اعرض منتجاتك بسهولة</h1>
-          <div className="max-w-2xl mx-auto flex gap-4">
+          <h1 className="text-3xl font-bold text-center mb-6">تصفح الإعلانات</h1>
+          <div className="max-w-xl mx-auto flex gap-2">
             <Input 
               placeholder="ابحث عن منتج..." 
-              className="bg-white text-black"
+              className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
             />
-            <Button className="bg-green-600 hover:bg-green-700">
-              <Search className="ml-2" />
-              بحث
-            </Button>
+            <button className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition-colors">
+              <Search className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </div>
 
       {/* Categories */}
-      <div className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl font-semibold mb-8 text-center">تصفح حسب الفئة</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {["إلكترونيات", "هواتف", "كمبيوترات", "اكسسوارات"].map((category) => (
-            <Button
+      <div className="container mx-auto px-4 py-8">
+        <h2 className="text-xl font-semibold mb-4 text-gray-800">الفئات</h2>
+        <div className="grid grid-cols-4 md:grid-cols-8 gap-2">
+          {["إلكترونيات", "هواتف", "كمبيوترات", "اكسسوارات", "أجهزة", "كاميرات", "ساعات", "سماعات"].map((category) => (
+            <button
               key={category}
-              variant="outline"
-              className="h-20 text-lg border-2 border-green-600 hover:bg-green-50"
+              className="px-3 py-2 text-sm bg-white hover:bg-gray-50 text-gray-700 rounded-lg border border-gray-200 transition-colors"
             >
               {category}
-            </Button>
+            </button>
           ))}
         </div>
       </div>
 
       {/* Listings */}
-      <div className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl font-semibold mb-8">أحدث المنتجات</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="container mx-auto px-4 py-8">
+        <h2 className="text-xl font-semibold mb-6 text-gray-800">أحدث الإعلانات</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {ads.map((ad) => (
             <motion.div
               key={ad.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
+              whileHover={{ y: -5 }}
             >
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group"
-                    onClick={() => navigate(`/product/template2/${ad.id}`)}>
+              <Card 
+                className="overflow-hidden hover:shadow-lg transition-all cursor-pointer"
+                onClick={() => navigate(`/product/template2/${ad.id}`)}
+              >
                 <div className="aspect-video relative">
                   <img 
                     src={ad.image} 
                     alt={ad.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full">
+                  <div className="absolute top-4 right-4 bg-black/75 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
                     {ad.price}
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="text-xl font-semibold mb-2">{ad.title}</h3>
-                  <p className="text-gray-600 mb-3 line-clamp-2">{ad.description}</p>
-                  <div className="flex items-center gap-4 text-gray-600">
-                    <div className="flex items-center">
-                      <MapPin className="w-4 h-4 ml-1" />
+                  <h3 className="text-lg font-semibold mb-2 text-gray-800">{ad.title}</h3>
+                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">{ad.description}</p>
+                  <div className="flex items-center gap-4 text-gray-500 text-sm">
+                    <div className="flex items-center gap-1">
+                      <MapPin className="w-4 h-4" />
                       {ad.location}
                     </div>
-                    <div className="flex items-center">
-                      <Calendar className="w-4 h-4 ml-1" />
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
                       {ad.date}
                     </div>
                   </div>
@@ -114,17 +114,6 @@ const StoreTemplate2 = () => {
             </motion.div>
           ))}
         </div>
-      </div>
-
-      {/* Add Product Button */}
-      <div className="fixed bottom-8 left-8">
-        <Button 
-          className="bg-black hover:bg-gray-800 text-white rounded-full h-16 px-8 text-lg shadow-lg flex items-center gap-2"
-          onClick={() => navigate("/add-product")}
-        >
-          <Plus className="w-6 h-6" />
-          أضف منتجك
-        </Button>
       </div>
     </div>
   );
