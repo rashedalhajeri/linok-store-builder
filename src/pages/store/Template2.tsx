@@ -145,20 +145,14 @@ const StoreTemplate2 = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-3 flex flex-col flex-grow">
-                  <h3 className="text-base font-semibold mb-2 text-gray-800 line-clamp-1">{ad.title}</h3>
-                  <div className="mt-auto space-y-2">
-                    <div className="flex items-center gap-2 text-gray-500 text-xs">
-                      <MapPin className="w-3 h-3" />
-                      <span>{ad.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-500 text-xs">
-                      <Calendar className="w-3 h-3" />
-                      <span>{ad.date}</span>
-                    </div>
-                    <div className="pt-2 border-t text-primary font-semibold">
-                      {ad.price}
-                    </div>
+                <div className="p-4 flex flex-col flex-grow">
+                  <h3 className="text-lg font-semibold mb-3 text-gray-800 line-clamp-1">{ad.title}</h3>
+                  <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
+                    <MapPin className="w-4 h-4" />
+                    <span>{ad.location}</span>
+                  </div>
+                  <div className="mt-auto text-primary font-bold text-lg">
+                    {ad.price}
                   </div>
                 </div>
               </Card>
