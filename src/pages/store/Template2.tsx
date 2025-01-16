@@ -135,30 +135,29 @@ const StoreTemplate2 = () => {
               whileHover={{ y: -5 }}
             >
               <Card 
-                className="overflow-hidden hover:shadow-lg transition-all cursor-pointer"
+                className="overflow-hidden hover:shadow-lg transition-all cursor-pointer h-full flex flex-col"
                 onClick={() => navigate(`/product/template2/${ad.id}`)}
               >
-                <div className="aspect-video relative">
+                <div className="aspect-square relative">
                   <img 
                     src={ad.image} 
                     alt={ad.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-4 right-4 bg-black/75 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
-                    {ad.price}
-                  </div>
                 </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold mb-2 text-gray-800">{ad.title}</h3>
-                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">{ad.description}</p>
-                  <div className="flex items-center gap-4 text-gray-500 text-sm">
-                    <div className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
-                      {ad.location}
+                <div className="p-3 flex flex-col flex-grow">
+                  <h3 className="text-base font-semibold mb-2 text-gray-800 line-clamp-1">{ad.title}</h3>
+                  <div className="mt-auto space-y-2">
+                    <div className="flex items-center gap-2 text-gray-500 text-xs">
+                      <MapPin className="w-3 h-3" />
+                      <span>{ad.location}</span>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
-                      {ad.date}
+                    <div className="flex items-center gap-2 text-gray-500 text-xs">
+                      <Calendar className="w-3 h-3" />
+                      <span>{ad.date}</span>
+                    </div>
+                    <div className="pt-2 border-t text-primary font-semibold">
+                      {ad.price}
                     </div>
                   </div>
                 </div>
