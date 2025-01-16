@@ -168,9 +168,11 @@ const StoreTemplate2 = () => {
                   <h3 className="text-sm font-medium mb-2 text-gray-800 line-clamp-2">
                     {ad.title[language]}
                   </h3>
-                  <div className="flex items-center gap-2 text-gray-500 text-sm mb-2">
-                    <MapPin className="w-4 h-4" />
-                    <span>{ad.location[language]}</span>
+                  <div className="flex items-center gap-1 text-gray-500 text-xs mb-2">
+                    <MapPin className="w-3 h-3 flex-shrink-0" />
+                    <span className="truncate">{ad.location[language]}</span>
+                    <span className="mx-1">•</span>
+                    <span className="text-gray-400 truncate">{ad.date[language]}</span>
                   </div>
                   <div className="mt-auto text-left">
                     <span className="text-green-500 font-bold text-base">
