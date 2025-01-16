@@ -8,46 +8,14 @@ const StoreTemplate2 = () => {
   const navigate = useNavigate();
   
   const categories = [
-    {
-      name: "تويوتا لاند كروزر",
-      logo: "https://www.carlogos.org/car-logos/toyota-logo-2020-europe.png",
-      description: "وكيل معتمد"
-    },
-    {
-      name: "لكزس الفطيم",
-      logo: "https://www.carlogos.org/car-logos/lexus-logo-2013.png",
-      description: "وكيل حصري"
-    },
-    {
-      name: "نيسان العربية",
-      logo: "https://www.carlogos.org/car-logos/nissan-logo-2020-black.png",
-      description: "وكيل رسمي"
-    },
-    {
-      name: "هونداي الوكالة",
-      logo: "https://www.carlogos.org/car-logos/hyundai-logo-2011.png",
-      description: "وكيل معتمد"
-    },
-    {
-      name: "كيا الجبر",
-      logo: "https://www.carlogos.org/car-logos/kia-logo-2021.png",
-      description: "وكيل حصري"
-    },
-    {
-      name: "مرسيدس الغانم",
-      logo: "https://www.carlogos.org/car-logos/mercedes-benz-logo-2011.png",
-      description: "وكيل رسمي"
-    },
-    {
-      name: "بي ام دبليو الناغي",
-      logo: "https://www.carlogos.org/car-logos/bmw-logo-2020.png",
-      description: "وكيل معتمد"
-    },
-    {
-      name: "أودي سماكو",
-      logo: "https://www.carlogos.org/car-logos/audi-logo-2016.png",
-      description: "وكيل حصري"
-    },
+    { name: "تويوتا لاند كروزر" },
+    { name: "لكزس الفطيم" },
+    { name: "نيسان العربية" },
+    { name: "هونداي الوكالة" },
+    { name: "كيا الجبر" },
+    { name: "مرسيدس الغانم" },
+    { name: "بي ام دبليو الناغي" },
+    { name: "أودي سماكو" },
   ];
 
   const ads = [
@@ -108,15 +76,7 @@ const StoreTemplate2 = () => {
               whileHover={{ scale: 1.05 }}
               className="flex flex-col items-center p-2 bg-white rounded-lg hover:shadow-sm transition-all border border-gray-100"
             >
-              <div className="w-10 h-10 mb-2">
-                <img
-                  src={category.logo}
-                  alt={category.name}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <span className="text-xs font-medium text-gray-800 text-center mb-0.5 line-clamp-1">{category.name}</span>
-              <span className="text-[10px] text-gray-500">{category.description}</span>
+              <span className="text-xs font-medium text-gray-800 text-center">{category.name}</span>
             </motion.div>
           ))}
         </div>
@@ -146,7 +106,7 @@ const StoreTemplate2 = () => {
                   />
                 </div>
                 <div className="p-4 flex flex-col flex-grow">
-                  <h3 className="text-lg font-semibold mb-3 text-gray-800 line-clamp-1">{ad.title}</h3>
+                  <h3 className="text-base font-medium mb-3 text-gray-800 line-clamp-2">{ad.title}</h3>
                   <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
                     <MapPin className="w-4 h-4" />
                     <span>{ad.location}</span>
