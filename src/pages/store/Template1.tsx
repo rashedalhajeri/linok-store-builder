@@ -4,7 +4,6 @@ import {
   Instagram, 
   MapPin, 
   ExternalLink, 
-  Globe,
   ShoppingBag,
   Sparkles,
   Glasses,
@@ -22,6 +21,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Input } from "@/components/ui/input";
+import { StoreCover } from "@/components/store/StoreCover";
+import { SocialLinks } from "@/components/store/SocialLinks";
 
 const products = [
   {
@@ -101,7 +102,7 @@ const StoreTemplate1 = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [language, setLanguage] = useState<'en' | 'ar'>('ar');
   const [showSearch, setShowSearch] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(0); // للفئة "الكل"
+  const [selectedCategory, setSelectedCategory] = useState(0);
   const searchRef = useRef<HTMLDivElement>(null);
   
   const t = translations[language];
@@ -141,7 +142,7 @@ const StoreTemplate1 = () => {
   const handleSearchClick = () => {
     if (showSearch) {
       setShowSearch(false);
-      setSelectedCategory(0); // العودة إلى فئة "الكل"
+      setSelectedCategory(0);
     } else {
       setShowSearch(true);
       searchRef.current?.scrollIntoView({ behavior: 'instant' });
@@ -154,27 +155,10 @@ const StoreTemplate1 = () => {
 
   return (
     <div className="min-h-screen bg-[#F7F9FA]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
-      <div className="relative">
-        <div className="absolute top-4 left-4 z-10">
-          <Button
-            variant="outline"
-            size="sm"
-            className="rounded-full border border-gray-200 bg-white hover:bg-gray-50 focus:bg-white active:bg-white text-gray-700 font-medium shadow-sm backdrop-blur-sm h-8 px-3"
-            onClick={toggleLanguage}
-          >
-            <Globe className="h-3.5 w-3.5 ml-1" />
-            {language === 'en' ? 'العربية' : 'English'}
-          </Button>
-        </div>
-        <div className="h-[200px] md:h-[300px] bg-gradient-to-b from-gray-900/70 to-gray-900/50">
-          <img 
-            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8"
-            alt="Store Cover"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30" />
-        </div>
-      </div>
+      <StoreCover 
+        language={language}
+        onToggleLanguage={toggleLanguage}
+      />
 
       <div className="max-w-[90%] md:max-w-4xl mx-auto px-4 relative">
         <div className="relative -mt-20 md:-mt-32 mb-6 md:mb-8">
@@ -199,23 +183,7 @@ const StoreTemplate1 = () => {
                 />
               </div>
               
-              <div className="flex gap-2 md:gap-3 mt-4">
-                {socialLinks.map((link) => (
-                  <motion.button
-                    key={link.id}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`p-2 rounded-full shadow-sm transition-all duration-300 ${link.bgColor}`}
-                    onClick={() => window.open(link.href, '_blank')}
-                  >
-                    <img 
-                      src={link.icon} 
-                      alt={link.label}
-                      className="w-5 h-5 md:w-6 md:h-6 object-contain"
-                    />
-                  </motion.button>
-                ))}
-              </div>
+              <SocialLinks links={socialLinks} />
             </div>
 
             <div className="bg-white rounded-2xl shadow-sm p-4 md:p-8">
