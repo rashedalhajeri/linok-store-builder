@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Search, MapPin, Calendar } from "lucide-react";
+import { Search, MapPin } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 const StoreTemplate2 = () => {
@@ -81,7 +81,7 @@ const StoreTemplate2 = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-white via-green-50 to-green-100">
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-gray-900 to-black text-white py-12">
         <div className="container mx-auto px-4">
@@ -151,7 +151,7 @@ const StoreTemplate2 = () => {
                     <MapPin className="w-4 h-4" />
                     <span>{ad.location}</span>
                   </div>
-                  <div className="mt-auto text-primary font-bold text-lg">
+                  <div className="mt-auto text-green-500 font-bold text-lg">
                     {ad.price}
                   </div>
                 </div>
