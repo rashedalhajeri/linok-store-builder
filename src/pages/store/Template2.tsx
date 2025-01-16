@@ -11,25 +11,25 @@ const StoreTemplate2 = () => {
   const ads = [
     {
       id: 1,
-      title: "مرسيدس S-Class 2023",
-      price: "450,000 ريال",
-      location: "الرياض",
+      title: "ايفون 15 برو ماكس - جديد",
+      price: "4,500 د.ك",
+      location: "حولي",
       date: "منذ 3 أيام",
-      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
     },
     {
       id: 2,
-      title: "BMW X7 2024",
-      price: "520,000 ريال",
-      location: "جدة",
+      title: "شقة فاخرة للإيجار",
+      price: "800 د.ك",
+      location: "السالمية",
       date: "منذ يومين",
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
     },
     {
       id: 3,
-      title: "لكزس LX 600",
-      price: "480,000 ريال",
-      location: "الدمام",
+      title: "طاولة طعام خشب زان",
+      price: "220 د.ك",
+      location: "الجهراء",
       date: "منذ 5 أيام",
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475"
     }
@@ -58,7 +58,7 @@ const StoreTemplate2 = () => {
       <div className="container mx-auto px-4 py-12">
         <h2 className="text-2xl font-semibold mb-8 text-center">تصفح حسب الفئة</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {["سيارات", "عقارات", "إلكترونيات", "أثاث"].map((category) => (
+          {["إلكترونيات", "عقارات", "أثاث", "سيارات"].map((category) => (
             <Button
               key={category}
               variant="outline"
