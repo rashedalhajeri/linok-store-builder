@@ -64,16 +64,16 @@ const ProductTemplate1 = () => {
   const hasMoreDescription = words.length > 10;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F8F9FA] via-[#F1F0FB] to-[#F8F9FA] py-12">
-      <Card className="max-w-6xl mx-auto overflow-hidden bg-white/90 backdrop-blur-sm shadow-lg rounded-2xl border-0">
-        <div className="grid lg:grid-cols-2 gap-12 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-gray-100 py-12">
+      <Card className="max-w-6xl mx-auto overflow-hidden bg-white/90 backdrop-blur-sm shadow-lg rounded-2xl border border-gray-100">
+        <div className="grid lg:grid-cols-2 gap-8 p-6">
           {/* Product Images */}
           <div className="space-y-4">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="relative aspect-square rounded-xl overflow-hidden border-0 shadow-md"
+              className="relative aspect-square rounded-xl overflow-hidden border-0 shadow-md bg-gradient-to-b from-gray-50 to-white"
             >
               <img 
                 src={selectedImage} 
@@ -91,7 +91,7 @@ const ProductTemplate1 = () => {
                   className="flex flex-col items-center"
                 >
                   <div className={`relative aspect-square w-full rounded-lg overflow-hidden shadow-sm transition-all duration-300
-                    ${selectedImage === image ? 'ring-2 ring-[#9b87f5] scale-105' : 'hover:ring-2 hover:ring-[#9b87f5]/50'}`}
+                    ${selectedImage === image ? 'ring-2 ring-black scale-105' : 'hover:ring-2 hover:ring-gray-400'}`}
                   >
                     <img 
                       src={image} 
@@ -112,18 +112,18 @@ const ProductTemplate1 = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="space-y-4"
             >
-              <h1 className="text-2xl font-semibold text-[#221F26] tracking-tight">
+              <h1 className="text-xl font-semibold text-gray-900 tracking-tight">
                 {product.name}
               </h1>
-              <p className="text-2xl font-medium text-[#9b87f5]">
+              <p className="text-xl font-medium text-black">
                 {calculatePrice()} د.ك
               </p>
-              <div className="prose text-[#8E9196] leading-relaxed text-sm">
+              <div className="prose text-gray-600 leading-relaxed text-sm">
                 {showFullDescription ? product.description : truncatedDescription}
                 {hasMoreDescription && !showFullDescription && (
                   <button
                     onClick={() => setShowFullDescription(true)}
-                    className="text-[#9b87f5] hover:text-[#7E69AB] mr-2 text-sm font-medium transition-colors"
+                    className="text-gray-900 hover:text-black mr-2 text-sm font-medium transition-colors"
                   >
                     المزيد
                   </button>
@@ -131,11 +131,11 @@ const ProductTemplate1 = () => {
               </div>
             </motion.div>
             
-            <div className="space-y-6 bg-[#F8F9FA] p-6 rounded-xl">
+            <div className="space-y-6 bg-gradient-to-b from-gray-50 to-white p-6 rounded-xl border border-gray-100">
               <div className="flex flex-col md:grid md:grid-cols-2 gap-6">
                 {/* Sizes */}
                 <div className="space-y-2 w-full">
-                  <Label className="text-sm font-medium text-[#221F26]">المقاس</Label>
+                  <Label className="text-sm font-medium text-gray-900">المقاس</Label>
                   <div className="grid grid-cols-5 gap-1.5">
                     {product.sizes.map((size) => (
                       <Button
@@ -143,8 +143,8 @@ const ProductTemplate1 = () => {
                         variant={selectedSize === size.id ? "default" : "outline"}
                         className={`h-8 px-2 text-sm ${
                           selectedSize === size.id
-                            ? "bg-[#9b87f5] hover:bg-[#7E69AB]"
-                            : "hover:bg-[#F1F0FB] border border-[#D6BCFA]"
+                            ? "bg-black text-white hover:bg-gray-900"
+                            : "hover:bg-gray-50 border border-gray-200 text-gray-900"
                         }`}
                         onClick={() => setSelectedSize(size.id)}
                       >
@@ -156,7 +156,7 @@ const ProductTemplate1 = () => {
 
                 {/* Colors */}
                 <div className="space-y-2 w-full">
-                  <Label className="text-sm font-medium text-[#221F26]">اللون</Label>
+                  <Label className="text-sm font-medium text-gray-900">اللون</Label>
                   <div className="flex flex-wrap gap-2">
                     {product.colors.map((color) => (
                       <Button
@@ -164,8 +164,8 @@ const ProductTemplate1 = () => {
                         variant="outline"
                         className={`w-8 h-8 p-0 rounded-full transition-all duration-200 ${
                           selectedColor === color.id
-                            ? "ring-2 ring-[#9b87f5] scale-110"
-                            : "hover:ring-2 hover:ring-[#9b87f5]/50 hover:scale-105"
+                            ? "ring-2 ring-black scale-110"
+                            : "hover:ring-2 hover:ring-gray-400 hover:scale-105"
                         }`}
                         style={{
                           backgroundColor: color.value,
@@ -181,7 +181,7 @@ const ProductTemplate1 = () => {
 
               {/* Customer Name */}
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-[#221F26]" htmlFor="customerName">
+                <Label className="text-sm font-medium text-gray-900" htmlFor="customerName">
                   اسمك
                 </Label>
                 <Input
@@ -189,13 +189,13 @@ const ProductTemplate1 = () => {
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
                   placeholder="الرجاء إدخال اسمك"
-                  className="h-10 rounded-lg border-[#D6BCFA] focus:border-[#9b87f5] focus:ring-2 focus:ring-[#9b87f5]/20 transition-all bg-white/70"
+                  className="h-10 rounded-lg border-gray-200 focus:border-gray-900 focus:ring-2 focus:ring-gray-900/20 transition-all bg-white/70"
                 />
               </div>
 
               {/* Image Upload */}
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-[#221F26]">
+                <Label className="text-sm font-medium text-gray-900">
                   إرفاق صورة
                 </Label>
                 <div className="relative">
@@ -209,8 +209,8 @@ const ProductTemplate1 = () => {
                   <Label
                     htmlFor="imageUpload"
                     className="flex flex-col items-center justify-center w-full h-28 rounded-lg border-2 border-dashed
-                      border-[#D6BCFA] hover:border-[#9b87f5] cursor-pointer transition-all bg-white/50
-                      hover:bg-white/70 group"
+                      border-gray-200 hover:border-gray-900 cursor-pointer transition-all bg-white/50
+                      hover:bg-gray-50 group"
                   >
                     {previewUrl ? (
                       <img
@@ -220,8 +220,8 @@ const ProductTemplate1 = () => {
                       />
                     ) : (
                       <div className="flex flex-col items-center space-y-2">
-                        <Upload className="h-6 w-6 text-[#7E69AB] group-hover:text-[#9b87f5] transition-colors" />
-                        <span className="text-sm text-[#8E9196] group-hover:text-[#7E69AB] transition-colors">اضغط هنا لرفع صورة</span>
+                        <Upload className="h-6 w-6 text-gray-600 group-hover:text-gray-900 transition-colors" />
+                        <span className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">اضغط هنا لرفع صورة</span>
                       </div>
                     )}
                   </Label>
@@ -233,7 +233,7 @@ const ProductTemplate1 = () => {
             <div className="flex gap-4">
               <Button 
                 size="lg"
-                className="flex-1 rounded-lg bg-[#9b87f5] hover:bg-[#7E69AB] transition-all shadow-lg shadow-[#9b87f5]/20 h-12 text-base"
+                className="flex-1 rounded-lg bg-black hover:bg-gray-900 transition-all shadow-lg shadow-black/5 h-12 text-base"
                 onClick={() => navigate("/cart")}
               >
                 إضافة للسلة
@@ -241,7 +241,7 @@ const ProductTemplate1 = () => {
               <Button 
                 size="lg"
                 variant="outline"
-                className="rounded-lg hover:bg-[#F1F0FB] border-2 border-[#D6BCFA] hover:border-[#9b87f5] transition-all h-12"
+                className="rounded-lg hover:bg-gray-50 border-2 border-gray-200 hover:border-gray-900 transition-all h-12"
                 onClick={() => window.history.back()}
               >
                 رجوع
