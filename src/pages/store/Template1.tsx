@@ -310,6 +310,7 @@ const StoreTemplate1 = () => {
                   className={`pl-2 md:pl-4 basis-1/4 md:basis-1/5 lg:basis-1/6 ${category.id === 0 ? 'order-first' : ''}`}
                 >
                   <button
+                    onClick={() => setSelectedCategory(category.id)}
                     className="w-full group focus:outline-none"
                   >
                     <div className="relative aspect-square rounded-lg overflow-hidden mb-2 bg-gray-50">
@@ -321,7 +322,13 @@ const StoreTemplate1 = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent group-hover:from-black/40 transition-colors" />
                     </div>
                     <div className="flex flex-col items-center">
-                      <span className={`text-xs md:text-sm font-medium ${category.id === 0 ? 'text-gray-900' : 'text-gray-700'} group-hover:text-gray-900 transition-colors`}>
+                      <span 
+                        className={`text-xs md:text-sm font-medium transition-all duration-300 ${
+                          category.id === selectedCategory 
+                            ? 'text-gray-900 scale-110 font-bold' 
+                            : 'text-gray-700'
+                        } group-hover:text-gray-900`}
+                      >
                         {t[category.name]}
                       </span>
                     </div>
