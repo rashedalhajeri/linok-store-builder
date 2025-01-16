@@ -9,36 +9,44 @@ const StoreTemplate2 = () => {
   
   const categories = [
     {
-      name: "تويوتا",
-      logo: "https://www.carlogos.org/car-logos/toyota-logo-2020-europe.png"
+      name: "تويوتا لاند كروزر",
+      logo: "https://www.carlogos.org/car-logos/toyota-logo-2020-europe.png",
+      description: "وكيل معتمد"
     },
     {
-      name: "لكزس",
-      logo: "https://www.carlogos.org/car-logos/lexus-logo-2013.png"
+      name: "لكزس الفطيم",
+      logo: "https://www.carlogos.org/car-logos/lexus-logo-2013.png",
+      description: "وكيل حصري"
     },
     {
-      name: "نيسان",
-      logo: "https://www.carlogos.org/car-logos/nissan-logo-2020-black.png"
+      name: "نيسان العربية",
+      logo: "https://www.carlogos.org/car-logos/nissan-logo-2020-black.png",
+      description: "وكيل رسمي"
     },
     {
-      name: "هونداي",
-      logo: "https://www.carlogos.org/car-logos/hyundai-logo-2011.png"
+      name: "هونداي الوكالة",
+      logo: "https://www.carlogos.org/car-logos/hyundai-logo-2011.png",
+      description: "وكيل معتمد"
     },
     {
-      name: "كيا",
-      logo: "https://www.carlogos.org/car-logos/kia-logo-2021.png"
+      name: "كيا الجبر",
+      logo: "https://www.carlogos.org/car-logos/kia-logo-2021.png",
+      description: "وكيل حصري"
     },
     {
-      name: "مرسيدس",
-      logo: "https://www.carlogos.org/car-logos/mercedes-benz-logo-2011.png"
+      name: "مرسيدس الغانم",
+      logo: "https://www.carlogos.org/car-logos/mercedes-benz-logo-2011.png",
+      description: "وكيل رسمي"
     },
     {
-      name: "بي ام دبليو",
-      logo: "https://www.carlogos.org/car-logos/bmw-logo-2020.png"
+      name: "بي ام دبليو الناغي",
+      logo: "https://www.carlogos.org/car-logos/bmw-logo-2020.png",
+      description: "وكيل معتمد"
     },
     {
-      name: "أودي",
-      logo: "https://www.carlogos.org/car-logos/audi-logo-2016.png"
+      name: "أودي سماكو",
+      logo: "https://www.carlogos.org/car-logos/audi-logo-2016.png",
+      description: "وكيل حصري"
     },
   ];
 
@@ -80,7 +88,7 @@ const StoreTemplate2 = () => {
           <h1 className="text-3xl font-bold text-center mb-6">تصفح الإعلانات</h1>
           <div className="max-w-xl mx-auto flex gap-2">
             <Input 
-              placeholder="ابحث عن منتج..." 
+              placeholder="ابحث عن سيارة..." 
               className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
             />
             <button className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition-colors">
@@ -92,30 +100,31 @@ const StoreTemplate2 = () => {
 
       {/* Categories */}
       <div className="container mx-auto px-4 py-8">
-        <h2 className="text-xl font-semibold mb-4 text-gray-800">الفئات</h2>
-        <div className="grid grid-cols-4 md:grid-cols-8 gap-4">
+        <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">الوكلاء المعتمدون</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
           {categories.map((category) => (
-            <motion.button
+            <motion.div
               key={category.name}
               whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center p-2 bg-white rounded-xl shadow-sm hover:shadow-md transition-all"
+              className="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-100"
             >
-              <div className="w-12 h-12 mb-2">
+              <div className="w-16 h-16 mb-3">
                 <img
                   src={category.logo}
                   alt={category.name}
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-xs text-gray-700">{category.name}</span>
-            </motion.button>
+              <span className="text-sm font-medium text-gray-800 text-center mb-1">{category.name}</span>
+              <span className="text-xs text-gray-500">{category.description}</span>
+            </motion.div>
           ))}
         </div>
       </div>
 
       {/* Listings */}
       <div className="container mx-auto px-4 py-8">
-        <h2 className="text-xl font-semibold mb-6 text-gray-800">أحدث الإعلانات</h2>
+        <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">أحدث الإعلانات</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {ads.map((ad) => (
             <motion.div
@@ -135,7 +144,7 @@ const StoreTemplate2 = () => {
                     alt={ad.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-4 right-4 bg-black/75 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
+                  <div className="absolute top-4 right-4 bg-black/75 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
                     {ad.price}
                   </div>
                 </div>
