@@ -321,7 +321,7 @@ const StoreTemplate1 = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent group-hover:from-black/40 transition-colors" />
                     </div>
                     <div className="flex flex-col items-center">
-                      <span className={`text-xs md:text-sm font-medium ${category.id === 0 ? 'text-[#33C3F0]' : 'text-gray-700'} group-hover:text-[#33C3F0] transition-colors`}>
+                      <span className={`text-xs md:text-sm font-medium ${category.id === 0 ? 'text-gray-900' : 'text-gray-700'} group-hover:text-gray-900 transition-colors`}>
                         {t[category.name]}
                       </span>
                     </div>
@@ -369,7 +369,7 @@ const StoreTemplate1 = () => {
                   <h3 className="font-medium text-sm md:text-base text-gray-900 mb-2">
                     {t[product.name]}
                   </h3>
-                  <p className="text-primary font-bold text-base md:text-lg">
+                  <p className="text-gray-900 font-bold text-base md:text-lg">
                     {product.price}
                   </p>
                 </div>
