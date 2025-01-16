@@ -64,16 +64,16 @@ const ProductTemplate1 = () => {
   const hasMoreDescription = words.length > 10;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#E5DEFF] via-[#FDE1D3] to-[#F2FCE2] py-12">
-      <Card className="max-w-6xl mx-auto overflow-hidden bg-white/80 backdrop-blur-sm shadow-2xl rounded-[2rem] border-0">
+    <div className="min-h-screen bg-gradient-to-br from-[#F8F9FA] via-[#F1F0FB] to-[#F8F9FA] py-12">
+      <Card className="max-w-6xl mx-auto overflow-hidden bg-white/90 backdrop-blur-sm shadow-lg rounded-2xl border-0">
         <div className="grid lg:grid-cols-2 gap-12 p-8">
           {/* Product Images */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="relative aspect-square rounded-[2rem] overflow-hidden border-0 shadow-xl"
+              className="relative aspect-square rounded-xl overflow-hidden border-0 shadow-md"
             >
               <img 
                 src={selectedImage} 
@@ -81,16 +81,16 @@ const ProductTemplate1 = () => {
                 className="w-full h-full object-cover transition-all duration-700 hover:scale-105"
               />
             </motion.div>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-5 gap-2">
               {product.images.map((image, index) => (
                 <motion.button
                   key={index}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setSelectedImage(image)}
-                  className="flex flex-col items-center space-y-2"
+                  className="flex flex-col items-center"
                 >
-                  <div className={`relative aspect-square w-full rounded-xl overflow-hidden shadow-md transition-all duration-300
+                  <div className={`relative aspect-square w-full rounded-lg overflow-hidden shadow-sm transition-all duration-300
                     ${selectedImage === image ? 'ring-2 ring-[#9b87f5] scale-105' : 'hover:ring-2 hover:ring-[#9b87f5]/50'}`}
                   >
                     <img 
@@ -105,20 +105,20 @@ const ProductTemplate1 = () => {
           </div>
 
           {/* Product Details */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-6"
+              className="space-y-4"
             >
-              <h1 className="text-4xl font-bold text-[#1A1F2C] tracking-tight">
+              <h1 className="text-2xl font-semibold text-[#221F26] tracking-tight">
                 {product.name}
               </h1>
-              <p className="text-3xl font-semibold text-[#7E69AB]">
+              <p className="text-2xl font-medium text-[#9b87f5]">
                 {calculatePrice()} د.ك
               </p>
-              <div className="prose text-gray-600 leading-relaxed">
+              <div className="prose text-[#8E9196] leading-relaxed text-sm">
                 {showFullDescription ? product.description : truncatedDescription}
                 {hasMoreDescription && !showFullDescription && (
                   <button
@@ -131,11 +131,11 @@ const ProductTemplate1 = () => {
               </div>
             </motion.div>
             
-            <div className="space-y-8 bg-[#F1F0FB] p-6 rounded-2xl">
+            <div className="space-y-6 bg-[#F8F9FA] p-6 rounded-xl">
               <div className="flex flex-col md:grid md:grid-cols-2 gap-6">
                 {/* Sizes */}
                 <div className="space-y-2 w-full">
-                  <Label className="text-sm font-medium text-[#1A1F2C]">المقاس</Label>
+                  <Label className="text-sm font-medium text-[#221F26]">المقاس</Label>
                   <div className="grid grid-cols-5 gap-1.5">
                     {product.sizes.map((size) => (
                       <Button
@@ -156,7 +156,7 @@ const ProductTemplate1 = () => {
 
                 {/* Colors */}
                 <div className="space-y-2 w-full">
-                  <Label className="text-sm font-medium text-[#1A1F2C]">اللون</Label>
+                  <Label className="text-sm font-medium text-[#221F26]">اللون</Label>
                   <div className="flex flex-wrap gap-2">
                     {product.colors.map((color) => (
                       <Button
@@ -180,8 +180,8 @@ const ProductTemplate1 = () => {
               </div>
 
               {/* Customer Name */}
-              <div className="space-y-3">
-                <Label className="text-sm font-medium text-[#1A1F2C]" htmlFor="customerName">
+              <div className="space-y-2">
+                <Label className="text-sm font-medium text-[#221F26]" htmlFor="customerName">
                   اسمك
                 </Label>
                 <Input
@@ -189,13 +189,13 @@ const ProductTemplate1 = () => {
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
                   placeholder="الرجاء إدخال اسمك"
-                  className="h-12 rounded-xl border-[#D6BCFA] focus:border-[#9b87f5] focus:ring-2 focus:ring-[#9b87f5]/20 transition-all bg-white/70"
+                  className="h-10 rounded-lg border-[#D6BCFA] focus:border-[#9b87f5] focus:ring-2 focus:ring-[#9b87f5]/20 transition-all bg-white/70"
                 />
               </div>
 
               {/* Image Upload */}
-              <div className="space-y-3">
-                <Label className="text-sm font-medium text-[#1A1F2C]">
+              <div className="space-y-2">
+                <Label className="text-sm font-medium text-[#221F26]">
                   إرفاق صورة
                 </Label>
                 <div className="relative">
@@ -208,7 +208,7 @@ const ProductTemplate1 = () => {
                   />
                   <Label
                     htmlFor="imageUpload"
-                    className="flex flex-col items-center justify-center w-full h-32 rounded-xl border-2 border-dashed
+                    className="flex flex-col items-center justify-center w-full h-28 rounded-lg border-2 border-dashed
                       border-[#D6BCFA] hover:border-[#9b87f5] cursor-pointer transition-all bg-white/50
                       hover:bg-white/70 group"
                   >
@@ -216,12 +216,12 @@ const ProductTemplate1 = () => {
                       <img
                         src={previewUrl}
                         alt="Preview"
-                        className="h-full w-full object-contain rounded-xl"
+                        className="h-full w-full object-contain rounded-lg"
                       />
                     ) : (
                       <div className="flex flex-col items-center space-y-2">
-                        <Upload className="h-8 w-8 text-[#7E69AB] group-hover:text-[#9b87f5] transition-colors" />
-                        <span className="text-sm text-gray-500 group-hover:text-[#7E69AB] transition-colors">اضغط هنا لرفع صورة</span>
+                        <Upload className="h-6 w-6 text-[#7E69AB] group-hover:text-[#9b87f5] transition-colors" />
+                        <span className="text-sm text-[#8E9196] group-hover:text-[#7E69AB] transition-colors">اضغط هنا لرفع صورة</span>
                       </div>
                     )}
                   </Label>
@@ -230,10 +230,10 @@ const ProductTemplate1 = () => {
             </div>
 
             {/* Actions */}
-            <div className="flex gap-4 pt-4">
+            <div className="flex gap-4">
               <Button 
                 size="lg"
-                className="flex-1 rounded-xl bg-[#9b87f5] hover:bg-[#7E69AB] transition-all shadow-lg shadow-[#9b87f5]/20 h-14 text-lg"
+                className="flex-1 rounded-lg bg-[#9b87f5] hover:bg-[#7E69AB] transition-all shadow-lg shadow-[#9b87f5]/20 h-12 text-base"
                 onClick={() => navigate("/cart")}
               >
                 إضافة للسلة
@@ -241,7 +241,7 @@ const ProductTemplate1 = () => {
               <Button 
                 size="lg"
                 variant="outline"
-                className="rounded-xl hover:bg-[#F1F0FB] border-2 border-[#D6BCFA] hover:border-[#9b87f5] transition-all h-14"
+                className="rounded-lg hover:bg-[#F1F0FB] border-2 border-[#D6BCFA] hover:border-[#9b87f5] transition-all h-12"
                 onClick={() => window.history.back()}
               >
                 رجوع
