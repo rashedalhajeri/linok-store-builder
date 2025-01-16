@@ -223,7 +223,7 @@ const StoreTemplate1 = () => {
                 <div>
                   <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 flex items-center gap-2">
                     {t.storeName}
-                    <CircleCheck className="w-5 h-5 text-gray-900 inline-block" />
+                    <CircleCheck className="w-5 h-5 text-[#1DA1F2] inline-block" />
                   </h1>
                   <p className="text-sm md:text-base text-gray-500 font-medium">
                     @yourstorehandle
@@ -236,14 +236,14 @@ const StoreTemplate1 = () => {
                     className="rounded-full hover:bg-gray-50"
                     onClick={handleSearchClick}
                   >
-                    <Search className="h-4 w-4" />
+                    <Search className="h-4 w-4 text-gray-900" />
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
                     className="rounded-full hover:bg-gray-50"
                   >
-                    <ExternalLink className="h-4 w-4" />
+                    <ExternalLink className="h-4 w-4 text-gray-900" />
                   </Button>
                 </div>
               </div>
