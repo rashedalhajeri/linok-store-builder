@@ -78,7 +78,6 @@ const StoreTemplate2 = () => {
         ar: "منذ يومين",
         en: "2 days ago"
       },
-      agency: agencies[1],
       description: {
         ar: "جهاز جديد لم يستخدم - ضمان سنة",
         en: "Brand new device - one year warranty"
@@ -103,7 +102,6 @@ const StoreTemplate2 = () => {
         ar: "منذ 5 أيام",
         en: "5 days ago"
       },
-      agency: agencies[2],
       description: {
         ar: "ساعة آبل الإصدار الأخير مع جميع الملحقات",
         en: "Latest Apple Watch with all accessories"
@@ -186,17 +184,15 @@ const StoreTemplate2 = () => {
                   />
                 </div>
                 <div className="p-4 flex flex-col flex-grow">
-                  {ad.agency && (
-                    <div className="flex items-center gap-2 mb-2">
-                      <Avatar className="w-6 h-6">
-                        <AvatarImage src={ad.agency.image} alt={ad.agency.name} />
-                        <AvatarFallback>{ad.agency.name[0]}</AvatarFallback>
-                      </Avatar>
-                      <span className="text-xs text-gray-600">
-                        {language === 'ar' ? ad.agency.name : ad.agency.nameEn}
-                      </span>
-                    </div>
-                  )}
+                  <div className="flex items-center gap-2 mb-2">
+                    <Avatar className="w-6 h-6">
+                      <AvatarImage src={ad.agency.image} alt={ad.agency.name} />
+                      <AvatarFallback>{ad.agency.name[0]}</AvatarFallback>
+                    </Avatar>
+                    <span className="text-xs text-gray-600">
+                      {language === 'ar' ? ad.agency.name : ad.agency.nameEn}
+                    </span>
+                  </div>
                   <h3 className="text-sm font-medium text-gray-800 line-clamp-2 mb-2 h-10">
                     {ad.title[language]}
                   </h3>
