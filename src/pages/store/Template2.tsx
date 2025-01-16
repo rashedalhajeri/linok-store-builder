@@ -45,7 +45,7 @@ const StoreTemplate2 = () => {
         ar: "كاميرا احترافية بحالة ممتازة مع جميع الملحقات",
         en: "Professional camera in excellent condition with all accessories"
       },
-      image: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd"
+      image: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 2,
@@ -69,7 +69,7 @@ const StoreTemplate2 = () => {
         ar: "جهاز جديد لم يستخدم - ضمان سنة",
         en: "Brand new device - one year warranty"
       },
-      image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8"
+      image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80"
     },
     {
       id: 3,
@@ -93,7 +93,31 @@ const StoreTemplate2 = () => {
         ar: "ساعة آبل الإصدار الأخير مع جميع الملحقات",
         en: "Latest Apple Watch with all accessories"
       },
-      image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a"
+      image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 4,
+      title: {
+        ar: "ايفون 15 برو ماكس",
+        en: "iPhone 15 Pro Max"
+      },
+      price: {
+        ar: "550 د.ك",
+        en: "KWD 550"
+      },
+      location: {
+        ar: "العاصمة",
+        en: "Capital"
+      },
+      date: {
+        ar: "اليوم",
+        en: "Today"
+      },
+      description: {
+        ar: "جهاز جديد مع الضمان - سعة 256 جيجا",
+        en: "New device with warranty - 256GB"
+      },
+      image: "https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&w=800&q=80"
     }
   ];
 
