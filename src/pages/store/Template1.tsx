@@ -372,8 +372,8 @@ const StoreTemplate1 = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-4">
-                  <h3 className="font-medium text-sm md:text-base text-gray-900 mb-2">
+                <div className="p-4 pt-5">
+                  <h3 className="font-medium text-sm md:text-base text-gray-900 mb-1.5">
                     {t[product.name]}
                   </h3>
                   <p className="text-gray-900 font-bold text-base md:text-lg">
