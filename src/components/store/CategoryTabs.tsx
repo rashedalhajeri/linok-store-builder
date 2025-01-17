@@ -15,17 +15,17 @@ interface CategoryTabsProps {
 export const CategoryTabs = ({ categories, selectedCategory, onSelectCategory }: CategoryTabsProps) => {
   return (
     <Tabs value={selectedCategory} className="w-full">
-      <TabsList className="w-full h-auto flex gap-2 p-2 bg-gray-50/50 rounded-2xl">
+      <TabsList className="w-full h-auto flex gap-2 p-2 bg-gray-50/50 rounded-2xl overflow-x-auto scrollbar-hide">
         {categories.map((category) => (
           <motion.div
             key={category.id}
             whileTap={{ scale: 0.95 }}
-            className="flex-1"
+            className="flex-shrink-0"
           >
             <TabsTrigger
               value={category.id}
               onClick={() => onSelectCategory(category.id)}
-              className="w-full py-3 text-base data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:shadow-sm"
+              className="px-6 py-3 text-base whitespace-nowrap data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:shadow-sm"
             >
               {category.label}
             </TabsTrigger>
