@@ -23,6 +23,7 @@ export const SocialLinks = ({ links }: SocialLinksProps) => {
           className={`p-2.5 rounded-full shadow-lg transition-all duration-300 
             hover:shadow-xl ${link.bgColor} relative group`}
           onClick={() => window.open(link.href, '_blank')}
+          aria-label={link.label}
         >
           <div className="relative w-6 h-6 md:w-7 md:h-7">
             <img 
@@ -37,16 +38,6 @@ export const SocialLinks = ({ links }: SocialLinksProps) => {
               transition={{ duration: 0.2 }}
             />
           </div>
-          <motion.div 
-            className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900/90 backdrop-blur-sm 
-              text-white text-xs py-1.5 px-3 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none
-              shadow-lg whitespace-nowrap"
-            initial={{ y: -5, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.2 }}
-          >
-            {link.label}
-          </motion.div>
         </motion.button>
       ))}
     </div>
