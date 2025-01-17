@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { StoreCover } from "@/components/store/StoreCover";
+import { StoreCover } from "@/components/store/template4/StoreCover";
 import { SearchBar } from "@/components/store/template4/SearchBar";
-import { CategoryTabs } from "@/components/store/CategoryTabs";
+import { CategoryTabs } from "@/components/store/template4/CategoryTabs";
 import { MenuItem } from "@/components/store/template4/MenuItem";
-import { SocialLinks } from "@/components/store/SocialLinks";
+import { SocialLinks } from "@/components/store/template4/SocialLinks";
 
 const StoreTemplate4 = () => {
   const [selectedCategory, setSelectedCategory] = useState("main");
