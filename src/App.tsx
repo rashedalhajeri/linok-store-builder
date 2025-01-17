@@ -11,6 +11,7 @@ import StoreTemplate4 from "./pages/store/Template4";
 import ProductTemplate1 from "./pages/product/Template1";
 import ProductTemplate2 from "./pages/product/Template2";
 import ProductTemplate3 from "./pages/product/Template3";
+import ProductTemplate4 from "./pages/product/Template4";
 import Cart from "./pages/cart/Cart";
 import CheckoutTemplate1 from "./pages/checkout/Template1";
 import SuccessTemplate1 from "./pages/success/Template1";
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/product/template1/:productId" element={<ProductTemplate1 />} />
           <Route path="/product/template2/:productId" element={<ProductTemplate2 />} />
           <Route path="/product/template3/:productId" element={<ProductTemplate3 />} />
+          <Route path="/product/template4/:productId" element={<ProductTemplate4 />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout/template1" element={<CheckoutTemplate1 />} />
           <Route path="/success/template1" element={<SuccessTemplate1 />} />
