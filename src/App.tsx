@@ -12,11 +12,17 @@ import ProductTemplate1 from "./pages/product/Template1";
 import ProductTemplate2 from "./pages/product/Template2";
 import ProductTemplate3 from "./pages/product/Template3";
 import ProductTemplate4 from "./pages/product/Template4";
-import Cart from "./pages/cart/Cart";
+import CartTemplate1 from "./pages/cart/Template1";
+import CartTemplate2 from "./pages/cart/Template2";
+import CartTemplate3 from "./pages/cart/Template3";
 import CartTemplate4 from "./pages/cart/Template4";
 import CheckoutTemplate1 from "./pages/checkout/Template1";
+import CheckoutTemplate2 from "./pages/checkout/Template2";
+import CheckoutTemplate3 from "./pages/checkout/Template3";
 import CheckoutTemplate4 from "./pages/checkout/Template4";
 import SuccessTemplate1 from "./pages/success/Template1";
+import SuccessTemplate2 from "./pages/success/Template2";
+import SuccessTemplate3 from "./pages/success/Template3";
 import SuccessTemplate4 from "./pages/success/Template4";
 import AdTemplate2 from "./pages/ad/Template2";
 import SearchTemplate2 from "./pages/search/Template2";
@@ -31,19 +37,30 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          {/* Store Routes */}
           <Route path="/store/template1/:storeId" element={<StoreTemplate1 />} />
           <Route path="/store/template2/:storeId" element={<StoreTemplate2 />} />
           <Route path="/store/template3/:storeId" element={<StoreTemplate3 />} />
           <Route path="/store/template4/:storeId" element={<StoreTemplate4 />} />
+          {/* Product Routes */}
           <Route path="/product/template1/:productId" element={<ProductTemplate1 />} />
           <Route path="/product/template2/:productId" element={<ProductTemplate2 />} />
           <Route path="/product/template3/:productId" element={<ProductTemplate3 />} />
           <Route path="/product/template4/:productId" element={<ProductTemplate4 />} />
-          <Route path="/cart" element={<Cart />} />
+          {/* Cart Routes */}
+          <Route path="/cart/template1" element={<CartTemplate1 />} />
+          <Route path="/cart/template2" element={<CartTemplate2 />} />
+          <Route path="/cart/template3" element={<CartTemplate3 />} />
           <Route path="/cart/template4" element={<CartTemplate4 />} />
+          {/* Checkout Routes */}
           <Route path="/checkout/template1" element={<CheckoutTemplate1 />} />
+          <Route path="/checkout/template2" element={<CheckoutTemplate2 />} />
+          <Route path="/checkout/template3" element={<CheckoutTemplate3 />} />
           <Route path="/checkout/template4" element={<CheckoutTemplate4 />} />
+          {/* Success Routes */}
           <Route path="/success/template1" element={<SuccessTemplate1 />} />
+          <Route path="/success/template2" element={<SuccessTemplate2 />} />
+          <Route path="/success/template3" element={<SuccessTemplate3 />} />
           <Route path="/success/template4" element={<SuccessTemplate4 />} />
           {/* Template 2 Routes */}
           <Route path="/ad/template2/:adId" element={<AdTemplate2 />} />
