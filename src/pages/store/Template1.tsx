@@ -8,18 +8,17 @@ import { Instagram, MessageSquare, Phone } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const StoreTemplate1 = () => {
-  const [selectedCategory, setSelectedCategory] = useState("main");
+  const [selectedCategory, setSelectedCategory] = useState("electronics");
   const [language, setLanguage] = useState<'en' | 'ar'>('ar');
   const navigate = useNavigate();
 
   const categories = [
-    { id: "main", label: "الأطباق الرئيسية" },
-    { id: "burgers", label: "برجر" },
-    { id: "grills", label: "مشويات" },
-    { id: "sandwiches", label: "سندويشات" },
-    { id: "appetizers", label: "مقبلات" },
-    { id: "salads", label: "سلطات" },
-    { id: "drinks", label: "مشروبات" },
+    { id: "electronics", label: "إلكترونيات" },
+    { id: "clothing", label: "ملابس" },
+    { id: "furniture", label: "أثاث" },
+    { id: "books", label: "كتب" },
+    { id: "sports", label: "رياضة" },
+    { id: "toys", label: "ألعاب" },
   ];
 
   const socialLinks = [
@@ -27,103 +26,78 @@ const StoreTemplate1 = () => {
       id: 1,
       icon: <Instagram className="w-5 h-5 text-pink-600" />,
       label: "Instagram",
-      href: "https://instagram.com/yourusername",
+      href: "https://instagram.com",
       bgColor: "bg-white"
     },
     {
       id: 2,
       icon: <MessageSquare className="w-5 h-5 text-green-600" />,
       label: "WhatsApp",
-      href: "https://wa.me/96500000000",
+      href: "https://wa.me/1234567890",
       bgColor: "bg-white"
     },
     {
       id: 3,
       icon: <Phone className="w-5 h-5 text-gray-600" />,
       label: "Phone",
-      href: "tel:+96500000000",
+      href: "tel:+1234567890",
       bgColor: "bg-white"
     }
   ];
 
-  const menuItems = {
-    main: [
+  const products = {
+    electronics: [
       {
         id: 1,
-        name: "مندي لحم",
-        description: "أرز بسمتي مع لحم الضأن المطبوخ على الطريقة اليمنية التقليدية",
-        price: "12.500",
+        name: "ايفون 15 برو ماكس",
+        description: "أحدث هواتف آبل مع كاميرا متطورة وشاشة عالية الجودة",
+        price: "1499.000",
         image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
         isPopular: true
       },
       {
         id: 2,
-        name: "كبسة دجاج",
-        description: "أرز مع دجاج مشوي متبل بالبهارات العربية",
-        price: "8.500",
+        name: "سامسونج جالكسي S23",
+        description: "هاتف ذكي بمواصفات عالية وكاميرا احترافية",
+        price: "999.000",
         image: "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91",
         isPopular: true
       },
       {
         id: 3,
-        name: "برياني لحم",
-        description: "أرز برياني هندي مع قطع اللحم المتبلة والمكسرات",
-        price: "11.500",
+        name: "ماك بوك برو",
+        description: "حاسوب محمول للمحترفين مع معالج M2",
+        price: "1999.000",
         image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8",
-        isSpicy: true
+        isNew: true
       }
     ],
-    burgers: [
+    clothing: [
       {
         id: 4,
-        name: "برجر لحم واجيو",
-        description: "برجر لحم واجيو مع جبنة شيدر وصلصة خاصة",
-        price: "8.500",
+        name: "قميص قطني",
+        description: "قميص رجالي بجودة عالية",
+        price: "45.000",
         image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
-        isSpicy: true,
-        isPopular: true
+        isNew: true
       },
       {
         id: 5,
-        name: "برجر دجاج مقرمش",
-        description: "برجر دجاج مقرمش مع صلصة الرانش",
-        price: "6.500",
+        name: "بنطلون جينز",
+        description: "جينز عصري بقصة مستقيمة",
+        price: "65.000",
         image: "https://images.unsplash.com/photo-1525164286253-04e68b9d94c6",
-        isPopular: true
-      },
-      {
-        id: 6,
-        name: "برجر لحم مشوي",
-        description: "برجر لحم مشوي مع جبنة موزاريلا وصلصة باربكيو",
-        price: "7.500",
-        image: "https://images.unsplash.com/photo-1550317138-10000687a72b",
         isPopular: true
       }
     ],
-    grills: [
+    furniture: [
       {
-        id: 7,
-        name: "مشاوي مشكل",
-        description: "تشكيلة من اللحوم المشوية مع الخضار والأرز",
-        price: "15.500",
-        image: "https://images.unsplash.com/photo-1544025162-d76694265947",
+        id: 6,
+        name: "طاولة طعام",
+        description: "طاولة خشبية فاخرة تتسع لـ 6 أشخاص",
+        price: "299.000",
+        image: "https://images.unsplash.com/photo-1550317138-10000687a72b",
         isPopular: true
-      },
-      {
-        id: 8,
-        name: "شيش طاووق",
-        description: "قطع دجاج متبلة مشوية مع الخضار",
-        price: "9.500",
-        image: "https://images.unsplash.com/photo-1532636875304-0c89119d9b4d",
-        isPopular: true
-      },
-      {
-        id: 9,
-        name: "كباب لحم",
-        description: "كباب لحم مشوي مع البهارات العربية",
-        price: "10.500",
-        image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143",
-        isSpicy: true
       }
     ]
   };
@@ -155,7 +129,7 @@ const StoreTemplate1 = () => {
         </div>
 
         <div className="mt-6 grid grid-cols-1 gap-4">
-          {menuItems[selectedCategory]?.map((item) => (
+          {products[selectedCategory]?.map((item) => (
             <div key={item.id} onClick={() => handleItemClick(item.id)}>
               <MenuItem item={item} />
             </div>
