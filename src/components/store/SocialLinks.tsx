@@ -3,7 +3,7 @@ import { Facebook, Instagram, Twitter, Phone } from "lucide-react";
 
 interface SocialLink {
   id: number;
-  icon: JSX.Element | string;  // Updated to allow both JSX.Element and string
+  icon: JSX.Element;
   label: string;
   href: string;
   bgColor: string;
@@ -31,11 +31,7 @@ export const SocialLinks = ({ links }: SocialLinksProps) => {
             whileTap={{ scale: 0.95 }}
             className={`p-3 rounded-full shadow-lg transition-all duration-300 ${link.bgColor} text-white`}
           >
-            {typeof link.icon === 'string' ? (
-              <img src={link.icon} alt={link.label} className="w-6 h-6" />
-            ) : (
-              link.icon
-            )}
+            {link.icon}
           </motion.a>
         ))}
       </motion.div>
