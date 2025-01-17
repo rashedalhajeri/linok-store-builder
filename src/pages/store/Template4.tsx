@@ -1,130 +1,165 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { QrCode, ChefHat, Timer } from "lucide-react";
-import { motion } from "framer-motion";
-import { MenuItem } from "@/components/store/template4/MenuItem";
+import { StoreCover } from "@/components/store/template4/StoreCover";
 import { SearchBar } from "@/components/store/template4/SearchBar";
 import { CategoryTabs } from "@/components/store/template4/CategoryTabs";
-import { useToast } from "@/hooks/use-toast";
+import { MenuItem } from "@/components/store/template4/MenuItem";
+import { SocialLinks } from "@/components/store/template4/SocialLinks";
 
 const StoreTemplate4 = () => {
-  const { storeId } = useParams();
-  const { toast } = useToast();
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [tableNumber, setTableNumber] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("main");
+  const [language, setLanguage] = useState<'en' | 'ar'>('ar');
 
-  // هذه البيانات ستأتي من API في التطبيق الحقيقي
   const categories = [
-    { id: "all", label: "جميع الأصناف" },
     { id: "main", label: "الأطباق الرئيسية" },
-    { id: "appetizers", label: "المقبلات" },
-    { id: "drinks", label: "المشروبات" },
-    { id: "desserts", label: "الحلويات" },
+    { id: "burgers", label: "برجر" },
+    { id: "sandwiches", label: "سندويشات" },
+    { id: "appetizers", label: "مقبلات" },
+    { id: "salads", label: "سلطات" },
+    { id: "drinks", label: "مشروبات" },
+    { id: "desserts", label: "حلويات" },
+    { id: "sides", label: "إضافات" },
+    { id: "shawarma", label: "شاورما" },
+    { id: "grills", label: "مشويات" },
+    { id: "rice", label: "أرز" },
+    { id: "pizza", label: "بيتزا" }
   ];
 
-  const menuItems = [
+  const socialLinks = [
     {
       id: 1,
-      name: "برجر لحم واجيو",
-      description: "برجر لحم واجيو مشوي مع جبنة شيدر وصلصة خاصة",
-      price: "8.500",
-      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
-      category: "main",
-      isSpicy: true,
-      isPopular: true,
+      icon: "/icons/instagram.svg",
+      label: "Instagram",
+      href: "https://instagram.com",
+      bgColor: "bg-gradient-to-tr from-purple-600 to-pink-500"
     },
-    // ... المزيد من العناصر
+    {
+      id: 2,
+      icon: "/icons/twitter.svg",
+      label: "Twitter",
+      href: "https://twitter.com",
+      bgColor: "bg-blue-400"
+    },
+    {
+      id: 3,
+      icon: "/icons/phone.svg",
+      label: "Phone",
+      href: "tel:+1234567890",
+      bgColor: "bg-green-500"
+    },
+    {
+      id: 4,
+      icon: "/icons/map-pin.svg",
+      label: "Location",
+      href: "https://maps.google.com",
+      bgColor: "bg-red-500"
+    }
   ];
 
+  const menuItems = {
+    main: [
+      {
+        id: 1,
+        name: "مشاوي مشكل",
+        description: "تشكيلة من اللحوم المشوية مع الأرز والخضار",
+        price: "15.500 د.ك",
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947",
+        isPopular: true
+      },
+      {
+        id: 2,
+        name: "مندي لحم",
+        description: "لحم ضأن مطهو على الطريقة اليمنية",
+        price: "12.000 د.ك",
+        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+        isPopular: true
+      }
+    ],
+    burgers: [
+      {
+        id: 3,
+        name: "برجر لحم واجيو",
+        description: "برجر لحم واجيو مع جبنة شيدر وصلصة خاصة",
+        price: "8.500 د.ك",
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+        isSpicy: true,
+        isPopular: true
+      },
+      {
+        id: 4,
+        name: "برجر دجاج مقرمش",
+        description: "برجر دجاج مقرمش مع صلصة الرانش",
+        price: "6.500 د.ك",
+        image: "https://images.unsplash.com/photo-1525164286253-04e68b9d94c6",
+        isPopular: true
+      }
+    ],
+    sandwiches: [
+      {
+        id: 5,
+        name: "كلوب ساندويتش",
+        description: "دجاج مشوي مع جبنة وخضار",
+        price: "4.500 د.ك",
+        image: "https://images.unsplash.com/photo-1550507992-eb63ffee0847",
+        isPopular: true
+      },
+      {
+        id: 6,
+        name: "فيليه ستيك ساندويتش",
+        description: "شرائح لحم مع صلصة خاصة",
+        price: "5.750 د.ك",
+        image: "https://images.unsplash.com/photo-1559847844-5315695dadae",
+        isSpicy: true
+      }
+    ],
+    appetizers: [
+      {
+        id: 7,
+        name: "حمص",
+        description: "حمص مع زيت زيتون وصنوبر",
+        price: "2.500 د.ك",
+        image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea",
+      },
+      {
+        id: 8,
+        name: "متبل",
+        description: "متبل باذنجان طازج",
+        price: "2.250 د.ك",
+        image: "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d",
+      }
+    ]
+  };
+
   const handleSearch = (query: string) => {
-    setSearchQuery(query);
+    console.log("Searching for:", query);
   };
-
-  const handleCategorySelect = (categoryId: string) => {
-    setSelectedCategory(categoryId);
-  };
-
-  const handleOrder = (itemId: number) => {
-    if (!tableNumber) {
-      toast({
-        title: "خطأ",
-        description: "الرجاء مسح الباركود الخاص بالطاولة أولاً",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    // هنا سيتم إرسال الطلب للمطبخ
-    toast({
-      title: "تم إرسال الطلب",
-      description: `تم إرسال طلبك للمطبخ. رقم الطاولة: ${tableNumber}`,
-    });
-  };
-
-  const filteredItems = menuItems.filter((item) => {
-    const matchesCategory = selectedCategory === "all" || item.category === selectedCategory;
-    const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         item.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
 
   return (
     <div className="min-h-screen bg-[#FEF7CD]/10">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        {!tableNumber ? (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center py-12"
-          >
-            <QrCode className="w-16 h-16 mx-auto mb-4 text-primary" />
-            <h1 className="text-2xl font-bold mb-4">مرحباً بك في مطعمنا</h1>
-            <p className="text-gray-600 mb-6">
-              الرجاء مسح الباركود الموجود على طاولتك لبدء الطلب
-            </p>
-            {/* في التطبيق الحقيقي، سيتم استبدال هذا بقارئ باركود حقيقي */}
-            <button
-              onClick={() => setTableNumber("15")}
-              className="bg-primary text-white px-6 py-3 rounded-full hover:bg-primary/90 transition-colors"
-            >
-              محاكاة مسح الباركود
-            </button>
-          </motion.div>
-        ) : (
-          <>
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-2">
-                <ChefHat className="w-6 h-6 text-primary" />
-                <h1 className="text-2xl font-bold">قائمة الطعام</h1>
-              </div>
-              <div className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
-                <Timer className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium">طاولة رقم {tableNumber}</span>
-              </div>
-            </div>
+      <StoreCover 
+        language={language}
+        onToggleLanguage={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
+      />
+      
+      <div className="max-w-7xl mx-auto px-4 -mt-8 relative z-10">
+        <SearchBar onSearch={handleSearch} />
+        
+        <div className="mt-8">
+          <CategoryTabs
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onSelectCategory={setSelectedCategory}
+          />
+        </div>
 
-            <SearchBar onSearch={handleSearch} />
-            
-            <div className="mt-6">
-              <CategoryTabs
-                categories={categories}
-                selectedCategory={selectedCategory}
-                onSelectCategory={handleCategorySelect}
-              />
-            </div>
+        <div className="mt-6 grid grid-cols-1 gap-4">
+          {menuItems[selectedCategory]?.map((item) => (
+            <MenuItem key={item.id} item={item} />
+          ))}
+        </div>
 
-            <div className="mt-6 space-y-4">
-              {filteredItems.map((item) => (
-                <MenuItem
-                  key={item.id}
-                  item={item}
-                  onOrder={() => handleOrder(item.id)}
-                />
-              ))}
-            </div>
-          </>
-        )}
+        <div className="flex justify-center mt-8 pb-8">
+          <SocialLinks links={socialLinks} />
+        </div>
       </div>
     </div>
   );
