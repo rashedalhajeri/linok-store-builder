@@ -4,6 +4,7 @@ import { SearchBar } from "@/components/store/SearchBar";
 import { CategoryTabs } from "@/components/store/CategoryTabs";
 import { MenuItem } from "@/components/store/MenuItem";
 import { SocialLinks } from "@/components/store/SocialLinks";
+import { Facebook, Instagram, Twitter, Phone } from "lucide-react";
 
 const StoreTemplate4 = () => {
   const [selectedCategory, setSelectedCategory] = useState("main");
@@ -16,42 +17,37 @@ const StoreTemplate4 = () => {
     { id: "appetizers", label: "مقبلات" },
     { id: "salads", label: "سلطات" },
     { id: "drinks", label: "مشروبات" },
-    { id: "desserts", label: "حلويات" },
-    { id: "sides", label: "إضافات" },
-    { id: "shawarma", label: "شاورما" },
-    { id: "grills", label: "مشويات" },
-    { id: "rice", label: "أرز" },
-    { id: "pizza", label: "بيتزا" }
+    { id: "desserts", label: "حلويات" }
   ];
 
   const socialLinks = [
     {
       id: 1,
-      icon: "/icons/instagram.svg",
+      icon: <Instagram size={24} />,
       label: "Instagram",
       href: "https://instagram.com",
       bgColor: "bg-gradient-to-tr from-purple-600 to-pink-500"
     },
     {
       id: 2,
-      icon: "/icons/twitter.svg",
-      label: "Twitter",
-      href: "https://twitter.com",
-      bgColor: "bg-blue-400"
+      icon: <Facebook size={24} />,
+      label: "Facebook",
+      href: "https://facebook.com",
+      bgColor: "bg-blue-600"
     },
     {
       id: 3,
-      icon: "/icons/phone.svg",
-      label: "Phone",
-      href: "tel:+1234567890",
-      bgColor: "bg-green-500"
+      icon: <Twitter size={24} />,
+      label: "Twitter",
+      href: "https://twitter.com",
+      bgColor: "bg-sky-500"
     },
     {
       id: 4,
-      icon: "/icons/map-pin.svg",
-      label: "Location",
-      href: "https://maps.google.com",
-      bgColor: "bg-red-500"
+      icon: <Phone size={24} />,
+      label: "Phone",
+      href: "tel:+1234567890",
+      bgColor: "bg-green-500"
     }
   ];
 
@@ -134,13 +130,13 @@ const StoreTemplate4 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FEF7CD]/10">
+    <div className="min-h-screen bg-gray-50/50">
       <StoreCover 
         language={language}
         onToggleLanguage={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
       />
       
-      <div className="max-w-7xl mx-auto px-4 -mt-8 relative z-10">
+      <div className="max-w-4xl mx-auto px-4 -mt-8 relative z-10">
         <SearchBar onSearch={handleSearch} />
         
         <div className="mt-8">
@@ -151,15 +147,13 @@ const StoreTemplate4 = () => {
           />
         </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-4">
+        <div className="mt-6 grid grid-cols-1 gap-4 pb-24">
           {menuItems[selectedCategory]?.map((item) => (
             <MenuItem key={item.id} item={item} />
           ))}
         </div>
 
-        <div className="flex justify-center mt-8 pb-8">
-          <SocialLinks links={socialLinks} />
-        </div>
+        <SocialLinks links={socialLinks} />
       </div>
     </div>
   );
