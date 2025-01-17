@@ -18,10 +18,10 @@ export const SocialLinks = ({ links }: SocialLinksProps) => {
       {links.map((link) => (
         <motion.button
           key={link.id}
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.1, y: -2 }}
           whileTap={{ scale: 0.95 }}
           className={`p-2.5 rounded-full shadow-lg transition-all duration-300 
-            hover:shadow-xl hover:-translate-y-0.5 ${link.bgColor}`}
+            hover:shadow-xl ${link.bgColor} relative group`}
           onClick={() => window.open(link.href, '_blank')}
         >
           <div className="relative w-6 h-6 md:w-7 md:h-7">
@@ -30,7 +30,10 @@ export const SocialLinks = ({ links }: SocialLinksProps) => {
               alt={link.label}
               className="w-full h-full object-contain"
             />
-            <div className="absolute inset-0 bg-black/5 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-black/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </div>
+          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+            {link.label}
           </div>
         </motion.button>
       ))}

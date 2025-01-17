@@ -21,7 +21,7 @@ export const MenuItem = ({ item }: MenuItemProps) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group border-0 bg-white/80 backdrop-blur-sm">
+      <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group border-0 bg-gradient-to-b from-white/90 to-gray-50/90 backdrop-blur-sm">
         <div className="flex gap-4 p-4">
           <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden flex-shrink-0">
             <img
