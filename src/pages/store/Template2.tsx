@@ -69,22 +69,22 @@ const StoreTemplate2 = () => {
       icon: MessageSquare,
       label: "تواصل عبر تليغرام",
       href: "https://t.me/store",
-      bgColor: "bg-[#0088cc]"
+      bgColor: "bg-gradient-to-tr from-primary to-primary-light"
     },
     {
       id: 3,
       icon: MessageCircle,
       label: "راسلنا على الواتساب",
       href: "https://wa.me/1234567890",
-      bgColor: "bg-[#25D366]"
+      bgColor: "bg-gradient-to-tr from-green-500 to-green-400"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-[#1A1F2C] to-[#403E43]">
       {/* Hero Section with Store Info */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50">
-        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" />
+      <div className="relative overflow-hidden bg-gradient-to-r from-[#221F26]/80 via-[#1A1F2C]/80 to-[#403E43]/80">
+        <div className="absolute inset-0 bg-black/10 backdrop-blur-[2px]" />
         
         {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden">
@@ -92,13 +92,13 @@ const StoreTemplate2 = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="absolute -top-8 -right-8 w-72 h-72 bg-gradient-to-br from-primary-light/20 to-primary/20 rounded-full blur-3xl"
+            className="absolute -top-8 -right-8 w-72 h-72 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-full blur-3xl"
           />
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="absolute -bottom-8 -left-8 w-72 h-72 bg-gradient-to-tr from-secondary-light/20 to-secondary/20 rounded-full blur-3xl"
+            className="absolute -bottom-8 -left-8 w-72 h-72 bg-gradient-to-tr from-accent/20 to-accent-light/20 rounded-full blur-3xl"
           />
         </div>
 
@@ -114,21 +114,21 @@ const StoreTemplate2 = () => {
                 whileHover={{ scale: 1.05 }}
                 className="relative group cursor-pointer"
               >
-                <div className="w-36 h-36 mb-2 rounded-2xl overflow-hidden border-4 border-white shadow-xl 
-                             transition-all duration-300 group-hover:shadow-2xl bg-white">
+                <div className="w-36 h-36 mb-2 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-xl 
+                             transition-all duration-300 group-hover:shadow-2xl bg-[#221F26]/80 backdrop-blur-sm">
                   <img 
                     src="https://images.unsplash.com/photo-1549924231-f129b911e442"
                     alt="متجر السيارات الفاخرة"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/40 group-hover:opacity-0 transition-opacity duration-300" />
                 </div>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-white px-4 py-1 rounded-full shadow-lg"
+                  className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary/90 to-primary-light/90 backdrop-blur-sm px-4 py-1 rounded-full shadow-lg"
                 >
-                  <span className="text-sm font-medium text-gray-600">متجر معتمد</span>
+                  <span className="text-sm font-medium text-white">متجر معتمد</span>
                 </motion.div>
               </motion.div>
               
@@ -139,11 +139,11 @@ const StoreTemplate2 = () => {
                 transition={{ delay: 0.2 }}
                 className="space-y-4"
               >
-                <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-600">
+                <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
                   متجر السيارات الفاخرة
                 </h1>
-                <div className="flex items-center justify-center gap-2 text-gray-600 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
-                  <MapPin className="w-5 h-5 text-primary" />
+                <div className="flex items-center justify-center gap-2 text-white/90 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg border border-white/10">
+                  <MapPin className="w-5 h-5 text-primary-light" />
                   <span className="text-lg">الكويت - شارع الخليج العربي</span>
                 </div>
 
@@ -161,10 +161,10 @@ const StoreTemplate2 = () => {
                             onClick={() => window.open(link.href, '_blank')}
                           >
                             <link.icon className="w-6 h-6 relative z-10" />
-                            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                           </motion.button>
                         </TooltipTrigger>
-                        <TooltipContent>
+                        <TooltipContent className="bg-[#221F26]/90 backdrop-blur-sm border-primary/20 text-white">
                           <p>{link.label}</p>
                         </TooltipContent>
                       </Tooltip>
@@ -194,16 +194,16 @@ const StoreTemplate2 = () => {
             <motion.div
               key={category.id}
               whileHover={{ scale: 1.02, y: -2 }}
-              className="bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-sm hover:shadow-md 
-                       transition-all cursor-pointer border border-gray-100"
+              className="bg-[#221F26]/50 backdrop-blur-sm p-4 rounded-xl shadow-lg hover:shadow-xl 
+                       transition-all cursor-pointer border border-white/5"
               onClick={() => navigate("/search/template2")}
             >
               <div className="flex flex-col items-center gap-2">
-                <div className="p-3 bg-green-50 rounded-lg">
-                  <category.icon className="w-6 h-6 text-green-600" />
+                <div className="p-3 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-lg">
+                  <category.icon className="w-6 h-6 text-primary-light" />
                 </div>
-                <span className="font-medium text-sm text-center">{category.name}</span>
-                <span className="text-xs text-gray-500">{category.count} إعلان</span>
+                <span className="font-medium text-sm text-center text-white/90">{category.name}</span>
+                <span className="text-xs text-white/60">{category.count} إعلان</span>
               </div>
             </motion.div>
           ))}
@@ -212,7 +212,7 @@ const StoreTemplate2 = () => {
 
       {/* Featured Ads */}
       <div className="container mx-auto px-4 pb-12">
-        <h2 className="text-xl font-bold mb-6">إعلانات مميزة</h2>
+        <h2 className="text-xl font-bold mb-6 text-white/90">إعلانات مميزة</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {featuredAds.map((ad) => (
             <motion.div
@@ -220,7 +220,8 @@ const StoreTemplate2 = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               whileHover={{ y: -5 }}
-              className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer border border-gray-100"
+              className="bg-[#221F26]/50 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl 
+                       transition-all cursor-pointer border border-white/5"
               onClick={() => navigate(`/ad/template2/${ad.id}`)}
             >
               <div className="aspect-[4/3] relative">
@@ -235,30 +236,30 @@ const StoreTemplate2 = () => {
                   </span>
                 </div>
                 <div className="absolute top-3 left-3">
-                  <span className={`px-3 py-1 rounded-full text-sm ${
+                  <span className={`px-3 py-1 rounded-full text-sm backdrop-blur-sm ${
                     ad.condition === "جديد" 
-                    ? "bg-green-500/80 text-white" 
-                    : "bg-orange-500/80 text-white"
-                  } backdrop-blur-sm`}>
+                    ? "bg-primary/80 text-white" 
+                    : "bg-accent/80 text-white"
+                  }`}>
                     {ad.condition}
                   </span>
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="font-semibold text-lg mb-2 line-clamp-1">{ad.title}</h3>
-                <p className="text-green-600 font-bold text-xl mb-3">
+                <h3 className="font-semibold text-lg mb-2 line-clamp-1 text-white/90">{ad.title}</h3>
+                <p className="text-primary-light font-bold text-xl mb-3">
                   {ad.price}
                 </p>
-                <div className="flex items-center justify-between text-sm text-gray-500">
+                <div className="flex items-center justify-between text-sm text-white/60">
                   <span className="flex items-center gap-1.5">
                     <MapPin className="w-4 h-4" />
                     {ad.location}
                   </span>
                   <span>{ad.date}</span>
                 </div>
-                <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between text-sm text-gray-500">
-                  <span>{ad.views} مشاهدة</span>
-                  <span className="text-green-600 hover:text-green-700 transition-colors">
+                <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-sm">
+                  <span className="text-white/60">{ad.views} مشاهدة</span>
+                  <span className="text-primary-light hover:text-primary transition-colors">
                     عرض التفاصيل
                   </span>
                 </div>
