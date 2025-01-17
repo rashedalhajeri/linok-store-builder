@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/checkout/template1" element={<CheckoutTemplate1 />} />
         <Route path="/product/template1/:id" element={<ProductTemplate1 />} />
-        <Route path="/store/template1" element={<StoreTemplate1 />} />
+        <Route path="/store/template1/:storeId" element={<StoreTemplate1 />} />
         <Route path="/restaurant/scan" element={<ScanQR />} />
         <Route path="/restaurant/menu/:tableId" element={<Menu />} />
       </Routes>
