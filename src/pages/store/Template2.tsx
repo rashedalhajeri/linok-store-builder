@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, Car, Instagram, MessageCircle, Telegram } from "lucide-react";
+import { MapPin, Car, Instagram, MessageCircle, MessageSquare } from "lucide-react";
 import { SearchBar } from "@/components/store/SearchBar";
 import { Button } from "@/components/ui/button";
 import {
@@ -66,7 +66,7 @@ const StoreTemplate2 = () => {
     },
     {
       id: 2,
-      icon: Telegram,
+      icon: MessageSquare,  // Changed from Telegram to MessageSquare
       label: "تواصل عبر تليغرام",
       href: "https://t.me/store",
       bgColor: "bg-[#0088cc]"
