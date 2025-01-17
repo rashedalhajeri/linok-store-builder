@@ -20,7 +20,6 @@ import SuccessTemplate1 from "./pages/success/Template1";
 import SuccessTemplate4 from "./pages/success/Template4";
 import AdTemplate2 from "./pages/ad/Template2";
 import SearchTemplate2 from "./pages/search/Template2";
-import ContactTemplate2 from "./pages/contact/Template2";
 
 const queryClient = new QueryClient();
 
@@ -49,7 +48,6 @@ const App = () => (
           {/* Template 2 Routes */}
           <Route path="/ad/template2/:adId" element={<AdTemplate2 />} />
           <Route path="/search/template2" element={<SearchTemplate2 />} />
-          <Route path="/contact/template2" element={<ContactTemplate2 />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
