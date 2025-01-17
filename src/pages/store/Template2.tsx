@@ -1,12 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { Search, MapPin, Plus, Car, Home, Phone, Laptop } from "lucide-react";
 
 const StoreTemplate2 = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [ads] = useState([
+  const navigate = useNavigate();
+
+  const categories = [
+    { id: 1, name: "سيارات", icon: Car },
+    { id: 2, name: "عقارات", icon: Home },
+    { id: 3, name: "موبايلات", icon: Phone },
+    { id: 4, name: "إلكترونيات", icon: Laptop },
+  ];
+
+  const featuredAds = [
     {
       id: 1,
       title: "مرسيدس S-Class 2023",
@@ -23,52 +31,101 @@ const StoreTemplate2 = () => {
       date: "أمس",
       image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f"
     },
-  ]);
+    {
+      id: 3,
+      title: "لكزس LX 600 2024",
+      price: "42,000 د.ك",
+      location: "السالمية",
+      date: "منذ يومين",
+      image: "https://images.unsplash.com/photo-1485955900006-10f4d324d411"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header with Search */}
-      <div className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="relative">
-            <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <Input
-              type="text"
-              placeholder="ابحث عن إعلان..."
-              className="pr-10 py-6 text-lg rounded-2xl shadow-sm border-gray-100"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-gray-900 to-black text-white py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <h1 className="text-4xl font-bold text-center mb-6">
+              ابحث عن سيارتك المثالية
+            </h1>
+            <div className="flex gap-4">
+              <Input 
+                placeholder="ابحث عن سيارة..." 
+                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+              />
+              <Button 
+                className="bg-primary hover:bg-primary-dark"
+                onClick={() => navigate("/search/template2")}
+              >
+                <Search className="w-5 h-5" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Ads Grid */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {ads.map((ad) => (
+      {/* Categories */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {categories.map((category) => (
+            <motion.div
+              key={category.id}
+              whileHover={{ scale: 1.05 }}
+              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer"
+              onClick={() => navigate("/search/template2")}
+            >
+              <div className="flex flex-col items-center gap-3">
+                <category.icon className="w-8 h-8 text-primary" />
+                <span className="font-medium">{category.name}</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Featured Ads */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-bold">إعلانات مميزة</h2>
+          <Button 
+            variant="outline"
+            className="flex items-center gap-2"
+            onClick={() => navigate("/ad/template2/new")}
+          >
+            <Plus className="w-4 h-4" />
+            أضف إعلانك
+          </Button>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {featuredAds.map((ad) => (
             <motion.div
               key={ad.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -5 }}
               className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer"
+              onClick={() => navigate(`/ad/template2/${ad.id}`)}
             >
-              <div className="aspect-w-16 aspect-h-9 relative">
+              <div className="aspect-video relative">
                 <img 
                   src={ad.image} 
                   alt={ad.title}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="p-4">
-                <h3 className="font-medium text-lg mb-1">{ad.title}</h3>
-                <div className="flex items-center justify-between">
-                  <span className="text-primary font-bold">{ad.price}</span>
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <span>{ad.location}</span>
-                    <span>•</span>
-                    <span>{ad.date}</span>
-                  </div>
+                <h3 className="font-medium text-lg mb-2">{ad.title}</h3>
+                <p className="text-primary font-bold text-xl mb-2">
+                  {ad.price}
+                </p>
+                <div className="flex items-center justify-between text-sm text-gray-500">
+                  <span className="flex items-center gap-1">
+                    <MapPin className="w-4 h-4" />
+                    {ad.location}
+                  </span>
+                  <span>{ad.date}</span>
                 </div>
               </div>
             </motion.div>
