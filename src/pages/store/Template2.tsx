@@ -1,8 +1,14 @@
-import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Search, MapPin, Car, Home, Phone, Laptop } from "lucide-react";
+import { Search, MapPin, Car, Instagram, WhatsApp, MessageCircle } from "lucide-react";
 import { SearchBar } from "@/components/store/SearchBar";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const StoreTemplate2 = () => {
   const navigate = useNavigate();
@@ -50,37 +56,110 @@ const StoreTemplate2 = () => {
     }
   ];
 
+  const socialLinks = [
+    {
+      id: 1,
+      icon: Instagram,
+      label: "تابعنا على انستغرام",
+      href: "https://instagram.com/store",
+      color: "hover:text-pink-500"
+    },
+    {
+      id: 2,
+      icon: WhatsApp,
+      label: "تواصل عبر واتساب",
+      href: "https://wa.me/1234567890",
+      color: "hover:text-green-500"
+    },
+    {
+      id: 3,
+      icon: MessageCircle,
+      label: "راسلنا على تليغرام",
+      href: "https://t.me/store",
+      color: "hover:text-blue-500"
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-[#F2FCE2]/30">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
       {/* Hero Section with Store Info */}
-      <div className="bg-gradient-to-b from-[#F2FCE2] to-white">
-        <div className="container mx-auto px-4 pt-8 pb-16">
-          <div className="text-center mb-8">
-            <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white shadow-lg">
-              <img 
-                src="https://images.unsplash.com/photo-1549924231-f129b911e442"
-                alt="متجر السيارات الفاخرة"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">متجر السيارات الفاخرة</h1>
-            <div className="flex items-center justify-center gap-2 text-gray-600">
-              <MapPin className="w-4 h-4" />
-              <span>الكويت - شارع الخليج العربي</span>
-            </div>
-          </div>
-          
+      <div className="relative bg-gradient-to-b from-green-100/50 to-white/50 backdrop-blur-sm">
+        <div className="container mx-auto px-4 pt-12 pb-20">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="max-w-4xl mx-auto"
+            className="relative z-10 max-w-4xl mx-auto"
           >
-            <SearchBar onSearch={(query) => console.log(query)} />
+            <div className="flex flex-col items-center text-center">
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                className="w-32 h-32 mb-6 rounded-2xl overflow-hidden border-4 border-white shadow-xl relative"
+              >
+                <img 
+                  src="https://images.unsplash.com/photo-1549924231-f129b911e442"
+                  alt="متجر السيارات الفاخرة"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/10 hover:bg-black/0 transition-colors duration-300" />
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <h1 className="text-4xl font-bold text-gray-800 mb-3">متجر السيارات الفاخرة</h1>
+                <div className="flex items-center justify-center gap-2 text-gray-600 mb-6">
+                  <MapPin className="w-5 h-5 text-green-600" />
+                  <span className="text-lg">الكويت - شارع الخليج العربي</span>
+                </div>
+
+                <TooltipProvider>
+                  <div className="flex items-center justify-center gap-4">
+                    {socialLinks.map((link) => (
+                      <Tooltip key={link.id}>
+                        <TooltipTrigger asChild>
+                          <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            className={`p-3 rounded-xl bg-white shadow-md transition-all ${link.color}`}
+                            onClick={() => window.open(link.href, '_blank')}
+                          >
+                            <link.icon className="w-6 h-6" />
+                          </motion.button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>{link.label}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    ))}
+                  </div>
+                </TooltipProvider>
+              </motion.div>
+            </div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="mt-8"
+            >
+              <SearchBar 
+                placeholder="أبحث عن أول كلمتين من اسم الإعلان الرئيسي"
+                onSearch={(query) => console.log(query)} 
+              />
+            </motion.div>
           </motion.div>
+        </div>
+
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-8 -right-8 w-64 h-64 bg-green-200/20 rounded-full blur-3xl" />
+          <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-green-100/20 rounded-full blur-3xl" />
         </div>
       </div>
 
+      {/* Rest of the content */}
       {/* Categories */}
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
