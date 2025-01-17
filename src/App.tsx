@@ -18,7 +18,6 @@ import CartTemplate3 from "./pages/cart/Template3";
 import CartTemplate4 from "./pages/cart/Template4";
 import CheckoutTemplate1 from "./pages/checkout/Template1";
 import CheckoutTemplate2 from "./pages/checkout/Template2";
-import CheckoutTemplate3 from "./pages/checkout/Template3";
 import CheckoutTemplate4 from "./pages/checkout/Template4";
 import SuccessTemplate1 from "./pages/success/Template1";
 import SuccessTemplate2 from "./pages/success/Template2";
@@ -55,7 +54,6 @@ const App = () => (
           {/* Checkout Routes */}
           <Route path="/checkout/template1" element={<CheckoutTemplate1 />} />
           <Route path="/checkout/template2" element={<CheckoutTemplate2 />} />
-          <Route path="/checkout/template3" element={<CheckoutTemplate3 />} />
           <Route path="/checkout/template4" element={<CheckoutTemplate4 />} />
           {/* Success Routes */}
           <Route path="/success/template1" element={<SuccessTemplate1 />} />
