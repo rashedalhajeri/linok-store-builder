@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Search, MapPin, Car, Instagram, WhatsApp, MessageCircle } from "lucide-react";
+import { Search, MapPin, Car, Instagram, MessageSquare, MessageCircle } from "lucide-react";
 import { SearchBar } from "@/components/store/SearchBar";
 import { Button } from "@/components/ui/button";
 import {
@@ -66,7 +66,7 @@ const StoreTemplate2 = () => {
     },
     {
       id: 2,
-      icon: WhatsApp,
+      icon: MessageSquare,
       label: "تواصل عبر واتساب",
       href: "https://wa.me/1234567890",
       color: "hover:text-green-500"
@@ -144,10 +144,7 @@ const StoreTemplate2 = () => {
               transition={{ delay: 0.3 }}
               className="mt-8"
             >
-              <SearchBar 
-                placeholder="أبحث عن أول كلمتين من اسم الإعلان الرئيسي"
-                onSearch={(query) => console.log(query)} 
-              />
+              <SearchBar onSearch={(query) => console.log(query)} />
             </motion.div>
           </motion.div>
         </div>
