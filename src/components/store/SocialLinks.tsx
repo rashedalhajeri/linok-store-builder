@@ -30,11 +30,23 @@ export const SocialLinks = ({ links }: SocialLinksProps) => {
               alt={link.label}
               className="w-full h-full object-contain"
             />
-            <div className="absolute inset-0 bg-black/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <motion.div 
+              className="absolute inset-0 bg-black/5 rounded-full opacity-0 group-hover:opacity-100"
+              initial={false}
+              animate={{ scale: [0.9, 1], opacity: [0, 1] }}
+              transition={{ duration: 0.2 }}
+            />
           </div>
-          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+          <motion.div 
+            className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900/90 backdrop-blur-sm 
+              text-white text-xs py-1.5 px-3 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none
+              shadow-lg whitespace-nowrap"
+            initial={{ y: -5, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.2 }}
+          >
             {link.label}
-          </div>
+          </motion.div>
         </motion.button>
       ))}
     </div>
