@@ -91,7 +91,7 @@ const ProductTemplate1 = () => {
                   className="flex flex-col items-center"
                 >
                   <div className={`relative aspect-square w-full rounded-lg overflow-hidden shadow-sm transition-all duration-300
-                    ${selectedImage === image ? 'ring-2 ring-black scale-105' : 'hover:ring-2 hover:ring-gray-400'}`}
+                    ${selectedImage === image ? 'ring-2 ring-primary scale-105' : 'hover:ring-2 hover:ring-gray-400'}`}
                   >
                     <img 
                       src={image} 
@@ -115,7 +115,7 @@ const ProductTemplate1 = () => {
               <h1 className="text-xl font-semibold text-gray-900 tracking-tight">
                 {product.name}
               </h1>
-              <p className="text-xl font-medium text-black">
+              <p className="text-xl font-medium text-primary">
                 {calculatePrice()} د.ك
               </p>
               <div className="prose text-gray-600 leading-relaxed text-sm">
@@ -123,7 +123,7 @@ const ProductTemplate1 = () => {
                 {hasMoreDescription && !showFullDescription && (
                   <button
                     onClick={() => setShowFullDescription(true)}
-                    className="text-gray-900 hover:text-black mr-2 text-sm font-medium transition-colors"
+                    className="text-primary hover:text-primary-dark mr-2 text-sm font-medium transition-colors"
                   >
                     المزيد
                   </button>
@@ -143,7 +143,7 @@ const ProductTemplate1 = () => {
                         variant={selectedSize === size.id ? "default" : "outline"}
                         className={`h-8 px-2 text-sm ${
                           selectedSize === size.id
-                            ? "bg-black text-white hover:bg-gray-900"
+                            ? "bg-primary text-white hover:bg-primary-dark"
                             : "hover:bg-gray-50 border border-gray-200 text-gray-900"
                         }`}
                         onClick={() => setSelectedSize(size.id)}
@@ -164,7 +164,7 @@ const ProductTemplate1 = () => {
                         variant="outline"
                         className={`w-8 h-8 p-0 rounded-full transition-all duration-200 ${
                           selectedColor === color.id
-                            ? "ring-2 ring-black scale-110"
+                            ? "ring-2 ring-primary scale-110"
                             : "hover:ring-2 hover:ring-gray-400 hover:scale-105"
                         }`}
                         style={{
@@ -189,7 +189,7 @@ const ProductTemplate1 = () => {
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
                   placeholder="الرجاء إدخال اسمك"
-                  className="h-10 rounded-lg border-gray-200 focus:border-gray-900 focus:ring-2 focus:ring-gray-900/20 transition-all bg-white/70"
+                  className="h-10 rounded-lg border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all bg-white/70"
                 />
               </div>
 
@@ -209,7 +209,7 @@ const ProductTemplate1 = () => {
                   <Label
                     htmlFor="imageUpload"
                     className="flex flex-col items-center justify-center w-full h-28 rounded-lg border-2 border-dashed
-                      border-gray-200 hover:border-gray-900 cursor-pointer transition-all bg-white/50
+                      border-gray-200 hover:border-primary cursor-pointer transition-all bg-white/50
                       hover:bg-gray-50 group"
                   >
                     {previewUrl ? (
@@ -220,8 +220,8 @@ const ProductTemplate1 = () => {
                       />
                     ) : (
                       <div className="flex flex-col items-center space-y-2">
-                        <Upload className="h-6 w-6 text-gray-600 group-hover:text-gray-900 transition-colors" />
-                        <span className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">اضغط هنا لرفع صورة</span>
+                        <Upload className="h-6 w-6 text-gray-600 group-hover:text-primary transition-colors" />
+                        <span className="text-sm text-gray-600 group-hover:text-primary transition-colors">اضغط هنا لرفع صورة</span>
                       </div>
                     )}
                   </Label>
@@ -233,7 +233,7 @@ const ProductTemplate1 = () => {
             <div className="flex gap-4">
               <Button 
                 size="lg"
-                className="flex-1 rounded-lg bg-black hover:bg-gray-900 transition-all shadow-lg shadow-black/5 h-12 text-base"
+                className="flex-1 rounded-lg bg-primary hover:bg-primary-dark transition-all shadow-lg shadow-primary/5 h-12 text-base"
                 onClick={() => navigate("/cart")}
               >
                 إضافة للسلة
@@ -241,7 +241,7 @@ const ProductTemplate1 = () => {
               <Button 
                 size="lg"
                 variant="outline"
-                className="rounded-lg hover:bg-gray-50 border-2 border-gray-200 hover:border-gray-900 transition-all h-12"
+                className="rounded-lg hover:bg-gray-50 border-2 border-gray-200 hover:border-primary transition-all h-12"
                 onClick={() => window.history.back()}
               >
                 رجوع
