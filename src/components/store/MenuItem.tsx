@@ -24,7 +24,7 @@ export const MenuItem = ({ item }: MenuItemProps) => {
     >
       <Card className="overflow-hidden hover:shadow-lg transition-all">
         <div className="flex gap-3 p-3">
-          <div className="relative w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+          <div className="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
             <img
               src={item.image}
               alt={item.name}
@@ -35,24 +35,24 @@ export const MenuItem = ({ item }: MenuItemProps) => {
           <div className="flex-1">
             <div className="flex justify-between items-start">
               <div>
-                <h3 className="font-bold text-gray-900">{item.name}</h3>
-                <p className="text-sm text-gray-500 mt-0.5 line-clamp-2">
+                <h3 className="font-bold text-gray-900 text-sm">{item.name}</h3>
+                <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">
                   {item.description}
                 </p>
               </div>
-              <span className="text-sm font-bold text-primary whitespace-nowrap">
+              <span className="text-xs font-bold text-primary whitespace-nowrap">
                 {item.price} د.ك
               </span>
             </div>
             
-            <div className="flex gap-2 mt-2">
+            <div className="flex gap-1 mt-2">
               {item.isSpicy && (
-                <Badge variant="secondary" className="text-xs bg-red-50 text-red-600 hover:bg-red-50">
+                <Badge variant="secondary" className="text-[10px] px-1.5 py-0 bg-red-50 text-red-600 hover:bg-red-50">
                   حار 🌶️
                 </Badge>
               )}
               {item.isPopular && (
-                <Badge variant="secondary" className="text-xs bg-orange-50 text-orange-600 hover:bg-orange-50">
+                <Badge variant="secondary" className="text-[10px] px-1.5 py-0 bg-orange-50 text-orange-600 hover:bg-orange-50">
                   الأكثر طلباً ⭐️
                 </Badge>
               )}
