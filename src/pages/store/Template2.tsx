@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { MapPin, Car, Instagram, MessageCircle, MessageSquare } from "lucide-react";
 import { SearchBar } from "@/components/store/SearchBar";
@@ -9,9 +9,25 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useToast } from "@/components/ui/use-toast";
 
 const StoreTemplate2 = () => {
   const navigate = useNavigate();
+  const { storeId } = useParams();
+  const { toast } = useToast();
+
+  // Log the storeId to help with debugging
+  console.log("Current storeId:", storeId);
+
+  if (!storeId) {
+    // Show error toast if storeId is missing
+    toast({
+      variant: "destructive",
+      title: "خطأ",
+      description: "لم يتم العثور على المتجر",
+    });
+    return null;
+  }
 
   const categories = [
     { id: 1, name: "سيارات فاخرة", icon: Car, count: 150 },
