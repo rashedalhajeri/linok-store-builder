@@ -13,8 +13,11 @@ import ProductTemplate2 from "./pages/product/Template2";
 import ProductTemplate3 from "./pages/product/Template3";
 import ProductTemplate4 from "./pages/product/Template4";
 import Cart from "./pages/cart/Cart";
+import CartTemplate4 from "./pages/cart/Template4";
 import CheckoutTemplate1 from "./pages/checkout/Template1";
+import CheckoutTemplate4 from "./pages/checkout/Template4";
 import SuccessTemplate1 from "./pages/success/Template1";
+import SuccessTemplate4 from "./pages/success/Template4";
 import AdTemplate2 from "./pages/ad/Template2";
 import SearchTemplate2 from "./pages/search/Template2";
 import ContactTemplate2 from "./pages/contact/Template2";
@@ -38,8 +41,11 @@ const App = () => (
           <Route path="/product/template3/:productId" element={<ProductTemplate3 />} />
           <Route path="/product/template4/:productId" element={<ProductTemplate4 />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/cart/template4" element={<CartTemplate4 />} />
           <Route path="/checkout/template1" element={<CheckoutTemplate1 />} />
+          <Route path="/checkout/template4" element={<CheckoutTemplate4 />} />
           <Route path="/success/template1" element={<SuccessTemplate1 />} />
+          <Route path="/success/template4" element={<SuccessTemplate4 />} />
           {/* Template 2 Routes */}
           <Route path="/ad/template2/:adId" element={<AdTemplate2 />} />
           <Route path="/search/template2" element={<SearchTemplate2 />} />
