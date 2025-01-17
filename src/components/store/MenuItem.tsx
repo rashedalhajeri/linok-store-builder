@@ -20,10 +20,11 @@ export const MenuItem = ({ item }: MenuItemProps) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
+      className="cursor-pointer"
     >
       <Card className="overflow-hidden hover:shadow-lg transition-all">
-        <div className="flex gap-4 p-4">
-          <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden flex-shrink-0">
+        <div className="flex gap-3 p-3">
+          <div className="relative w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
             <img
               src={item.image}
               alt={item.name}
@@ -34,22 +35,24 @@ export const MenuItem = ({ item }: MenuItemProps) => {
           <div className="flex-1">
             <div className="flex justify-between items-start">
               <div>
-                <h3 className="font-bold text-gray-900 text-lg">{item.name}</h3>
-                <p className="text-sm text-gray-500 mt-1 line-clamp-2">
+                <h3 className="font-bold text-gray-900">{item.name}</h3>
+                <p className="text-sm text-gray-500 mt-0.5 line-clamp-2">
                   {item.description}
                 </p>
               </div>
-              <span className="font-bold text-primary text-lg">{item.price}</span>
+              <span className="text-sm font-bold text-primary whitespace-nowrap">
+                {item.price} د.ك
+              </span>
             </div>
             
-            <div className="flex gap-2 mt-3">
+            <div className="flex gap-2 mt-2">
               {item.isSpicy && (
-                <Badge variant="secondary" className="bg-red-50 text-red-600 hover:bg-red-50">
+                <Badge variant="secondary" className="text-xs bg-red-50 text-red-600 hover:bg-red-50">
                   حار 🌶️
                 </Badge>
               )}
               {item.isPopular && (
-                <Badge variant="secondary" className="bg-orange-50 text-orange-600 hover:bg-orange-50">
+                <Badge variant="secondary" className="text-xs bg-orange-50 text-orange-600 hover:bg-orange-50">
                   الأكثر طلباً ⭐️
                 </Badge>
               )}

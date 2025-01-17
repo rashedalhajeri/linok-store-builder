@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { motion } from "framer-motion";
 import { ChevronRight, Minus, Plus } from "lucide-react";
 
@@ -9,18 +11,42 @@ const ProductTemplate4 = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
+  const [selectedSize, setSelectedSize] = useState("medium");
+  const [extras, setExtras] = useState<string[]>([]);
 
   // Mock product data (in real app, fetch from API)
   const product = {
     id: productId,
     name: "برجر لحم واجيو",
-    description: "برجر لحم واجيو مع جبنة شيدر وصلصة خاصة. يقدم مع البطاطس المقلية والمشروبات الغازية.",
+    description: "برجر لحم واجيو مع جبنة شيدر وصلصة خاصة",
     price: "8.500",
     image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
     isSpicy: true,
     isPopular: true,
     calories: "850",
     preparationTime: "20-25",
+    sizes: [
+      { id: "small", label: "صغير", price: "7.500" },
+      { id: "medium", label: "وسط", price: "8.500" },
+      { id: "large", label: "كبير", price: "9.500" },
+    ],
+    extras: [
+      { id: "lettuce", label: "خس", price: "0.250" },
+      { id: "cheese", label: "جبنة إضافية", price: "0.500" },
+      { id: "onion", label: "بصل", price: "0.250" },
+      { id: "tomato", label: "طماطم", price: "0.250" },
+      { id: "pickles", label: "مخلل", price: "0.250" },
+    ]
+  };
+
+  const calculateTotal = () => {
+    const selectedSizePrice = product.sizes.find(s => s.id === selectedSize)?.price || "0";
+    const extrasTotal = extras.reduce((total, extraId) => {
+      const extra = product.extras.find(e => e.id === extraId);
+      return total + (extra ? parseFloat(extra.price) : 0);
+    }, 0);
+    
+    return ((parseFloat(selectedSizePrice) + extrasTotal) * quantity).toFixed(3);
   };
 
   return (
@@ -34,7 +60,7 @@ const ProductTemplate4 = () => {
           <ChevronRight className="h-6 w-6" />
         </Button>
         
-        <div className="h-[300px] md:h-[400px] relative">
+        <div className="h-[250px] md:h-[300px] relative">
           <img 
             src={product.image}
             alt={product.name}
@@ -44,7 +70,7 @@ const ProductTemplate4 = () => {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-4 -mt-20 relative z-10">
+      <div className="max-w-2xl mx-auto px-4 -mt-20 relative z-10 pb-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -66,37 +92,71 @@ const ProductTemplate4 = () => {
                 )}
               </div>
             </div>
-            <span className="text-2xl font-bold text-primary">{product.price} د.ك</span>
           </div>
 
           <p className="text-gray-600 mb-6">{product.description}</p>
 
-          <div className="flex justify-between items-center mb-6 text-sm text-gray-500">
-            <div>السعرات الحرارية: {product.calories} سعرة</div>
-            <div>وقت التحضير: {product.preparationTime} دقيقة</div>
-          </div>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold mb-3">اختر الحجم</h3>
+              <RadioGroup value={selectedSize} onValueChange={setSelectedSize} className="flex gap-4">
+                {product.sizes.map((size) => (
+                  <div key={size.id} className="flex items-center space-x-2 space-x-reverse">
+                    <RadioGroupItem value={size.id} id={size.id} />
+                    <label htmlFor={size.id} className="text-sm">
+                      {size.label} ({size.price} د.ك)
+                    </label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
 
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              >
-                <Minus className="h-4 w-4" />
-              </Button>
-              <span className="text-xl font-semibold">{quantity}</span>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => setQuantity(quantity + 1)}
-              >
-                <Plus className="h-4 w-4" />
+            <div>
+              <h3 className="text-lg font-semibold mb-3">الإضافات</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {product.extras.map((extra) => (
+                  <div key={extra.id} className="flex items-center space-x-2 space-x-reverse">
+                    <Checkbox
+                      id={extra.id}
+                      checked={extras.includes(extra.id)}
+                      onCheckedChange={(checked) => {
+                        if (checked) {
+                          setExtras([...extras, extra.id]);
+                        } else {
+                          setExtras(extras.filter(e => e !== extra.id));
+                        }
+                      }}
+                    />
+                    <label htmlFor={extra.id} className="text-sm">
+                      {extra.label} (+{extra.price} د.ك)
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between pt-4 border-t">
+              <div className="flex items-center gap-4">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                >
+                  <Minus className="h-4 w-4" />
+                </Button>
+                <span className="text-xl font-semibold">{quantity}</span>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => setQuantity(quantity + 1)}
+                >
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </div>
+              <Button className="px-8">
+                إضافة للسلة ({calculateTotal()} د.ك)
               </Button>
             </div>
-            <Button className="px-8">
-              إضافة للسلة ({(Number(product.price) * quantity).toFixed(3)} د.ك)
-            </Button>
           </div>
         </motion.div>
       </div>
