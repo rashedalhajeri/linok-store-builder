@@ -66,7 +66,7 @@ const StoreTemplate2 = () => {
     },
     {
       id: 2,
-      icon: MessageSquare,  // Changed from Telegram to MessageSquare
+      icon: MessageSquare,
       label: "تواصل عبر تليغرام",
       href: "https://t.me/store",
       bgColor: "bg-[#0088cc]"
@@ -81,38 +81,55 @@ const StoreTemplate2 = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section with Store Info */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-green-100/50 to-white/50 backdrop-blur-sm" />
+      <div className="relative overflow-hidden bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50">
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" />
         
         {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-8 -right-8 w-64 h-64 bg-green-200/20 rounded-full blur-3xl" />
-          <div className="absolute -bottom-8 -left-8 w-64 h-64 bg-green-100/20 rounded-full blur-3xl" />
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="absolute -top-8 -right-8 w-72 h-72 bg-gradient-to-br from-primary-light/20 to-primary/20 rounded-full blur-3xl"
+          />
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="absolute -bottom-8 -left-8 w-72 h-72 bg-gradient-to-tr from-secondary-light/20 to-secondary/20 rounded-full blur-3xl"
+          />
         </div>
 
-        <div className="container mx-auto px-4 pt-8 pb-16 relative z-10">
+        <div className="container mx-auto px-4 pt-12 pb-20 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto"
           >
-            <div className="flex flex-col items-center text-center">
+            <div className="flex flex-col items-center text-center space-y-8">
               {/* Store Logo */}
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="relative group"
+                className="relative group cursor-pointer"
               >
-                <div className="w-32 h-32 mb-6 rounded-2xl overflow-hidden border-4 border-white shadow-xl 
-                             transition-all duration-300 group-hover:shadow-2xl">
+                <div className="w-36 h-36 mb-2 rounded-2xl overflow-hidden border-4 border-white shadow-xl 
+                             transition-all duration-300 group-hover:shadow-2xl bg-white">
                   <img 
                     src="https://images.unsplash.com/photo-1549924231-f129b911e442"
                     alt="متجر السيارات الفاخرة"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
                 </div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-white px-4 py-1 rounded-full shadow-lg"
+                >
+                  <span className="text-sm font-medium text-gray-600">متجر معتمد</span>
+                </motion.div>
               </motion.div>
               
               {/* Store Info */}
@@ -122,26 +139,29 @@ const StoreTemplate2 = () => {
                 transition={{ delay: 0.2 }}
                 className="space-y-4"
               >
-                <h1 className="text-4xl font-bold text-gray-800 mb-2">متجر السيارات الفاخرة</h1>
-                <div className="flex items-center justify-center gap-2 text-gray-600">
-                  <MapPin className="w-5 h-5 text-green-600" />
+                <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-600">
+                  متجر السيارات الفاخرة
+                </h1>
+                <div className="flex items-center justify-center gap-2 text-gray-600 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
+                  <MapPin className="w-5 h-5 text-primary" />
                   <span className="text-lg">الكويت - شارع الخليج العربي</span>
                 </div>
 
                 {/* Social Links */}
                 <TooltipProvider>
-                  <div className="flex items-center justify-center gap-3 mt-6">
+                  <div className="flex items-center justify-center gap-4 mt-8">
                     {socialLinks.map((link) => (
                       <Tooltip key={link.id}>
                         <TooltipTrigger asChild>
                           <motion.button
                             whileHover={{ scale: 1.1, y: -2 }}
                             whileTap={{ scale: 0.95 }}
-                            className={`p-3 rounded-xl shadow-lg transition-all ${link.bgColor} 
-                                      hover:shadow-xl text-white`}
+                            className={`p-3.5 rounded-xl shadow-lg transition-all ${link.bgColor} 
+                                      hover:shadow-xl text-white relative group overflow-hidden`}
                             onClick={() => window.open(link.href, '_blank')}
                           >
-                            <link.icon className="w-6 h-6" />
+                            <link.icon className="w-6 h-6 relative z-10" />
+                            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                           </motion.button>
                         </TooltipTrigger>
                         <TooltipContent>
@@ -159,7 +179,7 @@ const StoreTemplate2 = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mt-8"
+              className="mt-12"
             >
               <SearchBar onSearch={(query) => console.log(query)} />
             </motion.div>
