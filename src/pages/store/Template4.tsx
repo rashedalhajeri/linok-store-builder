@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { StoreCover } from "@/components/store/StoreCover";
-import { SearchBar } from "@/components/store/SearchBar";
+import { SearchBar } from "@/components/store/template4/SearchBar";
 import { CategoryTabs } from "@/components/store/CategoryTabs";
-import { MenuItem } from "@/components/store/MenuItem";
+import { MenuItem } from "@/components/store/template4/MenuItem";
 import { SocialLinks } from "@/components/store/SocialLinks";
 
 const StoreTemplate4 = () => {
