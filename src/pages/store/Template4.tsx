@@ -4,6 +4,7 @@ import { SearchBar } from "@/components/store/SearchBar";
 import { CategoryTabs } from "@/components/store/CategoryTabs";
 import { MenuItem } from "@/components/store/MenuItem";
 import { SocialLinks } from "@/components/store/SocialLinks";
+import { Twitter, Instagram, Phone, MessageCircle } from "lucide-react";
 
 const StoreTemplate4 = () => {
   const [selectedCategory, setSelectedCategory] = useState("main");
@@ -27,31 +28,31 @@ const StoreTemplate4 = () => {
   const socialLinks = [
     {
       id: 1,
-      icon: "/icons/instagram.svg",
-      label: "Instagram",
-      href: "https://instagram.com",
-      bgColor: "bg-gradient-to-tr from-purple-600 to-pink-500"
+      icon: <Twitter className="w-5 h-5 text-white" />,
+      label: "Twitter",
+      href: "https://twitter.com",
+      bgColor: "bg-[#1DA1F2]"
     },
     {
       id: 2,
-      icon: "/icons/twitter.svg",
-      label: "Twitter",
-      href: "https://twitter.com",
-      bgColor: "bg-blue-400"
+      icon: <Instagram className="w-5 h-5 text-white" />,
+      label: "Instagram",
+      href: "https://instagram.com",
+      bgColor: "bg-[#E4405F]"
     },
     {
       id: 3,
-      icon: "/icons/phone.svg",
-      label: "Phone",
-      href: "tel:+1234567890",
-      bgColor: "bg-green-500"
+      icon: <MessageCircle className="w-5 h-5 text-white" />,
+      label: "WhatsApp",
+      href: "https://wa.me/1234567890",
+      bgColor: "bg-[#25D366]"
     },
     {
       id: 4,
-      icon: "/icons/map-pin.svg",
-      label: "Location",
-      href: "https://maps.google.com",
-      bgColor: "bg-red-500"
+      icon: <Phone className="w-5 h-5 text-white" />,
+      label: "Phone",
+      href: "tel:+1234567890",
+      bgColor: "bg-[#34B7F1]"
     }
   ];
 
@@ -91,40 +92,6 @@ const StoreTemplate4 = () => {
         price: "6.500 د.ك",
         image: "https://images.unsplash.com/photo-1525164286253-04e68b9d94c6",
         isPopular: true
-      }
-    ],
-    sandwiches: [
-      {
-        id: 5,
-        name: "كلوب ساندويتش",
-        description: "دجاج مشوي مع جبنة وخضار",
-        price: "4.500 د.ك",
-        image: "https://images.unsplash.com/photo-1550507992-eb63ffee0847",
-        isPopular: true
-      },
-      {
-        id: 6,
-        name: "فيليه ستيك ساندويتش",
-        description: "شرائح لحم مع صلصة خاصة",
-        price: "5.750 د.ك",
-        image: "https://images.unsplash.com/photo-1559847844-5315695dadae",
-        isSpicy: true
-      }
-    ],
-    appetizers: [
-      {
-        id: 7,
-        name: "حمص",
-        description: "حمص مع زيت زيتون وصنوبر",
-        price: "2.500 د.ك",
-        image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea",
-      },
-      {
-        id: 8,
-        name: "متبل",
-        description: "متبل باذنجان طازج",
-        price: "2.250 د.ك",
-        image: "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d",
       }
     ]
   };
