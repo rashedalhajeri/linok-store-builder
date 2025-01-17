@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Instagram, MessageSquare, Phone } from "lucide-react";
 
 interface SocialLink {
   id: number;

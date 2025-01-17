@@ -110,23 +110,23 @@ const StoreTemplate1 = () => {
   const socialLinks = [
     { 
       id: 1, 
-      icon: "/lovable-uploads/5d02b4d3-9041-47ca-8ac3-08cf337c2be1.png", 
+      icon: <Instagram className="w-5 h-5 text-pink-600" />, 
       label: "Instagram", 
       href: "https://instagram.com/yourusername",
       bgColor: "bg-white"
     },
     { 
       id: 2, 
-      icon: "/lovable-uploads/17454f1f-bb90-4fcd-91fc-664c8942f958.png", 
+      icon: <MessageSquare className="w-5 h-5 text-green-600" />, 
       label: "WhatsApp", 
       href: "https://wa.me/96500000000",
       bgColor: "bg-white"
     },
     { 
       id: 3, 
-      icon: "/lovable-uploads/b7fc8d57-a3ea-476d-a1c2-c5f272c432e9.png", 
-      label: "TikTok", 
-      href: "https://tiktok.com/@yourusername",
+      icon: <Phone className="w-5 h-5 text-gray-600" />, 
+      label: "Phone", 
+      href: "tel:+96500000000",
       bgColor: "bg-white"
     }
   ];
