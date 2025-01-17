@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Search, MapPin, Plus, Car, Home, Phone, Laptop } from "lucide-react";
+import { Search, MapPin, Car, Home, Phone, Laptop } from "lucide-react";
 
 const StoreTemplate2 = () => {
   const navigate = useNavigate();
@@ -87,17 +87,7 @@ const StoreTemplate2 = () => {
 
       {/* Featured Ads */}
       <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold">إعلانات مميزة</h2>
-          <Button 
-            variant="outline"
-            className="flex items-center gap-2"
-            onClick={() => navigate("/ad/template2/new")}
-          >
-            <Plus className="w-4 h-4" />
-            أضف إعلانك
-          </Button>
-        </div>
+        <h2 className="text-2xl font-bold mb-6">إعلانات مميزة</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredAds.map((ad) => (
             <motion.div
