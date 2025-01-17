@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { StoreCover } from "@/components/store/StoreCover";
 import { SearchBar } from "@/components/store/SearchBar";
 import { CategoryTabs } from "@/components/store/CategoryTabs";
 import { MenuItem } from "@/components/store/MenuItem";
-import { SocialLinks } from "@/components/store/SocialLinks";
-import { Facebook, Instagram, Twitter, Phone } from "lucide-react";
+import { motion } from "framer-motion";
+import { Instagram, Facebook, Twitter, Phone } from "lucide-react";
 
 const StoreTemplate4 = () => {
   const [selectedCategory, setSelectedCategory] = useState("main");
@@ -18,37 +19,6 @@ const StoreTemplate4 = () => {
     { id: "salads", label: "سلطات" },
     { id: "drinks", label: "مشروبات" },
     { id: "desserts", label: "حلويات" }
-  ];
-
-  const socialLinks = [
-    {
-      id: 1,
-      icon: <Instagram size={24} />,
-      label: "Instagram",
-      href: "https://instagram.com",
-      bgColor: "bg-gradient-to-tr from-purple-600 to-pink-500"
-    },
-    {
-      id: 2,
-      icon: <Facebook size={24} />,
-      label: "Facebook",
-      href: "https://facebook.com",
-      bgColor: "bg-blue-600"
-    },
-    {
-      id: 3,
-      icon: <Twitter size={24} />,
-      label: "Twitter",
-      href: "https://twitter.com",
-      bgColor: "bg-sky-500"
-    },
-    {
-      id: 4,
-      icon: <Phone size={24} />,
-      label: "Phone",
-      href: "tel:+1234567890",
-      bgColor: "bg-green-500"
-    }
   ];
 
   const menuItems = {
@@ -153,7 +123,53 @@ const StoreTemplate4 = () => {
           ))}
         </div>
 
-        <SocialLinks links={socialLinks} />
+        {/* New Social Links Design */}
+        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
+          <motion.div 
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="flex gap-3 bg-white/80 backdrop-blur-lg p-3 rounded-full shadow-lg"
+          >
+            <motion.a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-2 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 text-white"
+            >
+              <Instagram size={20} />
+            </motion.a>
+            <motion.a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-2 rounded-full bg-blue-600 text-white"
+            >
+              <Facebook size={20} />
+            </motion.a>
+            <motion.a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-2 rounded-full bg-sky-500 text-white"
+            >
+              <Twitter size={20} />
+            </motion.a>
+            <motion.a
+              href="tel:+1234567890"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-2 rounded-full bg-green-500 text-white"
+            >
+              <Phone size={20} />
+            </motion.a>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
