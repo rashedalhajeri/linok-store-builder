@@ -14,6 +14,9 @@ import ProductTemplate3 from "./pages/product/Template3";
 import Cart from "./pages/cart/Cart";
 import CheckoutTemplate1 from "./pages/checkout/Template1";
 import SuccessTemplate1 from "./pages/success/Template1";
+import AdTemplate2 from "./pages/ad/Template2";
+import SearchTemplate2 from "./pages/search/Template2";
+import ContactTemplate2 from "./pages/contact/Template2";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +38,10 @@ const App = () => (
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout/template1" element={<CheckoutTemplate1 />} />
           <Route path="/success/template1" element={<SuccessTemplate1 />} />
+          {/* Template 2 Routes */}
+          <Route path="/ad/template2/:adId" element={<AdTemplate2 />} />
+          <Route path="/search/template2" element={<SearchTemplate2 />} />
+          <Route path="/contact/template2" element={<ContactTemplate2 />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
