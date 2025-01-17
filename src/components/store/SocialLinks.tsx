@@ -20,14 +20,18 @@ export const SocialLinks = ({ links }: SocialLinksProps) => {
           key={link.id}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className={`p-2 rounded-full shadow-sm transition-all duration-300 ${link.bgColor}`}
+          className={`p-2.5 rounded-full shadow-lg transition-all duration-300 
+            hover:shadow-xl hover:-translate-y-0.5 ${link.bgColor}`}
           onClick={() => window.open(link.href, '_blank')}
         >
-          <img 
-            src={link.icon} 
-            alt={link.label}
-            className="w-5 h-5 md:w-6 md:h-6 object-contain"
-          />
+          <div className="relative w-6 h-6 md:w-7 md:h-7">
+            <img 
+              src={link.icon} 
+              alt={link.label}
+              className="w-full h-full object-contain"
+            />
+            <div className="absolute inset-0 bg-black/5 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300" />
+          </div>
         </motion.button>
       ))}
     </div>
