@@ -1,212 +1,169 @@
-import { Card } from "@/components/ui/card";
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Search, MapPin } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { LanguageToggle } from "@/components/store/LanguageToggle";
 import { useState } from "react";
-import { translations } from "@/utils/translations";
+import { StoreCover } from "@/components/store/StoreCover";
+import { SearchBar } from "@/components/store/SearchBar";
+import { CategoryTabs } from "@/components/store/CategoryTabs";
+import { MenuItem } from "@/components/store/MenuItem";
+import { SocialLinks } from "@/components/store/SocialLinks";
+import { Instagram, MessageSquare, Phone } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const StoreTemplate2 = () => {
-  const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState("main");
   const [language, setLanguage] = useState<'en' | 'ar'>('ar');
-  
+  const navigate = useNavigate();
+
   const categories = [
-    { name: "تويوتا لاند كروزر" },
-    { name: "لكزس الفطيم" },
-    { name: "نيسان العربية" },
-    { name: "هونداي الوكالة" },
-    { name: "كيا الجبر" },
-    { name: "مرسيدس الغانم" },
-    { name: "بي ام دبليو الناغي" },
-    { name: "أودي سماكو" },
+    { id: "main", label: "الأطباق الرئيسية" },
+    { id: "burgers", label: "برجر" },
+    { id: "grills", label: "مشويات" },
+    { id: "sandwiches", label: "سندويشات" },
+    { id: "appetizers", label: "مقبلات" },
+    { id: "salads", label: "سلطات" },
+    { id: "drinks", label: "مشروبات" },
   ];
 
-  const ads = [
+  const socialLinks = [
     {
       id: 1,
-      title: {
-        ar: "كاميرا كانون احترافية",
-        en: "Professional Canon Camera"
-      },
-      price: {
-        ar: "450 د.ك",
-        en: "KWD 450"
-      },
-      location: {
-        ar: "حولي",
-        en: "Hawally"
-      },
-      date: {
-        ar: "منذ 3 أيام",
-        en: "3 days ago"
-      },
-      description: {
-        ar: "كاميرا احترافية بحالة ممتازة مع جميع الملحقات",
-        en: "Professional camera in excellent condition with all accessories"
-      },
-      image: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&q=80"
+      icon: <Instagram className="w-5 h-5 text-white" />,
+      label: "Instagram",
+      href: "https://instagram.com",
+      bgColor: "bg-gradient-to-r from-purple-500 to-pink-500"
     },
     {
       id: 2,
-      title: {
-        ar: "لابتوب ماك برو 2023",
-        en: "MacBook Pro 2023"
-      },
-      price: {
-        ar: "800 د.ك",
-        en: "KWD 800"
-      },
-      location: {
-        ar: "السالمية",
-        en: "Salmiya"
-      },
-      date: {
-        ar: "منذ يومين",
-        en: "2 days ago"
-      },
-      description: {
-        ar: "جهاز جديد لم يستخدم - ضمان سنة",
-        en: "Brand new device - one year warranty"
-      },
-      image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80"
+      icon: <MessageSquare className="w-5 h-5 text-white" />,
+      label: "WhatsApp",
+      href: "https://wa.me/1234567890",
+      bgColor: "bg-green-500"
     },
     {
       id: 3,
-      title: {
-        ar: "ساعة آبل الجيل الثامن",
-        en: "Apple Watch Series 8"
-      },
-      price: {
-        ar: "120 د.ك",
-        en: "KWD 120"
-      },
-      location: {
-        ar: "الجهراء",
-        en: "Jahra"
-      },
-      date: {
-        ar: "منذ 5 أيام",
-        en: "5 days ago"
-      },
-      description: {
-        ar: "ساعة آبل الإصدار الأخير مع جميع الملحقات",
-        en: "Latest Apple Watch with all accessories"
-      },
-      image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&q=80"
-    },
-    {
-      id: 4,
-      title: {
-        ar: "ايفون 15 برو ماكس",
-        en: "iPhone 15 Pro Max"
-      },
-      price: {
-        ar: "550 د.ك",
-        en: "KWD 550"
-      },
-      location: {
-        ar: "العاصمة",
-        en: "Capital"
-      },
-      date: {
-        ar: "اليوم",
-        en: "Today"
-      },
-      description: {
-        ar: "جهاز جديد مع الضمان - سعة 256 جيجا",
-        en: "New device with warranty - 256GB"
-      },
-      image: "https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&q=80"
+      icon: <Phone className="w-5 h-5 text-white" />,
+      label: "Phone",
+      href: "tel:+1234567890",
+      bgColor: "bg-blue-500"
     }
   ];
 
-  const toggleLanguage = () => {
-    setLanguage(prev => prev === 'en' ? 'ar' : 'en');
+  const menuItems = {
+    main: [
+      {
+        id: 1,
+        name: "مندي لحم",
+        description: "أرز بسمتي مع لحم الضأن المطبوخ على الطريقة اليمنية التقليدية",
+        price: "12.500",
+        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+        isPopular: true
+      },
+      {
+        id: 2,
+        name: "كبسة دجاج",
+        description: "أرز مع دجاج مشوي متبل بالبهارات العربية",
+        price: "8.500",
+        image: "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91",
+        isPopular: true
+      },
+      {
+        id: 3,
+        name: "برياني لحم",
+        description: "أرز برياني هندي مع قطع اللحم المتبلة والمكسرات",
+        price: "11.500",
+        image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8",
+        isSpicy: true
+      }
+    ],
+    burgers: [
+      {
+        id: 4,
+        name: "برجر لحم واجيو",
+        description: "برجر لحم واجيو مع جبنة شيدر وصلصة خاصة",
+        price: "8.500",
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+        isSpicy: true,
+        isPopular: true
+      },
+      {
+        id: 5,
+        name: "برجر دجاج مقرمش",
+        description: "برجر دجاج مقرمش مع صلصة الرانش",
+        price: "6.500",
+        image: "https://images.unsplash.com/photo-1525164286253-04e68b9d94c6",
+        isPopular: true
+      },
+      {
+        id: 6,
+        name: "برجر لحم مشوي",
+        description: "برجر لحم مشوي مع جبنة موزاريلا وصلصة باربكيو",
+        price: "7.500",
+        image: "https://images.unsplash.com/photo-1550317138-10000687a72b",
+        isPopular: true
+      }
+    ],
+    grills: [
+      {
+        id: 7,
+        name: "مشاوي مشكل",
+        description: "تشكيلة من اللحوم المشوية مع الخضار والأرز",
+        price: "15.500",
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947",
+        isPopular: true
+      },
+      {
+        id: 8,
+        name: "شيش طاووق",
+        description: "قطع دجاج متبلة مشوية مع الخضار",
+        price: "9.500",
+        image: "https://images.unsplash.com/photo-1532636875304-0c89119d9b4d",
+        isPopular: true
+      },
+      {
+        id: 9,
+        name: "كباب لحم",
+        description: "كباب لحم مشوي مع البهارات العربية",
+        price: "10.500",
+        image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143",
+        isSpicy: true
+      }
+    ]
+  };
+
+  const handleSearch = (query: string) => {
+    console.log("Searching for:", query);
+  };
+
+  const handleItemClick = (itemId: number) => {
+    navigate(`/product/template2/${itemId}`);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-green-50 to-green-100">
-      <div className="bg-gradient-to-r from-gray-900 to-black text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold">
-              {language === 'ar' ? 'تصفح الإعلانات' : 'Browse Ads'}
-            </h1>
-            <LanguageToggle language={language} onToggle={toggleLanguage} />
-          </div>
-          <div className="max-w-xl mx-auto flex gap-2">
-            <Input 
-              placeholder={language === 'ar' ? "ابحث عن سيارة..." : "Search for a car..."}
-              className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-            />
-            <button className="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition-colors">
-              <Search className="w-5 h-5" />
-            </button>
-          </div>
+    <div className="min-h-screen bg-[#FEF7CD]/10">
+      <StoreCover 
+        language={language}
+        onToggleLanguage={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
+      />
+      
+      <div className="max-w-3xl mx-auto px-4 -mt-8 relative z-10">
+        <SearchBar onSearch={handleSearch} />
+        
+        <div className="mt-8">
+          <CategoryTabs
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onSelectCategory={setSelectedCategory}
+          />
         </div>
-      </div>
 
-      <div className="container mx-auto px-4 py-8">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
-          {language === 'ar' ? 'الوكلاء المعتمدون' : 'Authorized Dealers'}
-        </h2>
-        <div className="grid grid-cols-4 md:grid-cols-8 gap-2">
-          {categories.map((category) => (
-            <motion.div
-              key={category.name}
-              whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center p-2 bg-white rounded-lg hover:shadow-sm transition-all border border-gray-100"
-            >
-              <span className="text-xs font-medium text-gray-800 text-center">{category.name}</span>
-            </motion.div>
+        <div className="mt-6 grid grid-cols-1 gap-4">
+          {menuItems[selectedCategory]?.map((item) => (
+            <div key={item.id} onClick={() => handleItemClick(item.id)}>
+              <MenuItem item={item} />
+            </div>
           ))}
         </div>
-      </div>
 
-      <div className="container mx-auto px-4 py-8">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
-          {language === 'ar' ? 'أحدث الإعلانات' : 'Latest Ads'}
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          {ads.map((ad) => (
-            <motion.div
-              key={ad.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              whileHover={{ y: -5 }}
-            >
-              <Card 
-                className="overflow-hidden hover:shadow-lg transition-all cursor-pointer h-full flex flex-col"
-                onClick={() => navigate(`/product/template2/${ad.id}`)}
-              >
-                <div className="aspect-square relative">
-                  <img 
-                    src={ad.image} 
-                    alt={ad.title[language]}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-4 flex flex-col flex-grow">
-                  <h3 className="text-sm font-medium mb-2 text-gray-800 line-clamp-2">
-                    {ad.title[language]}
-                  </h3>
-                  <div className="flex items-center gap-1 text-gray-500 text-xs mb-2">
-                    <MapPin className="w-3 h-3 flex-shrink-0" />
-                    <span className="truncate">{ad.location[language]}</span>
-                    <span className="mx-1">•</span>
-                    <span className="text-gray-400 truncate">{ad.date[language]}</span>
-                  </div>
-                  <div className="mt-auto text-left">
-                    <span className="text-green-500 font-bold text-base">
-                      {ad.price[language]}
-                    </span>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-          ))}
+        <div className="flex justify-center mt-8 pb-8">
+          <SocialLinks links={socialLinks} />
         </div>
       </div>
     </div>

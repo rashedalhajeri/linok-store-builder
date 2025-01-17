@@ -1,404 +1,169 @@
-import { 
-  Phone, 
-  MessageSquare, 
-  Instagram, 
-  MapPin, 
-  ExternalLink, 
-  ShoppingBag,
-  Sparkles,
-  Glasses,
-  FlaskConical,
-  Search,
-  CircleCheck
-} from "lucide-react";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { motion } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { translations } from "@/utils/translations";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import { Input } from "@/components/ui/input";
+import { useState } from "react";
 import { StoreCover } from "@/components/store/StoreCover";
+import { SearchBar } from "@/components/store/SearchBar";
+import { CategoryTabs } from "@/components/store/CategoryTabs";
+import { MenuItem } from "@/components/store/MenuItem";
 import { SocialLinks } from "@/components/store/SocialLinks";
-
-const products = [
-  {
-    id: 1,
-    name: "luxuryBags",
-    price: "125 د.ك",
-    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3"
-  },
-  {
-    id: 2,
-    name: "classicWatch",
-    price: "250 د.ك",
-    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314"
-  },
-  {
-    id: 3,
-    name: "sunglassesProduct",
-    price: "75 د.ك",
-    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f"
-  },
-  {
-    id: 4,
-    name: "luxuryPerfume",
-    price: "95 د.ك",
-    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f"
-  }
-];
-
-const categories = [
-  { 
-    id: 0,
-    name: "allProducts", 
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
-    showImage: true
-  },
-  { 
-    id: 1, 
-    name: "bestSellers", 
-    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3",
-    showImage: true
-  },
-  { 
-    id: 2, 
-    name: "bags", 
-    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314",
-    showImage: true
-  },
-  { 
-    id: 3, 
-    name: "watches", 
-    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
-    showImage: true
-  },
-  { 
-    id: 4, 
-    name: "sunglasses", 
-    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f",
-    showImage: true
-  },
-  { 
-    id: 5, 
-    name: "perfumes", 
-    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
-    showImage: true
-  },
-  { 
-    id: 6, 
-    name: "accessories", 
-    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314",
-    showImage: true
-  }
-];
+import { Instagram, MessageSquare, Phone } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const StoreTemplate1 = () => {
-  const navigate = useNavigate();
-  const isMobile = useIsMobile();
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("main");
   const [language, setLanguage] = useState<'en' | 'ar'>('ar');
-  const [showSearch, setShowSearch] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(0);
-  const searchRef = useRef<HTMLDivElement>(null);
-  
-  const t = translations[language];
+  const navigate = useNavigate();
+
+  const categories = [
+    { id: "main", label: "الأطباق الرئيسية" },
+    { id: "burgers", label: "برجر" },
+    { id: "grills", label: "مشويات" },
+    { id: "sandwiches", label: "سندويشات" },
+    { id: "appetizers", label: "مقبلات" },
+    { id: "salads", label: "سلطات" },
+    { id: "drinks", label: "مشروبات" },
+  ];
 
   const socialLinks = [
-    { 
-      id: 1, 
-      icon: <Instagram className="w-5 h-5 text-pink-600" />, 
-      label: "Instagram", 
+    {
+      id: 1,
+      icon: <Instagram className="w-5 h-5 text-pink-600" />,
+      label: "Instagram",
       href: "https://instagram.com/yourusername",
       bgColor: "bg-white"
     },
-    { 
-      id: 2, 
-      icon: <MessageSquare className="w-5 h-5 text-green-600" />, 
-      label: "WhatsApp", 
+    {
+      id: 2,
+      icon: <MessageSquare className="w-5 h-5 text-green-600" />,
+      label: "WhatsApp",
       href: "https://wa.me/96500000000",
       bgColor: "bg-white"
     },
-    { 
-      id: 3, 
-      icon: <Phone className="w-5 h-5 text-gray-600" />, 
-      label: "Phone", 
+    {
+      id: 3,
+      icon: <Phone className="w-5 h-5 text-gray-600" />,
+      label: "Phone",
       href: "tel:+96500000000",
       bgColor: "bg-white"
     }
   ];
 
-  const toggleLanguage = () => {
-    setLanguage(prev => prev === 'en' ? 'ar' : 'en');
-  };
-
-  const handleMapClick = () => {
-    window.open('https://maps.google.com/?q=Kuwait+Capital+Governorate+Kuwait', '_blank');
-  };
-
-  const handleSearchClick = () => {
-    if (showSearch) {
-      setShowSearch(false);
-      setSelectedCategory(0);
-    } else {
-      setShowSearch(true);
-      searchRef.current?.scrollIntoView({ behavior: 'instant' });
-      const inputElement = searchRef.current?.querySelector('input');
-      if (inputElement) {
-        inputElement.focus();
+  const menuItems = {
+    main: [
+      {
+        id: 1,
+        name: "مندي لحم",
+        description: "أرز بسمتي مع لحم الضأن المطبوخ على الطريقة اليمنية التقليدية",
+        price: "12.500",
+        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+        isPopular: true
+      },
+      {
+        id: 2,
+        name: "كبسة دجاج",
+        description: "أرز مع دجاج مشوي متبل بالبهارات العربية",
+        price: "8.500",
+        image: "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91",
+        isPopular: true
+      },
+      {
+        id: 3,
+        name: "برياني لحم",
+        description: "أرز برياني هندي مع قطع اللحم المتبلة والمكسرات",
+        price: "11.500",
+        image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8",
+        isSpicy: true
       }
-    }
+    ],
+    burgers: [
+      {
+        id: 4,
+        name: "برجر لحم واجيو",
+        description: "برجر لحم واجيو مع جبنة شيدر وصلصة خاصة",
+        price: "8.500",
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+        isSpicy: true,
+        isPopular: true
+      },
+      {
+        id: 5,
+        name: "برجر دجاج مقرمش",
+        description: "برجر دجاج مقرمش مع صلصة الرانش",
+        price: "6.500",
+        image: "https://images.unsplash.com/photo-1525164286253-04e68b9d94c6",
+        isPopular: true
+      },
+      {
+        id: 6,
+        name: "برجر لحم مشوي",
+        description: "برجر لحم مشوي مع جبنة موزاريلا وصلصة باربكيو",
+        price: "7.500",
+        image: "https://images.unsplash.com/photo-1550317138-10000687a72b",
+        isPopular: true
+      }
+    ],
+    grills: [
+      {
+        id: 7,
+        name: "مشاوي مشكل",
+        description: "تشكيلة من اللحوم المشوية مع الخضار والأرز",
+        price: "15.500",
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947",
+        isPopular: true
+      },
+      {
+        id: 8,
+        name: "شيش طاووق",
+        description: "قطع دجاج متبلة مشوية مع الخضار",
+        price: "9.500",
+        image: "https://images.unsplash.com/photo-1532636875304-0c89119d9b4d",
+        isPopular: true
+      },
+      {
+        id: 9,
+        name: "كباب لحم",
+        description: "كباب لحم مشوي مع البهارات العربية",
+        price: "10.500",
+        image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143",
+        isSpicy: true
+      }
+    ]
+  };
+
+  const handleSearch = (query: string) => {
+    console.log("Searching for:", query);
+  };
+
+  const handleItemClick = (itemId: number) => {
+    navigate(`/product/template1/${itemId}`);
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F9FA]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+    <div className="min-h-screen bg-[#FEF7CD]/10">
       <StoreCover 
         language={language}
-        onToggleLanguage={toggleLanguage}
+        onToggleLanguage={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
       />
-
-      <div className="max-w-[90%] md:max-w-4xl mx-auto px-4 relative">
-        <div className="relative -mt-20 md:-mt-32 mb-6 md:mb-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col gap-4 md:gap-6"
-          >
-            <div className="flex justify-between items-end">
-              <div className="relative group">
-                <Avatar className="w-28 h-28 md:w-40 md:h-40 border-4 border-white rounded-full shadow-xl bg-white">
-                  <AvatarImage 
-                    src="https://images.unsplash.com/photo-1441986300917-64674bd600d8" 
-                    className="object-cover"
-                  />
-                  <AvatarFallback>LS</AvatarFallback>
-                </Avatar>
-                <motion.div 
-                  className="absolute inset-0 rounded-full bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                  whileHover={{ scale: 1.05 }}
-                />
-              </div>
-              
-              <SocialLinks links={socialLinks} />
-            </div>
-
-            <div className="bg-white rounded-2xl shadow-sm p-4 md:p-8">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 flex items-center gap-2">
-                    {t.storeName}
-                    <CircleCheck className="w-5 h-5 text-[#1DA1F2] inline-block" />
-                  </h1>
-                  <p className="text-sm md:text-base text-gray-500 font-medium">
-                    @yourstorehandle
-                  </p>
-                </div>
-                <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="rounded-full hover:bg-gray-50"
-                    onClick={handleSearchClick}
-                  >
-                    <Search className="h-4 w-4 text-gray-900" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="rounded-full hover:bg-gray-50"
-                  >
-                    <ExternalLink className="h-4 w-4 text-gray-900" />
-                  </Button>
-                </div>
-              </div>
-
-              <p className="text-sm md:text-base text-gray-700 mt-4 leading-relaxed">
-                {isExpanded ? t.storeDescription : t.storeDescription.slice(0, 75)}
-                {t.storeDescription.length > 75 && (
-                  <button
-                    onClick={() => setIsExpanded(!isExpanded)}
-                    className="mr-1 text-primary hover:underline focus:outline-none"
-                  >
-                    {isExpanded ? t.showLess : t.showMore}
-                  </button>
-                )}
-              </p>
-              
-              <div className="flex flex-wrap items-center gap-4 md:gap-6 text-gray-500 text-xs md:text-sm mt-4 md:mt-6">
-                <motion.button 
-                  onClick={handleMapClick}
-                  className="flex items-center gap-1.5 hover:text-primary transition-colors group relative"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <motion.div
-                    className="relative"
-                    initial={{ scale: 1 }}
-                    animate={{ 
-                      scale: [1, 1.2, 1],
-                      rotate: [0, -10, 10, -10, 0]
-                    }}
-                    transition={{ 
-                      duration: 2,
-                      repeat: Infinity,
-                      repeatDelay: 3
-                    }}
-                  >
-                    <MapPin className="w-4 h-4 text-primary" />
-                    <div className="absolute -inset-1 bg-primary/10 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300" />
-                  </motion.div>
-                  <span className="relative">
-                    العاصمة، الكويت
-                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-                  </span>
-                </motion.button>
-              </div>
-            </div>
-          </motion.div>
+      
+      <div className="max-w-3xl mx-auto px-4 -mt-8 relative z-10">
+        <SearchBar onSearch={handleSearch} />
+        
+        <div className="mt-8">
+          <CategoryTabs
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onSelectCategory={setSelectedCategory}
+          />
         </div>
 
-        <div className="bg-white shadow-sm rounded-2xl mb-6 overflow-hidden">
-          <Carousel
-            opts={{
-              align: "end",
-              loop: true,
-              dragFree: true,
-            }}
-            className="w-full p-4"
-            dir="rtl"
-          >
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {categories.map((category) => (
-                <CarouselItem 
-                  key={category.id} 
-                  className={`pl-2 md:pl-4 basis-1/4 md:basis-1/5 lg:basis-1/6 ${category.id === 0 ? 'order-first' : ''}`}
-                >
-                  <button
-                    onClick={() => setSelectedCategory(category.id)}
-                    className="w-full group focus:outline-none"
-                  >
-                    <div className="relative aspect-square rounded-lg overflow-hidden mb-2 bg-gray-50">
-                      <img 
-                        src={category.image} 
-                        alt={t[category.name]}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent group-hover:from-black/40 transition-colors" />
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <span 
-                        className={`text-xs md:text-sm font-medium transition-all duration-300 ${
-                          category.id === selectedCategory 
-                            ? 'text-gray-900 scale-110 font-bold' 
-                            : 'text-gray-700'
-                        } group-hover:text-gray-900`}
-                      >
-                        {t[category.name]}
-                      </span>
-                    </div>
-                  </button>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-        </div>
-
-        {showSearch && (
-          <div 
-            ref={searchRef}
-            className="bg-white rounded-2xl shadow-sm p-4 mb-6 animate-fade-in"
-          >
-            <Input
-              placeholder="ابحث عن المنتجات..."
-              className="w-full"
-              autoFocus
-            />
-          </div>
-        )}
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 pb-8">
-          {products.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -4 }}
-            >
-              <Card 
-                className="overflow-hidden transition-all duration-300 cursor-pointer border-0 rounded-2xl bg-white hover:shadow-lg"
-                onClick={() => navigate(`/product/template1/${product.id}`)}
-              >
-                <div className="relative aspect-square">
-                  <img 
-                    src={product.image} 
-                    alt={t[product.name]} 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-4 pt-6">
-                  <h3 className="font-medium text-sm md:text-base text-gray-900 mb-1.5">
-                    {t[product.name]}
-                  </h3>
-                  <p className="text-gray-900 font-bold text-base md:text-lg">
-                    {product.price}
-                  </p>
-                </div>
-              </Card>
-            </motion.div>
+        <div className="mt-6 grid grid-cols-1 gap-4">
+          {menuItems[selectedCategory]?.map((item) => (
+            <div key={item.id} onClick={() => handleItemClick(item.id)}>
+              <MenuItem item={item} />
+            </div>
           ))}
         </div>
-      </div>
 
-      <div className="w-full py-8 bg-gradient-to-r from-white via-gray-50 to-white border-t">
-        <div className="max-w-[90%] md:max-w-4xl mx-auto text-center">
-          <div className="flex flex-col items-center justify-center space-y-2">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex items-center gap-2"
-            >
-              <span className="text-sm text-gray-500">صنع بكل</span>
-              <motion.div
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{ 
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
-              >
-                ❤️
-              </motion.div>
-              <span className="text-sm text-gray-500">في</span>
-            </motion.div>
-            
-            <motion.a
-              href="https://linok.me"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative inline-flex items-center justify-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg blur-xl group-hover:blur-2xl transition-all duration-300 opacity-70" />
-              <div className="relative bg-white px-4 py-1.5 rounded-lg border border-gray-100 shadow-sm">
-                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent font-bold">
-                  linok.me
-                </span>
-              </div>
-            </motion.a>
-            
-            <p className="text-xs text-gray-400 mt-2">
-              منصة متخصصة في إنشاء المتاجر الإلكترونية
-            </p>
-          </div>
+        <div className="flex justify-center mt-8 pb-8">
+          <SocialLinks links={socialLinks} />
         </div>
       </div>
     </div>
