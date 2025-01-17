@@ -11,12 +11,17 @@ const StoreTemplate4 = () => {
 
   const categories = [
     { id: "main", label: "الأطباق الرئيسية" },
-    { id: "sandwiches", label: "السندويشات" },
-    { id: "appetizers", label: "المقبلات" },
-    { id: "salads", label: "السلطات" },
-    { id: "drinks", label: "المشروبات" },
-    { id: "desserts", label: "الحلويات" },
-    { id: "sides", label: "الإضافات" }
+    { id: "burgers", label: "برجر" },
+    { id: "sandwiches", label: "سندويشات" },
+    { id: "appetizers", label: "مقبلات" },
+    { id: "salads", label: "سلطات" },
+    { id: "drinks", label: "مشروبات" },
+    { id: "desserts", label: "حلويات" },
+    { id: "sides", label: "إضافات" },
+    { id: "shawarma", label: "شاورما" },
+    { id: "grills", label: "مشويات" },
+    { id: "rice", label: "أرز" },
+    { id: "pizza", label: "بيتزا" }
   ];
 
   const socialLinks = [
@@ -54,6 +59,24 @@ const StoreTemplate4 = () => {
     main: [
       {
         id: 1,
+        name: "مشاوي مشكل",
+        description: "تشكيلة من اللحوم المشوية مع الأرز والخضار",
+        price: "15.500 د.ك",
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947",
+        isPopular: true
+      },
+      {
+        id: 2,
+        name: "مندي لحم",
+        description: "لحم ضأن مطهو على الطريقة اليمنية",
+        price: "12.000 د.ك",
+        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+        isPopular: true
+      }
+    ],
+    burgers: [
+      {
+        id: 3,
         name: "برجر لحم واجيو",
         description: "برجر لحم واجيو مع جبنة شيدر وصلصة خاصة",
         price: "8.500 د.ك",
@@ -62,25 +85,17 @@ const StoreTemplate4 = () => {
         isPopular: true
       },
       {
-        id: 2,
-        name: "ستيك تندرلوين",
-        description: "ستيك تندرلوين مشوي مع صلصة الفطر",
-        price: "12.000 د.ك",
-        image: "https://images.unsplash.com/photo-1600891964092-4316c288032e",
-        isPopular: true
-      },
-      {
-        id: 3,
-        name: "دجاج مشوي",
-        description: "دجاج مشوي متبل مع الأعشاب",
-        price: "7.500 د.ك",
-        image: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b",
+        id: 4,
+        name: "برجر دجاج مقرمش",
+        description: "برجر دجاج مقرمش مع صلصة الرانش",
+        price: "6.500 د.ك",
+        image: "https://images.unsplash.com/photo-1525164286253-04e68b9d94c6",
         isPopular: true
       }
     ],
     sandwiches: [
       {
-        id: 4,
+        id: 5,
         name: "كلوب ساندويتش",
         description: "دجاج مشوي مع جبنة وخضار",
         price: "4.500 د.ك",
@@ -88,7 +103,7 @@ const StoreTemplate4 = () => {
         isPopular: true
       },
       {
-        id: 5,
+        id: 6,
         name: "فيليه ستيك ساندويتش",
         description: "شرائح لحم مع صلصة خاصة",
         price: "5.750 د.ك",
@@ -98,84 +113,18 @@ const StoreTemplate4 = () => {
     ],
     appetizers: [
       {
-        id: 6,
-        name: "سلطة سيزر",
-        description: "خس روماني مع صلصة سيزر وقطع الدجاج المشوي",
-        price: "4.500 د.ك",
-        image: "https://images.unsplash.com/photo-1550304943-4f24f54ddde9"
-      },
-      {
         id: 7,
-        name: "حلقات البصل المقلية",
-        description: "حلقات بصل مقرمشة مع صلصة خاصة",
-        price: "3.250 د.ك",
-        image: "https://images.unsplash.com/photo-1639024471283-03518883512d",
-        isPopular: true
-      }
-    ],
-    salads: [
+        name: "حمص",
+        description: "حمص مع زيت زيتون وصنوبر",
+        price: "2.500 د.ك",
+        image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea",
+      },
       {
         id: 8,
-        name: "سلطة يونانية",
-        description: "خضار طازجة مع جبنة فيتا",
-        price: "4.000 د.ك",
-        image: "https://images.unsplash.com/photo-1540420773420-3366772f4999"
-      },
-      {
-        id: 9,
-        name: "سلطة الكينوا",
-        description: "كينوا مع خضار وصلصة خاصة",
-        price: "4.750 د.ك",
-        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd"
-      }
-    ],
-    drinks: [
-      {
-        id: 10,
-        name: "عصير برتقال طازج",
-        description: "عصير برتقال طبيعي 100%",
-        price: "2.000 د.ك",
-        image: "https://images.unsplash.com/photo-1613478223719-2ab802602423"
-      },
-      {
-        id: 11,
-        name: "سموذي المانجو",
-        description: "مانجو طازج مع الحليب",
-        price: "2.500 د.ك",
-        image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4"
-      }
-    ],
-    desserts: [
-      {
-        id: 12,
-        name: "تشيز كيك",
-        description: "تشيز كيك نيويورك مع صلصة التوت",
-        price: "3.500 د.ك",
-        image: "https://images.unsplash.com/photo-1508737027454-e6454ef45afd",
-        isPopular: true
-      },
-      {
-        id: 13,
-        name: "براونيز",
-        description: "براونيز شوكولاتة مع آيس كريم فانيليا",
-        price: "3.250 د.ك",
-        image: "https://images.unsplash.com/photo-1564355808539-22fda35bed7e"
-      }
-    ],
-    sides: [
-      {
-        id: 14,
-        name: "بطاطس مقلية",
-        description: "بطاطس مقلية مقرمشة",
-        price: "2.000 د.ك",
-        image: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d"
-      },
-      {
-        id: 15,
-        name: "أرز بالزعفران",
-        description: "أرز بسمتي مع الزعفران",
+        name: "متبل",
+        description: "متبل باذنجان طازج",
         price: "2.250 د.ك",
-        image: "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6"
+        image: "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d",
       }
     ]
   };
