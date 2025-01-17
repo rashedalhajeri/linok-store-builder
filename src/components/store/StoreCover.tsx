@@ -15,13 +15,13 @@ export const StoreCover = ({ language, onToggleLanguage }: StoreCoverProps) => {
           onToggle={onToggleLanguage}
         />
       </div>
-      <div className="h-[250px] md:h-[350px] relative overflow-hidden">
+      <div className="h-[200px] md:h-[300px] bg-gradient-to-b from-gray-900/70 to-gray-900/50">
         <img 
-          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
-          alt="Restaurant Interior"
+          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8"
+          alt="Store Cover"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30" />
       </div>
     </div>
   );
