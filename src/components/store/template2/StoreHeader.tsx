@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Phone, MessageSquare, BrandTiktok } from "lucide-react";
+import { MapPin, Phone, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface StoreHeaderProps {
@@ -94,7 +94,7 @@ export const StoreHeader = ({
                 className="bg-[#007AFF]/10 border-0 hover:bg-[#007AFF]/20 text-[#007AFF]"
                 onClick={() => handleSocialClick('tiktok')}
               >
-                <BrandTiktok className="w-4 h-4 ml-2" />
+                <MessageSquare className="w-4 h-4 ml-2" rotate={45} />
                 تيك توك
               </Button>
             </div>
