@@ -10,7 +10,7 @@ interface StoreHeaderProps {
 
 export const StoreHeader = ({ storeName, location, description, logo }: StoreHeaderProps) => {
   return (
-    <div className="relative overflow-hidden bg-white/80 backdrop-blur-sm border-b border-[#D3E4FD] shadow-sm">
+    <div className="relative overflow-hidden bg-white border-b border-[#E5E5EA] shadow-sm">
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col space-y-6">
           <div className="flex items-start justify-between">
@@ -19,7 +19,7 @@ export const StoreHeader = ({ storeName, location, description, logo }: StoreHea
                 whileHover={{ scale: 1.05 }}
                 className="relative group"
               >
-                <div className="w-20 h-20 rounded-xl overflow-hidden border-2 border-[#E5DEFF] shadow-lg">
+                <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-[#007AFF]/10 shadow-lg">
                   <img 
                     src={logo}
                     alt={storeName}
@@ -32,12 +32,12 @@ export const StoreHeader = ({ storeName, location, description, logo }: StoreHea
                 <motion.h1 
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-2xl md:text-3xl font-bold text-gray-800"
+                  className="text-2xl md:text-3xl font-bold text-[#1A1A1A]"
                 >
                   {storeName}
                 </motion.h1>
-                <div className="flex items-center gap-1.5 text-sm text-[#8E9196] mt-2">
-                  <MapPin className="w-4 h-4 text-[#6B4EFF]" />
+                <div className="flex items-center gap-1.5 text-sm text-[#8E8E93] mt-2">
+                  <MapPin className="w-4 h-4 text-[#007AFF]" />
                   <span>{location}</span>
                 </div>
               </div>
@@ -48,9 +48,9 @@ export const StoreHeader = ({ storeName, location, description, logo }: StoreHea
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="max-w-2xl bg-[#E5DEFF]/30 p-4 rounded-xl border border-[#D3E4FD]"
+            className="max-w-2xl bg-[#007AFF]/5 p-4 rounded-xl"
           >
-            <p className="text-gray-600 leading-relaxed text-sm">
+            <p className="text-[#1A1A1A] leading-relaxed text-sm">
               {description}
             </p>
           </motion.div>

@@ -61,7 +61,7 @@ const StoreTemplate2 = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#F2FCE2] to-[#E8F5D9]">
+    <div className="min-h-screen bg-[#F5F6F8]">
       <StoreHeader 
         storeName={storeInfo.name}
         location={storeInfo.location}
@@ -94,7 +94,7 @@ const StoreTemplate2 = () => {
       </div>
 
       <div className="container mx-auto px-4 pb-12">
-        <h2 className="text-xl font-bold mb-6 text-gray-800">إعلانات مميزة</h2>
+        <h2 className="text-xl font-bold mb-6 text-[#1A1A1A]">إعلانات مميزة</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredAds.map((ad) => (
             <FeaturedAdCard
