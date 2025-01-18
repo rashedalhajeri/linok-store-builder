@@ -11,17 +11,17 @@ interface CategoryCardProps {
 export const CategoryCard = ({ icon: Icon, name, count, onClick }: CategoryCardProps) => {
   return (
     <motion.div
-      whileHover={{ scale: 1.02, y: -2 }}
-      className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md 
+      whileHover={{ scale: 1.02 }}
+      className="bg-white p-4 rounded-lg shadow-sm hover:shadow 
                  transition-all cursor-pointer border border-[#E5E5EA]"
       onClick={onClick}
     >
-      <div className="flex flex-col items-center gap-4 py-2">
-        <div className="p-4 bg-primary/10 rounded-xl">
-          <Icon className="w-8 h-8 text-primary" />
+      <div className="flex items-center gap-3">
+        <div className="p-2 bg-primary/10 rounded-lg">
+          <Icon className="w-5 h-5 text-primary" />
         </div>
-        <div className="text-center">
-          <h3 className="font-semibold text-[#1A1A1A] text-lg mb-1">{name}</h3>
+        <div>
+          <h3 className="font-medium text-[#1A1A1A]">{name}</h3>
           <span className="text-sm text-muted">{count} إعلان</span>
         </div>
       </div>

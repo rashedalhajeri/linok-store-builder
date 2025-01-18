@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { Car } from "lucide-react";
+import { Car, Truck, Suv } from "lucide-react";
 import { StoreHeader } from "@/components/store/template2/StoreHeader";
 import { CategoryCard } from "@/components/store/template2/CategoryCard";
 import { FeaturedAdCard } from "@/components/store/template2/FeaturedAdCard";
@@ -23,10 +23,9 @@ const StoreTemplate2 = () => {
   };
 
   const categories = [
-    { id: 1, name: "سيارات فاخرة", icon: Car, count: 150 },
-    { id: 2, name: "سيارات رياضية", icon: Car, count: 89 },
-    { id: 3, name: "سيارات عائلية", icon: Car, count: 234 },
-    { id: 4, name: "سيارات اقتصادية", icon: Car, count: 167 },
+    { id: 1, name: "سيارات صالون", icon: Car, count: 45 },
+    { id: 2, name: "سيارات جيب", icon: Suv, count: 32 },
+    { id: 3, name: "سيارات نص نقل", icon: Truck, count: 28 },
   ];
 
   const featuredAds = [
@@ -86,20 +85,20 @@ const StoreTemplate2 = () => {
         </motion.div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-6">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-2xl font-bold mb-8 text-[#1A1A1A] text-center"
+          className="text-lg font-medium mb-4 text-[#1A1A1A]"
         >
-          تصفح حسب الفئة
+          الفئات
         </motion.h2>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto"
         >
           {categories.map((category, index) => (
             <motion.div
