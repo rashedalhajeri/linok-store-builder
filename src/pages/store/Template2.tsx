@@ -5,6 +5,7 @@ import { CategoryCard } from "@/components/store/template2/CategoryCard";
 import { FeaturedAdCard } from "@/components/store/template2/FeaturedAdCard";
 import { SearchBar } from "@/components/store/SearchBar";
 import { motion } from "framer-motion";
+import { QuickContactButtons } from "@/components/store/QuickContactButtons";
 
 const StoreTemplate2 = () => {
   const navigate = useNavigate();
@@ -14,7 +15,12 @@ const StoreTemplate2 = () => {
     name: "متجر السيارات الفاخرة",
     location: "الكويت - شارع الخليج العربي",
     description: "نحن متجر متخصص في بيع السيارات الفاخرة والرياضية. نقدم مجموعة واسعة من أفخم السيارات العالمية مع خدمة عملاء متميزة وضمان الجودة.",
-    logo: "https://images.unsplash.com/photo-1549924231-f129b911e442"
+    logo: "https://images.unsplash.com/photo-1549924231-f129b911e442",
+    socialLinks: {
+      whatsapp: "+96512345678",
+      phone: "+96587654321",
+      tiktok: "@luxurycars"
+    }
   };
 
   const categories = [
@@ -67,6 +73,7 @@ const StoreTemplate2 = () => {
         location={storeInfo.location}
         description={storeInfo.description}
         logo={storeInfo.logo}
+        socialLinks={storeInfo.socialLinks}
       />
 
       <div className="container mx-auto px-4 py-8">
@@ -74,37 +81,72 @@ const StoreTemplate2 = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
+          className="max-w-2xl mx-auto"
         >
           <SearchBar onSearch={(query) => console.log(query)} />
         </motion.div>
       </div>
 
       <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {categories.map((category) => (
-            <CategoryCard
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-4"
+        >
+          {categories.map((category, index) => (
+            <motion.div
               key={category.id}
-              icon={category.icon}
-              name={category.name}
-              count={category.count}
-              onClick={() => navigate("/search/template2")}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * index }}
+            >
+              <CategoryCard
+                icon={category.icon}
+                name={category.name}
+                count={category.count}
+                onClick={() => navigate("/search/template2")}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <div className="container mx-auto px-4 pb-12">
-        <h2 className="text-xl font-bold mb-6 text-[#1A1A1A]">إعلانات مميزة</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featuredAds.map((ad) => (
-            <FeaturedAdCard
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="text-xl font-bold mb-6 text-[#1A1A1A]"
+        >
+          إعلانات مميزة
+        </motion.h2>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {featuredAds.map((ad, index) => (
+            <motion.div
               key={ad.id}
-              {...ad}
-              onClick={() => navigate(`/ad/template2/${ad.id}`)}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * index }}
+            >
+              <FeaturedAdCard
+                {...ad}
+                onClick={() => navigate(`/ad/template2/${ad.id}`)}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
+
+      <QuickContactButtons 
+        whatsappNumber={storeInfo.socialLinks.whatsapp}
+        phoneNumber={storeInfo.socialLinks.phone}
+      />
     </div>
   );
 };

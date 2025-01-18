@@ -1,19 +1,45 @@
 import { motion } from "framer-motion";
-import { MapPin } from "lucide-react";
+import { MapPin, Phone, MessageSquare, BrandTiktok } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface StoreHeaderProps {
   storeName: string;
   location: string;
   description: string;
   logo: string;
+  socialLinks: {
+    whatsapp: string;
+    phone: string;
+    tiktok: string;
+  };
 }
 
-export const StoreHeader = ({ storeName, location, description, logo }: StoreHeaderProps) => {
+export const StoreHeader = ({ 
+  storeName, 
+  location, 
+  description, 
+  logo,
+  socialLinks 
+}: StoreHeaderProps) => {
+  const handleSocialClick = (type: 'whatsapp' | 'phone' | 'tiktok') => {
+    switch(type) {
+      case 'whatsapp':
+        window.open(`https://wa.me/${socialLinks.whatsapp}`, '_blank');
+        break;
+      case 'phone':
+        window.open(`tel:${socialLinks.phone}`, '_blank');
+        break;
+      case 'tiktok':
+        window.open(`https://tiktok.com/${socialLinks.tiktok}`, '_blank');
+        break;
+    }
+  };
+
   return (
     <div className="relative overflow-hidden bg-white border-b border-[#E5E5EA] shadow-sm">
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col space-y-6">
-          <div className="flex items-start justify-between">
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
             <div className="flex items-center gap-6">
               <motion.div 
                 whileHover={{ scale: 1.05 }}
@@ -41,6 +67,36 @@ export const StoreHeader = ({ storeName, location, description, logo }: StoreHea
                   <span>{location}</span>
                 </div>
               </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Button
+                variant="outline"
+                size="sm"
+                className="bg-[#007AFF]/10 border-0 hover:bg-[#007AFF]/20 text-[#007AFF]"
+                onClick={() => handleSocialClick('whatsapp')}
+              >
+                <MessageSquare className="w-4 h-4 ml-2" />
+                واتساب
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="bg-[#007AFF]/10 border-0 hover:bg-[#007AFF]/20 text-[#007AFF]"
+                onClick={() => handleSocialClick('phone')}
+              >
+                <Phone className="w-4 h-4 ml-2" />
+                اتصال
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="bg-[#007AFF]/10 border-0 hover:bg-[#007AFF]/20 text-[#007AFF]"
+                onClick={() => handleSocialClick('tiktok')}
+              >
+                <BrandTiktok className="w-4 h-4 ml-2" />
+                تيك توك
+              </Button>
             </div>
           </div>
 
