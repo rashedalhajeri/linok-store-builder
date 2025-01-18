@@ -34,7 +34,7 @@ export const QuickContactButtons = ({ whatsappNumber, phoneNumber }: QuickContac
               <Button
                 onClick={handleWhatsAppClick}
                 variant="outline"
-                className="rounded-full w-12 h-12 flex items-center justify-center border-2 border-green-500 text-green-500 hover:bg-green-50"
+                className="rounded-full w-12 h-12 flex items-center justify-center border-2 border-green-500 text-green-500 bg-transparent hover:bg-transparent hover:border-green-600 hover:text-green-600"
               >
                 <MessageSquare className="w-5 h-5" />
               </Button>
@@ -54,7 +54,7 @@ export const QuickContactButtons = ({ whatsappNumber, phoneNumber }: QuickContac
               <Button
                 onClick={handlePhoneClick}
                 variant="outline"
-                className="rounded-full w-12 h-12 flex items-center justify-center border-2 border-blue-500 text-blue-500 hover:bg-blue-50"
+                className="rounded-full w-12 h-12 flex items-center justify-center border-2 border-blue-500 text-blue-500 bg-transparent hover:bg-transparent hover:border-blue-600 hover:text-blue-600"
               >
                 <PhoneCall className="w-5 h-5" />
               </Button>
