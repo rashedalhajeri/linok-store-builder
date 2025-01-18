@@ -94,12 +94,12 @@ const StoreTemplate2 = () => {
         </motion.div>
       </div>
 
-      <div className="container mx-auto px-4 py-2">
+      <div className="container mx-auto px-4 py-4">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-xs font-medium mb-3 text-center text-[#1A1A1A]/80"
+          className="text-sm font-medium mb-4 text-center text-[#1A1A1A]"
         >
           تصفح حسب الفئة
         </motion.h2>
@@ -116,9 +116,9 @@ const StoreTemplate2 = () => {
             }}
             className="w-full"
           >
-            <CarouselContent className="-ml-1.5">
+            <CarouselContent className="-ml-2">
               {categories.map((category) => (
-                <CarouselItem key={category.id} className="basis-auto pl-1.5">
+                <CarouselItem key={category.id} className="basis-auto pl-2">
                   <CategoryCard
                     icon={category.icon}
                     name={category.name}
@@ -128,8 +128,8 @@ const StoreTemplate2 = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-8 h-8 w-8" />
-            <CarouselNext className="hidden md:flex -right-8 h-8 w-8" />
+            <CarouselPrevious className="hidden md:flex -left-12 h-9 w-9 bg-white shadow-md" />
+            <CarouselNext className="hidden md:flex -right-12 h-9 w-9 bg-white shadow-md" />
           </Carousel>
         </motion.div>
       </div>
