@@ -22,8 +22,8 @@ export const FeaturedAdCard = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -5 }}
-      className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl 
-                 transition-all duration-300 cursor-pointer border border-[#E5E5EA]"
+      className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md 
+                 transition-all duration-300 cursor-pointer border border-gray-100"
       onClick={onClick}
     >
       <div className="aspect-[4/3] relative">
@@ -32,24 +32,26 @@ export const FeaturedAdCard = ({
           alt={title}
           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
         />
-        <div className="absolute top-2 left-2">
-          <span className={`px-3 py-1 rounded-full text-xs backdrop-blur-sm ${
+        <div className="absolute top-2 right-2">
+          <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium ${
             condition === "جديد" 
-            ? "bg-[#34C759]/90 text-white" 
-            : "bg-[#007AFF]/90 text-white"
+            ? "bg-emerald-500/90 text-white" 
+            : "bg-blue-500/90 text-white"
           }`}>
             {condition}
           </span>
         </div>
       </div>
-      <div className="p-3">
-        <h3 className="font-semibold text-base mb-1.5 text-[#1A1A1A] line-clamp-1">{title}</h3>
-        <p className="text-[#007AFF] font-bold text-lg mb-2">
-          {price}
-        </p>
-        <div className="flex items-center justify-between text-xs text-[#8E8E93]">
-          <span className="flex items-center gap-1.5">
-            <MapPin className="w-3.5 h-3.5" />
+      <div className="p-2.5 space-y-1.5">
+        <div className="space-y-1">
+          <h3 className="font-medium text-sm text-gray-800 line-clamp-1">{title}</h3>
+          <p className="text-primary font-bold text-base">
+            {price}
+          </p>
+        </div>
+        <div className="flex items-center justify-between text-[11px] text-gray-500">
+          <span className="flex items-center gap-1">
+            <MapPin className="w-3 h-3" />
             {location}
           </span>
           <span>{date}</span>
