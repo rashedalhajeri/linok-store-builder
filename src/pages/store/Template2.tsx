@@ -1,37 +1,20 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Car } from "lucide-react";
 import { StoreHeader } from "@/components/store/template2/StoreHeader";
 import { CategoryCard } from "@/components/store/template2/CategoryCard";
 import { FeaturedAdCard } from "@/components/store/template2/FeaturedAdCard";
 import { SearchBar } from "@/components/store/SearchBar";
-import { QuickContactButtons } from "@/components/store/QuickContactButtons";
-import { SocialLinks } from "@/components/store/SocialLinks";
 import { motion } from "framer-motion";
 
 const StoreTemplate2 = () => {
+  const navigate = useNavigate();
   const { storeId } = useParams();
 
   const storeInfo = {
     name: "متجر السيارات الفاخرة",
     location: "الكويت - شارع الخليج العربي",
     description: "نحن متجر متخصص في بيع السيارات الفاخرة والرياضية. نقدم مجموعة واسعة من أفخم السيارات العالمية مع خدمة عملاء متميزة وضمان الجودة.",
-    logo: "https://images.unsplash.com/photo-1549924231-f129b911e442",
-    socialLinks: [
-      {
-        id: 1,
-        icon: "/lovable-uploads/17454f1f-bb90-4fcd-91fc-664c8942f958.png",
-        label: "TikTok",
-        href: "https://tiktok.com/@luxurycars",
-        bgColor: "bg-black"
-      },
-      {
-        id: 2,
-        icon: "/lovable-uploads/2d88c32c-62d4-41d8-a279-4a96b9a88d08.png",
-        label: "WhatsApp",
-        href: "https://wa.me/96599999999",
-        bgColor: "bg-[#25D366]"
-      }
-    ]
+    logo: "https://images.unsplash.com/photo-1549924231-f129b911e442"
   };
 
   const categories = [
@@ -78,7 +61,7 @@ const StoreTemplate2 = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F5F6F8]">
+    <div className="min-h-screen bg-gradient-to-b from-[#F2FCE2] to-[#E8F5D9]">
       <StoreHeader 
         storeName={storeInfo.name}
         location={storeInfo.location}
@@ -87,78 +70,41 @@ const StoreTemplate2 = () => {
       />
 
       <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col items-center gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="w-full"
-          >
-            <SearchBar onSearch={(query) => console.log(query)} />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <SocialLinks links={storeInfo.socialLinks} />
-          </motion.div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <SearchBar onSearch={(query) => console.log(query)} />
+        </motion.div>
+      </div>
+
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {categories.map((category) => (
+            <CategoryCard
+              key={category.id}
+              icon={category.icon}
+              name={category.name}
+              count={category.count}
+              onClick={() => navigate("/search/template2")}
+            />
+          ))}
         </div>
       </div>
 
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
-        className="container mx-auto px-4 py-8"
-      >
-        <h2 className="text-xl font-bold mb-6 text-[#1A1A1A]">الفئات</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {categories.map((category, index) => (
-            <motion.div
-              key={category.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index }}
-            >
-              <CategoryCard
-                icon={category.icon}
-                name={category.name}
-                count={category.count}
-                onClick={() => console.log(`Category clicked: ${category.name}`)}
-              />
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
-        className="container mx-auto px-4 pb-12"
-      >
-        <h2 className="text-xl font-bold mb-6 text-[#1A1A1A]">إعلانات مميزة</h2>
+      <div className="container mx-auto px-4 pb-12">
+        <h2 className="text-xl font-bold mb-6 text-gray-800">إعلانات مميزة</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featuredAds.map((ad, index) => (
-            <motion.div
+          {featuredAds.map((ad) => (
+            <FeaturedAdCard
               key={ad.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index }}
-            >
-              <FeaturedAdCard
-                {...ad}
-                onClick={() => console.log(`Ad clicked: ${ad.title}`)}
-              />
-            </motion.div>
+              {...ad}
+              onClick={() => navigate(`/ad/template2/${ad.id}`)}
+            />
           ))}
         </div>
-      </motion.div>
-
-      <QuickContactButtons 
-        whatsappNumber="96599999999"
-        phoneNumber="96599999999"
-      />
+      </div>
     </div>
   );
 };
