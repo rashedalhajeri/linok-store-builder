@@ -98,15 +98,15 @@ const StoreTemplate2 = () => {
     <div className="min-h-screen bg-gradient-to-b from-[#F2FCE2] to-[#E8F5D9]">
       {/* Hero Section with Store Info */}
       <div className="relative overflow-hidden bg-white/50 backdrop-blur-sm border-b border-green-100">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between gap-8">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between gap-6">
             {/* Store Logo and Info */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4">
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 className="relative group"
               >
-                <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-green-200 shadow-lg">
+                <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-green-200 shadow-md">
                   <img 
                     src="https://images.unsplash.com/photo-1549924231-f129b911e442"
                     alt="متجر السيارات الفاخرة"
@@ -115,12 +115,12 @@ const StoreTemplate2 = () => {
                 </div>
               </motion.div>
               
-              <div>
-                <h1 className="text-2xl font-bold text-gray-800">
+              <div className="flex flex-col">
+                <h1 className="text-xl font-bold text-gray-800 mb-1">
                   متجر السيارات الفاخرة
                 </h1>
-                <div className="flex items-center gap-2 text-gray-600 mt-1">
-                  <MapPin className="w-4 h-4 text-green-600" />
+                <div className="flex items-center gap-1.5 text-sm text-gray-600">
+                  <MapPin className="w-3.5 h-3.5 text-green-600" />
                   <span>الكويت - شارع الخليج العربي</span>
                 </div>
               </div>
@@ -135,11 +135,11 @@ const StoreTemplate2 = () => {
                       <motion.button
                         whileHover={{ scale: 1.1, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className={`p-2.5 rounded-xl shadow-md transition-all ${link.bgColor} 
+                        className={`p-2 rounded-xl shadow-md transition-all ${link.bgColor} 
                                   hover:shadow-lg text-white relative group overflow-hidden`}
                         onClick={() => window.open(link.href, '_blank')}
                       >
-                        <link.icon className="w-5 h-5 relative z-10" />
+                        <link.icon className="w-4 h-4 relative z-10" />
                         <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </motion.button>
                     </TooltipTrigger>
