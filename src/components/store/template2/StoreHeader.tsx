@@ -40,16 +40,16 @@ export const StoreHeader = ({
   };
 
   return (
-    <div className="relative overflow-hidden bg-white border-b border-[#E5E5EA] shadow-sm">
+    <div className="relative overflow-hidden bg-gradient-to-b from-white to-gray-50 border-b border-[#E5E5EA]">
       <div className="container mx-auto px-6 py-8">
-        <div className="flex flex-col space-y-6">
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-            <div className="flex items-center gap-6">
+        <div className="flex flex-col space-y-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <div className="flex items-center gap-8">
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 className="relative group"
               >
-                <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-[#007AFF]/10 shadow-lg">
+                <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-primary/10 shadow-lg">
                   <img 
                     src={logo}
                     alt={storeName}
@@ -58,50 +58,50 @@ export const StoreHeader = ({
                 </div>
               </motion.div>
               
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-3">
                 <motion.h1 
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-2xl md:text-3xl font-bold text-[#1A1A1A]"
+                  className="text-3xl md:text-4xl font-bold text-gray-900"
                 >
                   {storeName}
                 </motion.h1>
                 <div 
-                  className="flex items-center gap-1.5 text-sm text-[#8E8E93] mt-2 cursor-pointer hover:text-[#007AFF] transition-colors"
+                  className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer hover:text-primary transition-colors group"
                   onClick={handleLocationClick}
                 >
-                  <MapPin className="w-4 h-4 text-[#007AFF]" />
-                  <span>{location}</span>
+                  <MapPin className="w-4 h-4 text-primary" />
+                  <span className="group-hover:underline">{location}</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <Button
                 variant="outline"
-                size="sm"
-                className="bg-[#007AFF]/10 border-0 hover:bg-[#007AFF]/20 text-[#007AFF]"
+                size="lg"
+                className="bg-primary/5 border-primary/20 hover:bg-primary/10 text-primary"
                 onClick={() => handleSocialClick('whatsapp')}
               >
-                <MessageSquare className="w-4 h-4 ml-2" />
+                <MessageSquare className="w-5 h-5 ml-2" />
                 واتساب
               </Button>
               <Button
                 variant="outline"
-                size="sm"
-                className="bg-[#007AFF]/10 border-0 hover:bg-[#007AFF]/20 text-[#007AFF]"
+                size="lg"
+                className="bg-primary/5 border-primary/20 hover:bg-primary/10 text-primary"
                 onClick={() => handleSocialClick('phone')}
               >
-                <Phone className="w-4 h-4 ml-2" />
+                <Phone className="w-5 h-5 ml-2" />
                 اتصال
               </Button>
               <Button
                 variant="outline"
-                size="sm"
-                className="bg-[#007AFF]/10 border-0 hover:bg-[#007AFF]/20 text-[#007AFF]"
+                size="lg"
+                className="bg-primary/5 border-primary/20 hover:bg-primary/10 text-primary"
                 onClick={() => handleSocialClick('tiktok')}
               >
-                <MessageSquare className="w-4 h-4 ml-2" rotate={45} />
+                <MessageSquare className="w-5 h-5 ml-2" rotate={45} />
                 تيك توك
               </Button>
             </div>
@@ -111,9 +111,9 @@ export const StoreHeader = ({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="max-w-2xl bg-[#007AFF]/5 p-4 rounded-xl"
+            className="max-w-3xl bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-primary/10"
           >
-            <p className="text-[#1A1A1A] leading-relaxed text-sm">
+            <p className="text-gray-700 leading-relaxed text-base">
               {description}
             </p>
           </motion.div>
