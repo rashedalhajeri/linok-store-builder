@@ -97,16 +97,16 @@ const StoreTemplate2 = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#F2FCE2] to-[#E8F5D9]">
       {/* Hero Section with Store Info */}
-      <div className="relative overflow-hidden bg-white/50 backdrop-blur-sm border-b border-green-100">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between gap-6">
+      <div className="relative overflow-hidden bg-white/80 backdrop-blur-sm border-b border-green-100 shadow-sm">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
             {/* Store Logo and Info */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-start gap-5">
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="relative group"
+                className="relative group mt-1"
               >
-                <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-green-200 shadow-md">
+                <div className="w-14 h-14 rounded-lg overflow-hidden border-2 border-green-200 shadow-md">
                   <img 
                     src="https://images.unsplash.com/photo-1549924231-f129b911e442"
                     alt="متجر السيارات الفاخرة"
@@ -116,11 +116,11 @@ const StoreTemplate2 = () => {
               </motion.div>
               
               <div className="flex flex-col">
-                <h1 className="text-xl font-bold text-gray-800 mb-1">
+                <h1 className="text-lg font-bold text-gray-800">
                   متجر السيارات الفاخرة
                 </h1>
-                <div className="flex items-center gap-1.5 text-sm text-gray-600">
-                  <MapPin className="w-3.5 h-3.5 text-green-600" />
+                <div className="flex items-center gap-1.5 text-sm text-gray-500 mt-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-green-500" />
                   <span>الكويت - شارع الخليج العربي</span>
                 </div>
               </div>
@@ -128,15 +128,15 @@ const StoreTemplate2 = () => {
 
             {/* Social Links */}
             <TooltipProvider>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4">
                 {socialLinks.map((link) => (
                   <Tooltip key={link.id}>
                     <TooltipTrigger asChild>
                       <motion.button
-                        whileHover={{ scale: 1.1, y: -2 }}
+                        whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className={`p-2 rounded-xl shadow-md transition-all ${link.bgColor} 
-                                  hover:shadow-lg text-white relative group overflow-hidden`}
+                        className={`p-2 rounded-lg shadow-sm transition-all ${link.bgColor} 
+                                  hover:shadow-md text-white relative group overflow-hidden`}
                         onClick={() => window.open(link.href, '_blank')}
                       >
                         <link.icon className="w-4 h-4 relative z-10" />
