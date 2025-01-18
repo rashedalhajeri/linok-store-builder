@@ -98,7 +98,7 @@ const StoreTemplate2 = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto"
+          className="flex flex-nowrap gap-4 overflow-x-auto pb-4 px-2 max-w-5xl mx-auto scrollbar-hide"
         >
           {categories.map((category, index) => (
             <motion.div

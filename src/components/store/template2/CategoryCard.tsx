@@ -12,11 +12,12 @@ export const CategoryCard = ({ icon: Icon, name, count, onClick }: CategoryCardP
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
-      className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md 
-                 transition-all duration-300 cursor-pointer border border-[#E5E5EA]"
+      className="bg-white px-6 py-4 rounded-2xl shadow-sm hover:shadow-md 
+                 transition-all duration-300 cursor-pointer border border-[#E5E5EA]
+                 flex-1 min-w-[200px]"
       onClick={onClick}
     >
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex items-center gap-4">
         <div className="p-3 bg-primary/10 rounded-full">
           <Icon className="w-6 h-6 text-primary" />
         </div>
