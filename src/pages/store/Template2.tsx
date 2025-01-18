@@ -5,7 +5,6 @@ import { CategoryCard } from "@/components/store/template2/CategoryCard";
 import { FeaturedAdCard } from "@/components/store/template2/FeaturedAdCard";
 import { SearchBar } from "@/components/store/SearchBar";
 import { motion } from "framer-motion";
-import { QuickContactButtons } from "@/components/store/QuickContactButtons";
 
 const StoreTemplate2 = () => {
   const navigate = useNavigate();
@@ -142,11 +141,6 @@ const StoreTemplate2 = () => {
           ))}
         </motion.div>
       </div>
-
-      <QuickContactButtons 
-        whatsappNumber={storeInfo.socialLinks.whatsapp}
-        phoneNumber={storeInfo.socialLinks.phone}
-      />
     </div>
   );
 };
