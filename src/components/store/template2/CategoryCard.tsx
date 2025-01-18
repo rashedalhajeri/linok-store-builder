@@ -16,12 +16,14 @@ export const CategoryCard = ({ icon: Icon, name, count, onClick }: CategoryCardP
                  transition-all cursor-pointer border border-[#E5E5EA]"
       onClick={onClick}
     >
-      <div className="flex flex-col items-center gap-3">
-        <div className="p-3 bg-[#007AFF]/10 rounded-xl">
-          <Icon className="w-7 h-7 text-[#007AFF]" />
+      <div className="flex flex-col items-center gap-4 py-2">
+        <div className="p-4 bg-primary/10 rounded-xl">
+          <Icon className="w-8 h-8 text-primary" />
         </div>
-        <span className="font-medium text-[#1A1A1A] text-lg">{name}</span>
-        <span className="text-sm text-[#8E8E93]">{count} إعلان</span>
+        <div className="text-center">
+          <h3 className="font-semibold text-[#1A1A1A] text-lg mb-1">{name}</h3>
+          <span className="text-sm text-muted">{count} إعلان</span>
+        </div>
       </div>
     </motion.div>
   );
