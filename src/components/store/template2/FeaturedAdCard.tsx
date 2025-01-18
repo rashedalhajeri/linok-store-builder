@@ -15,7 +15,7 @@ interface FeaturedAdProps {
 }
 
 export const FeaturedAdCard = ({ 
-  title, price, location, date, image, category, views, condition, onClick 
+  title, price, location, date, image, category, condition, onClick 
 }: FeaturedAdProps) => {
   return (
     <motion.div
@@ -58,12 +58,6 @@ export const FeaturedAdCard = ({
             {location}
           </span>
           <span>{date}</span>
-        </div>
-        <div className="mt-4 pt-4 border-t border-[#E5E5EA] flex items-center justify-between text-sm">
-          <span className="text-[#8E8E93]">{views} مشاهدة</span>
-          <span className="text-[#007AFF] hover:text-[#0056B3] transition-colors font-medium">
-            عرض التفاصيل
-          </span>
         </div>
       </div>
     </motion.div>
