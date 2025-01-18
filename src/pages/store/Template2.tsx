@@ -85,12 +85,12 @@ const StoreTemplate2 = () => {
         </motion.div>
       </div>
 
-      <div className="container mx-auto px-4 py-6">
+      <div className="container mx-auto px-4 py-4">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-2xl font-semibold mb-6 text-center text-[#1A1A1A]"
+          className="text-lg font-semibold mb-4 text-center text-[#1A1A1A]"
         >
           تصفح حسب الفئة
         </motion.h2>
@@ -98,7 +98,7 @@ const StoreTemplate2 = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="flex justify-center items-center gap-4 mx-auto"
+          className="flex justify-center items-center gap-2 mx-auto"
         >
           {categories.map((category, index) => (
             <motion.div
