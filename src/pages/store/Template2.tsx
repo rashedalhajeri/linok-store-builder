@@ -27,6 +27,8 @@ const StoreTemplate2 = () => {
     return null;
   }
 
+  const storeDescription = "نحن متجر متخصص في بيع السيارات الفاخرة والرياضية. نقدم مجموعة واسعة من أفخم السيارات العالمية مع خدمة عملاء متميزة وضمان الجودة.";
+
   const categories = [
     { id: 1, name: "سيارات فاخرة", icon: Car, count: 150 },
     { id: 2, name: "سيارات رياضية", icon: Car, count: 89 },
@@ -98,58 +100,73 @@ const StoreTemplate2 = () => {
     <div className="min-h-screen bg-gradient-to-b from-[#F2FCE2] to-[#E8F5D9]">
       {/* Hero Section with Store Info */}
       <div className="relative overflow-hidden bg-white/80 backdrop-blur-sm border-b border-green-100 shadow-sm">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            {/* Store Logo and Info */}
-            <div className="flex items-start gap-5">
-              <motion.div 
-                whileHover={{ scale: 1.05 }}
-                className="relative group mt-1"
-              >
-                <div className="w-14 h-14 rounded-lg overflow-hidden border-2 border-green-200 shadow-md">
-                  <img 
-                    src="https://images.unsplash.com/photo-1549924231-f129b911e442"
-                    alt="متجر السيارات الفاخرة"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-              </motion.div>
-              
-              <div className="flex flex-col">
-                <h1 className="text-lg font-bold text-gray-800">
-                  متجر السيارات الفاخرة
-                </h1>
-                <div className="flex items-center gap-1.5 text-sm text-gray-500 mt-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-green-500" />
-                  <span>الكويت - شارع الخليج العربي</span>
+        <div className="container mx-auto px-6 py-6">
+          <div className="flex flex-col space-y-6">
+            {/* Header Row */}
+            <div className="flex items-start justify-between">
+              {/* Store Logo and Basic Info */}
+              <div className="flex items-center gap-4">
+                <motion.div 
+                  whileHover={{ scale: 1.05 }}
+                  className="relative group"
+                >
+                  <div className="w-14 h-14 rounded-lg overflow-hidden border-2 border-green-200 shadow-md">
+                    <img 
+                      src="https://images.unsplash.com/photo-1549924231-f129b911e442"
+                      alt="متجر السيارات الفاخرة"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                </motion.div>
+                
+                <div className="flex flex-col">
+                  <h1 className="text-xl font-bold text-gray-800">
+                    متجر السيارات الفاخرة
+                  </h1>
+                  <div className="flex items-center gap-1.5 text-sm text-gray-500 mt-1">
+                    <MapPin className="w-3.5 h-3.5 text-green-500" />
+                    <span>الكويت - شارع الخليج العربي</span>
+                  </div>
                 </div>
               </div>
+
+              {/* Social Links */}
+              <TooltipProvider>
+                <div className="flex items-center gap-3">
+                  {socialLinks.map((link) => (
+                    <Tooltip key={link.id}>
+                      <TooltipTrigger asChild>
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className={`p-2 rounded-lg shadow-sm transition-all ${link.bgColor} 
+                                    hover:shadow-md text-white relative group overflow-hidden`}
+                          onClick={() => window.open(link.href, '_blank')}
+                        >
+                          <link.icon className="w-4 h-4 relative z-10" />
+                          <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </motion.button>
+                      </TooltipTrigger>
+                      <TooltipContent className="bg-white/90 backdrop-blur-sm border-green-100">
+                        <p>{link.label}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  ))}
+                </div>
+              </TooltipProvider>
             </div>
 
-            {/* Social Links */}
-            <TooltipProvider>
-              <div className="flex items-center gap-4">
-                {socialLinks.map((link) => (
-                  <Tooltip key={link.id}>
-                    <TooltipTrigger asChild>
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`p-2 rounded-lg shadow-sm transition-all ${link.bgColor} 
-                                  hover:shadow-md text-white relative group overflow-hidden`}
-                        onClick={() => window.open(link.href, '_blank')}
-                      >
-                        <link.icon className="w-4 h-4 relative z-10" />
-                        <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </motion.button>
-                    </TooltipTrigger>
-                    <TooltipContent className="bg-white/90 backdrop-blur-sm border-green-100">
-                      <p>{link.label}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                ))}
-              </div>
-            </TooltipProvider>
+            {/* Store Description */}
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="max-w-2xl"
+            >
+              <p className="text-gray-600 leading-relaxed text-sm">
+                {storeDescription}
+              </p>
+            </motion.div>
           </div>
         </div>
       </div>
