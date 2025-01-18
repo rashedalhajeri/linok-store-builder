@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { Car, Truck, Suv } from "lucide-react";
+import { Car, Truck, CarFront } from "lucide-react";
 import { StoreHeader } from "@/components/store/template2/StoreHeader";
 import { CategoryCard } from "@/components/store/template2/CategoryCard";
 import { FeaturedAdCard } from "@/components/store/template2/FeaturedAdCard";
@@ -24,7 +24,7 @@ const StoreTemplate2 = () => {
 
   const categories = [
     { id: 1, name: "سيارات صالون", icon: Car, count: 45 },
-    { id: 2, name: "سيارات جيب", icon: Suv, count: 32 },
+    { id: 2, name: "سيارات جيب", icon: CarFront, count: 32 },
     { id: 3, name: "سيارات نص نقل", icon: Truck, count: 28 },
   ];
 
