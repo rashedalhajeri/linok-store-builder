@@ -6,6 +6,7 @@ import { FeaturedAdCard } from "@/components/store/template2/FeaturedAdCard";
 import { SearchBar } from "@/components/store/SearchBar";
 import { QuickContactButtons } from "@/components/store/QuickContactButtons";
 import { SocialLinks } from "@/components/store/SocialLinks";
+import { motion } from "framer-motion";
 
 const StoreTemplate2 = () => {
   const { storeId } = useParams();
@@ -87,37 +88,72 @@ const StoreTemplate2 = () => {
 
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center gap-6">
-          <SearchBar onSearch={(query) => console.log(query)} />
-          <SocialLinks links={storeInfo.socialLinks} />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="w-full"
+          >
+            <SearchBar onSearch={(query) => console.log(query)} />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <SocialLinks links={storeInfo.socialLinks} />
+          </motion.div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="container mx-auto px-4 py-8"
+      >
+        <h2 className="text-xl font-bold mb-6 text-[#1A1A1A]">الفئات</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {categories.map((category) => (
-            <CategoryCard
+          {categories.map((category, index) => (
+            <motion.div
               key={category.id}
-              icon={category.icon}
-              name={category.name}
-              count={category.count}
-              onClick={() => console.log(`Category clicked: ${category.name}`)}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * index }}
+            >
+              <CategoryCard
+                icon={category.icon}
+                name={category.name}
+                count={category.count}
+                onClick={() => console.log(`Category clicked: ${category.name}`)}
+              />
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
-      <div className="container mx-auto px-4 pb-12">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+        className="container mx-auto px-4 pb-12"
+      >
         <h2 className="text-xl font-bold mb-6 text-[#1A1A1A]">إعلانات مميزة</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featuredAds.map((ad) => (
-            <FeaturedAdCard
+          {featuredAds.map((ad, index) => (
+            <motion.div
               key={ad.id}
-              {...ad}
-              onClick={() => console.log(`Ad clicked: ${ad.title}`)}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * index }}
+            >
+              <FeaturedAdCard
+                {...ad}
+                onClick={() => console.log(`Ad clicked: ${ad.title}`)}
+              />
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       <QuickContactButtons 
         whatsappNumber="96599999999"
