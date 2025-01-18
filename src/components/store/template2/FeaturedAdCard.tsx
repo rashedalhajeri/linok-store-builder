@@ -15,7 +15,7 @@ interface FeaturedAdProps {
 }
 
 export const FeaturedAdCard = ({ 
-  title, price, location, date, image, category, condition, onClick 
+  title, price, location, date, image, condition, onClick 
 }: FeaturedAdProps) => {
   return (
     <motion.div
@@ -32,11 +32,6 @@ export const FeaturedAdCard = ({
           alt={title}
           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
         />
-        <div className="absolute top-3 right-3">
-          <span className="bg-black/60 text-white px-4 py-1.5 rounded-full text-sm backdrop-blur-sm">
-            {category}
-          </span>
-        </div>
         <div className="absolute top-3 left-3">
           <span className={`px-4 py-1.5 rounded-full text-sm backdrop-blur-sm ${
             condition === "جديد" 
