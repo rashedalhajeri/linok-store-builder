@@ -22,23 +22,23 @@ export const FeaturedAdCard = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -5 }}
-      className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md 
-                 transition-all cursor-pointer border border-[#E5E5EA]"
+      className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl 
+                 transition-all duration-300 cursor-pointer border border-[#E5E5EA]"
       onClick={onClick}
     >
-      <div className="aspect-video relative">
+      <div className="aspect-[4/3] relative">
         <img 
           src={image} 
           alt={title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
         />
         <div className="absolute top-3 right-3">
-          <span className="bg-black/50 text-white px-3 py-1.5 rounded-full text-sm backdrop-blur-sm">
+          <span className="bg-black/60 text-white px-4 py-1.5 rounded-full text-sm backdrop-blur-sm">
             {category}
           </span>
         </div>
         <div className="absolute top-3 left-3">
-          <span className={`px-3 py-1.5 rounded-full text-sm backdrop-blur-sm ${
+          <span className={`px-4 py-1.5 rounded-full text-sm backdrop-blur-sm ${
             condition === "جديد" 
             ? "bg-[#34C759]/90 text-white" 
             : "bg-[#007AFF]/90 text-white"
@@ -47,21 +47,21 @@ export const FeaturedAdCard = ({
           </span>
         </div>
       </div>
-      <div className="p-4">
-        <h3 className="font-semibold text-lg mb-2 text-[#1A1A1A]">{title}</h3>
+      <div className="p-5">
+        <h3 className="font-semibold text-lg mb-2 text-[#1A1A1A] line-clamp-1">{title}</h3>
         <p className="text-[#007AFF] font-bold text-xl mb-3">
           {price}
         </p>
         <div className="flex items-center justify-between text-sm text-[#8E8E93]">
-          <span className="flex items-center gap-1.5">
+          <span className="flex items-center gap-2">
             <MapPin className="w-4 h-4" />
             {location}
           </span>
           <span>{date}</span>
         </div>
-        <div className="mt-3 pt-3 border-t border-[#E5E5EA] flex items-center justify-between text-sm">
+        <div className="mt-4 pt-4 border-t border-[#E5E5EA] flex items-center justify-between text-sm">
           <span className="text-[#8E8E93]">{views} مشاهدة</span>
-          <span className="text-[#007AFF] hover:text-[#0056B3] transition-colors">
+          <span className="text-[#007AFF] hover:text-[#0056B3] transition-colors font-medium">
             عرض التفاصيل
           </span>
         </div>
