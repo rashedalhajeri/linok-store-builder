@@ -1,17 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { Car, Truck, CarFront } from "lucide-react";
 import { StoreHeader } from "@/components/store/template2/StoreHeader";
-import { CategoryCard } from "@/components/store/template2/CategoryCard";
 import { FeaturedAdCard } from "@/components/store/template2/FeaturedAdCard";
 import { SearchBar } from "@/components/store/SearchBar";
 import { motion } from "framer-motion";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 
 const StoreTemplate2 = () => {
   const navigate = useNavigate();
@@ -28,14 +20,6 @@ const StoreTemplate2 = () => {
       tiktok: "@luxurycars"
     }
   };
-
-  const categories = [
-    { id: 1, name: "سيارات صالون", icon: Car, count: 45 },
-    { id: 2, name: "سيارات جيب", icon: CarFront, count: 32 },
-    { id: 3, name: "سيارات نص نقل", icon: Truck, count: 28 },
-    { id: 4, name: "سيارات فاخرة", icon: Car, count: 15 },
-    { id: 5, name: "سيارات عائلية", icon: CarFront, count: 23 },
-  ];
 
   const featuredAds = [
     {
@@ -91,46 +75,6 @@ const StoreTemplate2 = () => {
           className="max-w-2xl mx-auto"
         >
           <SearchBar onSearch={(query) => console.log(query)} />
-        </motion.div>
-      </div>
-
-      <div className="container mx-auto px-4 py-4">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="text-sm font-medium mb-4 text-center text-[#1A1A1A]"
-        >
-          تصفح حسب الفئة
-        </motion.h2>
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="w-full max-w-2xl mx-auto"
-        >
-          <Carousel
-            opts={{
-              align: "center",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-2">
-              {categories.map((category) => (
-                <CarouselItem key={category.id} className="basis-auto pl-2">
-                  <CategoryCard
-                    icon={category.icon}
-                    name={category.name}
-                    count={category.count}
-                    onClick={() => navigate("/search/template2")}
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-12 h-9 w-9 bg-white shadow-md" />
-            <CarouselNext className="hidden md:flex -right-12 h-9 w-9 bg-white shadow-md" />
-          </Carousel>
         </motion.div>
       </div>
 
