@@ -45,7 +45,7 @@ export const FeaturedAdCard = ({
       <div className="p-2.5 space-y-1.5">
         <div className="space-y-1">
           <h3 className="font-medium text-sm text-gray-800 line-clamp-1">{title}</h3>
-          <p className="text-primary font-bold text-base">
+          <p className="text-emerald-500 font-bold text-base">
             {price}
           </p>
         </div>
