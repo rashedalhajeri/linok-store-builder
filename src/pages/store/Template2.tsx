@@ -94,12 +94,12 @@ const StoreTemplate2 = () => {
         </motion.div>
       </div>
 
-      <div className="container mx-auto px-4 py-3">
+      <div className="container mx-auto px-4 py-2">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-sm font-medium mb-4 text-center text-[#1A1A1A]"
+          className="text-xs font-medium mb-3 text-center text-[#1A1A1A]/80"
         >
           تصفح حسب الفئة
         </motion.h2>
@@ -107,18 +107,18 @@ const StoreTemplate2 = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="w-full max-w-3xl mx-auto"
+          className="w-full max-w-2xl mx-auto"
         >
           <Carousel
             opts={{
-              align: "start",
+              align: "center",
               loop: true,
             }}
             className="w-full"
           >
-            <CarouselContent className="-ml-2">
-              {categories.map((category, index) => (
-                <CarouselItem key={category.id} className="basis-auto pl-2">
+            <CarouselContent className="-ml-1.5">
+              {categories.map((category) => (
+                <CarouselItem key={category.id} className="basis-auto pl-1.5">
                   <CategoryCard
                     icon={category.icon}
                     name={category.name}
@@ -128,8 +128,8 @@ const StoreTemplate2 = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex" />
-            <CarouselNext className="hidden md:flex" />
+            <CarouselPrevious className="hidden md:flex -left-8 h-8 w-8" />
+            <CarouselNext className="hidden md:flex -right-8 h-8 w-8" />
           </Carousel>
         </motion.div>
       </div>
