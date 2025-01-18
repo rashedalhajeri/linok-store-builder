@@ -85,12 +85,12 @@ const StoreTemplate2 = () => {
         </motion.div>
       </div>
 
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-3">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-lg font-semibold mb-4 text-center text-[#1A1A1A]"
+          className="text-sm font-medium mb-3 text-center text-[#1A1A1A]"
         >
           تصفح حسب الفئة
         </motion.h2>
