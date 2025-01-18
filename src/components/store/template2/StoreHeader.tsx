@@ -35,6 +35,10 @@ export const StoreHeader = ({
     }
   };
 
+  const handleLocationClick = () => {
+    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`, '_blank');
+  };
+
   return (
     <div className="relative overflow-hidden bg-white border-b border-[#E5E5EA] shadow-sm">
       <div className="container mx-auto px-6 py-8">
@@ -62,7 +66,10 @@ export const StoreHeader = ({
                 >
                   {storeName}
                 </motion.h1>
-                <div className="flex items-center gap-1.5 text-sm text-[#8E8E93] mt-2">
+                <div 
+                  className="flex items-center gap-1.5 text-sm text-[#8E8E93] mt-2 cursor-pointer hover:text-[#007AFF] transition-colors"
+                  onClick={handleLocationClick}
+                >
                   <MapPin className="w-4 h-4 text-[#007AFF]" />
                   <span>{location}</span>
                 </div>
