@@ -10,7 +10,7 @@ interface StoreHeaderProps {
 
 export const StoreHeader = ({ storeName, location, description, logo }: StoreHeaderProps) => {
   return (
-    <div className="relative overflow-hidden bg-white/80 backdrop-blur-sm border-b border-green-100 shadow-sm">
+    <div className="relative overflow-hidden bg-white/80 backdrop-blur-sm border-b border-[#D3E4FD] shadow-sm">
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col space-y-6">
           <div className="flex items-start justify-between">
@@ -19,7 +19,7 @@ export const StoreHeader = ({ storeName, location, description, logo }: StoreHea
                 whileHover={{ scale: 1.05 }}
                 className="relative group"
               >
-                <div className="w-20 h-20 rounded-xl overflow-hidden border-2 border-green-200 shadow-lg">
+                <div className="w-20 h-20 rounded-xl overflow-hidden border-2 border-[#E5DEFF] shadow-lg">
                   <img 
                     src={logo}
                     alt={storeName}
@@ -36,8 +36,8 @@ export const StoreHeader = ({ storeName, location, description, logo }: StoreHea
                 >
                   {storeName}
                 </motion.h1>
-                <div className="flex items-center gap-1.5 text-sm text-gray-500 mt-2">
-                  <MapPin className="w-4 h-4 text-green-500" />
+                <div className="flex items-center gap-1.5 text-sm text-[#8E9196] mt-2">
+                  <MapPin className="w-4 h-4 text-[#6B4EFF]" />
                   <span>{location}</span>
                 </div>
               </div>
@@ -48,7 +48,7 @@ export const StoreHeader = ({ storeName, location, description, logo }: StoreHea
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="max-w-2xl bg-green-50/50 p-4 rounded-xl border border-green-100"
+            className="max-w-2xl bg-[#E5DEFF]/30 p-4 rounded-xl border border-[#D3E4FD]"
           >
             <p className="text-gray-600 leading-relaxed text-sm">
               {description}

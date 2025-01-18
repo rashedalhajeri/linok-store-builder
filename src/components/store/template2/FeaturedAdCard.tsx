@@ -23,7 +23,7 @@ export const FeaturedAdCard = ({
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -5 }}
       className="bg-white/70 backdrop-blur-sm rounded-xl overflow-hidden shadow-md hover:shadow-lg 
-                 transition-all cursor-pointer border border-green-100"
+                 transition-all cursor-pointer border border-[#D3E4FD]"
       onClick={onClick}
     >
       <div className="aspect-video relative">
@@ -40,8 +40,8 @@ export const FeaturedAdCard = ({
         <div className="absolute top-3 left-3">
           <span className={`px-3 py-1.5 rounded-full text-sm backdrop-blur-sm ${
             condition === "جديد" 
-            ? "bg-green-500/80 text-white" 
-            : "bg-blue-500/80 text-white"
+            ? "bg-[#6B4EFF]/80 text-white" 
+            : "bg-[#4EA8FF]/80 text-white"
           }`}>
             {condition}
           </span>
@@ -49,19 +49,19 @@ export const FeaturedAdCard = ({
       </div>
       <div className="p-4">
         <h3 className="font-semibold text-lg mb-2 text-gray-800">{title}</h3>
-        <p className="text-green-600 font-bold text-xl mb-3">
+        <p className="text-[#6B4EFF] font-bold text-xl mb-3">
           {price}
         </p>
-        <div className="flex items-center justify-between text-sm text-gray-500">
+        <div className="flex items-center justify-between text-sm text-[#8E9196]">
           <span className="flex items-center gap-1.5">
             <MapPin className="w-4 h-4" />
             {location}
           </span>
           <span>{date}</span>
         </div>
-        <div className="mt-3 pt-3 border-t border-green-100 flex items-center justify-between text-sm">
-          <span className="text-gray-500">{views} مشاهدة</span>
-          <span className="text-green-600 hover:text-green-700 transition-colors">
+        <div className="mt-3 pt-3 border-t border-[#D3E4FD] flex items-center justify-between text-sm">
+          <span className="text-[#8E9196]">{views} مشاهدة</span>
+          <span className="text-[#6B4EFF] hover:text-[#5B3EEF] transition-colors">
             عرض التفاصيل
           </span>
         </div>
