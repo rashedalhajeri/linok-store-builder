@@ -1,20 +1,36 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Car } from "lucide-react";
 import { StoreHeader } from "@/components/store/template2/StoreHeader";
 import { CategoryCard } from "@/components/store/template2/CategoryCard";
 import { FeaturedAdCard } from "@/components/store/template2/FeaturedAdCard";
 import { SearchBar } from "@/components/store/SearchBar";
-import { motion } from "framer-motion";
+import { QuickContactButtons } from "@/components/store/QuickContactButtons";
+import { SocialLinks } from "@/components/store/SocialLinks";
 
 const StoreTemplate2 = () => {
-  const navigate = useNavigate();
   const { storeId } = useParams();
 
   const storeInfo = {
     name: "متجر السيارات الفاخرة",
     location: "الكويت - شارع الخليج العربي",
     description: "نحن متجر متخصص في بيع السيارات الفاخرة والرياضية. نقدم مجموعة واسعة من أفخم السيارات العالمية مع خدمة عملاء متميزة وضمان الجودة.",
-    logo: "https://images.unsplash.com/photo-1549924231-f129b911e442"
+    logo: "https://images.unsplash.com/photo-1549924231-f129b911e442",
+    socialLinks: [
+      {
+        id: 1,
+        icon: "/lovable-uploads/17454f1f-bb90-4fcd-91fc-664c8942f958.png",
+        label: "TikTok",
+        href: "https://tiktok.com/@luxurycars",
+        bgColor: "bg-black"
+      },
+      {
+        id: 2,
+        icon: "/lovable-uploads/2d88c32c-62d4-41d8-a279-4a96b9a88d08.png",
+        label: "WhatsApp",
+        href: "https://wa.me/96599999999",
+        bgColor: "bg-[#25D366]"
+      }
+    ]
   };
 
   const categories = [
@@ -70,13 +86,10 @@ const StoreTemplate2 = () => {
       />
 
       <div className="container mx-auto px-4 py-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
+        <div className="flex flex-col items-center gap-6">
           <SearchBar onSearch={(query) => console.log(query)} />
-        </motion.div>
+          <SocialLinks links={storeInfo.socialLinks} />
+        </div>
       </div>
 
       <div className="container mx-auto px-4 py-8">
@@ -87,7 +100,7 @@ const StoreTemplate2 = () => {
               icon={category.icon}
               name={category.name}
               count={category.count}
-              onClick={() => navigate("/search/template2")}
+              onClick={() => console.log(`Category clicked: ${category.name}`)}
             />
           ))}
         </div>
@@ -100,11 +113,16 @@ const StoreTemplate2 = () => {
             <FeaturedAdCard
               key={ad.id}
               {...ad}
-              onClick={() => navigate(`/ad/template2/${ad.id}`)}
+              onClick={() => console.log(`Ad clicked: ${ad.title}`)}
             />
           ))}
         </div>
       </div>
+
+      <QuickContactButtons 
+        whatsappNumber="96599999999"
+        phoneNumber="96599999999"
+      />
     </div>
   );
 };
