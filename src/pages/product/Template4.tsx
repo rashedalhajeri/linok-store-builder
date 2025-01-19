@@ -66,7 +66,7 @@ const ProductTemplate4 = () => {
 
       {/* Product Image */}
       <motion.div 
-        className="relative w-full h-[50vh] overflow-hidden"
+        className="relative w-full h-[40vh] overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: isImageLoaded ? 1 : 0 }}
         transition={{ duration: 0.5 }}
@@ -82,28 +82,14 @@ const ProductTemplate4 = () => {
 
       {/* Product Details */}
       <motion.div 
-        className="relative -mt-20 px-4 pb-8"
+        className="relative px-4 pb-8 mt-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-        <div className="space-y-4">
-          {/* Title and Badges */}
-          <div className="space-y-2">
-            <div className="flex gap-2">
-              {product.isSpicy && (
-                <Badge variant="secondary" className="bg-red-500/10 text-red-500 hover:bg-red-500/20">
-                  حار 🌶️
-                </Badge>
-              )}
-              {product.isPopular && (
-                <Badge variant="secondary" className="bg-amber-500/10 text-amber-500 hover:bg-amber-500/20">
-                  الأكثر طلباً ⭐️
-                </Badge>
-              )}
-            </div>
-            <h1 className="text-3xl font-bold">{product.name}</h1>
-          </div>
+        <div className="space-y-6">
+          {/* Title */}
+          <h1 className="text-3xl font-bold">{product.name}</h1>
 
           {/* Price */}
           <div className="inline-block bg-white/5 backdrop-blur-sm px-6 py-2 rounded-full">
@@ -114,6 +100,20 @@ const ProductTemplate4 = () => {
           <p className="text-gray-300 leading-relaxed text-lg">
             {product.description}
           </p>
+
+          {/* Badges */}
+          <div className="flex gap-2">
+            {product.isSpicy && (
+              <Badge variant="secondary" className="bg-red-500/10 text-red-500 hover:bg-red-500/20">
+                حار 🌶️
+              </Badge>
+            )}
+            {product.isPopular && (
+              <Badge variant="secondary" className="bg-amber-500/10 text-amber-500 hover:bg-amber-500/20">
+                الأكثر طلباً ⭐️
+              </Badge>
+            )}
+          </div>
 
           {/* Ingredients */}
           <div className="space-y-2">
