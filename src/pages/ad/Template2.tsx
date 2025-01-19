@@ -41,12 +41,12 @@ const AdTemplate2 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pb-24">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white pb-24">
       <div className="max-w-lg mx-auto bg-white shadow-lg rounded-2xl overflow-hidden">
-        <div className="flex justify-between items-center p-4 bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b">
+        <div className="flex justify-between items-center p-4 bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-green-100">
           <div className="flex gap-4">
-            <Share2 className="w-6 h-6 text-primary hover:text-primary-dark transition-colors" />
-            <Heart className="w-6 h-6 text-primary hover:text-red-500 transition-colors" />
+            <Share2 className="w-6 h-6 text-primary hover:text-primary-dark transition-colors cursor-pointer" />
+            <Heart className="w-6 h-6 text-primary hover:text-red-500 transition-colors cursor-pointer" />
           </div>
           <button onClick={() => navigate(-1)} className="text-primary hover:text-primary-dark">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -55,7 +55,7 @@ const AdTemplate2 = () => {
           </button>
         </div>
 
-        <div className="relative w-full aspect-square">
+        <div className="relative w-full aspect-square bg-green-50">
           <Carousel 
             className="w-full" 
             onSlideChange={handleSlideChange}
@@ -95,47 +95,47 @@ const AdTemplate2 = () => {
         <div className="p-6 space-y-2 border-b bg-gradient-card">
           <div className="flex justify-between items-start">
             <h1 className="text-2xl font-bold text-gray-900 animate-fade-in">{ad.title}</h1>
-            <p className="text-sm text-primary">{ad.date}</p>
+            <p className="text-sm text-primary-dark">{ad.date}</p>
           </div>
-          <p className="text-2xl font-bold text-primary animate-fade-in delay-100">{ad.price}</p>
+          <p className="text-2xl font-bold text-primary-dark animate-fade-in delay-100">{ad.price}</p>
         </div>
 
-        <div className="p-6 border-b">
+        <div className="p-6 border-b border-green-100">
           <h2 className="text-lg font-semibold mb-4 text-gray-800 flex items-center gap-2">
             <span className="w-1 h-6 bg-primary rounded-full"></span>
             مواصفات الاعلان
           </h2>
           <div className="grid grid-cols-2 gap-3">
-            <div className="flex items-center gap-3 bg-gray-50/80 p-4 rounded-xl hover:bg-primary/5 transition-colors animate-fade-in">
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                <Calendar className="w-4 h-4 text-primary" />
+            <div className="flex items-center gap-3 bg-green-50/80 p-4 rounded-xl hover:bg-primary/5 transition-colors animate-fade-in group">
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <Calendar className="w-4 h-4 text-primary-dark" />
               </div>
               <div>
                 <p className="text-xs text-gray-500 mb-0.5">سنة الصنع</p>
                 <span className="text-sm font-medium text-gray-900">{ad.specs.year}</span>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-gray-50/80 p-4 rounded-xl hover:bg-primary/5 transition-colors animate-fade-in delay-100">
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                <Car className="w-4 h-4 text-primary" />
+            <div className="flex items-center gap-3 bg-green-50/80 p-4 rounded-xl hover:bg-primary/5 transition-colors animate-fade-in delay-100 group">
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <Car className="w-4 h-4 text-primary-dark" />
               </div>
               <div>
                 <p className="text-xs text-gray-500 mb-0.5">اللون</p>
                 <span className="text-sm font-medium text-gray-900">{ad.specs.color}</span>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-gray-50/80 p-4 rounded-xl hover:bg-primary/5 transition-colors animate-fade-in delay-200">
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                <Gauge className="w-4 h-4 text-primary" />
+            <div className="flex items-center gap-3 bg-green-50/80 p-4 rounded-xl hover:bg-primary/5 transition-colors animate-fade-in delay-200 group">
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <Gauge className="w-4 h-4 text-primary-dark" />
               </div>
               <div>
                 <p className="text-xs text-gray-500 mb-0.5">المسافة المقطوعة</p>
                 <span className="text-sm font-medium text-gray-900">{ad.specs.mileage}</span>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-gray-50/80 p-4 rounded-xl hover:bg-primary/5 transition-colors animate-fade-in delay-300">
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                <Globe className="w-4 h-4 text-primary" />
+            <div className="flex items-center gap-3 bg-green-50/80 p-4 rounded-xl hover:bg-primary/5 transition-colors animate-fade-in delay-300 group">
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <Globe className="w-4 h-4 text-primary-dark" />
               </div>
               <div>
                 <p className="text-xs text-gray-500 mb-0.5">المقاعد</p>
@@ -145,7 +145,7 @@ const AdTemplate2 = () => {
           </div>
         </div>
 
-        <div className="p-6 border-b">
+        <div className="p-6 border-b border-green-100">
           <h2 className="text-lg font-semibold mb-3 flex items-center gap-2">
             <span className="w-1 h-6 bg-primary rounded-full"></span>
             الوصف
@@ -153,16 +153,16 @@ const AdTemplate2 = () => {
           <p className="text-gray-600 text-sm leading-relaxed">{ad.description}</p>
         </div>
 
-        <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/80 backdrop-blur-sm border-t">
+        <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/80 backdrop-blur-sm border-t border-green-100">
           <div className="flex gap-2 max-w-lg mx-auto">
             <Button 
-              className="flex-1 bg-primary hover:bg-primary-dark text-white transition-colors duration-300"
+              className="flex-1 bg-primary hover:bg-primary-dark text-primary-foreground transition-colors duration-300"
               onClick={() => window.location.href = `tel:${ad.phone}`}
             >
               اتصل الآن
             </Button>
             <Button 
-              className="flex-1 bg-accent hover:bg-accent-dark text-white transition-colors duration-300"
+              className="flex-1 bg-secondary hover:bg-secondary-dark text-white transition-colors duration-300"
             >
               واتساب
             </Button>
