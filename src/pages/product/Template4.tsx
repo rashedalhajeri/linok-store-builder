@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Share2 } from "lucide-react";
+import { ArrowRight, Share2, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
@@ -19,6 +19,8 @@ const ProductTemplate4 = () => {
     description: "برجر لحم واجيو مشوي على الفحم مع جبنة شيدر ذائبة وصلصة خاصة، يقدم مع بطاطس مقلية وسلطة كول سلو",
     price: "8.500 د.ك",
     image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+    rating: 4.8,
+    reviews: 245,
     isSpicy: true,
     isPopular: true,
     ingredients: ["لحم واجيو", "جبنة شيدر", "خس", "طماطم", "بصل", "مخلل", "صلصة خاصة"]
@@ -41,8 +43,8 @@ const ProductTemplate4 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
-      {/* Back Button and Share */}
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
+      {/* Navigation Bar */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Button
@@ -64,9 +66,9 @@ const ProductTemplate4 = () => {
         </div>
       </div>
 
-      {/* Product Image */}
+      {/* Hero Image */}
       <motion.div 
-        className="relative w-full h-[50vh] overflow-hidden"
+        className="relative w-full h-[60vh] overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: isImageLoaded ? 1 : 0 }}
         transition={{ duration: 0.5 }}
@@ -77,37 +79,46 @@ const ProductTemplate4 = () => {
           className="w-full h-full object-cover"
           onLoad={() => setIsImageLoaded(true)}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent" />
       </motion.div>
 
       {/* Product Details */}
       <motion.div 
-        className="relative -mt-20 px-4 pb-8"
+        className="relative -mt-32 px-6 pb-24"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-        <div className="space-y-4">
+        <div className="space-y-6">
           {/* Title and Badges */}
-          <div className="space-y-2">
-            <div className="flex gap-2">
+          <div className="space-y-3">
+            <div className="flex flex-wrap gap-2">
               {product.isSpicy && (
-                <Badge variant="secondary" className="bg-red-500/10 text-red-500 hover:bg-red-500/20">
+                <Badge variant="secondary" className="bg-red-500/10 text-red-400 hover:bg-red-500/20 text-sm">
                   حار 🌶️
                 </Badge>
               )}
               {product.isPopular && (
-                <Badge variant="secondary" className="bg-amber-500/10 text-amber-500 hover:bg-amber-500/20">
+                <Badge variant="secondary" className="bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 text-sm">
                   الأكثر طلباً ⭐️
                 </Badge>
               )}
             </div>
-            <h1 className="text-3xl font-bold">{product.name}</h1>
+            <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+              {product.name}
+            </h1>
+            
+            {/* Rating */}
+            <div className="flex items-center gap-2 text-amber-400">
+              <Star className="fill-amber-400 h-5 w-5" />
+              <span className="font-semibold">{product.rating}</span>
+              <span className="text-gray-400 text-sm">({product.reviews} تقييم)</span>
+            </div>
           </div>
 
           {/* Price */}
-          <div className="inline-block bg-white/5 backdrop-blur-sm px-6 py-2 rounded-full">
-            <span className="text-2xl font-bold text-white">{product.price}</span>
+          <div className="inline-block bg-gradient-to-r from-emerald-600/20 to-emerald-500/10 backdrop-blur-sm px-6 py-3 rounded-2xl border border-emerald-500/20">
+            <span className="text-3xl font-bold text-emerald-400">{product.price}</span>
           </div>
 
           {/* Description */}
@@ -116,14 +127,14 @@ const ProductTemplate4 = () => {
           </p>
 
           {/* Ingredients */}
-          <div className="space-y-2">
-            <h3 className="text-lg font-semibold text-gray-200">المكونات:</h3>
+          <div className="space-y-3">
+            <h3 className="text-xl font-semibold text-white">المكونات:</h3>
             <div className="flex flex-wrap gap-2">
               {product.ingredients.map((ingredient, index) => (
                 <Badge
                   key={index}
                   variant="outline"
-                  className="bg-white/5 hover:bg-white/10 transition-colors"
+                  className="bg-white/5 hover:bg-white/10 border-white/10 transition-colors text-sm"
                 >
                   {ingredient}
                 </Badge>
