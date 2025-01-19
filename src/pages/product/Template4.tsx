@@ -1,9 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { ArrowRight, Share2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { SocialLinks } from "@/components/store/template4/SocialLinks";
+import { SocialLinks } from "@/components/store/SocialLinks";
 
 const ProductTemplate4 = () => {
   const { productId } = useParams();
@@ -16,11 +15,8 @@ const ProductTemplate4 = () => {
     description: "برجر لحم واجيو مشوي مع جبنة شيدر وصلصة خاصة",
     price: 8.500,
     image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
-    isSpicy: true,
-    isPopular: true,
   };
 
-  // بيانات وسائل التواصل الاجتماعي
   const socialLinks = [
     {
       id: 1,
@@ -46,51 +42,69 @@ const ProductTemplate4 = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FEF7CD]/10 py-6">
+    <div className="min-h-screen bg-[#1A1F2C] py-6">
       <div className="max-w-2xl mx-auto px-4">
-        <div className="mb-4">
-          <Button
-            variant="ghost"
-            className="gap-2"
-            onClick={() => navigate(-1)}
-          >
-            رجوع
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </div>
+        <Button
+          variant="ghost"
+          className="text-white mb-6 hover:bg-white/10"
+          onClick={() => navigate(-1)}
+        >
+          <ArrowRight className="h-5 w-5 ml-2" />
+          رجوع
+        </Button>
 
-        <Card className="overflow-hidden bg-white/90 backdrop-blur-sm">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* صورة المنتج */}
-            <div className="relative aspect-video">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="space-y-6"
+        >
+          {/* صورة المنتج */}
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+            <img 
+              src={product.image} 
+              alt={product.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* تفاصيل المنتج */}
+          <div className="space-y-4">
+            <h1 className="text-3xl font-bold text-white">
+              {product.name}
+            </h1>
+            <p className="text-gray-300 text-lg leading-relaxed">
+              {product.description}
+            </p>
+            <div className="text-2xl font-bold text-white">
+              {product.price.toFixed(3)} د.ك
+            </div>
+          </div>
+
+          {/* أزرار المشاركة */}
+          <div className="pt-6">
+            <SocialLinks links={socialLinks} />
+          </div>
+
+          <div className="text-center pt-8 pb-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5"
+            >
+              <span className="text-sm text-gray-400">صنع بكل حب بواسطة</span>
               <img 
-                src={product.image} 
-                alt={product.name}
-                className="w-full h-full object-cover"
+                src="/logo.png" 
+                alt="Platform Logo" 
+                className="w-5 h-5 object-contain"
               />
-            </div>
-
-            {/* تفاصيل المنتج */}
-            <div className="p-6">
-              <h1 className="text-2xl font-semibold text-gray-900 mb-2">
-                {product.name}
-              </h1>
-              <p className="text-gray-600 mb-4">
-                {product.description}
-              </p>
-              <div className="text-xl font-bold text-primary">
-                {product.price.toFixed(3)} د.ك
-              </div>
-            </div>
-          </motion.div>
-        </Card>
-
-        {/* أزرار المشاركة */}
-        <SocialLinks links={socialLinks} />
+              <span className="text-sm font-medium bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+                منصتنا
+              </span>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
