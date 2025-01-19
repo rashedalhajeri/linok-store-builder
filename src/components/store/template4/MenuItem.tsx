@@ -36,15 +36,21 @@ export const MenuItem = ({ item }: MenuItemProps) => {
           
           <div className="flex-1 p-4">
             <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2">
                 <h3 className="font-bold text-charcoal text-sm md:text-base group-hover:text-gray-900 transition-colors duration-300 line-clamp-1">
                   {item.name}
                 </h3>
                 {item.isSpicy && (
-                  <Flame size={16} className="text-red-500" />
+                  <div className="flex items-center gap-0.5 text-red-500">
+                    <Flame size={16} />
+                    <span className="text-xs">حار</span>
+                  </div>
                 )}
                 {item.isPopular && (
-                  <Star size={16} className="text-amber-500 fill-amber-500" />
+                  <div className="flex items-center gap-0.5 text-amber-500">
+                    <Star size={16} className="fill-amber-500" />
+                    <span className="text-xs">الأكثر مبيعاً</span>
+                  </div>
                 )}
               </div>
               <p className="text-xs text-gray-600 line-clamp-2 group-hover:text-gray-700 transition-colors duration-300">
