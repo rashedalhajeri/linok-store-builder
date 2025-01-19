@@ -1,28 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { StoreCover } from "@/components/store/template4/StoreCover";
-import { SearchBar } from "@/components/store/template4/SearchBar";
-import { CategoryTabs } from "@/components/store/template4/CategoryTabs";
 import { MenuItem } from "@/components/store/template4/MenuItem";
 
 const StoreTemplate4 = () => {
-  const [selectedCategory, setSelectedCategory] = useState("main");
   const [language, setLanguage] = useState<'en' | 'ar'>('ar');
-
-  const categories = [
-    { id: "main", label: "الأطباق الرئيسية" },
-    { id: "burgers", label: "برجر" },
-    { id: "sandwiches", label: "سندويشات" },
-    { id: "appetizers", label: "مقبلات" },
-    { id: "salads", label: "سلطات" },
-    { id: "drinks", label: "مشروبات" },
-    { id: "desserts", label: "حلويات" },
-    { id: "sides", label: "إضافات" },
-    { id: "shawarma", label: "شاورما" },
-    { id: "grills", label: "مشويات" },
-    { id: "rice", label: "أرز" },
-    { id: "pizza", label: "بيتزا" }
-  ];
 
   const menuItems = {
     main: [
@@ -42,107 +24,21 @@ const StoreTemplate4 = () => {
         image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
         isPopular: true
       }
-    ],
-    burgers: [
-      {
-        id: 3,
-        name: "برجر لحم واجيو",
-        description: "برجر لحم واجيو مع جبنة شيدر وصلصة خاصة",
-        price: "8.500 د.ك",
-        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
-        isSpicy: true,
-        isPopular: true
-      },
-      {
-        id: 4,
-        name: "برجر دجاج مقرمش",
-        description: "برجر دجاج مقرمش مع صلصة الرانش",
-        price: "6.500 د.ك",
-        image: "https://images.unsplash.com/photo-1525164286253-04e68b9d94c6",
-        isPopular: true
-      }
-    ],
-    sandwiches: [
-      {
-        id: 5,
-        name: "كلوب ساندويتش",
-        description: "دجاج مشوي مع جبنة وخضار",
-        price: "4.500 د.ك",
-        image: "https://images.unsplash.com/photo-1550507992-eb63ffee0847",
-        isPopular: true
-      },
-      {
-        id: 6,
-        name: "فيليه ستيك ساندويتش",
-        description: "شرائح لحم مع صلصة خاصة",
-        price: "5.750 د.ك",
-        image: "https://images.unsplash.com/photo-1559847844-5315695dadae",
-        isSpicy: true
-      }
-    ],
-    appetizers: [
-      {
-        id: 7,
-        name: "حمص",
-        description: "حمص مع زيت زيتون وصنوبر",
-        price: "2.500 د.ك",
-        image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea",
-      },
-      {
-        id: 8,
-        name: "متبل",
-        description: "متبل باذنجان طازج",
-        price: "2.250 د.ك",
-        image: "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d",
-      }
     ]
   };
 
-  const handleSearch = (query: string) => {
-    console.log("Searching for:", query);
-  };
-
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <StoreCover 
         language={language}
         onToggleLanguage={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
       />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10 pb-12">
-        <SearchBar onSearch={handleSearch} />
-        
-        <div className="mt-8">
-          <CategoryTabs
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onSelectCategory={setSelectedCategory}
-          />
-        </div>
-
-        <div className="mt-8 grid grid-cols-2 gap-3">
-          {menuItems[selectedCategory]?.map((item) => (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-2 gap-4">
+          {menuItems.main.map((item) => (
             <MenuItem key={item.id} item={item} />
           ))}
-        </div>
-
-        <div className="text-center mt-12 mb-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-primary-light/10"
-          >
-            <span className="text-sm text-muted">صنع بكل حب بواسطة</span>
-            <img 
-              src="/logo.png" 
-              alt="Platform Logo" 
-              className="w-5 h-5 object-contain"
-            />
-            <span className="text-sm font-medium bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
-              منصتنا
-            </span>
-          </motion.div>
         </div>
       </div>
     </div>
