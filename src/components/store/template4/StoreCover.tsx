@@ -17,7 +17,7 @@ export const StoreCover = ({ language, onToggleLanguage }: StoreCoverProps) => {
         />
       </div>
       
-      <div className="relative px-4 pt-8 pb-4">
+      <div className="relative px-4 py-6">
         {/* Main Content Container */}
         <div className="max-w-2xl mx-auto">
           {/* Logo and Title */}
@@ -72,9 +72,9 @@ export const StoreCover = ({ language, onToggleLanguage }: StoreCoverProps) => {
               <input
                 type="text"
                 placeholder="Choose a delivery address"
-                className="w-full px-4 py-3 bg-gray-50 rounded-xl text-sm text-charcoal pr-10 focus:outline-none focus:ring-1 focus:ring-primary/20"
+                className="w-full px-4 py-3 pr-10 bg-gray-50 rounded-xl text-sm text-charcoal placeholder-muted focus:outline-none focus:ring-1 focus:ring-primary/20"
               />
-              <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
             </div>
           </motion.div>
         </div>
