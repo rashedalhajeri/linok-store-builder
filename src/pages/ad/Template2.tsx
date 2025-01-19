@@ -1,6 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { MessageSquare, Share2, Heart, Globe, Calendar, Gauge, Car, Image } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const AdTemplate2 = () => {
   const navigate = useNavigate();
@@ -41,15 +48,27 @@ const AdTemplate2 = () => {
           </button>
         </div>
 
-        {/* Main Image */}
+        {/* Main Image Carousel */}
         <div className="relative w-full aspect-square">
-          <img 
-            src={ad.images[0]}
-            alt={ad.title}
-            className="w-full h-full object-cover"
-          />
+          <Carousel className="w-full">
+            <CarouselContent>
+              {ad.images.map((image, index) => (
+                <CarouselItem key={index}>
+                  <div className="relative w-full aspect-square">
+                    <img 
+                      src={image}
+                      alt={`${ad.title} - صورة ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2" />
+            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2" />
+          </Carousel>
           {/* Image Counter Indicator */}
-          <div className="absolute bottom-4 left-4 bg-black/70 px-3 py-1.5 rounded-full flex items-center gap-2 text-white">
+          <div className="absolute bottom-4 left-4 bg-black/70 px-3 py-1.5 rounded-full flex items-center gap-2 text-white z-10">
             <Image className="w-4 h-4" />
             <span className="text-sm">{ad.images.length}</span>
           </div>
