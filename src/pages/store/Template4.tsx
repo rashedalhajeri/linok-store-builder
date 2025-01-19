@@ -134,13 +134,13 @@ const StoreTemplate4 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FEF7CD]/10">
+    <div className="min-h-screen bg-gray-50">
       <StoreCover 
         language={language}
         onToggleLanguage={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
       />
       
-      <div className="max-w-7xl mx-auto px-4 -mt-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-10 pb-12">
         <SearchBar onSearch={handleSearch} />
         
         <div className="mt-8">
@@ -151,13 +151,13 @@ const StoreTemplate4 = () => {
           />
         </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-4">
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {menuItems[selectedCategory]?.map((item) => (
             <MenuItem key={item.id} item={item} />
           ))}
         </div>
 
-        <div className="flex justify-center mt-8 pb-8">
+        <div className="flex justify-center mt-12">
           <SocialLinks links={socialLinks} />
         </div>
       </div>
