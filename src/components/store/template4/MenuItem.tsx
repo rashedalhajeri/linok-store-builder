@@ -24,23 +24,23 @@ export const MenuItem = ({ item }: MenuItemProps) => {
     >
       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group border border-gray-100 bg-white h-full">
         <div className="flex flex-col h-full">
-          <div className="relative w-full pt-[75%] overflow-hidden">
+          <div className="relative w-full pt-[70%] overflow-hidden">
             <img
               src={item.image}
               alt={item.name}
               className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="absolute top-1.5 left-1.5 flex flex-col gap-1">
+            <div className="absolute top-1 left-1 flex flex-col gap-0.5">
               {item.isSpicy && (
-                <div className="inline-flex items-center gap-0.5 text-red-600 bg-white/95 px-1 py-0.5 rounded text-[8px] font-medium shadow-sm">
-                  <Flame size={8} className="shrink-0" />
+                <div className="inline-flex items-center gap-0.5 text-red-600 bg-white/95 px-1 py-0.5 rounded text-[7px] font-medium shadow-sm">
+                  <Flame size={7} className="shrink-0" />
                   حار
                 </div>
               )}
               {item.isPopular && (
-                <div className="inline-flex items-center gap-0.5 text-amber-600 bg-white/95 px-1 py-0.5 rounded text-[8px] font-medium shadow-sm">
-                  <Star size={8} className="shrink-0 fill-amber-500" />
+                <div className="inline-flex items-center gap-0.5 text-amber-600 bg-white/95 px-1 py-0.5 rounded text-[7px] font-medium shadow-sm">
+                  <Star size={7} className="shrink-0 fill-amber-500" />
                   مميز
                 </div>
               )}
@@ -58,7 +58,7 @@ export const MenuItem = ({ item }: MenuItemProps) => {
             </div>
             
             <div className="mt-3 flex items-center justify-end">
-              <span className="font-bold text-charcoal text-sm md:text-base bg-gray-50 px-2.5 py-1 rounded-full shadow-sm">
+              <span className="font-bold text-charcoal text-xs bg-gray-50 px-2 py-0.5 rounded-full shadow-sm">
                 {item.price}
               </span>
             </div>
