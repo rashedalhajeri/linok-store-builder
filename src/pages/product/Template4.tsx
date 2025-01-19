@@ -9,8 +9,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 const ProductTemplate4 = () => {
@@ -18,6 +16,7 @@ const ProductTemplate4 = () => {
   const { productId } = useParams();
   const { toast } = useToast();
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   // Temporary mock data - replace with actual data fetching
   const product = {
@@ -80,7 +79,10 @@ const ProductTemplate4 = () => {
         animate={{ opacity: isImageLoaded ? 1 : 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Carousel className="w-full h-full">
+        <Carousel 
+          className="w-full h-full"
+          onSlideChange={setCurrentSlide}
+        >
           <CarouselContent className="h-full">
             {product.images.map((image, index) => (
               <CarouselItem key={index} className="h-full">
@@ -93,9 +95,21 @@ const ProductTemplate4 = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-4" />
-          <CarouselNext className="right-4" />
         </Carousel>
+        
+        {/* Pagination Dots */}
+        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+          {product.images.map((_, index) => (
+            <div
+              key={index}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === currentSlide 
+                  ? "bg-white scale-125" 
+                  : "bg-white/30"
+              }`}
+            />
+          ))}
+        </div>
       </motion.div>
 
       {/* Product Details */}
