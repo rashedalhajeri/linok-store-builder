@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { MessageSquare, Share2, Heart, Globe, Calendar, Gauge, Car } from "lucide-react";
+import { MessageSquare, Share2, Heart, Globe, Calendar, Gauge, Car, Image } from "lucide-react";
 
 const AdTemplate2 = () => {
   const navigate = useNavigate();
@@ -19,6 +19,8 @@ const AdTemplate2 = () => {
       seats: "8"
     },
     images: [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
       "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
     ],
   };
@@ -46,6 +48,11 @@ const AdTemplate2 = () => {
             alt={ad.title}
             className="w-full h-full object-cover"
           />
+          {/* Image Counter Indicator */}
+          <div className="absolute bottom-4 left-4 bg-black/70 px-3 py-1.5 rounded-full flex items-center gap-2 text-white">
+            <Image className="w-4 h-4" />
+            <span className="text-sm">{ad.images.length}</span>
+          </div>
         </div>
 
         {/* Title and Price */}
