@@ -57,11 +57,11 @@ export const StoreHeader = ({
                 </div>
               </motion.div>
               
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-4">
                 <motion.h1 
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-xl md:text-2xl font-bold text-[#2C3E50]"
+                  className="text-sm md:text-lg font-bold text-[#2C3E50] mt-2"
                 >
                   {storeName}
                 </motion.h1>
