@@ -60,7 +60,7 @@ const ProductTemplate4 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
@@ -71,7 +71,7 @@ const ProductTemplate4 = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="text-charcoal hover:bg-gray-100 rounded-full transition-colors"
+            className="text-charcoal hover:bg-gray-50 rounded-full transition-colors"
             onClick={() => navigate(-1)}
           >
             <ArrowRight className="h-6 w-6" />
@@ -80,7 +80,7 @@ const ProductTemplate4 = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="text-charcoal hover:bg-gray-100 rounded-full transition-colors"
+              className="text-charcoal hover:bg-gray-50 rounded-full transition-colors"
               onClick={toggleFavorite}
             >
               <Heart className={`h-6 w-6 transition-colors ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
@@ -88,7 +88,7 @@ const ProductTemplate4 = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="text-charcoal hover:bg-gray-100 rounded-full transition-colors"
+              className="text-charcoal hover:bg-gray-50 rounded-full transition-colors"
               onClick={handleShare}
             >
               <Share2 className="h-6 w-6" />
@@ -114,7 +114,7 @@ const ProductTemplate4 = () => {
                 <motion.img
                   src={image}
                   alt={`${product.name} - صورة ${index + 1}`}
-                  className="w-full h-full object-cover rounded-b-3xl"
+                  className="w-full h-full object-cover"
                   onLoad={() => setIsImageLoaded(true)}
                   initial={{ scale: 1.1 }}
                   animate={{ scale: 1 }}
@@ -126,11 +126,11 @@ const ProductTemplate4 = () => {
         </Carousel>
         
         {/* Pagination Dots */}
-        <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3">
+        <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2">
           {product.images.map((_, index) => (
             <motion.div
               key={index}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 index === currentSlide 
                   ? "bg-white scale-110 shadow-lg" 
                   : "bg-white/40 backdrop-blur-sm"
@@ -143,20 +143,20 @@ const ProductTemplate4 = () => {
 
       {/* Product Details */}
       <motion.div 
-        className="relative -mt-8 px-6 pb-8 max-w-2xl mx-auto"
+        className="relative -mt-10 px-4 sm:px-6 lg:px-8 pb-8 max-w-2xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-        <div className="bg-white rounded-3xl p-6 shadow-lg shadow-gray-100/50">
+        <div className="bg-white rounded-3xl p-6 shadow-lg">
           <div className="space-y-6">
             {/* Category & Time Badge */}
             <div className="flex items-center justify-between">
-              <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20 border-0">
+              <Badge variant="outline" className="bg-gray-50 border-gray-200 text-charcoal">
                 <Tag className="w-4 h-4 ml-1" />
                 {product.category}
               </Badge>
-              <Badge variant="outline" className="bg-gray-50 flex items-center gap-1">
+              <Badge variant="outline" className="bg-gray-50 border-gray-200 text-charcoal flex items-center gap-1">
                 <Clock className="w-4 h-4" />
                 {product.preparationTime}
               </Badge>
@@ -166,14 +166,14 @@ const ProductTemplate4 = () => {
             <div className="space-y-4">
               <h1 className="text-2xl sm:text-3xl font-bold text-charcoal">{product.name}</h1>
               <div className="flex items-center justify-between">
-                <span className="text-xl sm:text-2xl font-bold text-primary">
+                <span className="text-xl sm:text-2xl font-bold text-charcoal">
                   {product.price}
                 </span>
               </div>
             </div>
 
             {/* Description */}
-            <p className="text-muted leading-relaxed text-base sm:text-lg">
+            <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
               {product.description}
             </p>
 
@@ -185,7 +185,7 @@ const ProductTemplate4 = () => {
                   <Badge
                     key={index}
                     variant="outline"
-                    className="bg-gray-50/50 text-muted border-gray-100 text-sm py-1.5 px-3 rounded-full"
+                    className="bg-gray-50 border-gray-200 text-gray-600 text-sm py-1.5 px-3 rounded-full"
                   >
                     {ingredient}
                   </Badge>
@@ -199,7 +199,7 @@ const ProductTemplate4 = () => {
               whileTap={{ scale: 0.98 }}
             >
               <Button 
-                className="w-full bg-gradient-button text-white py-6 rounded-xl text-lg font-semibold shadow-lg shadow-primary/20 transition-all duration-300"
+                className="w-full bg-charcoal hover:bg-gray-800 text-white py-6 rounded-xl text-lg font-semibold shadow-lg transition-all duration-300"
               >
                 إضافة إلى السلة
               </Button>
