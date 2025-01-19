@@ -60,37 +60,37 @@ const ProductTemplate4 = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
+      {/* Header - Now showing only icons */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100"
+        className="fixed top-0 left-0 right-0 z-50"
       >
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <Button
             variant="ghost"
             size="icon"
-            className="text-charcoal hover:bg-gray-50 rounded-full transition-colors"
+            className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-sm border border-gray-100 text-charcoal hover:bg-white transition-colors"
             onClick={() => navigate(-1)}
           >
-            <ArrowRight className="h-6 w-6" />
+            <ArrowRight className="h-5 w-5" />
           </Button>
-          <div className="flex gap-3">
+          <div className="flex gap-2">
             <Button
               variant="ghost"
               size="icon"
-              className="text-charcoal hover:bg-gray-50 rounded-full transition-colors"
+              className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-sm border border-gray-100 text-charcoal hover:bg-white transition-colors"
               onClick={toggleFavorite}
             >
-              <Heart className={`h-6 w-6 transition-colors ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
+              <Heart className={`h-5 w-5 transition-colors ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
             </Button>
             <Button
               variant="ghost"
               size="icon"
-              className="text-charcoal hover:bg-gray-50 rounded-full transition-colors"
+              className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-sm border border-gray-100 text-charcoal hover:bg-white transition-colors"
               onClick={handleShare}
             >
-              <Share2 className="h-6 w-6" />
+              <Share2 className="h-5 w-5" />
             </Button>
           </div>
         </div>
