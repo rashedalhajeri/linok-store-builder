@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion"; // Add this import
+import { motion } from "framer-motion";
 import { StoreCover } from "@/components/store/template4/StoreCover";
 import { SearchBar } from "@/components/store/template4/SearchBar";
 import { CategoryTabs } from "@/components/store/template4/CategoryTabs";
