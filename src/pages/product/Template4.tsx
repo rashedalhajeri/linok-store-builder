@@ -41,14 +41,14 @@ const ProductTemplate4 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-gray-100">
       {/* Back Button and Share */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Button
             variant="ghost"
             size="icon"
-            className="text-white hover:bg-white/10"
+            className="text-black hover:bg-black/10"
             onClick={() => navigate(-1)}
           >
             <ArrowRight className="h-6 w-6" />
@@ -56,7 +56,7 @@ const ProductTemplate4 = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="text-white hover:bg-white/10"
+            className="text-black hover:bg-black/10"
             onClick={handleShare}
           >
             <Share2 className="h-6 w-6" />
@@ -64,7 +64,7 @@ const ProductTemplate4 = () => {
         </div>
       </div>
 
-      {/* Product Image */}
+      {/* Product Image with Badges Overlay */}
       <motion.div 
         className="relative w-full h-[40vh] overflow-hidden"
         initial={{ opacity: 0 }}
@@ -77,6 +77,19 @@ const ProductTemplate4 = () => {
           className="w-full h-full object-cover"
           onLoad={() => setIsImageLoaded(true)}
         />
+        {/* Badges positioned on top of image */}
+        <div className="absolute top-4 right-4 flex flex-col gap-2">
+          {product.isSpicy && (
+            <Badge variant="secondary" className="bg-white text-red-500 hover:bg-white/90">
+              حار 🌶️
+            </Badge>
+          )}
+          {product.isPopular && (
+            <Badge variant="secondary" className="bg-white text-amber-500 hover:bg-white/90">
+              الأكثر طلباً ⭐️
+            </Badge>
+          )}
+        </div>
       </motion.div>
 
       {/* Product Details */}
@@ -88,41 +101,27 @@ const ProductTemplate4 = () => {
       >
         <div className="space-y-6">
           {/* Title */}
-          <h1 className="text-3xl font-bold text-white">{product.name}</h1>
+          <h1 className="text-3xl font-bold text-black">{product.name}</h1>
 
           {/* Price */}
-          <div className="inline-block bg-white/5 backdrop-blur-sm px-6 py-2 rounded-full">
-            <span className="text-2xl font-bold text-white">{product.price}</span>
+          <div className="inline-block bg-black/5 backdrop-blur-sm px-6 py-2 rounded-full">
+            <span className="text-2xl font-bold text-black">{product.price}</span>
           </div>
 
           {/* Description */}
-          <p className="text-white leading-relaxed text-lg">
+          <p className="text-black/80 leading-relaxed text-lg">
             {product.description}
           </p>
 
-          {/* Badges */}
-          <div className="flex gap-2">
-            {product.isSpicy && (
-              <Badge variant="secondary" className="bg-red-500/10 text-red-500 hover:bg-red-500/20">
-                حار 🌶️
-              </Badge>
-            )}
-            {product.isPopular && (
-              <Badge variant="secondary" className="bg-amber-500/10 text-amber-500 hover:bg-amber-500/20">
-                الأكثر طلباً ⭐️
-              </Badge>
-            )}
-          </div>
-
           {/* Ingredients */}
           <div className="space-y-2">
-            <h3 className="text-lg font-semibold text-white">المكونات:</h3>
+            <h3 className="text-lg font-semibold text-black">المكونات:</h3>
             <div className="flex flex-wrap gap-2">
               {product.ingredients.map((ingredient, index) => (
                 <Badge
                   key={index}
                   variant="outline"
-                  className="bg-white/5 hover:bg-white/10 transition-colors text-white"
+                  className="bg-white/80 hover:bg-white text-black border-black/10"
                 >
                   {ingredient}
                 </Badge>
