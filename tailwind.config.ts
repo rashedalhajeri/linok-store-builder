@@ -99,7 +99,7 @@ export default {
       },
       backgroundImage: {
         'gradient-store': 'linear-gradient(102.3deg, #bbf7d0 5.9%, #86efac 64%, #4ade80 89%)',
-        'gradient-card': 'linear-gradient(to top, #f0fdf4 0%, #dcfce7 100%)',
+        'gradient-card': 'linear-gradient(to bottom, #f5f5f5 0%, #ffffff 100%)',
         'gradient-button': 'linear-gradient(to right, #16a34a 0%, #22c55e 100%)',
       },
     },
