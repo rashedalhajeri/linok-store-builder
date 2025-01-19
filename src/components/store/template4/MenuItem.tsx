@@ -33,14 +33,14 @@ export const MenuItem = ({ item }: MenuItemProps) => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute top-0.5 left-0.5 flex flex-col gap-0.5">
               {item.isSpicy && (
-                <div className="inline-flex items-center gap-0.5 text-red-600 bg-white/90 px-0.5 py-px rounded text-[7px] font-medium">
-                  <Flame size={7} className="shrink-0" />
+                <div className="inline-flex items-center gap-1 text-red-600 bg-white/90 px-1.5 py-0.5 rounded text-[8px] font-medium">
+                  <Flame size={9} className="shrink-0" />
                   حار
                 </div>
               )}
               {item.isPopular && (
-                <div className="inline-flex items-center gap-0.5 text-amber-600 bg-white/90 px-0.5 py-px rounded text-[7px] font-medium">
-                  <Star size={7} className="shrink-0 fill-amber-500" />
+                <div className="inline-flex items-center gap-1 text-amber-600 bg-white/90 px-1.5 py-0.5 rounded text-[8px] font-medium">
+                  <Star size={9} className="shrink-0 fill-amber-500" />
                   مميز
                 </div>
               )}
