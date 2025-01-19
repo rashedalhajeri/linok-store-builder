@@ -12,7 +12,6 @@ const ProductTemplate4 = () => {
   const { toast } = useToast();
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
-  // Temporary mock data - replace with actual data fetching
   const product = {
     id: productId,
     name: "برجر لحم واجيو",
@@ -77,18 +76,17 @@ const ProductTemplate4 = () => {
           className="w-full h-full object-cover"
           onLoad={() => setIsImageLoaded(true)}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-50 to-transparent" />
       </motion.div>
 
       {/* Product Details */}
       <motion.div 
-        className="relative px-4 pb-8 mt-8"
+        className="relative px-4 pb-8 mt-8 bg-gray-50/80"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
         <div className="space-y-6">
-          {/* Badges - Moved above product name */}
+          {/* Badges */}
           <div className="flex gap-2">
             {product.isSpicy && (
               <Badge variant="secondary" className="bg-red-500/10 text-red-500 hover:bg-red-500/20">
@@ -105,8 +103,8 @@ const ProductTemplate4 = () => {
           {/* Title */}
           <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
 
-          {/* Price - Changed to black */}
-          <div className="inline-block bg-gray-100/80 backdrop-blur-sm px-6 py-2 rounded-full">
+          {/* Price */}
+          <div className="inline-block bg-white/80 backdrop-blur-sm px-6 py-2 rounded-full shadow-sm">
             <span className="text-2xl font-bold text-gray-900">{product.price}</span>
           </div>
 
