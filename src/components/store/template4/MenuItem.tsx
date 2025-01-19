@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Flame, Star } from "lucide-react";
 
 interface MenuItemProps {
@@ -36,22 +35,24 @@ export const MenuItem = ({ item }: MenuItemProps) => {
           
           <div className="flex-1 p-4">
             <div className="flex flex-col gap-2">
-              <div className="flex items-center flex-wrap gap-1.5">
+              <div className="flex items-center gap-1">
                 <h3 className="font-bold text-charcoal text-base group-hover:text-gray-900 transition-colors duration-300 line-clamp-1">
                   {item.name}
                 </h3>
-                {item.isSpicy && (
-                  <div className="inline-flex items-center gap-0.5 text-red-500 bg-red-50 px-1.5 py-0.5 rounded-full">
-                    <Flame size={14} />
-                    <span className="text-xs font-medium">حار</span>
-                  </div>
-                )}
-                {item.isPopular && (
-                  <div className="inline-flex items-center gap-0.5 text-amber-500 bg-amber-50 px-1.5 py-0.5 rounded-full">
-                    <Star size={14} className="fill-amber-500" />
-                    <span className="text-xs font-medium">الأكثر مبيعاً</span>
-                  </div>
-                )}
+                <div className="flex items-center gap-1 mr-1">
+                  {item.isSpicy && (
+                    <div className="inline-flex items-center gap-0.5 text-red-500 bg-red-50/80 px-2 py-0.5 rounded-full text-[10px] font-medium border border-red-100">
+                      <Flame size={12} className="shrink-0" />
+                      حار
+                    </div>
+                  )}
+                  {item.isPopular && (
+                    <div className="inline-flex items-center gap-0.5 text-amber-500 bg-amber-50/80 px-2 py-0.5 rounded-full text-[10px] font-medium border border-amber-100">
+                      <Star size={12} className="shrink-0 fill-amber-500" />
+                      الأكثر مبيعاً
+                    </div>
+                  )}
+                </div>
               </div>
               <p className="text-xs text-gray-600 line-clamp-2 group-hover:text-gray-700 transition-colors duration-300">
                 {item.description}
