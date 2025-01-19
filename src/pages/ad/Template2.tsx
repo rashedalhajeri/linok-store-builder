@@ -167,12 +167,6 @@ const AdTemplate2 = () => {
               <Phone className="w-5 h-5" />
               اتصل الآن
             </Button>
-            <Button 
-              className="flex-1 bg-[#5C6BC0] hover:bg-[#5C6BC0]/90 text-white transition-colors duration-300"
-            >
-              <MessageSquare className="w-5 h-5" />
-              واتساب
-            </Button>
           </div>
         </div>
       </div>
