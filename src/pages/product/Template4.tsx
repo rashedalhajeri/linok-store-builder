@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Share2, Heart, Clock, Tag } from "lucide-react";
+import { ArrowRight, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
 import {
   Carousel,
@@ -17,7 +16,6 @@ const ProductTemplate4 = () => {
   const { toast } = useToast();
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isFavorite, setIsFavorite] = useState(false);
 
   // Temporary mock data - replace with actual data fetching
   const product = {
@@ -50,14 +48,6 @@ const ProductTemplate4 = () => {
     }
   };
 
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-    toast({
-      title: isFavorite ? "تمت إزالة المنتج من المفضلة" : "تمت إضافة المنتج للمفضلة",
-      duration: 2000,
-    });
-  };
-
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -75,24 +65,14 @@ const ProductTemplate4 = () => {
           >
             <ArrowRight className="h-5 w-5" />
           </Button>
-          <div className="flex gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-sm shadow-sm text-charcoal hover:bg-white/80 transition-all duration-300"
-              onClick={toggleFavorite}
-            >
-              <Heart className={`h-5 w-5 transition-colors ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-sm shadow-sm text-charcoal hover:bg-white/80 transition-all duration-300"
-              onClick={handleShare}
-            >
-              <Share2 className="h-5 w-5" />
-            </Button>
-          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-sm shadow-sm text-charcoal hover:bg-white/80 transition-all duration-300"
+            onClick={handleShare}
+          >
+            <Share2 className="h-5 w-5" />
+          </Button>
         </div>
       </motion.div>
 
@@ -132,7 +112,7 @@ const ProductTemplate4 = () => {
             </CarouselContent>
           </Carousel>
           
-          {/* Pagination Dots */}
+          {/* Modern Pagination Dots */}
           <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-20">
             {product.images.map((_, index) => (
               <motion.div
