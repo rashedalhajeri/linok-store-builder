@@ -8,10 +8,7 @@ const AdTemplate2 = () => {
   const ad = {
     title: "كابرس 90",
     price: "2,100 د.ك",
-    location: "مبارك الكبير",
     date: "منذ ساعة",
-    views: 18,
-    category: "سيارات كلاسيكية",
     phone: "+965 9999 9999",
     description: "سيارة بحالة ممتازة، صيانة دورية، جميع القطع أصلية",
     specs: {
@@ -51,35 +48,11 @@ const AdTemplate2 = () => {
           />
         </div>
 
-        {/* Category and Views */}
-        <div className="p-4 flex items-center justify-between text-sm text-blue-600">
-          <div className="flex items-center gap-2">
-            <span>←</span>
-            <span>{ad.category}</span>
-          </div>
-          <div className="flex items-center gap-4 text-gray-500">
-            <span>{ad.date}</span>
-            <div className="flex items-center gap-1">
-              <span>{ad.views}</span>
-              <span>مشاهدة</span>
-            </div>
-          </div>
-        </div>
-
         {/* Title and Price */}
         <div className="p-4 space-y-2">
           <h1 className="text-2xl font-bold text-gray-900">{ad.title}</h1>
           <p className="text-2xl font-bold text-emerald-500">{ad.price}</p>
-          <div className="flex items-center gap-2 text-gray-600">
-            <Globe className="w-5 h-5" />
-            <span>{ad.location}</span>
-          </div>
-        </div>
-
-        {/* Description */}
-        <div className="p-4 border-t border-gray-100">
-          <h2 className="text-xl font-bold mb-2">الوصف</h2>
-          <p className="text-gray-600 text-sm leading-relaxed">{ad.description}</p>
+          <p className="text-sm text-gray-500">{ad.date}</p>
         </div>
 
         {/* Specifications */}
@@ -110,11 +83,17 @@ const AdTemplate2 = () => {
             <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg">
               <Globe className="w-5 h-5 text-gray-600" />
               <div>
-                <p className="text-sm text-gray-500">الموقع</p>
-                <span className="text-gray-900">{ad.specs.location}</span>
+                <p className="text-sm text-gray-500">المقاعد</p>
+                <span className="text-gray-900">{ad.specs.seats}</span>
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Description */}
+        <div className="p-4 border-t border-gray-100">
+          <h2 className="text-xl font-bold mb-2">الوصف</h2>
+          <p className="text-gray-600 text-sm leading-relaxed">{ad.description}</p>
         </div>
 
         {/* Contact Buttons */}
