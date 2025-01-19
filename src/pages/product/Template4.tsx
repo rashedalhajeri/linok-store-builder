@@ -118,23 +118,29 @@ const ProductTemplate4 = () => {
             </CarouselContent>
           </Carousel>
           
-          {/* Modern Pagination Dots */}
-          <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-20">
-            {product.images.map((_, index) => (
-              <motion.div
-                key={index}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentSlide 
-                    ? "bg-white w-4 shadow-lg" 
-                    : "bg-white/40 backdrop-blur-sm"
-                }`}
-                whileHover={{ scale: 1.2 }}
-                animate={{
-                  width: index === currentSlide ? 16 : 8,
-                }}
-                transition={{ duration: 0.3 }}
-              />
-            ))}
+          {/* Thumbnails */}
+          <div className="absolute bottom-4 left-0 right-0 px-4">
+            <div className="flex justify-center gap-2 overflow-x-auto scrollbar-hide">
+              {product.images.map((image, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`relative flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                    index === currentSlide 
+                      ? 'border-primary shadow-lg scale-110' 
+                      : 'border-white/50 hover:border-primary/50'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <img
+                    src={image}
+                    alt={`صورة مصغرة ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.button>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
