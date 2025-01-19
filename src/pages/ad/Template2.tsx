@@ -9,10 +9,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useState } from "react";
 
 const AdTemplate2 = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
+  const [currentSlide, setCurrentSlide] = useState(1);
 
   const ad = {
     title: "كابرس 90",
@@ -34,6 +36,10 @@ const AdTemplate2 = () => {
     ],
   };
 
+  const handleSlideChange = (index: number) => {
+    setCurrentSlide(index + 1);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 pb-24">
       <div className="max-w-lg mx-auto bg-white">
@@ -52,7 +58,7 @@ const AdTemplate2 = () => {
 
         {/* Main Image Carousel */}
         <div className="relative w-full aspect-square">
-          <Carousel className="w-full">
+          <Carousel className="w-full" onSlideChange={handleSlideChange}>
             <CarouselContent>
               {ad.images.map((image, index) => (
                 <CarouselItem key={index}>
@@ -74,9 +80,11 @@ const AdTemplate2 = () => {
             )}
           </Carousel>
           {/* Image Counter Indicator */}
-          <div className="absolute bottom-4 left-4 bg-black/70 px-3 py-1.5 rounded-full flex items-center gap-2 text-white z-10">
+          <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-3 text-white z-10 transition-all duration-300 hover:bg-black/80">
             <Image className="w-4 h-4" />
-            <span className="text-sm">{ad.images.length}</span>
+            <span className="text-sm font-medium">
+              {currentSlide} / {ad.images.length}
+            </span>
           </div>
         </div>
 
