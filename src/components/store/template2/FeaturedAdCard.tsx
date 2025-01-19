@@ -23,7 +23,7 @@ export const FeaturedAdCard = ({
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -5 }}
       className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md 
-                 transition-all duration-300 cursor-pointer border border-gray-100"
+                 transition-all duration-300 cursor-pointer border border-[#E9ECEF]"
       onClick={onClick}
     >
       <div className="aspect-[4/3] relative">
@@ -35,8 +35,8 @@ export const FeaturedAdCard = ({
         <div className="absolute top-2 right-2">
           <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium ${
             condition === "جديد" 
-            ? "bg-emerald-500/90 text-white" 
-            : "bg-blue-500/90 text-white"
+            ? "bg-[#4A90E2]/90 text-white" 
+            : "bg-[#5C6BC0]/90 text-white"
           }`}>
             {condition}
           </span>
@@ -44,12 +44,12 @@ export const FeaturedAdCard = ({
       </div>
       <div className="p-2.5 space-y-1.5">
         <div className="space-y-1">
-          <h3 className="font-medium text-sm text-gray-800 line-clamp-1">{title}</h3>
-          <p className="text-emerald-500 font-bold text-base">
+          <h3 className="font-medium text-sm text-[#2C3E50] line-clamp-1">{title}</h3>
+          <p className="text-[#4A90E2] font-bold text-base">
             {price}
           </p>
         </div>
-        <div className="flex items-center justify-between text-[11px] text-gray-500">
+        <div className="flex items-center justify-between text-[11px] text-[#6C757D]">
           <span className="flex items-center gap-1">
             <MapPin className="w-3 h-3" />
             {location}

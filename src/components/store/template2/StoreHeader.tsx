@@ -40,7 +40,7 @@ export const StoreHeader = ({
   };
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-white to-gray-50 border-b border-[#E5E5EA]">
+    <div className="relative overflow-hidden bg-gradient-to-b from-[#F8F9FA] to-[#E9ECEF] border-b border-[#DEE2E6]">
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col space-y-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
@@ -49,7 +49,7 @@ export const StoreHeader = ({
                 whileHover={{ scale: 1.05 }}
                 className="relative group"
               >
-                <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-primary/10 shadow-lg">
+                <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-[#4A90E2]/10 shadow-lg">
                   <img 
                     src={logo}
                     alt={storeName}
@@ -62,15 +62,15 @@ export const StoreHeader = ({
                 <motion.h1 
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-3xl md:text-4xl font-bold text-gray-900"
+                  className="text-3xl md:text-4xl font-bold text-[#2C3E50]"
                 >
                   {storeName}
                 </motion.h1>
                 <div 
-                  className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer hover:text-primary transition-colors group"
+                  className="flex items-center gap-2 text-sm text-[#6C757D] cursor-pointer hover:text-[#4A90E2] transition-colors group"
                   onClick={handleLocationClick}
                 >
-                  <MapPin className="w-4 h-4 text-primary" />
+                  <MapPin className="w-4 h-4 text-[#4A90E2]" />
                   <span className="group-hover:underline">{location}</span>
                 </div>
               </div>
@@ -80,7 +80,7 @@ export const StoreHeader = ({
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-primary/5 border-primary/20 hover:bg-primary/10 text-primary"
+                className="bg-[#4A90E2]/5 border-[#4A90E2]/20 hover:bg-[#4A90E2]/10 text-[#4A90E2]"
                 onClick={() => handleSocialClick('whatsapp')}
               >
                 <MessageSquare className="w-5 h-5 ml-2" />
@@ -89,20 +89,11 @@ export const StoreHeader = ({
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-primary/5 border-primary/20 hover:bg-primary/10 text-primary"
+                className="bg-[#4A90E2]/5 border-[#4A90E2]/20 hover:bg-[#4A90E2]/10 text-[#4A90E2]"
                 onClick={() => handleSocialClick('phone')}
               >
                 <Phone className="w-5 h-5 ml-2" />
                 اتصال
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="bg-primary/5 border-primary/20 hover:bg-primary/10 text-primary"
-                onClick={() => handleSocialClick('tiktok')}
-              >
-                <MessageSquare className="w-5 h-5 ml-2" rotate={45} />
-                تيك توك
               </Button>
             </div>
           </div>
@@ -111,9 +102,9 @@ export const StoreHeader = ({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="max-w-3xl bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-primary/10"
+            className="max-w-3xl bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-[#4A90E2]/10"
           >
-            <p className="text-gray-700 leading-relaxed text-base">
+            <p className="text-[#495057] leading-relaxed text-base">
               {description}
             </p>
           </motion.div>

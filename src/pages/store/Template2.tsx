@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { StoreHeader } from "@/components/store/template2/StoreHeader";
 import { FeaturedAdCard } from "@/components/store/template2/FeaturedAdCard";
-import { SearchBar } from "@/components/store/SearchBar";
+import { SearchBar } from "@/components/store/template2/SearchBar";
 import { motion } from "framer-motion";
 
 const StoreTemplate2 = () => {
@@ -57,7 +57,7 @@ const StoreTemplate2 = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F5F6F8]">
+    <div className="min-h-screen bg-[#F8F9FA]">
       <StoreHeader 
         storeName={storeInfo.name}
         location={storeInfo.location}
@@ -82,7 +82,7 @@ const StoreTemplate2 = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="text-2xl font-bold mb-8 text-[#1A1A1A]"
+          className="text-2xl font-bold mb-8 text-[#2C3E50]"
         >
           إعلانات مميزة
         </motion.h2>
