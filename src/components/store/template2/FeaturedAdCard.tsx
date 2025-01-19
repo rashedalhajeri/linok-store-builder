@@ -23,7 +23,7 @@ export const FeaturedAdCard = ({
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -5 }}
       className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md 
-                 transition-all duration-300 cursor-pointer border border-[#E9ECEF]"
+                 transition-all duration-300 cursor-pointer border border-[#4A90E2]/10"
       onClick={onClick}
     >
       <div className="aspect-[4/3] relative">

@@ -40,7 +40,7 @@ export const StoreHeader = ({
   };
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-[#F8F9FA] to-[#E9ECEF] border-b border-[#DEE2E6]">
+    <div className="relative overflow-hidden bg-gradient-to-b from-[#F8F9FA] to-[#E9ECEF]">
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col space-y-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
