@@ -162,22 +162,10 @@ const ProductTemplate4 = () => {
       >
         <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-lg">
           <div className="space-y-6">
-            {/* Category & Time Badge */}
-            <div className="flex items-center justify-between">
-              <Badge variant="outline" className="bg-gray-50/80 backdrop-blur-sm border-gray-200 text-charcoal">
-                <Tag className="w-4 h-4 ml-1" />
-                {product.category}
-              </Badge>
-              <Badge variant="outline" className="bg-gray-50/80 backdrop-blur-sm border-gray-200 text-charcoal flex items-center gap-1">
-                <Clock className="w-4 h-4" />
-                {product.preparationTime}
-              </Badge>
-            </div>
-
             {/* Title and Price */}
-            <div className="space-y-2">
+            <div className="flex justify-between items-center">
               <h1 className="text-2xl font-bold text-charcoal">{product.name}</h1>
-              <span className="text-xl font-bold text-charcoal">
+              <span className="text-xl font-bold text-primary bg-primary/5 px-4 py-1.5 rounded-full shadow-sm">
                 {product.price}
               </span>
             </div>
