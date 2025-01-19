@@ -41,14 +41,14 @@ const AdTemplate2 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50/50 to-white pb-24">
-      <div className="max-w-lg mx-auto bg-white shadow-sm rounded-3xl overflow-hidden border border-primary/5">
+    <div className="min-h-screen bg-gradient-store pb-24">
+      <div className="max-w-lg mx-auto bg-white/90 backdrop-blur-sm shadow-sm rounded-3xl overflow-hidden border border-primary/10">
         <div className="flex justify-between items-center p-4 bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-primary/10">
           <div className="flex gap-4">
-            <Share2 className="w-6 h-6 text-muted hover:text-primary transition-colors cursor-pointer" />
+            <Share2 className="w-6 h-6 text-muted hover:text-secondary transition-colors cursor-pointer" />
             <Heart className="w-6 h-6 text-muted hover:text-red-400 transition-colors cursor-pointer" />
           </div>
-          <button onClick={() => navigate(-1)} className="text-muted hover:text-primary transition-colors">
+          <button onClick={() => navigate(-1)} className="text-muted hover:text-secondary transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
@@ -79,12 +79,12 @@ const AdTemplate2 = () => {
             </CarouselContent>
             {!isMobile && (
               <>
-                <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white border-primary/10" />
-                <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white border-primary/10" />
+                <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border-primary/10" />
+                <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white border-primary/10" />
               </>
             )}
           </Carousel>
-          <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-3 text-primary shadow-sm border border-primary/10 transition-all duration-300 hover:bg-white">
+          <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-3 text-secondary shadow-sm border border-primary/10 transition-all duration-300 hover:bg-white">
             <Image className="w-4 h-4" />
             <span className="text-sm font-medium">
               {currentSlide} / {ad.images.length}
@@ -97,18 +97,18 @@ const AdTemplate2 = () => {
             <h1 className="text-2xl font-bold text-gray-800 animate-fade-in">{ad.title}</h1>
             <p className="text-sm text-muted">{ad.date}</p>
           </div>
-          <p className="text-2xl font-bold text-primary animate-fade-in delay-100">{ad.price}</p>
+          <p className="text-2xl font-bold text-secondary animate-fade-in delay-100">{ad.price}</p>
         </div>
 
         <div className="p-6 border-b border-primary/5">
           <h2 className="text-lg font-semibold mb-4 text-gray-800 flex items-center gap-2">
-            <span className="w-1 h-6 bg-gradient-to-b from-primary to-primary-light rounded-full"></span>
+            <span className="w-1 h-6 bg-gradient-to-b from-secondary to-secondary-light rounded-full"></span>
             مواصفات الاعلان
           </h2>
           <div className="grid grid-cols-2 gap-3">
             <div className="flex items-center gap-3 bg-gradient-card p-4 rounded-2xl hover:shadow-md transition-all duration-300 animate-fade-in group border border-primary/5">
-              <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                <Calendar className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-xl bg-primary/30 flex items-center justify-center group-hover:bg-primary/50 transition-colors">
+                <Calendar className="w-5 h-5 text-secondary" />
               </div>
               <div>
                 <p className="text-xs text-muted-foreground mb-0.5">سنة الصنع</p>
@@ -116,8 +116,8 @@ const AdTemplate2 = () => {
               </div>
             </div>
             <div className="flex items-center gap-3 bg-gradient-card p-4 rounded-2xl hover:shadow-md transition-all duration-300 animate-fade-in delay-100 group border border-primary/5">
-              <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                <Car className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-xl bg-primary/30 flex items-center justify-center group-hover:bg-primary/50 transition-colors">
+                <Car className="w-5 h-5 text-secondary" />
               </div>
               <div>
                 <p className="text-xs text-muted-foreground mb-0.5">اللون</p>
@@ -125,8 +125,8 @@ const AdTemplate2 = () => {
               </div>
             </div>
             <div className="flex items-center gap-3 bg-gradient-card p-4 rounded-2xl hover:shadow-md transition-all duration-300 animate-fade-in delay-200 group border border-primary/5">
-              <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                <Gauge className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-xl bg-primary/30 flex items-center justify-center group-hover:bg-primary/50 transition-colors">
+                <Gauge className="w-5 h-5 text-secondary" />
               </div>
               <div>
                 <p className="text-xs text-muted-foreground mb-0.5">المسافة المقطوعة</p>
@@ -134,8 +134,8 @@ const AdTemplate2 = () => {
               </div>
             </div>
             <div className="flex items-center gap-3 bg-gradient-card p-4 rounded-2xl hover:shadow-md transition-all duration-300 animate-fade-in delay-300 group border border-primary/5">
-              <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                <Globe className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-xl bg-primary/30 flex items-center justify-center group-hover:bg-primary/50 transition-colors">
+                <Globe className="w-5 h-5 text-secondary" />
               </div>
               <div>
                 <p className="text-xs text-muted-foreground mb-0.5">المقاعد</p>
@@ -147,7 +147,7 @@ const AdTemplate2 = () => {
 
         <div className="p-6 border-b border-primary/5">
           <h2 className="text-lg font-semibold mb-3 flex items-center gap-2">
-            <span className="w-1 h-6 bg-gradient-to-b from-primary to-primary-light rounded-full"></span>
+            <span className="w-1 h-6 bg-gradient-to-b from-secondary to-secondary-light rounded-full"></span>
             الوصف
           </h2>
           <p className="text-gray-600 text-sm leading-relaxed">{ad.description}</p>
@@ -162,7 +162,7 @@ const AdTemplate2 = () => {
               اتصل الآن
             </Button>
             <Button 
-              className="flex-1 bg-primary hover:bg-primary-dark text-primary-foreground shadow-sm transition-all duration-300"
+              className="flex-1 bg-secondary hover:bg-secondary-dark text-white shadow-sm transition-all duration-300"
             >
               واتساب
             </Button>
