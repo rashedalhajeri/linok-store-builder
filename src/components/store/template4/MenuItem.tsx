@@ -31,16 +31,16 @@ export const MenuItem = ({ item }: MenuItemProps) => {
               className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="absolute top-3 left-3 flex flex-col gap-2">
+            <div className="absolute top-2 left-2 flex flex-col gap-1.5">
               {item.isSpicy && (
-                <div className="inline-flex items-center gap-1.5 text-red-600 bg-white/95 px-4 py-2 rounded-full shadow-md backdrop-blur-sm text-xs font-semibold transform hover:scale-105 transition-transform duration-200">
-                  <Flame size={14} className="shrink-0" />
+                <div className="inline-flex items-center gap-1 text-red-600 bg-white/95 px-3 py-1.5 rounded-full shadow-md backdrop-blur-sm text-xs font-semibold transform hover:scale-105 transition-transform duration-200">
+                  <Flame size={12} className="shrink-0" />
                   حار
                 </div>
               )}
               {item.isPopular && (
-                <div className="inline-flex items-center gap-1.5 text-amber-700 bg-white/95 px-4 py-2 rounded-full shadow-md backdrop-blur-sm text-xs font-semibold transform hover:scale-105 transition-transform duration-200">
-                  <Star size={14} className="shrink-0 fill-amber-500 text-amber-500" />
+                <div className="inline-flex items-center gap-1 text-amber-700 bg-white/95 px-3 py-1.5 rounded-full shadow-md backdrop-blur-sm text-xs font-semibold transform hover:scale-105 transition-transform duration-200">
+                  <Star size={12} className="shrink-0 fill-amber-500 text-amber-500" />
                   مميز
                 </div>
               )}
@@ -49,7 +49,7 @@ export const MenuItem = ({ item }: MenuItemProps) => {
           
           <div className="flex-1 p-4 pt-3">
             <div className="flex flex-col gap-2">
-              <h3 className="font-medium text-charcoal text-lg transition-colors duration-300">
+              <h3 className="font-medium text-charcoal text-base transition-colors duration-300">
                 {item.name}
               </h3>
               <p className="text-sm text-gray-600 line-clamp-2 group-hover:text-gray-700 transition-colors duration-300">
