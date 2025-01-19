@@ -42,12 +42,12 @@ const ProductTemplate4 = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white text-gray-900">
       {/* Back Button and Share */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/20 to-transparent">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm shadow-sm">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Button
             variant="ghost"
             size="icon"
-            className="text-gray-900 hover:bg-white/20"
+            className="text-gray-900 bg-white/80 hover:bg-gray-100"
             onClick={() => navigate(-1)}
           >
             <ArrowRight className="h-6 w-6" />
@@ -55,7 +55,7 @@ const ProductTemplate4 = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="text-gray-900 hover:bg-white/20"
+            className="text-gray-900 bg-white/80 hover:bg-gray-100"
             onClick={handleShare}
           >
             <Share2 className="h-6 w-6" />
