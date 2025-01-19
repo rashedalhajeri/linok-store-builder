@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { MessageSquare, Share2, Heart, Globe, Calendar, Gauge, Car } from "lucide-react";
+import { MessageSquare, Share2, Heart, Globe, Calendar, Gauge, Car, MessageCircle } from "lucide-react";
 
 const AdTemplate2 = () => {
   const navigate = useNavigate();
@@ -12,7 +12,8 @@ const AdTemplate2 = () => {
     date: "منذ ساعة",
     views: 18,
     category: "سيارات كلاسيكية",
-    phone: "+965 9999 9999", // Added phone number
+    phone: "+965 9999 9999",
+    description: "سيارة بحالة ممتازة، صيانة دورية، جميع القطع أصلية",
     specs: {
       year: "1990",
       mileage: "250 كم",
@@ -20,6 +21,20 @@ const AdTemplate2 = () => {
       location: "الكويت",
       seats: "8"
     },
+    comments: [
+      {
+        id: 1,
+        user: "أحمد",
+        text: "هل السيارة ما زالت متوفرة؟",
+        date: "منذ 3 ساعات"
+      },
+      {
+        id: 2,
+        user: "محمد",
+        text: "سعر جيد جداً",
+        date: "منذ 5 ساعات"
+      }
+    ],
     images: [
       "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
     ],
@@ -31,8 +46,8 @@ const AdTemplate2 = () => {
         {/* Header Actions */}
         <div className="flex justify-between items-center p-4">
           <div className="flex gap-4">
-            <Share2 className="w-6 h-6 text-gray-700" />
-            <Heart className="w-6 h-6 text-gray-700" />
+            <Share2 className="w-6 h-6 text-gray-700 cursor-pointer hover:text-primary transition-colors" />
+            <Heart className="w-6 h-6 text-gray-700 cursor-pointer hover:text-red-500 transition-colors" />
           </div>
           <button onClick={() => navigate(-1)} className="text-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -68,15 +83,21 @@ const AdTemplate2 = () => {
         {/* Title and Price */}
         <div className="p-4 space-y-2">
           <h1 className="text-2xl font-bold text-gray-900">{ad.title}</h1>
-          <p className="text-2xl font-bold text-blue-600">{ad.price}</p>
+          <p className="text-2xl font-bold text-emerald-500">{ad.price}</p>
           <div className="flex items-center gap-2 text-gray-600">
             <Globe className="w-5 h-5" />
             <span>{ad.location}</span>
           </div>
         </div>
 
+        {/* Description */}
+        <div className="p-4 border-t border-gray-100">
+          <h2 className="text-xl font-bold mb-2">الوصف</h2>
+          <p className="text-gray-600 text-sm leading-relaxed">{ad.description}</p>
+        </div>
+
         {/* Specifications */}
-        <div className="p-4">
+        <div className="p-4 border-t border-gray-100">
           <h2 className="text-xl font-bold mb-4">مواصفات الاعلان</h2>
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg">
@@ -103,6 +124,37 @@ const AdTemplate2 = () => {
                 <span className="text-gray-900">{ad.specs.location}</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Comments Section */}
+        <div className="p-4 border-t border-gray-100">
+          <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+            <MessageCircle className="w-5 h-5" />
+            التعليقات
+          </h2>
+          <div className="space-y-4">
+            {ad.comments.map((comment) => (
+              <div key={comment.id} className="bg-gray-50 p-3 rounded-lg">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-medium text-gray-900">{comment.user}</span>
+                  <span className="text-xs text-gray-500">{comment.date}</span>
+                </div>
+                <p className="text-gray-600 text-sm">{comment.text}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-4">
+            <textarea
+              placeholder="اكتب تعليقك..."
+              className="w-full p-3 border border-gray-200 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary"
+              rows={3}
+            />
+            <Button 
+              className="mt-2 bg-primary hover:bg-primary-dark text-white"
+            >
+              إضافة تعليق
+            </Button>
           </div>
         </div>
 
