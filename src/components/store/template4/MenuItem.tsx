@@ -22,45 +22,57 @@ export const MenuItem = ({ item }: MenuItemProps) => {
       transition={{ duration: 0.3 }}
       className="w-full h-full"
     >
-      <Card className="overflow-hidden group border-0 bg-white h-full rounded-3xl shadow-md hover:shadow-xl transition-all duration-300">
+      <Card className="group relative overflow-hidden border-0 bg-gradient-card rounded-[2rem] shadow-lg hover:shadow-xl transition-all duration-500">
         <div className="flex flex-col h-full">
-          <div className="relative w-full pt-[75%] overflow-hidden rounded-t-3xl">
+          <div className="relative w-full pt-[70%] overflow-hidden">
             <img
               src={item.image}
               alt={item.name}
-              className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            <div className="absolute top-3 right-3 flex flex-col gap-2">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="absolute top-4 right-4 flex flex-col gap-2">
               {item.isSpicy && (
-                <div className="inline-flex items-center gap-1.5 text-white bg-red-500/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg text-sm font-medium transform hover:scale-105 transition-all duration-200">
+                <motion.div 
+                  whileHover={{ scale: 1.05 }}
+                  className="inline-flex items-center gap-2 text-white bg-red-500/80 backdrop-blur-md px-4 py-2 rounded-2xl shadow-lg text-sm font-medium border border-white/10"
+                >
                   <Flame size={16} className="shrink-0" strokeWidth={2.5} />
                   حار
-                </div>
+                </motion.div>
               )}
               {item.isPopular && (
-                <div className="inline-flex items-center gap-1.5 text-white bg-amber-500/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg text-sm font-medium transform hover:scale-105 transition-all duration-200">
+                <motion.div 
+                  whileHover={{ scale: 1.05 }}
+                  className="inline-flex items-center gap-2 text-white bg-amber-500/80 backdrop-blur-md px-4 py-2 rounded-2xl shadow-lg text-sm font-medium border border-white/10"
+                >
                   <Star size={16} className="shrink-0 fill-white" strokeWidth={2.5} />
                   مميز
-                </div>
+                </motion.div>
               )}
-            </div>
-            <div className="absolute bottom-3 left-3">
-              <span className="font-bold text-white text-lg bg-black/50 backdrop-blur-sm px-4 py-1.5 rounded-full shadow-lg">
-                {item.price}
-              </span>
             </div>
           </div>
           
-          <div className="flex-1 p-5">
-            <div className="flex flex-col gap-2">
-              <h3 className="font-bold text-gray-900 text-xl group-hover:text-primary-dark transition-colors duration-300">
-                {item.name}
-              </h3>
+          <div className="relative p-6 bg-gradient-to-b from-white/90 to-gray-50/90 backdrop-blur-sm">
+            <div className="flex flex-col gap-3">
+              <div className="flex justify-between items-start gap-4">
+                <h3 className="font-bold text-gray-900 text-xl group-hover:text-primary-dark transition-colors duration-300">
+                  {item.name}
+                </h3>
+                <span className="font-bold text-primary-dark text-lg bg-primary/5 px-5 py-2 rounded-2xl shadow-sm border border-primary/10">
+                  {item.price}
+                </span>
+              </div>
               <p className="text-gray-600 text-sm leading-relaxed line-clamp-2 group-hover:text-gray-700 transition-colors duration-300">
                 {item.description}
               </p>
             </div>
+            
+            <motion.div 
+              initial={false}
+              className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-primary/30 via-primary to-primary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            />
           </div>
         </div>
       </Card>
