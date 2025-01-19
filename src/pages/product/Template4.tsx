@@ -30,7 +30,6 @@ const ProductTemplate4 = () => {
       "https://images.unsplash.com/photo-1586190848861-99aa4a171e90",
       "https://images.unsplash.com/photo-1550547660-d9450f859349",
     ],
-    ingredients: ["لحم واجيو", "جبنة شيدر", "خس", "طماطم", "بصل", "مخلل", "صلصة خاصة"],
     category: "برجر",
     preparationTime: "20-25 دقيقة"
   };
@@ -176,22 +175,6 @@ const ProductTemplate4 = () => {
             <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
               {product.description}
             </p>
-
-            {/* Ingredients */}
-            <div className="space-y-3">
-              <h3 className="text-lg font-semibold text-charcoal"></h3>
-              <div className="flex flex-wrap gap-2">
-                {product.ingredients.map((ingredient, index) => (
-                  <Badge
-                    key={index}
-                    variant="outline"
-                    className="bg-gray-50 border-gray-200 text-gray-600 text-sm py-1.5 px-3 rounded-full"
-                  >
-                    {ingredient}
-                  </Badge>
-                ))}
-              </div>
-            </div>
 
             {/* Add to Cart Button */}
             <motion.div
