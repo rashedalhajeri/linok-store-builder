@@ -38,7 +38,7 @@ export const MenuItem = ({ item }: MenuItemProps) => {
             <img
               src={item.image}
               alt={item.name}
-              className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute top-2 left-2 flex flex-col gap-1.5">

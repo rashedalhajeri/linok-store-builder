@@ -12,7 +12,8 @@ export const SearchBar = ({ onSearch }: SearchBarProps) => {
       <Input
         type="text"
         placeholder="ابحث عن وجبتك المفضلة..."
-        className="pr-12 py-5 sm:py-6 text-base sm:text-lg rounded-2xl shadow-sm border-gray-100"
+        className="pr-12 py-5 sm:py-6 text-base sm:text-lg rounded-2xl shadow-sm border-gray-100 bg-white/95 backdrop-blur-sm
+                 hover:bg-white transition-colors duration-300 focus:ring-2 focus:ring-gray-200"
         onChange={(e) => onSearch(e.target.value)}
       />
     </div>
