@@ -154,18 +154,6 @@ const ProductTemplate4 = () => {
             <p className="text-gray-600 leading-relaxed">
               {product.description}
             </p>
-
-            {/* Add to Cart Button */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Button 
-                className="w-full bg-charcoal hover:bg-gray-800 text-white py-6 rounded-xl text-lg font-semibold shadow-lg transition-all duration-300"
-              >
-                إضافة إلى السلة
-              </Button>
-            </motion.div>
           </div>
         </div>
       </motion.div>
