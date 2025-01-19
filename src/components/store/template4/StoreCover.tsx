@@ -47,7 +47,7 @@ export const StoreCover = ({ language, onToggleLanguage }: StoreCoverProps) => {
         />
       </div>
       
-      <div className="relative px-4 py-12">
+      <div className="relative px-4 py-8">
         <div className="max-w-2xl mx-auto">
           <div className="flex flex-col items-center space-y-6 mb-10">
             <motion.div
