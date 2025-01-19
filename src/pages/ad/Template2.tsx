@@ -24,8 +24,8 @@ const AdTemplate2 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-lg mx-auto bg-white min-h-screen">
+    <div className="min-h-screen bg-gray-50 pb-24">
+      <div className="max-w-lg mx-auto bg-white">
         {/* Header Actions */}
         <div className="flex justify-between items-center p-4">
           <div className="flex gap-4">
@@ -55,8 +55,8 @@ const AdTemplate2 = () => {
             <p className="text-sm text-gray-500">{ad.date}</p>
           </div>
           <div className="flex justify-between items-center mt-2">
-            <h2 className="text-xl font-bold">مواصفات الاعلان</h2>
             <p className="text-2xl font-bold text-emerald-500">{ad.price}</p>
+            <h2 className="text-xl font-bold">مواصفات الاعلان</h2>
           </div>
         </div>
 
