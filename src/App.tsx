@@ -15,11 +15,8 @@ import ProductTemplate4 from "./pages/product/Template4";
 import CartTemplate1 from "./pages/cart/Template1";
 import CartTemplate2 from "./pages/cart/Template2";
 import CartTemplate3 from "./pages/cart/Template3";
-import CartTemplate4 from "./pages/cart/Template4";
 import CheckoutTemplate1 from "./pages/checkout/Template1";
-import CheckoutTemplate4 from "./pages/checkout/Template4";
 import SuccessTemplate1 from "./pages/success/Template1";
-import SuccessTemplate4 from "./pages/success/Template4";
 import AdTemplate2 from "./pages/ad/Template2";
 import SearchTemplate2 from "./pages/search/Template2";
 
@@ -47,19 +44,16 @@ const App = () => {
             <Route path="/product/template3/:productId" element={<ProductTemplate3 />} />
             <Route path="/product/template4/:productId" element={<ProductTemplate4 />} />
             
-            {/* Cart Routes */}
+            {/* Cart Routes - Excluding Template 4 */}
             <Route path="/cart/template1" element={<CartTemplate1 />} />
             <Route path="/cart/template2" element={<CartTemplate2 />} />
             <Route path="/cart/template3" element={<CartTemplate3 />} />
-            <Route path="/cart/template4" element={<CartTemplate4 />} />
             
-            {/* Checkout Routes - Only for Templates 1 and 4 */}
+            {/* Checkout Routes - Only for Template 1 */}
             <Route path="/checkout/template1" element={<CheckoutTemplate1 />} />
-            <Route path="/checkout/template4" element={<CheckoutTemplate4 />} />
             
-            {/* Success Routes - Only for Templates 1 and 4 */}
+            {/* Success Routes - Only for Template 1 */}
             <Route path="/success/template1" element={<SuccessTemplate1 />} />
-            <Route path="/success/template4" element={<SuccessTemplate4 />} />
             
             {/* Ad Routes for Template 2 */}
             <Route path="/ad/template2/:adId" element={<AdTemplate2 />} />

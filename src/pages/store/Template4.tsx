@@ -25,37 +25,6 @@ const StoreTemplate4 = () => {
     { id: "pizza", label: "بيتزا" }
   ];
 
-  const socialLinks = [
-    {
-      id: 1,
-      icon: "/icons/instagram.svg",
-      label: "Instagram",
-      href: "https://instagram.com",
-      bgColor: "bg-gradient-to-tr from-purple-600 to-pink-500"
-    },
-    {
-      id: 2,
-      icon: "/icons/twitter.svg",
-      label: "Twitter",
-      href: "https://twitter.com",
-      bgColor: "bg-blue-400"
-    },
-    {
-      id: 3,
-      icon: "/icons/phone.svg",
-      label: "Phone",
-      href: "tel:+1234567890",
-      bgColor: "bg-green-500"
-    },
-    {
-      id: 4,
-      icon: "/icons/map-pin.svg",
-      label: "Location",
-      href: "https://maps.google.com",
-      bgColor: "bg-red-500"
-    }
-  ];
-
   const menuItems = {
     main: [
       {
