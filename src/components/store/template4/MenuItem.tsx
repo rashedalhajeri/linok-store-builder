@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Flame, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface MenuItemProps {
   item: {
@@ -15,6 +16,12 @@ interface MenuItemProps {
 }
 
 export const MenuItem = ({ item }: MenuItemProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/product/template4/${item.id}`);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -22,7 +29,10 @@ export const MenuItem = ({ item }: MenuItemProps) => {
       transition={{ duration: 0.3 }}
       className="w-full h-full"
     >
-      <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group border border-gray-100 bg-white h-full cursor-pointer">
+      <Card 
+        className="overflow-hidden hover:shadow-xl transition-all duration-300 group border border-gray-100 bg-white h-full cursor-pointer"
+        onClick={handleClick}
+      >
         <div className="flex flex-col h-full">
           <div className="relative w-full pt-[75%] overflow-hidden">
             <img
