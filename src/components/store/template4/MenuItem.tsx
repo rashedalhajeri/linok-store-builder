@@ -24,7 +24,7 @@ export const MenuItem = ({ item }: MenuItemProps) => {
     >
       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group border border-gray-100 bg-white h-full cursor-pointer">
         <div className="flex flex-col h-full">
-          <div className="relative w-full pt-[100%] overflow-hidden">
+          <div className="relative w-full pt-[75%] overflow-hidden">
             <img
               src={item.image}
               alt={item.name}
@@ -47,9 +47,9 @@ export const MenuItem = ({ item }: MenuItemProps) => {
             </div>
           </div>
           
-          <div className="flex-1 p-5 pt-4">
+          <div className="flex-1 p-4 pt-3">
             <div className="flex flex-col gap-2">
-              <h3 className="font-bold text-charcoal text-xl group-hover:text-gray-900 transition-colors duration-300 line-clamp-1">
+              <h3 className="font-medium text-charcoal text-lg transition-colors duration-300">
                 {item.name}
               </h3>
               <p className="text-sm text-gray-600 line-clamp-2 group-hover:text-gray-700 transition-colors duration-300">
@@ -57,7 +57,7 @@ export const MenuItem = ({ item }: MenuItemProps) => {
               </p>
             </div>
             
-            <div className="mt-4 flex items-center justify-end">
+            <div className="mt-3 flex items-center justify-end">
               <span className="font-bold text-charcoal text-base bg-gray-50 px-4 py-1.5 rounded-full shadow-sm border border-gray-100">
                 {item.price}
               </span>
