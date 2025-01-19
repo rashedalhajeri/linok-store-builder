@@ -45,10 +45,10 @@ const AdTemplate2 = () => {
       <div className="max-w-lg mx-auto bg-white shadow-lg rounded-2xl overflow-hidden">
         <div className="flex justify-between items-center p-4 bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-green-100">
           <div className="flex gap-4">
-            <Share2 className="w-6 h-6 text-primary hover:text-primary-dark transition-colors cursor-pointer" />
-            <Heart className="w-6 h-6 text-primary hover:text-red-500 transition-colors cursor-pointer" />
+            <Share2 className="w-6 h-6 text-black hover:text-gray-700 transition-colors cursor-pointer" />
+            <Heart className="w-6 h-6 text-black hover:text-gray-700 transition-colors cursor-pointer" />
           </div>
-          <button onClick={() => navigate(-1)} className="text-primary hover:text-primary-dark">
+          <button onClick={() => navigate(-1)} className="text-black hover:text-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
@@ -95,7 +95,7 @@ const AdTemplate2 = () => {
         <div className="p-6 space-y-2 border-b bg-gradient-card">
           <div className="flex justify-between items-start">
             <h1 className="text-2xl font-bold text-gray-900 animate-fade-in">{ad.title}</h1>
-            <p className="text-sm text-primary-dark">{ad.date}</p>
+            <p className="text-sm text-black">{ad.date}</p>
           </div>
           <p className="text-2xl font-bold text-primary-dark animate-fade-in delay-100">{ad.price}</p>
         </div>
