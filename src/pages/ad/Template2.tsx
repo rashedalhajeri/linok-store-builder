@@ -97,7 +97,7 @@ const AdTemplate2 = () => {
             <h1 className="text-2xl font-bold text-gray-900 animate-fade-in">{ad.title}</h1>
             <p className="text-sm text-black">{ad.date}</p>
           </div>
-          <p className="text-2xl font-bold text-primary-dark animate-fade-in delay-100">{ad.price}</p>
+          <p className="text-2xl font-bold text-secondary-dark animate-fade-in delay-100">{ad.price}</p>
         </div>
 
         <div className="p-6 border-b border-green-100">
