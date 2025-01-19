@@ -54,8 +54,8 @@ const StoreTemplate4 = () => {
         onToggleLanguage={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
       />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
-        <div className="space-y-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12">
+        <div className="space-y-6">
           <SearchBar onSearch={handleSearch} />
           
           <CategoryTabs 
@@ -68,7 +68,7 @@ const StoreTemplate4 = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 py-8"
+            className="grid grid-cols-2 gap-4 md:gap-6 py-6"
           >
             {menuItems.main.map((item) => (
               <MenuItem key={item.id} item={item} />
