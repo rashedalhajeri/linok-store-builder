@@ -19,8 +19,6 @@ const ProductTemplate4 = () => {
     description: "برجر لحم واجيو مشوي على الفحم مع جبنة شيدر ذائبة وصلصة خاصة، يقدم مع بطاطس مقلية وسلطة كول سلو",
     price: "8.500 د.ك",
     image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
-    isSpicy: true,
-    isPopular: true,
     ingredients: ["لحم واجيو", "جبنة شيدر", "خس", "طماطم", "بصل", "مخلل", "صلصة خاصة"]
   };
 
@@ -64,7 +62,7 @@ const ProductTemplate4 = () => {
         </div>
       </div>
 
-      {/* Product Image with Badges Overlay */}
+      {/* Product Image */}
       <motion.div 
         className="relative w-full h-[40vh] overflow-hidden"
         initial={{ opacity: 0 }}
@@ -77,19 +75,6 @@ const ProductTemplate4 = () => {
           className="w-full h-full object-cover"
           onLoad={() => setIsImageLoaded(true)}
         />
-        {/* Badges positioned on top of image */}
-        <div className="absolute top-4 right-4 flex flex-col gap-2">
-          {product.isSpicy && (
-            <Badge variant="secondary" className="bg-white text-red-500 hover:bg-white/90">
-              حار 🌶️
-            </Badge>
-          )}
-          {product.isPopular && (
-            <Badge variant="secondary" className="bg-white text-amber-500 hover:bg-white/90">
-              الأكثر طلباً ⭐️
-            </Badge>
-          )}
-        </div>
       </motion.div>
 
       {/* Product Details */}
