@@ -354,7 +354,7 @@ const StoreTemplate1 = () => {
         </div>
       </div>
 
-      <div className="w-full py-8 bg-gradient-to-r from-white via-gray-50 to-white border-t">
+      <div className="w-full py-8 bg-gradient-to-r from-[#fdfcfb] via-[#e2d1c3] to-[#fdfcfb] border-t">
         <div className="max-w-[90%] md:max-w-4xl mx-auto text-center">
           <div className="flex flex-col items-center justify-center space-y-2">
             <motion.div
