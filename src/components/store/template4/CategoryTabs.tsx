@@ -15,7 +15,7 @@ interface CategoryTabsProps {
 export const CategoryTabs = ({ categories, selectedCategory, onSelectCategory }: CategoryTabsProps) => {
   return (
     <Tabs value={selectedCategory} className="w-full">
-      <TabsList className="w-full h-auto flex gap-4 p-6 bg-gradient-to-r from-white/95 to-gray-50/95 backdrop-blur-lg rounded-3xl overflow-x-auto scrollbar-hide shadow-xl border border-white/20">
+      <TabsList className="w-full h-auto flex gap-3 sm:gap-4 p-4 sm:p-6 bg-gradient-to-r from-white/95 to-gray-50/95 backdrop-blur-lg rounded-3xl overflow-x-auto scrollbar-hide shadow-xl border border-white/20">
         {categories.map((category, index) => (
           <motion.div
             key={category.id}
@@ -27,7 +27,7 @@ export const CategoryTabs = ({ categories, selectedCategory, onSelectCategory }:
             <TabsTrigger
               value={category.id}
               onClick={() => onSelectCategory(category.id)}
-              className="px-8 py-4 text-lg whitespace-nowrap rounded-2xl
+              className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg whitespace-nowrap rounded-2xl
                 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary-dark data-[state=active]:to-primary
                 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300
                 hover:bg-white/80 group relative overflow-hidden font-medium"
