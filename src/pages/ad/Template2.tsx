@@ -55,8 +55,8 @@ const AdTemplate2 = () => {
             <p className="text-sm text-gray-500">{ad.date}</p>
           </div>
           <div className="flex justify-between items-center mt-2">
-            <p className="text-2xl font-bold text-emerald-500">{ad.price}</p>
             <h2 className="text-xl font-bold">مواصفات الاعلان</h2>
+            <p className="text-2xl font-bold text-emerald-500">{ad.price}</p>
           </div>
         </div>
 
