@@ -98,14 +98,14 @@ const ProductTemplate4 = () => {
         </Carousel>
         
         {/* Pagination Dots */}
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+        <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3">
           {product.images.map((_, index) => (
             <div
               key={index}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                 index === currentSlide 
-                  ? "bg-white scale-125" 
-                  : "bg-white/30"
+                  ? "bg-white scale-110 shadow-lg" 
+                  : "bg-charcoal/50"
               }`}
             />
           ))}
