@@ -15,7 +15,7 @@ interface CategoryTabsProps {
 export const CategoryTabs = ({ categories, selectedCategory, onSelectCategory }: CategoryTabsProps) => {
   return (
     <Tabs value={selectedCategory} className="w-full">
-      <TabsList className="w-full h-auto flex gap-3 p-4 bg-gradient-store backdrop-blur-lg rounded-2xl overflow-x-auto scrollbar-hide shadow-xl border border-white/10">
+      <TabsList className="w-full h-auto flex gap-4 p-6 bg-gradient-to-r from-white/95 to-gray-50/95 backdrop-blur-lg rounded-3xl overflow-x-auto scrollbar-hide shadow-xl border border-white/20">
         {categories.map((category, index) => (
           <motion.div
             key={category.id}
@@ -27,12 +27,12 @@ export const CategoryTabs = ({ categories, selectedCategory, onSelectCategory }:
             <TabsTrigger
               value={category.id}
               onClick={() => onSelectCategory(category.id)}
-              className="px-6 py-3.5 text-base whitespace-nowrap rounded-xl
-                data-[state=active]:bg-white data-[state=active]:text-primary
-                data-[state=active]:shadow-lg transition-all duration-300
-                hover:bg-white/10 group relative overflow-hidden"
+              className="px-8 py-4 text-lg whitespace-nowrap rounded-2xl
+                data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary-dark data-[state=active]:to-primary
+                data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300
+                hover:bg-white/80 group relative overflow-hidden font-medium"
             >
-              <span className="relative z-10 font-medium">{category.label}</span>
+              <span className="relative z-10">{category.label}</span>
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary-light/10 opacity-0 group-hover:opacity-100 transition-opacity"
                 initial={false}

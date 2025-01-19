@@ -22,10 +22,10 @@ export const MenuItem = ({ item }: MenuItemProps) => {
       transition={{ duration: 0.3 }}
       className="group"
     >
-      <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-card relative">
-        <div className="flex gap-6 p-5">
+      <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-card relative rounded-3xl">
+        <div className="flex gap-8 p-6">
           <motion.div 
-            className="relative w-28 h-28 md:w-36 md:h-36 rounded-2xl overflow-hidden flex-shrink-0 shadow-lg"
+            className="relative w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden flex-shrink-0 shadow-xl"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
@@ -37,32 +37,32 @@ export const MenuItem = ({ item }: MenuItemProps) => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </motion.div>
           
-          <div className="flex-1 space-y-3">
-            <div className="flex justify-between items-start">
+          <div className="flex-1 space-y-4">
+            <div className="flex justify-between items-start gap-4">
               <div>
                 <motion.h3 
-                  className="font-bold text-gray-900 text-xl group-hover:text-primary transition-colors duration-300"
+                  className="font-bold text-gray-900 text-2xl group-hover:text-primary-dark transition-colors duration-300"
                   whileHover={{ scale: 1.02 }}
                 >
                   {item.name}
                 </motion.h3>
-                <p className="text-sm text-gray-500 mt-2 line-clamp-2 group-hover:text-gray-700 transition-colors duration-300">
+                <p className="text-base text-gray-600 mt-3 line-clamp-2 group-hover:text-gray-800 transition-colors duration-300 leading-relaxed">
                   {item.description}
                 </p>
               </div>
-              <span className="font-bold text-primary text-lg bg-primary/5 px-5 py-2 rounded-full shadow-sm border border-primary/10">
+              <span className="font-bold text-primary-dark text-xl bg-primary/10 px-6 py-3 rounded-full shadow-lg border border-primary/20">
                 {item.price}
               </span>
             </div>
             
-            <div className="flex gap-2 mt-4">
+            <div className="flex gap-3 mt-4">
               {item.isSpicy && (
-                <Badge variant="secondary" className="bg-red-50 text-red-600 hover:bg-red-100 transition-colors duration-300 shadow-sm">
+                <Badge variant="secondary" className="bg-red-50 text-red-600 hover:bg-red-100 transition-colors duration-300 shadow-sm px-4 py-1.5 text-sm">
                   حار 🌶️
                 </Badge>
               )}
               {item.isPopular && (
-                <Badge variant="secondary" className="bg-orange-50 text-orange-600 hover:bg-orange-100 transition-colors duration-300 shadow-sm">
+                <Badge variant="secondary" className="bg-amber-50 text-amber-600 hover:bg-amber-100 transition-colors duration-300 shadow-sm px-4 py-1.5 text-sm">
                   الأكثر طلباً ⭐️
                 </Badge>
               )}
