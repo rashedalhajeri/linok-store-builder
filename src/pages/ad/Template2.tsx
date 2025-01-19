@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { MessageSquare, Share2, Heart, Globe, Calendar, Gauge, Car, Image } from "lucide-react";
+import { Share2, Heart, Globe, Calendar, Gauge, Car, Image } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Carousel,
@@ -162,7 +162,7 @@ const AdTemplate2 = () => {
         <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/80 backdrop-blur-sm border-t border-green-100">
           <div className="flex gap-2 max-w-lg mx-auto">
             <Button 
-              className="flex-1 bg-primary hover:bg-primary-dark text-primary-foreground transition-colors duration-300"
+              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-300"
               onClick={() => window.location.href = `tel:${ad.phone}`}
             >
               اتصل الآن
@@ -171,11 +171,6 @@ const AdTemplate2 = () => {
               className="flex-1 bg-secondary hover:bg-secondary-dark text-white transition-colors duration-300"
             >
               واتساب
-            </Button>
-            <Button 
-              className="aspect-square bg-primary-dark hover:bg-primary text-white transition-colors duration-300 p-2"
-            >
-              <MessageSquare className="w-6 h-6" />
             </Button>
           </div>
         </div>
