@@ -15,13 +15,26 @@ export const StoreCover = ({ language, onToggleLanguage }: StoreCoverProps) => {
           onToggle={onToggleLanguage}
         />
       </div>
-      <div className="h-[200px] md:h-[300px] bg-gradient-to-b from-gray-900/70 to-gray-900/50">
+      <div className="relative h-[300px] md:h-[400px] overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8"
+          src="https://images.unsplash.com/photo-1544025162-d76694265947"
           alt="Store Cover"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70" />
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="absolute inset-0 flex flex-col items-center justify-center text-white px-4"
+        >
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+            مرحباً بكم في مطعمنا
+          </h1>
+          <p className="text-lg md:text-xl text-center max-w-2xl mx-auto text-gray-100">
+            نقدم لكم أشهى المأكولات المحضرة بعناية من أجود المكونات
+          </p>
+        </motion.div>
       </div>
     </div>
   );
