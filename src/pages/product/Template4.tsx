@@ -8,6 +8,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 const ProductTemplate4 = () => {
@@ -17,7 +19,6 @@ const ProductTemplate4 = () => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // تحديث البيانات لتشمل المزيد من الصور
   const product = {
     id: productId,
     name: "برجر لحم واجيو",
@@ -87,7 +88,7 @@ const ProductTemplate4 = () => {
           transition={{ duration: 0.5 }}
         >
           <Carousel 
-            className="w-full h-full overflow-hidden"
+            className="w-full h-full overflow-hidden relative"
             onSlideChange={setCurrentSlide}
           >
             <CarouselContent className="h-full">
@@ -112,6 +113,8 @@ const ProductTemplate4 = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
+            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2" />
+            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2" />
           </Carousel>
           
           {/* Modern Pagination Dots */}
