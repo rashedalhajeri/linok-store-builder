@@ -137,12 +137,12 @@ const ProductTemplate4 = () => {
 
       {/* Product Details */}
       <motion.div 
-        className="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-2xl mx-auto -mt-10"
+        className="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-2xl mx-auto -mt-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-        <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-lg">
+        <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-lg mt-16">
           <div className="space-y-6">
             {/* Title and Price */}
             <div className="flex justify-between items-center">
