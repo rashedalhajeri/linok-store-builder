@@ -117,6 +117,31 @@ const ProductTemplate4 = () => {
               ))}
             </CarouselContent>
           </Carousel>
+
+          {/* Thumbnails */}
+          <div className="absolute bottom-4 left-0 right-0 px-4">
+            <div className="flex justify-center gap-2 overflow-x-auto scrollbar-hide">
+              {product.images.map((image, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`relative flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                    index === currentSlide 
+                      ? 'border-primary shadow-lg scale-110' 
+                      : 'border-white/50 hover:border-primary/50'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <img
+                    src={image}
+                    alt={`صورة مصغرة ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.button>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
 
@@ -141,31 +166,6 @@ const ProductTemplate4 = () => {
             <p className="text-gray-600 leading-relaxed">
               {product.description}
             </p>
-
-            {/* Thumbnails */}
-            <div className="mt-6">
-              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                {product.images.map((image, index) => (
-                  <motion.button
-                    key={index}
-                    onClick={() => setCurrentSlide(index)}
-                    className={`relative flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 transition-all duration-300 ${
-                      index === currentSlide 
-                        ? 'border-primary shadow-lg scale-105' 
-                        : 'border-gray-100 hover:border-primary/50'
-                    }`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <img
-                      src={image}
-                      alt={`صورة مصغرة ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.button>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </motion.div>
