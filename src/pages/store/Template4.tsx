@@ -4,7 +4,6 @@ import { StoreCover } from "@/components/store/template4/StoreCover";
 import { SearchBar } from "@/components/store/template4/SearchBar";
 import { CategoryTabs } from "@/components/store/template4/CategoryTabs";
 import { MenuItem } from "@/components/store/template4/MenuItem";
-import { SocialLinks } from "@/components/store/template4/SocialLinks";
 
 const StoreTemplate4 = () => {
   const [selectedCategory, setSelectedCategory] = useState("main");
@@ -126,8 +125,6 @@ const StoreTemplate4 = () => {
             <MenuItem key={item.id} item={item} />
           ))}
         </div>
-
-        <SocialLinks links={socialLinks} />
 
         <div className="text-center mt-12 mb-4">
           <motion.div
