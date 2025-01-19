@@ -120,7 +120,7 @@ const StoreTemplate4 = () => {
           />
         </div>
 
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {menuItems[selectedCategory]?.map((item) => (
             <MenuItem key={item.id} item={item} />
           ))}
