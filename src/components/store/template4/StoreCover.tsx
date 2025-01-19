@@ -15,41 +15,72 @@ export const StoreCover = ({ language, onToggleLanguage }: StoreCoverProps) => {
           onToggle={onToggleLanguage}
         />
       </div>
-      <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
-        <motion.img 
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.8 }}
-          src="https://images.unsplash.com/photo-1544025162-d76694265947"
-          alt="Store Cover"
-          className="w-full h-full object-cover brightness-75"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
-        
+      
+      <div className="relative min-h-[400px] bg-white">
+        <div className="absolute inset-0">
+          <div className="h-full w-full bg-gradient-to-br from-gray-50 to-gray-100">
+            <div className="absolute top-0 right-0 w-1/2 h-full opacity-20">
+              <img 
+                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
+                alt="Food Background"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="absolute inset-0 flex flex-col items-center justify-center text-white px-4 sm:px-6 md:px-8"
+          transition={{ duration: 0.6 }}
+          className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
         >
+          <div className="text-center">
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mb-8"
+            >
+              <img 
+                src="/logo.png"
+                alt="Restaurant Logo"
+                className="w-20 h-20 mx-auto object-contain"
+              />
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
+            >
+              مطعمنا
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto"
+            >
+              نقدم لكم تجربة طعام فريدة مع أشهى المأكولات المحضرة بعناية
+            </motion.p>
+          </div>
+
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center mb-6 sm:mb-8 border-2 border-white/20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-12 flex justify-center gap-4"
           >
-            <img 
-              src="/logo.png" 
-              alt="Restaurant Logo"
-              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain"
-            />
+            <button className="px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors">
+              توصيل
+            </button>
+            <button className="px-6 py-3 bg-white text-gray-800 rounded-full font-medium hover:bg-gray-50 transition-colors border border-gray-200">
+              استلام
+            </button>
           </motion.div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-center text-shadow-lg bg-clip-text text-transparent bg-gradient-to-r from-white to-white/90">
-            مرحباً بكم في مطعمنا
-          </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-center max-w-2xl mx-auto text-white/90 leading-relaxed font-medium">
-            نقدم لكم أشهى المأكولات المحضرة بعناية من أجود المكونات
-          </p>
         </motion.div>
       </div>
     </div>
