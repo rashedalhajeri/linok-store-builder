@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import { MessageSquare, Share2, Heart, Globe, Calendar, Gauge, Car } from "lucide-react";
 
 const AdTemplate2 = () => {
@@ -14,6 +12,7 @@ const AdTemplate2 = () => {
     date: "منذ ساعة",
     views: 18,
     category: "سيارات كلاسيكية",
+    phone: "+965 9999 9999", // Added phone number
     specs: {
       year: "1990",
       mileage: "250 كم",
