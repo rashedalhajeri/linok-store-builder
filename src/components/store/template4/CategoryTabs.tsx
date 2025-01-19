@@ -16,7 +16,6 @@ interface CategoryTabsProps {
 export const CategoryTabs = ({ categories, selectedCategory, onSelectCategory }: CategoryTabsProps) => {
   return (
     <div className="relative">
-      <h2 className="text-xl font-semibold mb-4 text-charcoal text-center">تصفح قائمة الطعام حسب الفئات</h2>
       <Tabs value={selectedCategory} className="w-full">
         <div className="relative">
           <TabsList className="w-full h-auto flex gap-3 sm:gap-4 p-4 sm:p-6 bg-white backdrop-blur-lg rounded-3xl overflow-x-auto scrollbar-hide shadow-lg border border-gray-100">
