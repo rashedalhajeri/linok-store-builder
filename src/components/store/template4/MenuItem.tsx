@@ -22,7 +22,7 @@ export const MenuItem = ({ item }: MenuItemProps) => {
       transition={{ duration: 0.3 }}
       className="w-full h-full"
     >
-      <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group border border-gray-100 bg-white h-full">
+      <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group border border-gray-100 bg-white h-full cursor-pointer">
         <div className="flex flex-col h-full">
           <div className="relative w-full pt-[80%] overflow-hidden">
             <img
@@ -52,7 +52,7 @@ export const MenuItem = ({ item }: MenuItemProps) => {
               <h3 className="font-bold text-charcoal text-lg group-hover:text-gray-900 transition-colors duration-300 line-clamp-1">
                 {item.name}
               </h3>
-              <p className="text-sm text-gray-600 line-clamp-3 group-hover:text-gray-700 transition-colors duration-300">
+              <p className="text-sm text-gray-600 line-clamp-2 group-hover:text-gray-700 transition-colors duration-300">
                 {item.description}
               </p>
             </div>
