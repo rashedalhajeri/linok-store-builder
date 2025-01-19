@@ -179,7 +179,7 @@ const ProductTemplate4 = () => {
 
             {/* Ingredients */}
             <div className="space-y-3">
-              <h3 className="text-lg font-semibold text-charcoal">المكونات:</h3>
+              <h3 className="text-lg font-semibold text-charcoal"></h3>
               <div className="flex flex-wrap gap-2">
                 {product.ingredients.map((ingredient, index) => (
                   <Badge
