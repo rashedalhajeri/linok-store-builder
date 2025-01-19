@@ -97,7 +97,8 @@ const ProductTemplate4 = () => {
       </motion.div>
 
       {/* Product Images Carousel */}
-      <div className="w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1] mt-16">
+      <div className="w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1] mt-16 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/10 z-10 rounded-b-[3rem]"></div>
         <motion.div 
           className="relative w-full h-full"
           initial={{ opacity: 0 }}
@@ -105,28 +106,36 @@ const ProductTemplate4 = () => {
           transition={{ duration: 0.5 }}
         >
           <Carousel 
-            className="w-full h-full"
+            className="w-full h-full overflow-hidden rounded-b-[3rem] shadow-xl"
             onSlideChange={setCurrentSlide}
           >
             <CarouselContent className="h-full">
               {product.images.map((image, index) => (
                 <CarouselItem key={index} className="h-full">
-                  <motion.img
-                    src={image}
-                    alt={`${product.name} - صورة ${index + 1}`}
-                    className="w-full h-full object-cover"
-                    onLoad={() => setIsImageLoaded(true)}
+                  <motion.div
+                    className="relative w-full h-full"
                     initial={{ scale: 1.1 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.5 }}
-                  />
+                  >
+                    <motion.img
+                      src={image}
+                      alt={`${product.name} - صورة ${index + 1}`}
+                      className="w-full h-full object-cover"
+                      onLoad={() => setIsImageLoaded(true)}
+                      initial={{ scale: 1.1 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.5 }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20"></div>
+                  </motion.div>
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
           
           {/* Pagination Dots */}
-          <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2">
+          <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-20">
             {product.images.map((_, index) => (
               <motion.div
                 key={index}
