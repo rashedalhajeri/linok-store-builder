@@ -11,7 +11,6 @@ import StoreTemplate4 from "./pages/store/Template4";
 import ProductTemplate1 from "./pages/product/Template1";
 import ProductTemplate2 from "./pages/product/Template2";
 import ProductTemplate3 from "./pages/product/Template3";
-import ProductTemplate4 from "./pages/product/Template4";
 import CartTemplate1 from "./pages/cart/Template1";
 import CartTemplate2 from "./pages/cart/Template2";
 import CartTemplate3 from "./pages/cart/Template3";
@@ -42,20 +41,19 @@ const App = () => {
             <Route path="/product/template1/:productId" element={<ProductTemplate1 />} />
             <Route path="/product/template2/:productId" element={<ProductTemplate2 />} />
             <Route path="/product/template3/:productId" element={<ProductTemplate3 />} />
-            <Route path="/product/template4/:productId" element={<ProductTemplate4 />} />
             
-            {/* Cart Routes - Excluding Template 4 */}
+            {/* Cart Routes */}
             <Route path="/cart/template1" element={<CartTemplate1 />} />
             <Route path="/cart/template2" element={<CartTemplate2 />} />
             <Route path="/cart/template3" element={<CartTemplate3 />} />
             
-            {/* Checkout Routes - Only for Template 1 */}
+            {/* Checkout Routes */}
             <Route path="/checkout/template1" element={<CheckoutTemplate1 />} />
             
-            {/* Success Routes - Only for Template 1 */}
+            {/* Success Routes */}
             <Route path="/success/template1" element={<SuccessTemplate1 />} />
             
-            {/* Ad Routes for Template 2 */}
+            {/* Ad Routes */}
             <Route path="/ad/template2/:adId" element={<AdTemplate2 />} />
             <Route path="/search/template2" element={<SearchTemplate2 />} />
           </Routes>
