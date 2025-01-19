@@ -30,9 +30,7 @@ const AdTemplate2 = () => {
       seats: "8"
     },
     images: [
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30"
     ],
   };
 
@@ -56,40 +54,48 @@ const AdTemplate2 = () => {
         </div>
 
         <div className="relative w-full aspect-square bg-green-50">
-          <Carousel 
-            className="w-full" 
-            onSlideChange={handleSlideChange}
-            opts={{
-              loop: true,
-              align: "start"
-            }}
-          >
-            <CarouselContent>
-              {ad.images.map((image, index) => (
-                <CarouselItem key={index}>
-                  <div className="relative w-full aspect-square">
-                    <img 
-                      src={image}
-                      alt={`${ad.title} - صورة ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            {!isMobile && (
-              <>
-                <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2" />
-                <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2" />
-              </>
-            )}
-          </Carousel>
-          <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-3 text-white z-10 transition-all duration-300 hover:bg-black/80">
-            <Image className="w-4 h-4" />
-            <span className="text-sm font-medium">
-              {currentSlide} / {ad.images.length}
-            </span>
-          </div>
+          {ad.images.length > 0 ? (
+            <Carousel 
+              className="w-full" 
+              onSlideChange={handleSlideChange}
+              opts={{
+                loop: ad.images.length > 1,
+                align: "start"
+              }}
+            >
+              <CarouselContent>
+                {ad.images.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <div className="relative w-full aspect-square">
+                      <img 
+                        src={image}
+                        alt={`${ad.title} - صورة ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              {!isMobile && ad.images.length > 1 && (
+                <>
+                  <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2" />
+                  <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2" />
+                </>
+              )}
+            </Carousel>
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <Image className="w-16 h-16 text-gray-400" />
+            </div>
+          )}
+          {ad.images.length > 0 && (
+            <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-3 text-white z-10 transition-all duration-300 hover:bg-black/80">
+              <Image className="w-4 h-4" />
+              <span className="text-sm font-medium">
+                {currentSlide} / {ad.images.length}
+              </span>
+            </div>
+          )}
         </div>
 
         <div className="p-6 space-y-2 border-b bg-gradient-card">
