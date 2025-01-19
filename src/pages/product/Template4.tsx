@@ -5,6 +5,13 @@ import { ArrowRight, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const ProductTemplate4 = () => {
   const navigate = useNavigate();
@@ -18,7 +25,11 @@ const ProductTemplate4 = () => {
     name: "برجر لحم واجيو",
     description: "برجر لحم واجيو مشوي على الفحم مع جبنة شيدر ذائبة وصلصة خاصة، يقدم مع بطاطس مقلية وسلطة كول سلو",
     price: "8.500 د.ك",
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+    images: [
+      "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+      "https://images.unsplash.com/photo-1586190848861-99aa4a171e90",
+      "https://images.unsplash.com/photo-1550547660-d9450f859349",
+    ],
     ingredients: ["لحم واجيو", "جبنة شيدر", "خس", "طماطم", "بصل", "مخلل", "صلصة خاصة"]
   };
 
@@ -39,7 +50,7 @@ const ProductTemplate4 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-50">
       {/* Back Button and Share */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -62,19 +73,29 @@ const ProductTemplate4 = () => {
         </div>
       </div>
 
-      {/* Product Image */}
+      {/* Product Images Carousel */}
       <motion.div 
-        className="relative w-full h-[40vh] overflow-hidden"
+        className="relative w-full h-[40vh]"
         initial={{ opacity: 0 }}
         animate={{ opacity: isImageLoaded ? 1 : 0 }}
         transition={{ duration: 0.5 }}
       >
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-full object-cover"
-          onLoad={() => setIsImageLoaded(true)}
-        />
+        <Carousel className="w-full h-full">
+          <CarouselContent className="h-full">
+            {product.images.map((image, index) => (
+              <CarouselItem key={index} className="h-full">
+                <img
+                  src={image}
+                  alt={`${product.name} - صورة ${index + 1}`}
+                  className="w-full h-full object-cover"
+                  onLoad={() => setIsImageLoaded(true)}
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="left-4" />
+          <CarouselNext className="right-4" />
+        </Carousel>
       </motion.div>
 
       {/* Product Details */}
