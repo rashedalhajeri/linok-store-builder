@@ -68,7 +68,7 @@ const StoreTemplate4 = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 py-8"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 py-8"
           >
             {menuItems.main.map((item) => (
               <MenuItem key={item.id} item={item} />
