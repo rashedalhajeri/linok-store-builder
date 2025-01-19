@@ -50,8 +50,8 @@ const ProductTemplate4 = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Back Button and Share */}
-      <div className="fixed top-0 left-0 right-0 z-50">
+      {/* Header with Back Button and Share */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Button
             variant="ghost"
@@ -74,7 +74,7 @@ const ProductTemplate4 = () => {
 
       {/* Product Images Carousel */}
       <motion.div 
-        className="relative w-full h-[40vh]"
+        className="relative w-full h-[45vh] sm:h-[50vh] md:h-[55vh] lg:h-[60vh]"
         initial={{ opacity: 0 }}
         animate={{ opacity: isImageLoaded ? 1 : 0 }}
         transition={{ duration: 0.5 }}
@@ -102,10 +102,10 @@ const ProductTemplate4 = () => {
           {product.images.map((_, index) => (
             <div
               key={index}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentSlide 
                   ? "bg-white scale-110 shadow-lg" 
-                  : "bg-charcoal/50"
+                  : "bg-black/30"
               }`}
             />
           ))}
@@ -114,34 +114,34 @@ const ProductTemplate4 = () => {
 
       {/* Product Details */}
       <motion.div 
-        className="relative px-4 pb-8 mt-8"
+        className="relative px-4 pb-8 mt-8 max-w-2xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
         <div className="space-y-6">
           {/* Title */}
-          <h1 className="text-3xl font-bold text-black">{product.name}</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-black">{product.name}</h1>
 
           {/* Price */}
-          <div className="inline-block bg-black/5 backdrop-blur-sm px-6 py-2 rounded-full">
-            <span className="text-2xl font-bold text-black">{product.price}</span>
+          <div className="inline-block bg-black/5 backdrop-blur-sm px-6 py-2.5 rounded-full">
+            <span className="text-xl sm:text-2xl font-bold text-black">{product.price}</span>
           </div>
 
           {/* Description */}
-          <p className="text-black/80 leading-relaxed text-lg">
+          <p className="text-black/80 leading-relaxed text-base sm:text-lg">
             {product.description}
           </p>
 
           {/* Ingredients */}
-          <div className="space-y-2">
+          <div className="space-y-3">
             <h3 className="text-lg font-semibold text-black">المكونات:</h3>
             <div className="flex flex-wrap gap-2">
               {product.ingredients.map((ingredient, index) => (
                 <Badge
                   key={index}
                   variant="outline"
-                  className="bg-white/80 hover:bg-white text-black border-black/10"
+                  className="bg-white/80 hover:bg-white text-black border-black/10 text-sm py-1.5"
                 >
                   {ingredient}
                 </Badge>
