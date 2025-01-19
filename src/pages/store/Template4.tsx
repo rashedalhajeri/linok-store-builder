@@ -157,8 +157,25 @@ const StoreTemplate4 = () => {
           ))}
         </div>
 
-        <div className="flex justify-center mt-12">
-          <SocialLinks links={socialLinks} />
+        <SocialLinks links={socialLinks} />
+
+        <div className="text-center mt-12 mb-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-primary-light/10"
+          >
+            <span className="text-sm text-muted">صنع بكل حب بواسطة</span>
+            <img 
+              src="/logo.png" 
+              alt="Platform Logo" 
+              className="w-5 h-5 object-contain"
+            />
+            <span className="text-sm font-medium bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+              منصتنا
+            </span>
+          </motion.div>
         </div>
       </div>
     </div>
