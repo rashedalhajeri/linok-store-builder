@@ -18,6 +18,7 @@ const ProductTemplate4 = () => {
   const { productId } = useParams();
   const { toast } = useToast();
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   // Temporary mock data - replace with actual data fetching
   const product = {
@@ -75,26 +76,41 @@ const ProductTemplate4 = () => {
 
       {/* Product Images Carousel */}
       <motion.div 
-        className="relative w-full h-[40vh]"
+        className="relative w-full h-[50vh] bg-black"
         initial={{ opacity: 0 }}
         animate={{ opacity: isImageLoaded ? 1 : 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Carousel className="w-full h-full">
+        <Carousel 
+          className="w-full h-full"
+          onSelect={(index) => setCurrentSlide(index)}
+        >
           <CarouselContent className="h-full">
             {product.images.map((image, index) => (
               <CarouselItem key={index} className="h-full">
-                <img
-                  src={image}
-                  alt={`${product.name} - صورة ${index + 1}`}
-                  className="w-full h-full object-cover"
-                  onLoad={() => setIsImageLoaded(true)}
-                />
+                <motion.div
+                  className="w-full h-full"
+                  initial={{ scale: 1.1, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <img
+                    src={image}
+                    alt={`${product.name} - صورة ${index + 1}`}
+                    className="w-full h-full object-cover"
+                    onLoad={() => setIsImageLoaded(true)}
+                  />
+                </motion.div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-4" />
-          <CarouselNext className="right-4" />
+          <CarouselPrevious className="left-4 bg-white/80 backdrop-blur-sm hover:bg-white" />
+          <CarouselNext className="right-4 bg-white/80 backdrop-blur-sm hover:bg-white" />
+          
+          {/* Image Counter */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm px-4 py-1 rounded-full text-white text-sm">
+            {currentSlide + 1} / {product.images.length}
+          </div>
         </Carousel>
       </motion.div>
 
