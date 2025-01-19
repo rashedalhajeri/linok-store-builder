@@ -97,7 +97,7 @@ const ProductTemplate4 = () => {
       </motion.div>
 
       {/* Product Images Carousel */}
-      <div className="w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1] mt-16 relative">
+      <div className="w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1] mt-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/10 z-10 rounded-b-[3rem]"></div>
         <motion.div 
           className="relative w-full h-full"
@@ -153,7 +153,7 @@ const ProductTemplate4 = () => {
 
       {/* Product Details */}
       <motion.div 
-        className="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-2xl mx-auto mt-12"
+        className="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-2xl mx-auto mt-20"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
