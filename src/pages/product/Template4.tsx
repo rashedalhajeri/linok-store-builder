@@ -70,7 +70,7 @@ const ProductTemplate4 = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-md shadow-sm text-charcoal hover:bg-white/80 transition-all duration-300"
+            className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-sm shadow-sm text-charcoal hover:bg-white/80 transition-all duration-300"
             onClick={() => navigate(-1)}
           >
             <ArrowRight className="h-5 w-5" />
@@ -79,7 +79,7 @@ const ProductTemplate4 = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-md shadow-sm text-charcoal hover:bg-white/80 transition-all duration-300"
+              className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-sm shadow-sm text-charcoal hover:bg-white/80 transition-all duration-300"
               onClick={toggleFavorite}
             >
               <Heart className={`h-5 w-5 transition-colors ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
@@ -87,7 +87,7 @@ const ProductTemplate4 = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-md shadow-sm text-charcoal hover:bg-white/80 transition-all duration-300"
+              className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-sm shadow-sm text-charcoal hover:bg-white/80 transition-all duration-300"
               onClick={handleShare}
             >
               <Share2 className="h-5 w-5" />
@@ -139,10 +139,14 @@ const ProductTemplate4 = () => {
                 key={index}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   index === currentSlide 
-                    ? "bg-white scale-110 shadow-lg" 
+                    ? "bg-white w-4 shadow-lg" 
                     : "bg-white/40 backdrop-blur-sm"
                 }`}
                 whileHover={{ scale: 1.2 }}
+                animate={{
+                  width: index === currentSlide ? 16 : 8,
+                }}
+                transition={{ duration: 0.3 }}
               />
             ))}
           </div>
@@ -156,7 +160,7 @@ const ProductTemplate4 = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-        <div className="bg-white rounded-3xl p-6 shadow-lg">
+        <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-lg">
           <div className="space-y-6">
             {/* Category & Time Badge */}
             <div className="flex items-center justify-between">
