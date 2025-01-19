@@ -152,7 +152,7 @@ const ProductTemplate4 = () => {
         >
           <div className="bg-white rounded-3xl p-6 shadow-sm">
             {/* Thumbnails - Moved here */}
-            <div className="mb-4">
+            <div className="mb-2">
               <div className="grid grid-cols-5 gap-1">
                 {product.images.map((image, index) => (
                   <button
