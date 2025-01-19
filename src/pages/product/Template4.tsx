@@ -70,7 +70,7 @@ const ProductTemplate4 = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-sm border border-gray-100 text-charcoal hover:bg-white transition-colors"
+            className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-sm text-charcoal hover:bg-white transition-colors"
             onClick={() => navigate(-1)}
           >
             <ArrowRight className="h-5 w-5" />
@@ -79,7 +79,7 @@ const ProductTemplate4 = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-sm border border-gray-100 text-charcoal hover:bg-white transition-colors"
+              className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-sm text-charcoal hover:bg-white transition-colors"
               onClick={toggleFavorite}
             >
               <Heart className={`h-5 w-5 transition-colors ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
@@ -87,7 +87,7 @@ const ProductTemplate4 = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-sm border border-gray-100 text-charcoal hover:bg-white transition-colors"
+              className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-sm text-charcoal hover:bg-white transition-colors"
               onClick={handleShare}
             >
               <Share2 className="h-5 w-5" />
