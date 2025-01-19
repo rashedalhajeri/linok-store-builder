@@ -44,7 +44,6 @@ const AdTemplate2 = () => {
         <div className="flex justify-between items-center p-4 bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-[#4A90E2]/10">
           <div className="flex gap-4">
             <Share2 className="w-6 h-6 text-[#4A90E2] hover:text-[#4A90E2]/80 transition-colors cursor-pointer" />
-            <Heart className="w-6 h-6 text-[#4A90E2] hover:text-[#4A90E2]/80 transition-colors cursor-pointer" />
           </div>
           <button onClick={() => navigate(-1)} className="text-[#4A90E2] hover:text-[#4A90E2]/80">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
