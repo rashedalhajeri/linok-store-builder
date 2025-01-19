@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Share2, Heart } from "lucide-react";
+import { ArrowRight, Share2, Heart, Clock, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
@@ -62,40 +62,44 @@ const ProductTemplate4 = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Header */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100"
+      >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Button
             variant="ghost"
             size="icon"
-            className="text-gray-700 hover:bg-gray-100 rounded-full"
+            className="text-charcoal hover:bg-gray-100 rounded-full transition-colors"
             onClick={() => navigate(-1)}
           >
             <ArrowRight className="h-6 w-6" />
           </Button>
-          <div className="flex gap-2">
+          <div className="flex gap-3">
             <Button
               variant="ghost"
               size="icon"
-              className="text-gray-700 hover:bg-gray-100 rounded-full"
+              className="text-charcoal hover:bg-gray-100 rounded-full transition-colors"
               onClick={toggleFavorite}
             >
-              <Heart className={`h-6 w-6 ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
+              <Heart className={`h-6 w-6 transition-colors ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
             </Button>
             <Button
               variant="ghost"
               size="icon"
-              className="text-gray-700 hover:bg-gray-100 rounded-full"
+              className="text-charcoal hover:bg-gray-100 rounded-full transition-colors"
               onClick={handleShare}
             >
               <Share2 className="h-6 w-6" />
             </Button>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Product Images Carousel */}
       <motion.div 
-        className="relative w-full h-[45vh] sm:h-[50vh] md:h-[55vh] lg:h-[60vh] mt-16"
+        className="relative w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1] mt-16"
         initial={{ opacity: 0 }}
         animate={{ opacity: isImageLoaded ? 1 : 0 }}
         transition={{ duration: 0.5 }}
@@ -107,11 +111,14 @@ const ProductTemplate4 = () => {
           <CarouselContent className="h-full">
             {product.images.map((image, index) => (
               <CarouselItem key={index} className="h-full">
-                <img
+                <motion.img
                   src={image}
                   alt={`${product.name} - صورة ${index + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-b-3xl"
                   onLoad={() => setIsImageLoaded(true)}
+                  initial={{ scale: 1.1 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5 }}
                 />
               </CarouselItem>
             ))}
@@ -121,13 +128,14 @@ const ProductTemplate4 = () => {
         {/* Pagination Dots */}
         <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3">
           {product.images.map((_, index) => (
-            <div
+            <motion.div
               key={index}
               className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                 index === currentSlide 
-                  ? "bg-white scale-110 shadow-lg ring-2 ring-white/50" 
-                  : "bg-black/20 backdrop-blur-sm"
+                  ? "bg-white scale-110 shadow-lg" 
+                  : "bg-white/40 backdrop-blur-sm"
               }`}
+              whileHover={{ scale: 1.2 }}
             />
           ))}
         </div>
@@ -135,57 +143,68 @@ const ProductTemplate4 = () => {
 
       {/* Product Details */}
       <motion.div 
-        className="relative px-6 pb-8 mt-8 max-w-2xl mx-auto"
+        className="relative -mt-8 px-6 pb-8 max-w-2xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-        <div className="space-y-6">
-          {/* Category Badge */}
-          <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20 border-0">
-            {product.category}
-          </Badge>
-
-          {/* Title and Price */}
-          <div className="space-y-4">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{product.name}</h1>
+        <div className="bg-white rounded-3xl p-6 shadow-lg shadow-gray-100/50">
+          <div className="space-y-6">
+            {/* Category & Time Badge */}
             <div className="flex items-center justify-between">
-              <span className="text-xl sm:text-2xl font-bold text-primary">
-                {product.price}
-              </span>
-              <Badge variant="outline" className="bg-gray-50">
+              <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20 border-0">
+                <Tag className="w-4 h-4 ml-1" />
+                {product.category}
+              </Badge>
+              <Badge variant="outline" className="bg-gray-50 flex items-center gap-1">
+                <Clock className="w-4 h-4" />
                 {product.preparationTime}
               </Badge>
             </div>
-          </div>
 
-          {/* Description */}
-          <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
-            {product.description}
-          </p>
-
-          {/* Ingredients */}
-          <div className="space-y-3 bg-gray-50 p-4 rounded-2xl">
-            <h3 className="text-lg font-semibold text-gray-900">المكونات:</h3>
-            <div className="flex flex-wrap gap-2">
-              {product.ingredients.map((ingredient, index) => (
-                <Badge
-                  key={index}
-                  variant="outline"
-                  className="bg-white text-gray-700 border-gray-200 text-sm py-1.5 px-3 rounded-full"
-                >
-                  {ingredient}
-                </Badge>
-              ))}
+            {/* Title and Price */}
+            <div className="space-y-4">
+              <h1 className="text-2xl sm:text-3xl font-bold text-charcoal">{product.name}</h1>
+              <div className="flex items-center justify-between">
+                <span className="text-xl sm:text-2xl font-bold text-primary">
+                  {product.price}
+                </span>
+              </div>
             </div>
-          </div>
 
-          {/* Add to Cart Button */}
-          <Button 
-            className="w-full bg-primary hover:bg-primary-dark text-white py-6 rounded-xl text-lg font-semibold shadow-lg shadow-primary/20 transition-all duration-300"
-          >
-            إضافة إلى السلة
-          </Button>
+            {/* Description */}
+            <p className="text-muted leading-relaxed text-base sm:text-lg">
+              {product.description}
+            </p>
+
+            {/* Ingredients */}
+            <div className="space-y-3">
+              <h3 className="text-lg font-semibold text-charcoal">المكونات:</h3>
+              <div className="flex flex-wrap gap-2">
+                {product.ingredients.map((ingredient, index) => (
+                  <Badge
+                    key={index}
+                    variant="outline"
+                    className="bg-gray-50/50 text-muted border-gray-100 text-sm py-1.5 px-3 rounded-full"
+                  >
+                    {ingredient}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+
+            {/* Add to Cart Button */}
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Button 
+                className="w-full bg-gradient-button text-white py-6 rounded-xl text-lg font-semibold shadow-lg shadow-primary/20 transition-all duration-300"
+              >
+                إضافة إلى السلة
+              </Button>
+            </motion.div>
+          </div>
         </div>
       </motion.div>
     </div>
