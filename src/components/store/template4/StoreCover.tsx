@@ -12,11 +12,6 @@ export const StoreCover = ({ language, onToggleLanguage }: StoreCoverProps) => {
   return (
     <div className="relative w-full bg-white">
       <div className="flex justify-between items-center px-4 py-4">
-        <LanguageToggle 
-          language={language} 
-          onToggle={onToggleLanguage}
-        />
-        
         <div className="flex gap-2">
           <Button
             variant="outline"
@@ -45,6 +40,11 @@ export const StoreCover = ({ language, onToggleLanguage }: StoreCoverProps) => {
             <Phone className="h-3.5 w-3.5 ml-1" />
           </Button>
         </div>
+
+        <LanguageToggle 
+          language={language} 
+          onToggle={onToggleLanguage}
+        />
       </div>
       
       <div className="relative px-4 py-12">
