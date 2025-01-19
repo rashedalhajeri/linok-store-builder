@@ -33,29 +33,29 @@ export const MenuItem = ({ item }: MenuItemProps) => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
           
-          <div className="flex-1 p-4 sm:p-5 space-y-4">
-            <div className="flex justify-between items-start gap-4">
+          <div className="flex-1 p-3 space-y-2">
+            <div className="flex justify-between items-start gap-2">
               <div>
-                <h3 className="font-bold text-charcoal text-lg group-hover:text-gray-900 transition-colors duration-300">
+                <h3 className="font-bold text-charcoal text-base group-hover:text-gray-900 transition-colors duration-300 line-clamp-1">
                   {item.name}
                 </h3>
-                <p className="text-sm text-gray-600 mt-2 line-clamp-2 group-hover:text-gray-700 transition-colors duration-300">
+                <p className="text-xs text-gray-600 mt-1 line-clamp-2 group-hover:text-gray-700 transition-colors duration-300">
                   {item.description}
                 </p>
               </div>
-              <span className="font-bold text-charcoal text-lg bg-gray-50 px-4 py-1.5 rounded-full shadow-sm whitespace-nowrap">
+              <span className="font-bold text-charcoal text-base bg-gray-50 px-2 py-1 rounded-full shadow-sm whitespace-nowrap">
                 {item.price}
               </span>
             </div>
             
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1">
               {item.isSpicy && (
-                <Badge variant="secondary" className="bg-red-50 text-red-600 hover:bg-red-100 transition-colors duration-300 shadow-sm">
+                <Badge variant="secondary" className="bg-red-50 text-red-600 hover:bg-red-100 transition-colors duration-300 shadow-sm text-xs">
                   حار 🌶️
                 </Badge>
               )}
               {item.isPopular && (
-                <Badge variant="secondary" className="bg-amber-50 text-amber-600 hover:bg-amber-100 transition-colors duration-300 shadow-sm">
+                <Badge variant="secondary" className="bg-amber-50 text-amber-600 hover:bg-amber-100 transition-colors duration-300 shadow-sm text-xs">
                   الأكثر طلباً ⭐️
                 </Badge>
               )}
