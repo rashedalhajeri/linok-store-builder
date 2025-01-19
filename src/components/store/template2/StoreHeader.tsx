@@ -17,7 +17,6 @@ interface StoreHeaderProps {
 export const StoreHeader = ({ 
   storeName, 
   location, 
-  description, 
   logo,
   socialLinks 
 }: StoreHeaderProps) => {
@@ -97,17 +96,6 @@ export const StoreHeader = ({
               </Button>
             </div>
           </div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="max-w-3xl bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-[#4A90E2]/10"
-          >
-            <p className="text-[#495057] leading-relaxed text-base">
-              {description}
-            </p>
-          </motion.div>
         </div>
       </div>
     </div>
