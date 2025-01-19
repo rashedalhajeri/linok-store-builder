@@ -43,7 +43,6 @@ const AdTemplate2 = () => {
   return (
     <div className="min-h-screen bg-gray-50 pb-24">
       <div className="max-w-lg mx-auto bg-white">
-        {/* Header Actions */}
         <div className="flex justify-between items-center p-4 bg-white sticky top-0 z-50 border-b">
           <div className="flex gap-4">
             <Share2 className="w-6 h-6 text-gray-700 cursor-pointer hover:text-primary transition-colors" />
@@ -56,7 +55,6 @@ const AdTemplate2 = () => {
           </button>
         </div>
 
-        {/* Main Image Carousel */}
         <div className="relative w-full aspect-square">
           <Carousel 
             className="w-full" 
@@ -106,40 +104,39 @@ const AdTemplate2 = () => {
 
         {/* Specifications */}
         <div className="p-4 border-b">
-          <h2 className="text-lg font-bold mb-3">مواصفات الاعلان</h2>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg">
-              <Calendar className="w-5 h-5 text-gray-600" />
+          <h2 className="text-lg font-semibold mb-4 text-gray-800">مواصفات الاعلان</h2>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="flex items-center gap-2 bg-gray-50/80 p-2.5 rounded-lg hover:bg-gray-100/80 transition-colors">
+              <Calendar className="w-4 h-4 text-primary/80" />
               <div>
-                <p className="text-sm text-gray-500">سنة الصنع</p>
-                <span className="text-gray-900">{ad.specs.year}</span>
+                <p className="text-xs text-gray-500 mb-0.5">سنة الصنع</p>
+                <span className="text-sm font-medium text-gray-900">{ad.specs.year}</span>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg">
-              <Car className="w-5 h-5 text-gray-600" />
+            <div className="flex items-center gap-2 bg-gray-50/80 p-2.5 rounded-lg hover:bg-gray-100/80 transition-colors">
+              <Car className="w-4 h-4 text-primary/80" />
               <div>
-                <p className="text-sm text-gray-500">اللون</p>
-                <span className="text-gray-900">{ad.specs.color}</span>
+                <p className="text-xs text-gray-500 mb-0.5">اللون</p>
+                <span className="text-sm font-medium text-gray-900">{ad.specs.color}</span>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg">
-              <Gauge className="w-5 h-5 text-gray-600" />
+            <div className="flex items-center gap-2 bg-gray-50/80 p-2.5 rounded-lg hover:bg-gray-100/80 transition-colors">
+              <Gauge className="w-4 h-4 text-primary/80" />
               <div>
-                <p className="text-sm text-gray-500">المسافة المقطوعة</p>
-                <span className="text-gray-900">{ad.specs.mileage}</span>
+                <p className="text-xs text-gray-500 mb-0.5">المسافة المقطوعة</p>
+                <span className="text-sm font-medium text-gray-900">{ad.specs.mileage}</span>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg">
-              <Globe className="w-5 h-5 text-gray-600" />
+            <div className="flex items-center gap-2 bg-gray-50/80 p-2.5 rounded-lg hover:bg-gray-100/80 transition-colors">
+              <Globe className="w-4 h-4 text-primary/80" />
               <div>
-                <p className="text-sm text-gray-500">المقاعد</p>
-                <span className="text-gray-900">{ad.specs.seats}</span>
+                <p className="text-xs text-gray-500 mb-0.5">المقاعد</p>
+                <span className="text-sm font-medium text-gray-900">{ad.specs.seats}</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Description */}
         <div className="p-4 border-b">
           <h2 className="text-lg font-bold mb-2">الوصف</h2>
           <p className="text-gray-600 text-sm leading-relaxed">{ad.description}</p>
