@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Share2 } from "lucide-react";
+import { ArrowRight, Share2, ShoppingCart, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { SocialLinks } from "@/components/store/SocialLinks";
 
 const ProductTemplate4 = () => {
   const navigate = useNavigate();
@@ -33,6 +34,23 @@ const ProductTemplate4 = () => {
     preparationTime: "20-25 دقيقة"
   };
 
+  const socialLinks = [
+    {
+      id: 1,
+      icon: "/lovable-uploads/f4e6c555-66b3-45c1-a211-25bca9083a81.png",
+      label: "WhatsApp",
+      href: `https://wa.me/?text=${encodeURIComponent(`${product.name} - ${window.location.href}`)}`,
+      bgColor: "bg-[#25D366]/10 hover:bg-[#25D366]/20"
+    },
+    {
+      id: 2,
+      icon: "/lovable-uploads/b7fc8d57-a3ea-476d-a1c2-c5f272c432e9.png",
+      label: "X",
+      href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${product.name} - ${window.location.href}`)}`,
+      bgColor: "bg-black/10 hover:bg-black/20"
+    }
+  ];
+
   const handleShare = async () => {
     try {
       await navigator.share({
@@ -47,6 +65,13 @@ const ProductTemplate4 = () => {
       });
       await navigator.clipboard.writeText(window.location.href);
     }
+  };
+
+  const handleAddToCart = () => {
+    toast({
+      title: "تمت الإضافة إلى السلة",
+      description: "تم إضافة المنتج إلى سلة المشتريات",
+    });
   };
 
   return (
@@ -152,7 +177,7 @@ const ProductTemplate4 = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-        <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-lg mt-16">
+        <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-lg">
           <div className="space-y-6">
             {/* Title and Price */}
             <div className="flex justify-between items-center">
@@ -162,10 +187,32 @@ const ProductTemplate4 = () => {
               </span>
             </div>
 
+            {/* Preparation Time */}
+            <div className="flex items-center gap-2 text-muted">
+              <Clock className="w-4 h-4" />
+              <span className="text-sm">{product.preparationTime}</span>
+            </div>
+
             {/* Description */}
             <p className="text-gray-600 leading-relaxed">
               {product.description}
             </p>
+
+            {/* Social Links */}
+            <div className="flex flex-col gap-4">
+              <div className="flex justify-center">
+                <SocialLinks links={socialLinks} />
+              </div>
+            </div>
+
+            {/* Add to Cart Button */}
+            <Button
+              onClick={handleAddToCart}
+              className="w-full bg-gradient-button hover:opacity-90 transition-opacity duration-300 gap-2"
+            >
+              <ShoppingCart className="w-5 h-5" />
+              إضافة إلى السلة
+            </Button>
           </div>
         </div>
       </motion.div>
