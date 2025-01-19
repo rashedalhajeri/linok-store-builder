@@ -18,7 +18,6 @@ const ProductTemplate4 = () => {
   const { productId } = useParams();
   const { toast } = useToast();
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   // Temporary mock data - replace with actual data fetching
   const product = {
@@ -28,8 +27,8 @@ const ProductTemplate4 = () => {
     price: "8.500 د.ك",
     images: [
       "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
-      "https://images.unsplash.com/photo-1565299507177-b0ac66763828",
-      "https://images.unsplash.com/photo-1586816001966-79b736744398",
+      "https://images.unsplash.com/photo-1586190848861-99aa4a171e90",
+      "https://images.unsplash.com/photo-1550547660-d9450f859349",
     ],
     ingredients: ["لحم واجيو", "جبنة شيدر", "خس", "طماطم", "بصل", "مخلل", "صلصة خاصة"]
   };
@@ -51,7 +50,7 @@ const ProductTemplate4 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-50">
       {/* Back Button and Share */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -81,13 +80,10 @@ const ProductTemplate4 = () => {
         animate={{ opacity: isImageLoaded ? 1 : 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Carousel
-          className="w-full h-full"
-          onSlideChange={(index) => setCurrentSlide(index)}
-        >
-          <CarouselContent>
+        <Carousel className="w-full h-full">
+          <CarouselContent className="h-full">
             {product.images.map((image, index) => (
-              <CarouselItem key={index}>
+              <CarouselItem key={index} className="h-full">
                 <img
                   src={image}
                   alt={`${product.name} - صورة ${index + 1}`}
@@ -99,20 +95,6 @@ const ProductTemplate4 = () => {
           </CarouselContent>
           <CarouselPrevious className="left-4" />
           <CarouselNext className="right-4" />
-          
-          {/* Pagination Dots */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-            {product.images.map((_, index) => (
-              <div
-                key={index}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  currentSlide === index
-                    ? "bg-white w-4"
-                    : "bg-white/50"
-                }`}
-              />
-            ))}
-          </div>
         </Carousel>
       </motion.div>
 
