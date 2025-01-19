@@ -147,29 +147,6 @@ const ProductTemplate4 = () => {
           </motion.div>
         </div>
 
-        {/* Thumbnails */}
-        <div className="bg-white px-4 py-3 border-b">
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide">
-            {product.images.map((image, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`relative flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden transition-all duration-300 ${
-                  index === currentSlide 
-                    ? 'ring-2 ring-primary ring-offset-2' 
-                    : 'opacity-70 hover:opacity-100'
-                }`}
-              >
-                <img
-                  src={image}
-                  alt={`صورة مصغرة ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </button>
-            ))}
-          </div>
-        </div>
-
         {/* Product Details */}
         <motion.div 
           className="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-2xl mx-auto"
@@ -177,6 +154,29 @@ const ProductTemplate4 = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
+          {/* Thumbnails */}
+          <div className="mt-6 mb-8">
+            <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-4">
+              {product.images.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden transition-all duration-300 ${
+                    index === currentSlide 
+                      ? 'ring-2 ring-primary ring-offset-2' 
+                      : 'opacity-70 hover:opacity-100'
+                  }`}
+                >
+                  <img
+                    src={image}
+                    alt={`صورة مصغرة ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="bg-white rounded-3xl p-6">
             <div className="space-y-6">
               {/* Title and Price */}
