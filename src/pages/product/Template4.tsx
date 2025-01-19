@@ -17,7 +17,7 @@ const ProductTemplate4 = () => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Temporary mock data - replace with actual data fetching
+  // تحديث البيانات لتشمل المزيد من الصور
   const product = {
     id: productId,
     name: "برجر لحم واجيو",
@@ -27,6 +27,8 @@ const ProductTemplate4 = () => {
       "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
       "https://images.unsplash.com/photo-1586190848861-99aa4a171e90",
       "https://images.unsplash.com/photo-1550547660-d9450f859349",
+      "https://images.unsplash.com/photo-1551782450-17144efb9c50",
+      "https://images.unsplash.com/photo-1553979459-d2229ba7433b"
     ],
     category: "برجر",
     preparationTime: "20-25 دقيقة"
@@ -77,7 +79,7 @@ const ProductTemplate4 = () => {
       </motion.div>
 
       {/* Product Images Carousel */}
-      <div className="w-full aspect-square md:aspect-[4/3] lg:aspect-[16/9] relative">
+      <div className="w-full aspect-[4/3] relative">
         <motion.div 
           className="relative w-full h-full"
           initial={{ opacity: 0 }}
