@@ -154,29 +154,6 @@ const ProductTemplate4 = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          {/* Thumbnails */}
-          <div className="mt-6 mb-8">
-            <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-4">
-              {product.images.map((image, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden transition-all duration-300 ${
-                    index === currentSlide 
-                      ? 'ring-2 ring-primary ring-offset-2' 
-                      : 'opacity-70 hover:opacity-100'
-                  }`}
-                >
-                  <img
-                    src={image}
-                    alt={`صورة مصغرة ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-
           <div className="bg-white rounded-3xl p-6">
             <div className="space-y-6">
               {/* Title and Price */}
@@ -213,6 +190,29 @@ const ProductTemplate4 = () => {
                 <ShoppingCart className="w-5 h-5" />
                 إضافة إلى السلة
               </Button>
+            </div>
+          </div>
+
+          {/* Thumbnails */}
+          <div className="mt-6">
+            <div className="grid grid-cols-5 gap-1.5 px-1">
+              {product.images.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`relative aspect-square w-full rounded-md overflow-hidden transition-all duration-300 ${
+                    index === currentSlide 
+                      ? 'ring-2 ring-primary ring-offset-1' 
+                      : 'opacity-70 hover:opacity-100'
+                  }`}
+                >
+                  <img
+                    src={image}
+                    alt={`صورة مصغرة ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
             </div>
           </div>
         </motion.div>
