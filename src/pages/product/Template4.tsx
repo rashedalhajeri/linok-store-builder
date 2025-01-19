@@ -97,52 +97,54 @@ const ProductTemplate4 = () => {
       </motion.div>
 
       {/* Product Images Carousel */}
-      <motion.div 
-        className="relative w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1] mt-16"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isImageLoaded ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <Carousel 
-          className="w-full h-full"
-          onSlideChange={setCurrentSlide}
+      <div className="w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1] mt-16">
+        <motion.div 
+          className="relative w-full h-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isImageLoaded ? 1 : 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <CarouselContent className="h-full">
-            {product.images.map((image, index) => (
-              <CarouselItem key={index} className="h-full">
-                <motion.img
-                  src={image}
-                  alt={`${product.name} - صورة ${index + 1}`}
-                  className="w-full h-full object-cover"
-                  onLoad={() => setIsImageLoaded(true)}
-                  initial={{ scale: 1.1 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                />
-              </CarouselItem>
+          <Carousel 
+            className="w-full h-full"
+            onSlideChange={setCurrentSlide}
+          >
+            <CarouselContent className="h-full">
+              {product.images.map((image, index) => (
+                <CarouselItem key={index} className="h-full">
+                  <motion.img
+                    src={image}
+                    alt={`${product.name} - صورة ${index + 1}`}
+                    className="w-full h-full object-cover"
+                    onLoad={() => setIsImageLoaded(true)}
+                    initial={{ scale: 1.1 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+          
+          {/* Pagination Dots */}
+          <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2">
+            {product.images.map((_, index) => (
+              <motion.div
+                key={index}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentSlide 
+                    ? "bg-white scale-110 shadow-lg" 
+                    : "bg-white/40 backdrop-blur-sm"
+                }`}
+                whileHover={{ scale: 1.2 }}
+              />
             ))}
-          </CarouselContent>
-        </Carousel>
-        
-        {/* Pagination Dots */}
-        <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2">
-          {product.images.map((_, index) => (
-            <motion.div
-              key={index}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentSlide 
-                  ? "bg-white scale-110 shadow-lg" 
-                  : "bg-white/40 backdrop-blur-sm"
-              }`}
-              whileHover={{ scale: 1.2 }}
-            />
-          ))}
-        </div>
-      </motion.div>
+          </div>
+        </motion.div>
+      </div>
 
       {/* Product Details */}
       <motion.div 
-        className="relative -mt-10 px-4 sm:px-6 lg:px-8 pb-8 max-w-2xl mx-auto"
+        className="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-2xl mx-auto mt-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
