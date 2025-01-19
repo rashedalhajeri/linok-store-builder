@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -50,6 +50,10 @@ const ProductTemplate4 = () => {
     }
   };
 
+  const handleSlideChange = (api: any) => {
+    setCurrentSlide(api.selectedScrollSnap());
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Back Button and Share */}
@@ -75,44 +79,77 @@ const ProductTemplate4 = () => {
       </div>
 
       {/* Product Images Carousel */}
-      <motion.div 
-        className="relative w-full h-[50vh] bg-black"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isImageLoaded ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <Carousel 
-          className="w-full h-full"
-          onSelect={(index) => setCurrentSlide(index)}
-        >
-          <CarouselContent className="h-full">
-            {product.images.map((image, index) => (
-              <CarouselItem key={index} className="h-full">
-                <motion.div
-                  className="w-full h-full"
-                  initial={{ scale: 1.1, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <img
-                    src={image}
-                    alt={`${product.name} - صورة ${index + 1}`}
-                    className="w-full h-full object-cover"
-                    onLoad={() => setIsImageLoaded(true)}
-                  />
-                </motion.div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="left-4 bg-white/80 backdrop-blur-sm hover:bg-white" />
-          <CarouselNext className="right-4 bg-white/80 backdrop-blur-sm hover:bg-white" />
-          
-          {/* Image Counter */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm px-4 py-1 rounded-full text-white text-sm">
-            {currentSlide + 1} / {product.images.length}
-          </div>
-        </Carousel>
-      </motion.div>
+      <div className="relative w-full h-[60vh] bg-gradient-to-b from-black to-gray-900 overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div 
+            className="w-full h-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isImageLoaded ? 1 : 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Carousel 
+              className="w-full h-full"
+              onSelect={handleSlideChange}
+            >
+              <CarouselContent className="h-full">
+                {product.images.map((image, index) => (
+                  <CarouselItem key={index} className="h-full">
+                    <motion.div
+                      className="relative w-full h-full"
+                      initial={{ scale: 1.1, opacity: 0 }}
+                      animate={{ 
+                        scale: 1, 
+                        opacity: 1,
+                        filter: "brightness(0.9)"
+                      }}
+                      transition={{ 
+                        duration: 0.8,
+                        ease: "easeOut"
+                      }}
+                    >
+                      <img
+                        src={image}
+                        alt={`${product.name} - صورة ${index + 1}`}
+                        className="w-full h-full object-cover"
+                        onLoad={() => setIsImageLoaded(true)}
+                      />
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                      />
+                    </motion.div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              
+              <CarouselPrevious className="left-6 bg-white/10 backdrop-blur-md hover:bg-white/20 border-0 transition-all duration-300" />
+              <CarouselNext className="right-6 bg-white/10 backdrop-blur-md hover:bg-white/20 border-0 transition-all duration-300" />
+              
+              {/* Image Counter and Progress */}
+              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3">
+                <div className="bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-sm font-medium">
+                  {currentSlide + 1} / {product.images.length}
+                </div>
+                <div className="flex gap-2">
+                  {product.images.map((_, index) => (
+                    <motion.div
+                      key={index}
+                      className={`w-2 h-2 rounded-full ${index === currentSlide ? 'bg-white' : 'bg-white/30'}`}
+                      animate={{
+                        scale: index === currentSlide ? 1.2 : 1,
+                        opacity: index === currentSlide ? 1 : 0.5
+                      }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  ))}
+                </div>
+              </div>
+            </Carousel>
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
       {/* Product Details */}
       <motion.div 
