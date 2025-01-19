@@ -151,6 +151,29 @@ const ProductTemplate4 = () => {
           transition={{ delay: 0.2, duration: 0.5 }}
         >
           <div className="bg-white rounded-3xl p-6 shadow-sm">
+            {/* Thumbnails - Moved here */}
+            <div className="mb-4">
+              <div className="grid grid-cols-5 gap-1">
+                {product.images.map((image, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`relative aspect-square w-full rounded-md overflow-hidden transition-all duration-300 ${
+                      index === currentSlide 
+                        ? 'ring-1 ring-primary ring-offset-1' 
+                        : 'opacity-60 hover:opacity-100'
+                    }`}
+                  >
+                    <img
+                      src={image}
+                      alt={`صورة مصغرة ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Title and Price */}
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-xl font-bold text-charcoal">{product.name}</h1>
@@ -183,29 +206,6 @@ const ProductTemplate4 = () => {
               <ShoppingCart className="w-5 h-5" />
               إضافة إلى السلة
             </Button>
-          </div>
-
-          {/* Thumbnails */}
-          <div className="mt-4">
-            <div className="grid grid-cols-5 gap-1">
-              {product.images.map((image, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`relative aspect-square w-full rounded-md overflow-hidden transition-all duration-300 ${
-                    index === currentSlide 
-                      ? 'ring-1 ring-primary ring-offset-1' 
-                      : 'opacity-60 hover:opacity-100'
-                  }`}
-                >
-                  <img
-                    src={image}
-                    alt={`صورة مصغرة ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-              ))}
-            </div>
           </div>
         </motion.div>
       </div>
