@@ -47,8 +47,8 @@ export const MenuItem = ({ item }: MenuItemProps) => {
             </div>
           </div>
           
-          <div className="flex-1 p-5">
-            <div className="flex flex-col gap-3">
+          <div className="flex-1 p-5 pt-4">
+            <div className="flex flex-col gap-2">
               <h3 className="font-bold text-charcoal text-xl group-hover:text-gray-900 transition-colors duration-300 line-clamp-1">
                 {item.name}
               </h3>
@@ -57,8 +57,8 @@ export const MenuItem = ({ item }: MenuItemProps) => {
               </p>
             </div>
             
-            <div className="mt-5 flex items-center justify-end">
-              <span className="font-bold text-charcoal text-lg bg-gray-50 px-5 py-2 rounded-full shadow-sm border border-gray-100">
+            <div className="mt-4 flex items-center justify-end">
+              <span className="font-bold text-charcoal text-base bg-gray-50 px-4 py-1.5 rounded-full shadow-sm border border-gray-100">
                 {item.price}
               </span>
             </div>
