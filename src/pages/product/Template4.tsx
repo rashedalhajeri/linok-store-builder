@@ -41,9 +41,9 @@ const ProductTemplate4 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-gray-950">
       {/* Back Button and Share */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Button
             variant="ghost"
@@ -77,7 +77,6 @@ const ProductTemplate4 = () => {
           className="w-full h-full object-cover"
           onLoad={() => setIsImageLoaded(true)}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 to-transparent" />
       </motion.div>
 
       {/* Product Details */}
@@ -89,7 +88,7 @@ const ProductTemplate4 = () => {
       >
         <div className="space-y-6">
           {/* Title */}
-          <h1 className="text-3xl font-bold">{product.name}</h1>
+          <h1 className="text-3xl font-bold text-white">{product.name}</h1>
 
           {/* Price */}
           <div className="inline-block bg-white/5 backdrop-blur-sm px-6 py-2 rounded-full">
@@ -97,7 +96,7 @@ const ProductTemplate4 = () => {
           </div>
 
           {/* Description */}
-          <p className="text-gray-300 leading-relaxed text-lg">
+          <p className="text-white leading-relaxed text-lg">
             {product.description}
           </p>
 
@@ -117,13 +116,13 @@ const ProductTemplate4 = () => {
 
           {/* Ingredients */}
           <div className="space-y-2">
-            <h3 className="text-lg font-semibold text-gray-200">المكونات:</h3>
+            <h3 className="text-lg font-semibold text-white">المكونات:</h3>
             <div className="flex flex-wrap gap-2">
               {product.ingredients.map((ingredient, index) => (
                 <Badge
                   key={index}
                   variant="outline"
-                  className="bg-white/5 hover:bg-white/10 transition-colors"
+                  className="bg-white/5 hover:bg-white/10 transition-colors text-white"
                 >
                   {ingredient}
                 </Badge>
