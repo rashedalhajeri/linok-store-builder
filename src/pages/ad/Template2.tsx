@@ -50,9 +50,11 @@ const AdTemplate2 = () => {
 
         {/* Title and Price */}
         <div className="p-4 space-y-2">
-          <h1 className="text-2xl font-bold text-gray-900">{ad.title}</h1>
+          <div className="flex justify-between items-center">
+            <h1 className="text-2xl font-bold text-gray-900">{ad.title}</h1>
+            <p className="text-sm text-gray-500">{ad.date}</p>
+          </div>
           <p className="text-2xl font-bold text-emerald-500">{ad.price}</p>
-          <p className="text-sm text-gray-500">{ad.date}</p>
         </div>
 
         {/* Specifications */}
