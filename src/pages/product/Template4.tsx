@@ -1,29 +1,24 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Share2, Star } from "lucide-react";
+import { ArrowRight, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
 
 const ProductTemplate4 = () => {
   const navigate = useNavigate();
+  const { productId } = useParams();
   const { toast } = useToast();
-  const [selectedImage, setSelectedImage] = useState(0);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
-  // Mock product data
+  // Temporary mock data - replace with actual data fetching
   const product = {
-    id: "2",
+    id: productId,
     name: "برجر لحم واجيو",
     description: "برجر لحم واجيو مشوي على الفحم مع جبنة شيدر ذائبة وصلصة خاصة، يقدم مع بطاطس مقلية وسلطة كول سلو",
     price: "8.500 د.ك",
-    images: [
-      "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
-      "https://images.unsplash.com/photo-1565299507177-b0ac66763828",
-      "https://images.unsplash.com/photo-1586816001966-79b736744398",
-    ],
-    rating: 4.8,
-    reviews: 245,
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
     isSpicy: true,
     isPopular: true,
     ingredients: ["لحم واجيو", "جبنة شيدر", "خس", "طماطم", "بصل", "مخلل", "صلصة خاصة"]
@@ -36,7 +31,7 @@ const ProductTemplate4 = () => {
         text: product.description,
         url: window.location.href
       });
-    } catch {
+    } catch (error) {
       toast({
         title: "تم نسخ الرابط",
         description: "تم نسخ رابط المنتج إلى الحافظة",
@@ -46,10 +41,10 @@ const ProductTemplate4 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
-      <div className="container mx-auto px-4 py-8">
-        {/* Navigation */}
-        <div className="flex justify-between items-center mb-6">
+    <div className="min-h-screen bg-gray-950 text-white">
+      {/* Back Button and Share */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Button
             variant="ghost"
             size="icon"
@@ -67,110 +62,76 @@ const ProductTemplate4 = () => {
             <Share2 className="h-6 w-6" />
           </Button>
         </div>
+      </div>
 
-        {/* Main Content */}
-        <div className="max-w-4xl mx-auto">
-          {/* Image Gallery */}
-          <motion.div 
-            className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-8 bg-black/20 backdrop-blur-sm"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <img
-              src={product.images[selectedImage]}
-              alt={product.name}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            
-            {/* Thumbnail Navigation */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-              {product.images.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setSelectedImage(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    selectedImage === index ? 'bg-white w-6' : 'bg-white/50'
-                  }`}
-                />
-              ))}
-            </div>
-          </motion.div>
+      {/* Product Image */}
+      <motion.div 
+        className="relative w-full h-[50vh] overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isImageLoaded ? 1 : 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-full object-cover"
+          onLoad={() => setIsImageLoaded(true)}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 to-transparent" />
+      </motion.div>
 
-          {/* Product Info */}
-          <motion.div
-            className="space-y-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <div className="flex justify-between items-start">
-              <div>
-                <h1 className="text-3xl font-bold text-white mb-2">{product.name}</h1>
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center text-amber-400">
-                    <Star className="h-4 w-4 fill-current" />
-                    <span className="ml-1 text-sm font-medium">{product.rating}</span>
-                  </div>
-                  <span className="text-gray-400 text-sm">({product.reviews} تقييم)</span>
-                </div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-2xl">
-                <span className="text-2xl font-bold text-white">{product.price}</span>
-              </div>
-            </div>
-
-            {/* Badges */}
+      {/* Product Details */}
+      <motion.div 
+        className="relative -mt-20 px-4 pb-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+      >
+        <div className="space-y-4">
+          {/* Title and Badges */}
+          <div className="space-y-2">
             <div className="flex gap-2">
               {product.isSpicy && (
-                <Badge variant="secondary" className="bg-red-500/10 text-red-400 hover:bg-red-500/20">
+                <Badge variant="secondary" className="bg-red-500/10 text-red-500 hover:bg-red-500/20">
                   حار 🌶️
                 </Badge>
               )}
               {product.isPopular && (
-                <Badge variant="secondary" className="bg-amber-500/10 text-amber-400 hover:bg-amber-500/20">
+                <Badge variant="secondary" className="bg-amber-500/10 text-amber-500 hover:bg-amber-500/20">
                   الأكثر طلباً ⭐️
                 </Badge>
               )}
             </div>
+            <h1 className="text-3xl font-bold">{product.name}</h1>
+          </div>
 
-            {/* Description */}
-            <p className="text-gray-300 leading-relaxed text-lg">
-              {product.description}
-            </p>
+          {/* Price */}
+          <div className="inline-block bg-white/5 backdrop-blur-sm px-6 py-2 rounded-full">
+            <span className="text-2xl font-bold text-white">{product.price}</span>
+          </div>
 
-            {/* Ingredients */}
-            <div className="space-y-3">
-              <h3 className="text-xl font-semibold text-white">المكونات:</h3>
-              <div className="flex flex-wrap gap-2">
-                {product.ingredients.map((ingredient, index) => (
-                  <Badge
-                    key={index}
-                    variant="outline"
-                    className="bg-white/5 hover:bg-white/10 border-white/10 text-white transition-colors"
-                  >
-                    {ingredient}
-                  </Badge>
-                ))}
-              </div>
+          {/* Description */}
+          <p className="text-gray-300 leading-relaxed text-lg">
+            {product.description}
+          </p>
+
+          {/* Ingredients */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold text-gray-200">المكونات:</h3>
+            <div className="flex flex-wrap gap-2">
+              {product.ingredients.map((ingredient, index) => (
+                <Badge
+                  key={index}
+                  variant="outline"
+                  className="bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                  {ingredient}
+                </Badge>
+              ))}
             </div>
-
-            {/* Add to Cart Button */}
-            <Button 
-              className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white py-6 text-lg rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl"
-              onClick={() => {
-                toast({
-                  title: "تمت الإضافة للسلة",
-                  description: "تم إضافة المنتج إلى سلة المشتريات",
-                });
-              }}
-            >
-              إضافة للسلة
-            </Button>
-          </motion.div>
+          </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
