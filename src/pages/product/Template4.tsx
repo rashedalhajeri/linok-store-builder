@@ -102,120 +102,121 @@ const ProductTemplate4 = () => {
         </div>
       </motion.div>
 
-      {/* Product Images Carousel */}
-      <div className="w-full aspect-[4/3] relative">
-        <motion.div 
-          className="relative w-full h-full"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isImageLoaded ? 1 : 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Carousel 
-            className="w-full h-full overflow-hidden"
-            onSlideChange={setCurrentSlide}
-            opts={{
-              loop: true,
-              align: "start",
-              dragFree: true
-            }}
+      {/* Main Content */}
+      <div className="w-full">
+        {/* Product Images Carousel */}
+        <div className="w-full aspect-[4/3] relative">
+          <motion.div 
+            className="relative w-full h-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isImageLoaded ? 1 : 0 }}
+            transition={{ duration: 0.5 }}
           >
-            <CarouselContent className="h-full">
-              {product.images.map((image, index) => (
-                <CarouselItem key={index} className="h-full">
-                  <motion.div
-                    className="relative w-full h-full"
-                    initial={{ scale: 1.1 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <motion.img
-                      src={image}
-                      alt={`${product.name} - صورة ${index + 1}`}
-                      className="w-full h-full object-cover"
-                      onLoad={() => setIsImageLoaded(true)}
+            <Carousel 
+              className="w-full h-full"
+              onSlideChange={setCurrentSlide}
+              opts={{
+                loop: true,
+                align: "start",
+                dragFree: true
+              }}
+            >
+              <CarouselContent className="h-full">
+                {product.images.map((image, index) => (
+                  <CarouselItem key={index} className="h-full">
+                    <motion.div
+                      className="relative w-full h-full"
                       initial={{ scale: 1.1 }}
                       animate={{ scale: 1 }}
                       transition={{ duration: 0.5 }}
-                    />
-                  </motion.div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+                    >
+                      <motion.img
+                        src={image}
+                        alt={`${product.name} - صورة ${index + 1}`}
+                        className="w-full h-full object-cover"
+                        onLoad={() => setIsImageLoaded(true)}
+                        initial={{ scale: 1.1 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                      />
+                    </motion.div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </motion.div>
+        </div>
 
-          {/* Thumbnails */}
-          <div className="absolute bottom-4 left-0 right-0 px-4">
-            <div className="flex justify-center gap-2 overflow-x-auto scrollbar-hide">
-              {product.images.map((image, index) => (
-                <motion.button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`relative flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
-                    index === currentSlide 
-                      ? 'border-primary shadow-lg scale-110' 
-                      : 'border-white/50 hover:border-primary/50'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <img
-                    src={image}
-                    alt={`صورة مصغرة ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </motion.button>
-              ))}
+        {/* Thumbnails */}
+        <div className="bg-white px-4 py-3 border-b">
+          <div className="flex gap-2 overflow-x-auto scrollbar-hide">
+            {product.images.map((image, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`relative flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden transition-all duration-300 ${
+                  index === currentSlide 
+                    ? 'ring-2 ring-primary ring-offset-2' 
+                    : 'opacity-70 hover:opacity-100'
+                }`}
+              >
+                <img
+                  src={image}
+                  alt={`صورة مصغرة ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Product Details */}
+        <motion.div 
+          className="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          <div className="bg-white rounded-3xl p-6">
+            <div className="space-y-6">
+              {/* Title and Price */}
+              <div className="flex justify-between items-center">
+                <h1 className="text-2xl font-bold text-charcoal">{product.name}</h1>
+                <span className="text-xl font-bold text-primary bg-primary/5 px-4 py-1.5 rounded-full shadow-sm">
+                  {product.price}
+                </span>
+              </div>
+
+              {/* Preparation Time */}
+              <div className="flex items-center gap-2 text-muted">
+                <Clock className="w-4 h-4" />
+                <span className="text-sm">{product.preparationTime}</span>
+              </div>
+
+              {/* Description */}
+              <p className="text-gray-600 leading-relaxed">
+                {product.description}
+              </p>
+
+              {/* Social Links */}
+              <div className="flex flex-col gap-4">
+                <div className="flex justify-center">
+                  <SocialLinks links={socialLinks} />
+                </div>
+              </div>
+
+              {/* Add to Cart Button */}
+              <Button
+                onClick={handleAddToCart}
+                className="w-full bg-gradient-button hover:opacity-90 transition-opacity duration-300 gap-2"
+              >
+                <ShoppingCart className="w-5 h-5" />
+                إضافة إلى السلة
+              </Button>
             </div>
           </div>
         </motion.div>
       </div>
-
-      {/* Product Details */}
-      <motion.div 
-        className="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-2xl mx-auto -mt-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.5 }}
-      >
-        <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-lg">
-          <div className="space-y-6">
-            {/* Title and Price */}
-            <div className="flex justify-between items-center">
-              <h1 className="text-2xl font-bold text-charcoal">{product.name}</h1>
-              <span className="text-xl font-bold text-primary bg-primary/5 px-4 py-1.5 rounded-full shadow-sm">
-                {product.price}
-              </span>
-            </div>
-
-            {/* Preparation Time */}
-            <div className="flex items-center gap-2 text-muted">
-              <Clock className="w-4 h-4" />
-              <span className="text-sm">{product.preparationTime}</span>
-            </div>
-
-            {/* Description */}
-            <p className="text-gray-600 leading-relaxed">
-              {product.description}
-            </p>
-
-            {/* Social Links */}
-            <div className="flex flex-col gap-4">
-              <div className="flex justify-center">
-                <SocialLinks links={socialLinks} />
-              </div>
-            </div>
-
-            {/* Add to Cart Button */}
-            <Button
-              onClick={handleAddToCart}
-              className="w-full bg-gradient-button hover:opacity-90 transition-opacity duration-300 gap-2"
-            >
-              <ShoppingCart className="w-5 h-5" />
-              إضافة إلى السلة
-            </Button>
-          </div>
-        </div>
-      </motion.div>
     </div>
   );
 };
