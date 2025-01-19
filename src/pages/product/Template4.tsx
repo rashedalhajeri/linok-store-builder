@@ -60,17 +60,17 @@ const ProductTemplate4 = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header - Now showing only icons */}
+      {/* Header */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="fixed top-0 left-0 right-0 z-50"
+        className="fixed top-0 left-0 right-0 z-50 bg-transparent"
       >
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <Button
             variant="ghost"
             size="icon"
-            className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-sm text-charcoal hover:bg-white transition-colors"
+            className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-md shadow-sm text-charcoal hover:bg-white/80 transition-all duration-300"
             onClick={() => navigate(-1)}
           >
             <ArrowRight className="h-5 w-5" />
@@ -79,7 +79,7 @@ const ProductTemplate4 = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-sm text-charcoal hover:bg-white transition-colors"
+              className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-md shadow-sm text-charcoal hover:bg-white/80 transition-all duration-300"
               onClick={toggleFavorite}
             >
               <Heart className={`h-5 w-5 transition-colors ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
@@ -87,7 +87,7 @@ const ProductTemplate4 = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-sm text-charcoal hover:bg-white transition-colors"
+              className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-md shadow-sm text-charcoal hover:bg-white/80 transition-all duration-300"
               onClick={handleShare}
             >
               <Share2 className="h-5 w-5" />
@@ -97,8 +97,7 @@ const ProductTemplate4 = () => {
       </motion.div>
 
       {/* Product Images Carousel */}
-      <div className="w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1] mt-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/10 z-10 rounded-b-[3rem]"></div>
+      <div className="w-full aspect-square md:aspect-[4/3] lg:aspect-[16/9] relative">
         <motion.div 
           className="relative w-full h-full"
           initial={{ opacity: 0 }}
@@ -106,7 +105,7 @@ const ProductTemplate4 = () => {
           transition={{ duration: 0.5 }}
         >
           <Carousel 
-            className="w-full h-full overflow-hidden rounded-b-[3rem] shadow-xl"
+            className="w-full h-full overflow-hidden"
             onSlideChange={setCurrentSlide}
           >
             <CarouselContent className="h-full">
@@ -127,7 +126,6 @@ const ProductTemplate4 = () => {
                       animate={{ scale: 1 }}
                       transition={{ duration: 0.5 }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20"></div>
                   </motion.div>
                 </CarouselItem>
               ))}
@@ -153,7 +151,7 @@ const ProductTemplate4 = () => {
 
       {/* Product Details */}
       <motion.div 
-        className="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-2xl mx-auto mt-20"
+        className="relative px-4 sm:px-6 lg:px-8 pb-8 max-w-2xl mx-auto -mt-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
@@ -162,28 +160,26 @@ const ProductTemplate4 = () => {
           <div className="space-y-6">
             {/* Category & Time Badge */}
             <div className="flex items-center justify-between">
-              <Badge variant="outline" className="bg-gray-50 border-gray-200 text-charcoal">
+              <Badge variant="outline" className="bg-gray-50/80 backdrop-blur-sm border-gray-200 text-charcoal">
                 <Tag className="w-4 h-4 ml-1" />
                 {product.category}
               </Badge>
-              <Badge variant="outline" className="bg-gray-50 border-gray-200 text-charcoal flex items-center gap-1">
+              <Badge variant="outline" className="bg-gray-50/80 backdrop-blur-sm border-gray-200 text-charcoal flex items-center gap-1">
                 <Clock className="w-4 h-4" />
                 {product.preparationTime}
               </Badge>
             </div>
 
             {/* Title and Price */}
-            <div className="space-y-4">
-              <h1 className="text-2xl sm:text-3xl font-bold text-charcoal">{product.name}</h1>
-              <div className="flex items-center justify-between">
-                <span className="text-xl sm:text-2xl font-bold text-charcoal">
-                  {product.price}
-                </span>
-              </div>
+            <div className="space-y-2">
+              <h1 className="text-2xl font-bold text-charcoal">{product.name}</h1>
+              <span className="text-xl font-bold text-charcoal">
+                {product.price}
+              </span>
             </div>
 
             {/* Description */}
-            <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
+            <p className="text-gray-600 leading-relaxed">
               {product.description}
             </p>
 
