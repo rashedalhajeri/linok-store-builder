@@ -31,17 +31,17 @@ export const MenuItem = ({ item }: MenuItemProps) => {
               className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div className="absolute top-2 left-2 flex flex-col gap-1.5">
+            <div className="absolute top-1.5 left-1.5 flex flex-col gap-1">
               {item.isSpicy && (
-                <div className="inline-flex items-center gap-0.5 text-red-500 bg-red-50/90 px-1.5 py-0.5 rounded-full text-[9px] font-medium border border-red-100 backdrop-blur-sm">
-                  <Flame size={10} className="shrink-0" />
+                <div className="inline-flex items-center gap-0.5 text-red-600 bg-white/95 px-1 py-0.5 rounded text-[8px] font-medium shadow-sm">
+                  <Flame size={8} className="shrink-0" />
                   حار
                 </div>
               )}
               {item.isPopular && (
-                <div className="inline-flex items-center gap-0.5 text-amber-500 bg-amber-50/90 px-1.5 py-0.5 rounded-full text-[9px] font-medium border border-amber-100 backdrop-blur-sm">
-                  <Star size={10} className="shrink-0 fill-amber-500" />
-                  الأكثر مبيعاً
+                <div className="inline-flex items-center gap-0.5 text-amber-600 bg-white/95 px-1 py-0.5 rounded text-[8px] font-medium shadow-sm">
+                  <Star size={8} className="shrink-0 fill-amber-500" />
+                  مميز
                 </div>
               )}
             </div>
