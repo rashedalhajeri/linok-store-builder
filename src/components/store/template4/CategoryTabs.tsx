@@ -33,7 +33,7 @@ export const CategoryTabs = ({ categories, selectedCategory, onSelectCategory }:
                   value={category.id}
                   onClick={() => onSelectCategory(category.id)}
                   className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg whitespace-nowrap rounded-2xl
-                    data-[state=active]:bg-gradient-to-r from-primary to-primary-dark
+                    data-[state=active]:bg-charcoal
                     data-[state=active]:text-white data-[state=active]:shadow-lg 
                     transition-all duration-300 hover:bg-gray-100 
                     text-gray-600 group relative overflow-hidden font-medium"
