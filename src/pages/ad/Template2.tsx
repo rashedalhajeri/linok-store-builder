@@ -58,7 +58,14 @@ const AdTemplate2 = () => {
 
         {/* Main Image Carousel */}
         <div className="relative w-full aspect-square">
-          <Carousel className="w-full" onSlideChange={handleSlideChange}>
+          <Carousel 
+            className="w-full" 
+            onSlideChange={handleSlideChange}
+            opts={{
+              loop: true,
+              align: "start"
+            }}
+          >
             <CarouselContent>
               {ad.images.map((image, index) => (
                 <CarouselItem key={index}>
