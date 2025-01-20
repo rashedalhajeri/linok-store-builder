@@ -26,16 +26,16 @@ export default {
         foreground: "hsl(var(--foreground))",
         charcoal: "#403E43",
         primary: {
-          DEFAULT: "#86efac",
-          foreground: "#052e16",
-          light: "#bbf7d0",
-          dark: "#4ade80"
+          DEFAULT: "#8B5CF6",
+          foreground: "#FFFFFF",
+          light: "#A78BFA",
+          dark: "#7C3AED"
         },
         secondary: {
-          DEFAULT: "#22c55e",
+          DEFAULT: "#0EA5E9",
           foreground: "#FFFFFF",
-          light: "#4ade80",
-          dark: "#16a34a"
+          light: "#38BDF8",
+          dark: "#0284C7"
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -47,10 +47,10 @@ export default {
           dark: "#8A898C"
         },
         accent: {
-          DEFAULT: "#86efac",
-          foreground: "#052e16",
-          light: "#bbf7d0",
-          dark: "#4ade80"
+          DEFAULT: "#FEF7CD",
+          foreground: "#1A1F2C",
+          light: "#FEF9E7",
+          dark: "#FDF2B3"
         },
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -99,9 +99,9 @@ export default {
         "scale-in": "scale-in 0.2s ease-out",
       },
       backgroundImage: {
-        'gradient-store': 'linear-gradient(102.3deg, #bbf7d0 5.9%, #86efac 64%, #4ade80 89%)',
+        'gradient-store': 'linear-gradient(102.3deg, #A78BFA 5.9%, #8B5CF6 64%, #7C3AED 89%)',
         'gradient-card': 'linear-gradient(to bottom, #f5f5f5 0%, #ffffff 100%)',
-        'gradient-button': 'linear-gradient(to right, #16a34a 0%, #22c55e 100%)',
+        'gradient-button': 'linear-gradient(to right, #7C3AED 0%, #8B5CF6 100%)',
       },
     },
   },
