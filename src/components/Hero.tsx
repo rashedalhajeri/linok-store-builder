@@ -1,14 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Globe, Search } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
+import { LanguageToggle } from "@/components/store/LanguageToggle";
+import { Language } from "@/utils/translations";
 
 export const Hero = () => {
   const [storeHandle, setStoreHandle] = useState("");
   const { toast } = useToast();
-  const [language, setLanguage] = useState<'en' | 'ar'>('en');
+  const [language, setLanguage] = useState<Language>('en');
 
   const handleStoreSearch = () => {
     if (!storeHandle) {
@@ -26,24 +28,15 @@ export const Hero = () => {
     });
   };
 
-  const toggleLanguage = () => {
-    setLanguage(prev => prev === 'en' ? 'ar' : 'en');
-  };
-
   return (
     <div className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/10 to-background">
       <div className="container px-4 md:px-6">
         {/* Language Toggle */}
         <div className="absolute top-4 right-4">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={toggleLanguage}
-            className="flex items-center gap-2"
-          >
-            <Globe className="h-4 w-4" />
-            {language === 'en' ? 'العربية' : 'English'}
-          </Button>
+          <LanguageToggle 
+            language={language}
+            onToggle={(newLang) => setLanguage(newLang)}
+          />
         </div>
 
         {/* Auth Buttons */}
