@@ -48,11 +48,3 @@ export const translations = {
     learnMore: "Learn More"
   }
 };
-
-export const languageNames = {
-  en: "English"
-};
-
-export const recommendedLanguages = [
-  { code: 'en', name: 'English', isPopular: true }
-];
