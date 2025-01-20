@@ -15,7 +15,7 @@ export const StoreCover = ({ language, onToggleLanguage }: StoreCoverProps) => {
           onToggle={onToggleLanguage}
         />
       </div>
-      <div className="h-[200px] md:h-[300px] bg-gradient-to-b from-gray-900/70 to-gray-900/50">
+      <div className="h-[200px] bg-gradient-to-b from-gray-900/70 to-gray-900/50">
         <img 
           src="https://images.unsplash.com/photo-1441986300917-64674bd600d8"
           alt="Store Cover"
