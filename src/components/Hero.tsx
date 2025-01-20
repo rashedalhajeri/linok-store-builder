@@ -4,28 +4,26 @@ import { ArrowRight, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
-import { LanguageToggle } from "@/components/store/LanguageToggle";
-import { Language, translations } from "@/utils/translations";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Hero = () => {
   const [storeHandle, setStoreHandle] = useState("");
   const { toast } = useToast();
-  const [language, setLanguage] = useState<Language>('ar');
-
-  const t = translations[language];
+  const { t, language } = useLanguage();
 
   const handleStoreSearch = () => {
     if (!storeHandle) {
       toast({
-        title: language === 'ar' ? "الرجاء إدخال اسم المتجر" : "Please enter a store name",
-        description: language === 'ar' ? "أدخل اسم متجرك للبدء" : "Enter your store name to get started",
+        title: t.enterStoreName,
+        description: t.enterStoreNameDesc,
         variant: "destructive",
       });
       return;
     }
     toast({
-      title: language === 'ar' ? "البحث عن المتجر" : "Store search",
-      description: language === 'ar' ? "جاري البحث عن المتجر: " : "Searching for store: " + storeHandle,
+      title: t.storeSearch,
+      description: `${t.searchingForStore} ${storeHandle}`,
     });
   };
 
@@ -34,10 +32,7 @@ export const Hero = () => {
       <div className="container px-4 md:px-6">
         {/* Language Toggle */}
         <div className="absolute top-4 right-4">
-          <LanguageToggle 
-            language={language}
-            onToggle={(newLang) => setLanguage(newLang)}
-          />
+          <LanguageSwitcher />
         </div>
 
         {/* Auth Buttons */}
@@ -67,9 +62,7 @@ export const Hero = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="max-w-[600px] text-zinc-500 md:text-xl dark:text-zinc-400 mx-auto"
               >
-                {language === 'ar' 
-                  ? "كل ما تحتاجه لإنشاء وإدارة متجرك الإلكتروني بكفاءة"
-                  : "Everything you need to build and manage your e-commerce store efficiently"}
+                {t.storeSubDescription}
               </motion.p>
             </div>
             
@@ -82,7 +75,7 @@ export const Hero = () => {
               <div className="flex gap-2">
                 <Input
                   type="text"
-                  placeholder={language === 'ar' ? "أدخل اسم متجرك" : "Enter your store name"}
+                  placeholder={t.enterStoreName}
                   value={storeHandle}
                   onChange={(e) => setStoreHandle(e.target.value)}
                   className="flex-1"
@@ -94,16 +87,16 @@ export const Hero = () => {
                   <Search className="h-4 w-4" />
                 </Button>
               </div>
-              <p className="text-sm text-zinc-500">{language === 'ar' ? "أو" : "or"}</p>
+              <p className="text-sm text-zinc-500">{t.or}</p>
               <Button 
                 className="w-full bg-gradient-button text-white hover:opacity-90 group text-lg py-6" 
                 size="lg"
               >
-                <span>{language === 'ar' ? "ابدأ الآن مجاناً" : "Start Free Trial"}</span>
+                <span>{t.startFreeTrial}</span>
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
               <p className="text-sm text-zinc-500">
-                {language === 'ar' ? "لا تحتاج إلى بطاقة ائتمان" : "No credit card required"}
+                {t.noCreditCard}
               </p>
             </motion.div>
 

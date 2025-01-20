@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import Index from "./pages/Index";
 import StoreTemplate1 from "./pages/store/Template1";
 import StoreTemplate2 from "./pages/store/Template2";
@@ -19,41 +20,43 @@ import { Toaster } from "@/components/ui/toaster";
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          
-          {/* Store Routes */}
-          <Route path="/store/template1/:storeId" element={<StoreTemplate1 />} />
-          <Route path="/store/template2/:storeId" element={<StoreTemplate2 />} />
-          <Route path="/store/template3/:storeId" element={<StoreTemplate3 />} />
-          <Route path="/store/template4/:storeId" element={<StoreTemplate4 />} />
-          
-          {/* Product Routes */}
-          <Route path="/product/template1/:productId" element={<ProductTemplate1 />} />
-          <Route path="/product/template2/:productId" element={<ProductTemplate2 />} />
-          <Route path="/product/template3/:productId" element={<ProductTemplate3 />} />
-          <Route path="/product/template4/:productId" element={<ProductTemplate4 />} />
-          
-          {/* Cart Routes */}
-          <Route path="/cart/template1" element={<CartTemplate1 />} />
-          <Route path="/cart/template2" element={<CartTemplate2 />} />
-          <Route path="/cart/template3" element={<CartTemplate3 />} />
-          
-          {/* Checkout Routes */}
-          <Route path="/checkout/template1" element={<CheckoutTemplate1 />} />
-          
-          {/* Success Routes */}
-          <Route path="/success/template1" element={<SuccessTemplate1 />} />
-          
-          {/* Ad Routes */}
-          <Route path="/ad/template2/:adId" element={<AdTemplate2 />} />
-          <Route path="/search/template2" element={<SearchTemplate2 />} />
-        </Routes>
-        <Toaster />
-      </div>
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <div>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            
+            {/* Store Routes */}
+            <Route path="/store/template1/:storeId" element={<StoreTemplate1 />} />
+            <Route path="/store/template2/:storeId" element={<StoreTemplate2 />} />
+            <Route path="/store/template3/:storeId" element={<StoreTemplate3 />} />
+            <Route path="/store/template4/:storeId" element={<StoreTemplate4 />} />
+            
+            {/* Product Routes */}
+            <Route path="/product/template1/:productId" element={<ProductTemplate1 />} />
+            <Route path="/product/template2/:productId" element={<ProductTemplate2 />} />
+            <Route path="/product/template3/:productId" element={<ProductTemplate3 />} />
+            <Route path="/product/template4/:productId" element={<ProductTemplate4 />} />
+            
+            {/* Cart Routes */}
+            <Route path="/cart/template1" element={<CartTemplate1 />} />
+            <Route path="/cart/template2" element={<CartTemplate2 />} />
+            <Route path="/cart/template3" element={<CartTemplate3 />} />
+            
+            {/* Checkout Routes */}
+            <Route path="/checkout/template1" element={<CheckoutTemplate1 />} />
+            
+            {/* Success Routes */}
+            <Route path="/success/template1" element={<SuccessTemplate1 />} />
+            
+            {/* Ad Routes */}
+            <Route path="/ad/template2/:adId" element={<AdTemplate2 />} />
+            <Route path="/search/template2" element={<SearchTemplate2 />} />
+          </Routes>
+          <Toaster />
+        </div>
+      </Router>
+    </LanguageProvider>
   );
 }
 
