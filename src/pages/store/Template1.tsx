@@ -97,30 +97,6 @@ const categories = [
   }
 ];
 
-const socialLinks = [
-  {
-    id: 1,
-    icon: "/lovable-uploads/instagram.png",
-    label: "Instagram",
-    href: "https://instagram.com/bowlicious",
-    bgColor: "bg-gradient-to-br from-purple-600 to-pink-500"
-  },
-  {
-    id: 2,
-    icon: "/lovable-uploads/snapchat.png", 
-    label: "Snapchat",
-    href: "https://snapchat.com/add/bowlicious",
-    bgColor: "bg-gradient-to-br from-yellow-400 to-yellow-300"
-  },
-  {
-    id: 3,
-    icon: "/lovable-uploads/phone.png",
-    label: "Phone",
-    href: "tel:+1234567890",
-    bgColor: "bg-gradient-to-br from-green-500 to-green-400"
-  }
-];
-
 const StoreTemplate1 = () => {
   const navigate = useNavigate();
   const { t = translations.en } = useLanguage();
@@ -129,6 +105,30 @@ const StoreTemplate1 = () => {
   const [selectedCategory, setSelectedCategory] = useState(0);
   const searchRef = useRef<HTMLDivElement>(null);
   const [currentLanguage, setCurrentLanguage] = useState<Language>("en");
+
+  const socialLinks = [
+    {
+      id: 1,
+      icon: "/lovable-uploads/instagram.png",
+      label: "Instagram",
+      href: "https://instagram.com/bowlicious",
+      bgColor: "bg-gradient-to-br from-purple-600 to-pink-500"
+    },
+    {
+      id: 2,
+      icon: "/lovable-uploads/snapchat.png", 
+      label: "Snapchat",
+      href: "https://snapchat.com/add/bowlicious",
+      bgColor: "bg-gradient-to-br from-yellow-400 to-yellow-300"
+    },
+    {
+      id: 3,
+      icon: "/lovable-uploads/phone.png",
+      label: "Phone",
+      href: "tel:+1234567890",
+      bgColor: "bg-gradient-to-br from-green-500 to-green-400"
+    }
+  ];
   
   const handleMapClick = () => {
     window.open('https://maps.google.com/?q=Kuwait+Capital+Governorate+Kuwait', '_blank');
