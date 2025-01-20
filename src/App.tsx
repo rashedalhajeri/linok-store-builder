@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Index from "./pages/Index";
+import Dashboard from "./pages/admin/Dashboard";
 import StoreTemplate1 from "./pages/store/Template1";
 import StoreTemplate2 from "./pages/store/Template2";
 import StoreTemplate3 from "./pages/store/Template3";
@@ -25,6 +26,7 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/admin/dashboard" element={<Dashboard />} />
             
             {/* Store Routes */}
             <Route path="/store/template1/:storeId" element={<StoreTemplate1 />} />
