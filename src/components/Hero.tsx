@@ -4,13 +4,12 @@ import { ArrowRight, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Hero = () => {
   const [storeHandle, setStoreHandle] = useState("");
   const { toast } = useToast();
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   const handleStoreSearch = () => {
     if (!storeHandle) {
@@ -28,7 +27,7 @@ export const Hero = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -40,11 +39,6 @@ export const Hero = () => {
       </div>
 
       <div className="container px-4 md:px-6 relative z-10">
-        {/* Language Toggle */}
-        <div className="absolute top-4 right-4">
-          <LanguageSwitcher />
-        </div>
-
         {/* Auth Buttons */}
         <div className="absolute top-4 left-4 flex gap-2">
           <Button 
@@ -124,22 +118,16 @@ export const Hero = () => {
             >
               {[
                 {
-                  title: language === 'ar' ? "متجر احترافي" : "Professional Store",
-                  description: language === 'ar' 
-                    ? "قوالب جاهزة وتخصيص كامل"
-                    : "Ready-made templates & full customization"
+                  title: "Professional Store",
+                  description: "Ready-made templates & full customization"
                 },
                 {
-                  title: language === 'ar' ? "أداء عالي" : "High Performance",
-                  description: language === 'ar'
-                    ? "تحميل سريع وتجربة سلسة"
-                    : "Lightning-fast loading & smooth experience"
+                  title: "High Performance",
+                  description: "Lightning-fast loading & smooth experience"
                 },
                 {
-                  title: language === 'ar' ? "حماية كاملة" : "Complete Protection",
-                  description: language === 'ar'
-                    ? "تشفير SSL وميزات أمان"
-                    : "SSL encryption & security features"
+                  title: "Complete Protection",
+                  description: "SSL encryption & security features"
                 }
               ].map((feature, index) => (
                 <motion.div
