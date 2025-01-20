@@ -22,13 +22,13 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#FFFFFF",
-        foreground: "#1D1D1D",
+        background: "#151B28",
+        foreground: "#FFFFFF",
         primary: {
-          DEFAULT: "#5D60EF",
-          foreground: "#FFFFFF",
-          light: "#7B7EF7",
-          dark: "#4548E8"
+          DEFAULT: "#00E6CA",
+          foreground: "#151B28",
+          light: "#33EBD4",
+          dark: "#00B39E"
         },
         secondary: {
           DEFAULT: "#A1A1B4",
@@ -46,19 +46,19 @@ export default {
           dark: "#8A8A9D"
         },
         accent: {
-          DEFAULT: "#5D60EF",
-          foreground: "#FFFFFF",
-          light: "#7B7EF7",
-          dark: "#4548E8"
+          DEFAULT: "#00E6CA",
+          foreground: "#151B28",
+          light: "#33EBD4",
+          dark: "#00B39E"
         },
         card: {
-          DEFAULT: "#FFFFFF",
-          foreground: "#1D1D1D",
+          DEFAULT: "#1D2433",
+          foreground: "#FFFFFF",
         },
         linok: {
           white: "#FFFFFF",
-          black: "#1D1D1D",
-          blue: "#5D60EF",
+          black: "#151B28",
+          teal: "#00E6CA",
           gray1: "#A1A1B4",
           gray2: "#F0F0F0",
         }
