@@ -1,42 +1,61 @@
 import { Check } from "lucide-react";
 import { motion } from "framer-motion";
+import { Language, translations } from "@/utils/translations";
 
-export const Features = () => {
+interface FeaturesProps {
+  language: Language;
+}
+
+export const Features = ({ language }: FeaturesProps) => {
+  const t = translations[language];
+
   const features = [
     {
-      title: "قوالب احترافية",
-      description: "مجموعة متنوعة من القوالب الجاهزة للاستخدام الفوري",
+      title: language === 'ar' ? "قوالب احترافية" : "Professional Templates",
+      description: language === 'ar' 
+        ? "مجموعة متنوعة من القوالب الجاهزة للاستخدام الفوري"
+        : "A variety of ready-to-use templates for immediate use",
       icon: "🎨"
     },
     {
-      title: "تخصيص متقدم",
-      description: "أدوات تخصيص متقدمة لتعديل كل تفاصيل متجرك",
+      title: language === 'ar' ? "تخصيص متقدم" : "Advanced Customization",
+      description: language === 'ar'
+        ? "أدوات تخصيص متقدمة لتعديل كل تفاصيل متجرك"
+        : "Advanced customization tools to modify all your store details",
       icon: "⚡"
     },
     {
-      title: "دعم متواصل",
-      description: "فريق دعم فني متخصص على مدار الساعة",
+      title: language === 'ar' ? "دعم متواصل" : "Continuous Support",
+      description: language === 'ar'
+        ? "فريق دعم فني متخصص على مدار الساعة"
+        : "Specialized technical support team available 24/7",
       icon: "🛟"
     },
     {
-      title: "تحديثات مستمرة",
-      description: "تحديثات وتحسينات مستمرة لمتجرك",
+      title: language === 'ar' ? "تحديثات مستمرة" : "Regular Updates",
+      description: language === 'ar'
+        ? "تحديثات وتحسينات مستمرة لمتجرك"
+        : "Continuous updates and improvements for your store",
       icon: "🚀"
     },
     {
-      title: "تجربة مستخدم مميزة",
-      description: "واجهة سهلة وبسيطة لعملائك",
+      title: language === 'ar' ? "تجربة مستخدم مميزة" : "Outstanding UX",
+      description: language === 'ar'
+        ? "واجهة سهلة وبسيطة لعملائك"
+        : "Easy and simple interface for your customers",
       icon: "🛍️"
     },
     {
-      title: "تحليلات متقدمة",
-      description: "إحصائيات وتقارير تفصيلية عن أداء متجرك",
+      title: language === 'ar' ? "تحليلات متقدمة" : "Advanced Analytics",
+      description: language === 'ar'
+        ? "إحصائيات وتقارير تفصيلية عن أداء متجرك"
+        : "Detailed statistics and reports about your store performance",
       icon: "📊"
     }
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-white" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container px-4 md:px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -44,9 +63,13 @@ export const Features = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold mb-4">مميزات المنصة</h2>
+          <h2 className="text-3xl font-bold mb-4">
+            {language === 'ar' ? "مميزات المنصة" : "Platform Features"}
+          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            كل ما تحتاجه لإدارة متجرك الإلكتروني في مكان واحد
+            {language === 'ar' 
+              ? "كل ما تحتاجه لإدارة متجرك الإلكتروني في مكان واحد"
+              : "Everything you need to manage your online store in one place"}
           </p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -64,11 +87,11 @@ export const Features = () => {
               <ul className="mt-4 space-y-2">
                 <li className="flex items-center text-sm text-muted-foreground">
                   <Check className="h-4 w-4 text-primary mr-2" />
-                  تفعيل فوري
+                  {language === 'ar' ? "تفعيل فوري" : "Instant activation"}
                 </li>
                 <li className="flex items-center text-sm text-muted-foreground">
                   <Check className="h-4 w-4 text-primary mr-2" />
-                  تحديثات مجانية
+                  {language === 'ar' ? "تحديثات مجانية" : "Free updates"}
                 </li>
               </ul>
             </motion.div>

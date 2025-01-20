@@ -5,31 +5,32 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { LanguageToggle } from "@/components/store/LanguageToggle";
-import { Language } from "@/utils/translations";
+import { Language, translations } from "@/utils/translations";
 
 export const Hero = () => {
   const [storeHandle, setStoreHandle] = useState("");
   const { toast } = useToast();
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('ar');
+
+  const t = translations[language];
 
   const handleStoreSearch = () => {
     if (!storeHandle) {
       toast({
-        title: "Please enter a store name",
-        description: "Enter your store name to get started",
+        title: language === 'ar' ? "الرجاء إدخال اسم المتجر" : "Please enter a store name",
+        description: language === 'ar' ? "أدخل اسم متجرك للبدء" : "Enter your store name to get started",
         variant: "destructive",
       });
       return;
     }
-    // Store search functionality will be implemented later
     toast({
-      title: "Store search",
-      description: "Searching for store: " + storeHandle,
+      title: language === 'ar' ? "البحث عن المتجر" : "Store search",
+      description: language === 'ar' ? "جاري البحث عن المتجر: " : "Searching for store: " + storeHandle,
     });
   };
 
   return (
-    <div className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/10 to-background">
+    <div className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/10 to-background" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container px-4 md:px-6">
         {/* Language Toggle */}
         <div className="absolute top-4 right-4">
@@ -42,10 +43,10 @@ export const Hero = () => {
         {/* Auth Buttons */}
         <div className="absolute top-4 left-4 flex gap-2">
           <Button variant="outline" size="sm">
-            Sign In
+            {t.signIn}
           </Button>
           <Button variant="default" size="sm">
-            Register
+            {t.register}
           </Button>
         </div>
 
@@ -58,9 +59,7 @@ export const Hero = () => {
                 transition={{ duration: 0.5 }}
                 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
               >
-                Create Your Professional
-                <br />
-                Online Store in Minutes
+                {t.storeDescription}
               </motion.h1>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -68,7 +67,9 @@ export const Hero = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="max-w-[600px] text-zinc-500 md:text-xl dark:text-zinc-400 mx-auto"
               >
-                Everything you need to build and manage your e-commerce store efficiently
+                {language === 'ar' 
+                  ? "كل ما تحتاجه لإنشاء وإدارة متجرك الإلكتروني بكفاءة"
+                  : "Everything you need to build and manage your e-commerce store efficiently"}
               </motion.p>
             </div>
             
@@ -81,7 +82,7 @@ export const Hero = () => {
               <div className="flex gap-2">
                 <Input
                   type="text"
-                  placeholder="Enter your store name"
+                  placeholder={language === 'ar' ? "أدخل اسم متجرك" : "Enter your store name"}
                   value={storeHandle}
                   onChange={(e) => setStoreHandle(e.target.value)}
                   className="flex-1"
@@ -93,15 +94,17 @@ export const Hero = () => {
                   <Search className="h-4 w-4" />
                 </Button>
               </div>
-              <p className="text-sm text-zinc-500">or</p>
+              <p className="text-sm text-zinc-500">{language === 'ar' ? "أو" : "or"}</p>
               <Button 
                 className="w-full bg-gradient-button text-white hover:opacity-90 group text-lg py-6" 
                 size="lg"
               >
-                <span>Start Free Trial</span>
+                <span>{language === 'ar' ? "ابدأ الآن مجاناً" : "Start Free Trial"}</span>
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-              <p className="text-sm text-zinc-500">No credit card required</p>
+              <p className="text-sm text-zinc-500">
+                {language === 'ar' ? "لا تحتاج إلى بطاقة ائتمان" : "No credit card required"}
+              </p>
             </motion.div>
 
             <motion.div
@@ -112,16 +115,22 @@ export const Hero = () => {
             >
               {[
                 {
-                  title: "Professional Store",
-                  description: "Ready-made templates & full customization"
+                  title: language === 'ar' ? "متجر احترافي" : "Professional Store",
+                  description: language === 'ar' 
+                    ? "قوالب جاهزة وتخصيص كامل"
+                    : "Ready-made templates & full customization"
                 },
                 {
-                  title: "High Performance",
-                  description: "Lightning-fast loading & smooth experience"
+                  title: language === 'ar' ? "أداء عالي" : "High Performance",
+                  description: language === 'ar'
+                    ? "تحميل سريع وتجربة سلسة"
+                    : "Lightning-fast loading & smooth experience"
                 },
                 {
-                  title: "Complete Protection",
-                  description: "SSL encryption & security features"
+                  title: language === 'ar' ? "حماية كاملة" : "Complete Protection",
+                  description: language === 'ar'
+                    ? "تشفير SSL وميزات أمان"
+                    : "SSL encryption & security features"
                 }
               ].map((feature, index) => (
                 <motion.div
