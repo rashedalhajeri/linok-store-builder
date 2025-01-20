@@ -82,7 +82,7 @@ export const translations = {
     searchingForStore: "جاري البحث عن المتجر:",
     storeSubDescription: "أنشئ وأدر متجرك الإلكتروني بأدوات ومميزات قوية",
     or: "أو",
-    startFreeTrial: "ابدأ النسخة التجريبية المجانية",
+    startFreeTrial: "سجل الآن",
     noCreditCard: "لا تحتاج إلى بطاقة ائتمان"
   },
   fr: {
