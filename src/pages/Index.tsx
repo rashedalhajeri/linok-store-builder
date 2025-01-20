@@ -69,12 +69,17 @@ const Index = () => {
             {/* Username Input and Register Button */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto px-4">
               <div className="relative w-full sm:w-2/3">
-                <Input
-                  type="text"
-                  placeholder="linok.me/yourname"
-                  className="h-12 text-base bg-white text-black border-2 border-primary/20 focus:border-primary transition-colors placeholder:text-gray-500"
-                  dir="ltr"
-                />
+                <div className="relative flex items-center">
+                  <div className="absolute left-3 text-gray-500 pointer-events-none font-medium">
+                    linok.me/
+                  </div>
+                  <Input
+                    type="text"
+                    className="h-12 text-base bg-white text-black border-2 border-primary/20 focus:border-primary transition-colors placeholder:text-gray-500 pl-[85px]"
+                    dir="ltr"
+                    placeholder="yourname"
+                  />
+                </div>
               </div>
               <Button 
                 size="lg"
