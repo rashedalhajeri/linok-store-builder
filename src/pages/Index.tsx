@@ -13,7 +13,6 @@ const Index = () => {
       <header className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-md border-b border-white/10 z-50">
         <nav className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -24,7 +23,6 @@ const Index = () => {
               </span>
             </motion.div>
 
-            {/* Actions */}
             <motion.div 
               className="flex items-center gap-2 md:gap-4"
               initial={{ opacity: 0, x: 20 }}
@@ -51,23 +49,21 @@ const Index = () => {
         </nav>
       </header>
 
-      {/* Hero Section */}
-      <section className="pt-24 md:pt-32 pb-16 relative overflow-hidden">
+      <section className="pt-32 md:pt-40 pb-16 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center max-w-4xl mx-auto"
+            className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary via-primary-light to-primary bg-clip-text text-transparent leading-tight">
-              {language === 'ar' ? 'أنشئ متجرك الاحترافي في دقائق' : t.storeDescription}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-primary-light to-primary bg-clip-text text-transparent leading-tight tracking-tight">
+              {t.storeDescription}
             </h1>
-            <p className="text-lg md:text-xl text-white/80 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
-              {language === 'ar' ? 'أنشئ وأدر متجرك الإلكتروني بأدوات ومميزات قوية' : t.storeSubDescription}
+            <p className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto">
+              {t.storeSubDescription}
             </p>
             
-            {/* Username Input and Register Button */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto px-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
               <div className="relative w-full sm:w-2/3">
                 <div className="relative flex items-center">
                   <div className="absolute left-3 text-gray-500 pointer-events-none font-medium">
@@ -75,7 +71,7 @@ const Index = () => {
                   </div>
                   <Input
                     type="text"
-                    className="h-12 text-base bg-white text-black border-2 border-primary/20 focus:border-primary transition-colors placeholder:text-gray-500 pl-[85px]"
+                    className="h-12 text-base bg-white text-black border-2 border-primary/20 focus:border-primary transition-colors placeholder:text-gray-500 pl-[85px] rounded-xl"
                     dir="ltr"
                     placeholder="yourname"
                   />
@@ -83,7 +79,7 @@ const Index = () => {
               </div>
               <Button 
                 size="lg"
-                className="bg-primary text-background hover:bg-primary/90 w-full sm:w-auto h-12 text-base font-medium"
+                className="bg-primary text-background hover:bg-primary/90 w-full sm:w-auto h-12 text-base font-medium rounded-xl"
               >
                 {language === 'ar' ? 'سجل الآن' : 'Register Now'}
               </Button>
@@ -91,7 +87,6 @@ const Index = () => {
           </motion.div>
         </div>
 
-        {/* Animated Background */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-b from-background/50 to-background" />
           <motion.div
