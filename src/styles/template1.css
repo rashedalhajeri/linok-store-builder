@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.template1 {
+  --primary-gradient: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+  --accent-gradient: linear-gradient(to right, #ee9ca7, #ffdde1);
+  --primary-color: #ee9ca7;
+  --secondary-color: #ffdde1;
+  --background-color: #F7F9FA;
+}
+
+@layer components {
+  .template1-link {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 
+           after:h-0.5 after:bottom-0 after:left-0 after:bg-[#ee9ca7] after:origin-bottom-right 
+           after:transition-transform after:duration-300 hover:after:scale-x-100 
+           hover:after:origin-bottom-left;
+  }
+  
+  .template1-hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+  
+  .template1-card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+}
+
+@layer utilities {
+  .template1-text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .template1-animate-fade-in {
+    animation: template1-fade-in 0.3s ease-out;
+  }
+  
+  @keyframes template1-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
