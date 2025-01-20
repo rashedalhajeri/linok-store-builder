@@ -1,21 +1,44 @@
 import { Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Language, languageNames } from "@/utils/translations";
 
 interface LanguageToggleProps {
-  language: 'en' | 'ar';
-  onToggle: () => void;
+  language: Language;
+  onToggle: (lang: Language) => void;
 }
 
 export const LanguageToggle = ({ language, onToggle }: LanguageToggleProps) => {
   return (
-    <Button
-      variant="outline"
-      size="sm"
-      className="rounded-full border border-gray-200 bg-white text-gray-700 font-medium shadow-sm backdrop-blur-sm h-8 px-3"
-      onClick={onToggle}
-    >
-      <Globe className="h-3.5 w-3.5 ml-1" />
-      {language === 'en' ? 'العربية' : 'English'}
-    </Button>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="outline"
+          size="sm"
+          className="rounded-full border border-gray-200 bg-white/95 text-gray-700 font-medium shadow-sm backdrop-blur-sm h-8 px-3 hover:bg-white/100"
+        >
+          <Globe className="h-3.5 w-3.5 mr-2" />
+          {languageNames[language]}
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-[150px]">
+        {(Object.keys(languageNames) as Language[]).map((lang) => (
+          <DropdownMenuItem
+            key={lang}
+            onClick={() => onToggle(lang)}
+            className={`${
+              language === lang ? "bg-primary/10 text-primary" : ""
+            } cursor-pointer`}
+          >
+            {languageNames[lang]}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
