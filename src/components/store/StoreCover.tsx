@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { LanguageToggle } from "./LanguageToggle";
 
 interface StoreCoverProps {
@@ -8,20 +7,19 @@ interface StoreCoverProps {
 
 export const StoreCover = ({ language, onToggleLanguage }: StoreCoverProps) => {
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <div className="absolute top-4 left-4 z-10">
         <LanguageToggle 
-          language={language} 
+          language={language}
           onToggle={onToggleLanguage}
         />
       </div>
-      <div className="h-[200px] bg-gradient-to-b from-gray-400/70 to-gray-300/50">
+      <div className="h-[200px] bg-white">
         <img 
           src="https://images.unsplash.com/photo-1441986300917-64674bd600d8"
           alt="Store Cover"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/30" />
       </div>
     </div>
   );

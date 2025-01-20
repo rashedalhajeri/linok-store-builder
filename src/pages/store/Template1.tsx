@@ -117,7 +117,7 @@ const StoreTemplate1 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F9FA]" dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}>
+    <div className="min-h-screen bg-white" dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}>
       <StoreCover 
         language={currentLanguage}
         onToggleLanguage={toggleLanguage}
@@ -164,7 +164,7 @@ const StoreTemplate1 = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="rounded-full hover:bg-gray-50 text-[#8E9196] border-[#F1F0FB]"
+                    className="rounded-full hover:bg-gray-50 text-gray-600 border-gray-200"
                     onClick={handleSearchClick}
                   >
                     <Search className="h-4 w-4" />
@@ -172,7 +172,7 @@ const StoreTemplate1 = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="rounded-full hover:bg-gray-50 text-[#8E9196] border-[#F1F0FB]"
+                    className="rounded-full hover:bg-gray-50 text-gray-600 border-gray-200"
                   >
                     <ExternalLink className="h-4 w-4" />
                   </Button>
