@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { translations } from "@/utils/translations";
+import { translations, Language } from "@/utils/translations";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
@@ -97,17 +97,39 @@ const categories = [
   }
 ];
 
+const socialLinks = [
+  {
+    id: 1,
+    icon: "/lovable-uploads/instagram.png",
+    label: "Instagram",
+    href: "https://instagram.com/bowlicious",
+    bgColor: "bg-gradient-to-br from-purple-600 to-pink-500"
+  },
+  {
+    id: 2,
+    icon: "/lovable-uploads/snapchat.png", 
+    label: "Snapchat",
+    href: "https://snapchat.com/add/bowlicious",
+    bgColor: "bg-gradient-to-br from-yellow-400 to-yellow-300"
+  },
+  {
+    id: 3,
+    icon: "/lovable-uploads/phone.png",
+    label: "Phone",
+    href: "tel:+1234567890",
+    bgColor: "bg-gradient-to-br from-green-500 to-green-400"
+  }
+];
+
 const StoreTemplate1 = () => {
   const navigate = useNavigate();
-  const { language, t = {} } = useLanguage(); // Provide default empty object
+  const { t = translations.en } = useLanguage();
   const [isExpanded, setIsExpanded] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(0);
+  const searchRef = useRef<HTMLDivElement>(null);
+  const [currentLanguage, setCurrentLanguage] = useState<Language>("en");
   
-  const toggleLanguage = () => {
-    setLanguage(prev => prev === 'en' ? 'ar' : 'en');
-  };
-
   const handleMapClick = () => {
     window.open('https://maps.google.com/?q=Kuwait+Capital+Governorate+Kuwait', '_blank');
   };
@@ -121,23 +143,11 @@ const StoreTemplate1 = () => {
     }
   };
 
-  // Provide default values for translations
-  const defaultTranslations = {
-    storeName: "Store Name",
-    storeDescription: "Store Description",
-    showMore: "Show More",
-    showLess: "Show Less",
-    // Add other translation keys as needed
-  };
-
-  // Merge default translations with actual translations
-  const translations = { ...defaultTranslations, ...t };
-
   return (
-    <div className="min-h-screen bg-[#F7F9FA]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+    <div className="min-h-screen bg-[#F7F9FA]" dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}>
       <StoreCover 
-        language={language}
-        onToggleLanguage={toggleLanguage}
+        language={currentLanguage}
+        onToggleLanguage={(lang) => setCurrentLanguage(lang)}
       />
 
       <div className="max-w-[90%] md:max-w-4xl mx-auto px-4 relative">
@@ -170,7 +180,7 @@ const StoreTemplate1 = () => {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 flex items-center gap-2">
-                    {translations.storeName}
+                    {t.storeName}
                     <CircleCheck className="w-5 h-5 text-[#1DA1F2] inline-block" />
                   </h1>
                   <p className="text-sm md:text-base text-gray-500 font-medium">
@@ -197,13 +207,13 @@ const StoreTemplate1 = () => {
               </div>
 
               <p className="text-sm md:text-base text-gray-700 mt-4 leading-relaxed">
-                {isExpanded ? translations.storeDescription : translations.storeDescription.slice(0, 75)}
-                {translations.storeDescription.length > 75 && (
+                {isExpanded ? t.storeDescription : t.storeDescription.slice(0, 75)}
+                {t.storeDescription.length > 75 && (
                   <button
                     onClick={() => setIsExpanded(!isExpanded)}
                     className="mr-1 text-primary hover:underline focus:outline-none"
                   >
-                    {isExpanded ? translations.showLess : translations.showMore}
+                    {isExpanded ? t.showLess : t.showMore}
                   </button>
                 )}
               </p>
@@ -264,7 +274,7 @@ const StoreTemplate1 = () => {
                     <div className="relative aspect-square rounded-lg overflow-hidden mb-2 bg-gray-50">
                       <img 
                         src={category.image} 
-                        alt={translations[category.name]}
+                        alt={t[category.name]}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent group-hover:from-black/40 transition-colors" />
@@ -277,7 +287,7 @@ const StoreTemplate1 = () => {
                             : 'text-gray-700'
                         } group-hover:text-gray-900`}
                       >
-                        {translations[category.name]}
+                        {t[category.name]}
                       </span>
                     </div>
                   </button>
@@ -316,13 +326,13 @@ const StoreTemplate1 = () => {
                 <div className="relative aspect-square">
                   <img 
                     src={product.image} 
-                    alt={translations[product.name]} 
+                    alt={t[product.name]} 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-4 pt-6">
                   <h3 className="font-medium text-sm md:text-base text-gray-900 mb-1.5">
-                    {translations[product.name]}
+                    {t[product.name]}
                   </h3>
                   <p className="text-gray-900 font-bold text-base md:text-lg">
                     {product.price}
