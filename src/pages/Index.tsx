@@ -1,18 +1,17 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ChevronDown, Globe, ArrowRight, Check, Star, Users, ShoppingBag } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Index = () => {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
   
   return (
     <div className="min-h-screen bg-background">
       <header className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-md border-b border-white/10 z-50">
         <nav className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -23,13 +22,11 @@ const Index = () => {
               </span>
             </motion.div>
 
-            {/* Mobile Navigation */}
             <motion.div 
               className="flex items-center gap-2 md:gap-4"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              {/* Mobile View */}
               <div className="flex md:hidden items-center gap-2">
                 <Button 
                   variant="outline" 
@@ -47,7 +44,6 @@ const Index = () => {
                 </Button>
               </div>
 
-              {/* Desktop View */}
               <div className="hidden md:flex items-center gap-4">
                 <Button 
                   variant="ghost" 
@@ -92,7 +88,6 @@ const Index = () => {
                   <Input
                     type="text"
                     className="h-12 text-base bg-white text-black border-2 border-primary/20 focus:border-primary transition-colors placeholder:text-gray-500 pl-[85px] rounded-xl"
-                    dir="ltr"
                     placeholder="yourname"
                   />
                 </div>
@@ -124,7 +119,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Call to Action */}
       <section className="py-12 md:py-20 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
@@ -144,14 +138,13 @@ const Index = () => {
                 className="bg-white text-primary hover:bg-white/90 group w-full sm:w-auto"
               >
                 Start Now
-                <ArrowRight className="mr-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="py-6 md:py-8 border-t border-white/10">
         <div className="container mx-auto px-4 text-center">
           <p className="text-white/60 text-sm">
