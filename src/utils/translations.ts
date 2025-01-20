@@ -41,7 +41,11 @@ export const translations = {
     storeSubDescription: "Create and manage your online store with powerful tools and features",
     or: "or",
     startFreeTrial: "Start Free Trial",
-    noCreditCard: "No credit card required"
+    noCreditCard: "No credit card required",
+    customDomain: "Custom Domain",
+    analytics: "Analytics Dashboard",
+    support24_7: "24/7 Support",
+    learnMore: "Learn More"
   },
   ar: {
     storeName: "اسم المتجر",
@@ -83,7 +87,11 @@ export const translations = {
     storeSubDescription: "أنشئ وأدر متجرك الإلكتروني بأدوات ومميزات قوية",
     or: "أو",
     startFreeTrial: "سجل الآن",
-    noCreditCard: "لا تحتاج إلى بطاقة ائتمان"
+    noCreditCard: "لا تحتاج إلى بطاقة ائتمان",
+    customDomain: "نطاق مخصص",
+    analytics: "لوحة التحليلات",
+    support24_7: "دعم على مدار الساعة",
+    learnMore: "اعرف المزيد"
   },
   fr: {
     storeName: "Nom de la Boutique",
@@ -125,7 +133,11 @@ export const translations = {
     storeSubDescription: "Créez et gérez votre boutique en ligne avec des outils et fonctionnalités puissants",
     or: "ou",
     startFreeTrial: "Commencer l'essai gratuit",
-    noCreditCard: "Aucune carte de crédit requise"
+    noCreditCard: "Aucune carte de crédit requise",
+    customDomain: "Domaine Personnalisé",
+    analytics: "Tableau de Bord Analytique",
+    support24_7: "Support 24/7",
+    learnMore: "En Savoir Plus"
   },
   zh: {
     storeName: "店铺名称",
@@ -167,7 +179,11 @@ export const translations = {
     storeSubDescription: "使用强大的工具和功能创建和管理您的在线商店",
     or: "或",
     startFreeTrial: "开始免费试用",
-    noCreditCard: "无需信用卡"
+    noCreditCard: "无需信用卡",
+    customDomain: "自定义域名",
+    analytics: "分析仪表板",
+    support24_7: "24/7支持",
+    learnMore: "了解更多"
   },
   es: {
     storeName: "Nombre de la Tienda",
@@ -209,7 +225,11 @@ export const translations = {
     storeSubDescription: "Cree y administre su tienda en línea con herramientas y funciones poderosas",
     or: "o",
     startFreeTrial: "Comenzar prueba gratuita",
-    noCreditCard: "No se requiere tarjeta de crédito"
+    noCreditCard: "No se requiere tarjeta de crédito",
+    customDomain: "Dominio Personalizado",
+    analytics: "Panel de Análisis",
+    support24_7: "Soporte 24/7",
+    learnMore: "Saber Más"
   },
   hi: {
     storeName: "स्टोर का नाम",
@@ -251,7 +271,11 @@ export const translations = {
     storeSubDescription: "शक्तिशाली टूल्स और सुविधाओं के साथ अपना ऑनलाइन स्टोर बनाएं और प्रबंधित करें",
     or: "या",
     startFreeTrial: "निःशुल्क परीक्षण प्रारंभ करें",
-    noCreditCard: "क्रेडिट कार्ड की आवश्यकता नहीं है"
+    noCreditCard: "क्रेडिट कार्ड की आवश्यकता नहीं है",
+    customDomain: "कस्टम डोमेन",
+    analytics: "विश्लेषण डैशबोर्ड",
+    support24_7: "24/7 सहायता",
+    learnMore: "और जानें"
   },
   pt: {
     storeName: "Nome da Loja",
@@ -293,7 +317,11 @@ export const translations = {
     storeSubDescription: "Crie e gerencie sua loja online com ferramentas e recursos poderosos",
     or: "ou",
     startFreeTrial: "Iniciar teste gratuito",
-    noCreditCard: "Não é necessário cartão de crédito"
+    noCreditCard: "Não é necessário cartão de crédito",
+    customDomain: "Domínio Personalizado",
+    analytics: "Painel Analítico",
+    support24_7: "Suporte 24/7",
+    learnMore: "Saiba Mais"
   },
   id: {
     storeName: "Nama Toko",
@@ -335,7 +363,11 @@ export const translations = {
     storeSubDescription: "Buat dan kelola toko online Anda dengan alat dan fitur yang kuat",
     or: "atau",
     startFreeTrial: "Mulai Uji Coba Gratis",
-    noCreditCard: "Tidak perlu kartu kredit"
+    noCreditCard: "Tidak perlu kartu kredit",
+    customDomain: "Domain Kustom",
+    analytics: "Dasbor Analitik",
+    support24_7: "Dukungan 24/7",
+    learnMore: "Pelajari Lebih Lanjut"
   },
   ru: {
     storeName: "Название Магазина",
@@ -377,7 +409,11 @@ export const translations = {
     storeSubDescription: "Создавайте и управляйте своим онлайн-магазином с мощными инструментами и функциями",
     or: "или",
     startFreeTrial: "Начать бесплатную пробную версию",
-    noCreditCard: "Кредитная карта не требуется"
+    noCreditCard: "Кредитная карта не требуется",
+    customDomain: "Пользовательский домен",
+    analytics: "Панель аналитики",
+    support24_7: "Поддержка 24/7",
+    learnMore: "Узнать больше"
   },
   ja: {
     storeName: "ストア名",
@@ -419,7 +455,11 @@ export const translations = {
     storeSubDescription: "強力なツールと機能でオンラインストアを作成・管理",
     or: "または",
     startFreeTrial: "無料トライアルを開始",
-    noCreditCard: "クレジットカード不要"
+    noCreditCard: "クレジットカード不要",
+    customDomain: "カスタムドメイン",
+    analytics: "分析ダッシュボード",
+    support24_7: "24時間365日サポート",
+    learnMore: "詳細を見る"
   }
 };
 
