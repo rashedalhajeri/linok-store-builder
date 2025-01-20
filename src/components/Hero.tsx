@@ -4,19 +4,49 @@ import { ArrowRight, LogIn, UserPlus } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/10 to-background">
-      <div className="absolute top-4 left-4 flex gap-2">
-        <Button variant="outline" size="sm" className="flex items-center gap-2">
-          <LogIn className="w-4 h-4" />
-          تسجيل الدخول
-        </Button>
-        <Button variant="outline" size="sm" className="flex items-center gap-2">
-          <UserPlus className="w-4 h-4" />
-          حساب جديد
-        </Button>
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-background">
+        {/* Animated Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem]">
+          <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_800px_at_50%_-100px,#D6BCFA,transparent)]" />
+        </div>
+      </div>
+
+      {/* Login/Signup Buttons */}
+      <div className="absolute top-4 left-4 flex gap-3 z-10">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="flex items-center gap-2 bg-white/80 backdrop-blur-sm border-primary/20 hover:bg-primary/5"
+          >
+            <LogIn className="w-4 h-4" />
+            تسجيل الدخول
+          </Button>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="flex items-center gap-2 bg-white/80 backdrop-blur-sm border-primary/20 hover:bg-primary/5"
+          >
+            <UserPlus className="w-4 h-4" />
+            حساب جديد
+          </Button>
+        </motion.div>
       </div>
       
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 relative z-10">
         <div className="grid gap-6 items-center">
           <div className="flex flex-col justify-center space-y-8 text-center">
             <div className="space-y-4">
@@ -24,7 +54,7 @@ export const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
+                className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-secondary"
               >
                 أنشئ متجرك الإلكتروني في ثوانٍ
               </motion.h1>
@@ -44,7 +74,7 @@ export const Hero = () => {
               className="w-full max-w-sm space-y-4 mx-auto"
             >
               <Button 
-                className="w-full bg-primary hover:bg-primary/90 text-white group" 
+                className="w-full bg-gradient-to-r from-primary via-accent to-secondary hover:opacity-90 transition-all duration-300 text-white group shadow-lg hover:shadow-xl"
                 size="lg"
               >
                 <span>ابدأ الآن مجاناً</span>
@@ -55,8 +85,21 @@ export const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
-        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#D6BCFA,transparent)]" />
+
+      {/* Decorative Elements */}
+      <div className="absolute -z-10 h-full w-full">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/10 rounded-full blur-3xl"
+        />
       </div>
     </div>
   );
