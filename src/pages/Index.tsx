@@ -2,7 +2,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Menu, Search, ChevronDown, Globe, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { LanguageToggle } from "@/components/LanguageSwitcher";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { Features } from "@/components/Features";
 
 const Index = () => {
@@ -74,7 +74,7 @@ const Index = () => {
                 </Button>
               </div>
               
-              <LanguageToggle />
+              <LanguageSwitcher />
               
               <Button 
                 variant="ghost" 
