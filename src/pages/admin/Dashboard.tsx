@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import {
   LineChart,
   Line,
@@ -64,13 +66,26 @@ const statsCards = [
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  const { toast } = useToast();
   
   useEffect(() => {
+    // التحقق من وجود المشرف في localStorage
     const isAdmin = localStorage.getItem("isAdmin");
     if (!isAdmin) {
+      toast({
+        title: "غير مصرح",
+        description: "يجب تسجيل الدخول كمشرف أولاً",
+        variant: "destructive"
+      });
       navigate("/");
     }
-  }, [navigate]);
+  }, [navigate, toast]);
+
+  // للاختبار: إضافة زر لتسجيل الدخول كمشرف
+  const loginAsAdmin = () => {
+    localStorage.setItem("isAdmin", "true");
+    window.location.reload();
+  };
 
   return (
     <SidebarProvider>
@@ -84,11 +99,9 @@ export default function Dashboard() {
                 <h1 className="text-2xl font-bold text-foreground">مرحباً بك في لوحة التحكم</h1>
                 <p className="text-muted-foreground">هنا يمكنك إدارة متجرك بسهولة</p>
               </div>
-              <div className="flex gap-2">
-                <button className="bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
-                  إضافة منتج
-                </button>
-              </div>
+              <Button onClick={loginAsAdmin} className="bg-primary text-primary-foreground">
+                تسجيل دخول كمشرف (للاختبار)
+              </Button>
             </div>
 
             {/* البطاقات الإحصائية */}
