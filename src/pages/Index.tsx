@@ -1,5 +1,6 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { ChevronDown, Globe, ArrowRight, Check, Star, Users, ShoppingBag } from "lucide-react";
 import { motion } from "framer-motion";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -65,19 +66,22 @@ const Index = () => {
             <p className="text-lg md:text-xl text-white/80 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
               {language === 'ar' ? 'أنشئ وأدر متجرك الإلكتروني بأدوات ومميزات قوية' : t.storeSubDescription}
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center px-4">
+            
+            {/* Username Input and Register Button */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto px-4">
+              <div className="relative w-full sm:w-2/3">
+                <Input
+                  type="text"
+                  placeholder="linok.me/yourname"
+                  className="h-12 text-base bg-white text-background border-2 border-primary/20 focus:border-primary transition-colors"
+                  dir="ltr"
+                />
+              </div>
               <Button 
-                variant="outline"
                 size="lg"
-                className="border-primary text-primary hover:bg-primary/5 w-full sm:w-auto order-2 sm:order-1"
+                className="bg-primary text-background hover:bg-primary/90 w-full sm:w-auto h-12 text-base font-medium"
               >
-                {t.features}
-              </Button>
-              <Button 
-                size="lg"
-                className="bg-primary text-background hover:bg-primary/90 w-full sm:w-auto order-1 sm:order-2"
-              >
-                {language === 'ar' ? 'سجل الآن' : t.startFreeTrial}
+                {language === 'ar' ? 'سجل الآن' : 'Register Now'}
               </Button>
             </div>
           </motion.div>
