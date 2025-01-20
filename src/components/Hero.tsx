@@ -1,11 +1,61 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, ShoppingBag, Zap, Shield } from "lucide-react";
+import { ArrowRight, Globe, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
 
 export const Hero = () => {
+  const [storeHandle, setStoreHandle] = useState("");
+  const { toast } = useToast();
+  const [language, setLanguage] = useState<'en' | 'ar'>('en');
+
+  const handleStoreSearch = () => {
+    if (!storeHandle) {
+      toast({
+        title: "Please enter a store name",
+        description: "Enter your store name to get started",
+        variant: "destructive",
+      });
+      return;
+    }
+    // Store search functionality will be implemented later
+    toast({
+      title: "Store search",
+      description: "Searching for store: " + storeHandle,
+    });
+  };
+
+  const toggleLanguage = () => {
+    setLanguage(prev => prev === 'en' ? 'ar' : 'en');
+  };
+
   return (
     <div className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/10 to-background">
       <div className="container px-4 md:px-6">
+        {/* Language Toggle */}
+        <div className="absolute top-4 right-4">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={toggleLanguage}
+            className="flex items-center gap-2"
+          >
+            <Globe className="h-4 w-4" />
+            {language === 'en' ? 'العربية' : 'English'}
+          </Button>
+        </div>
+
+        {/* Auth Buttons */}
+        <div className="absolute top-4 left-4 flex gap-2">
+          <Button variant="outline" size="sm">
+            Sign In
+          </Button>
+          <Button variant="default" size="sm">
+            Register
+          </Button>
+        </div>
+
         <div className="grid gap-6 items-center">
           <div className="flex flex-col justify-center space-y-8 text-center">
             <div className="space-y-4">
@@ -15,9 +65,9 @@ export const Hero = () => {
                 transition={{ duration: 0.5 }}
                 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
               >
-                منصة متكاملة لإدارة
+                Create Your Professional
                 <br />
-                متجرك الإلكتروني
+                Online Store in Minutes
               </motion.h1>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -25,7 +75,7 @@ export const Hero = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="max-w-[600px] text-zinc-500 md:text-xl dark:text-zinc-400 mx-auto"
               >
-                نقدم لك كل ما تحتاجه لبناء وإدارة متجرك الإلكتروني بكفاءة عالية
+                Everything you need to build and manage your e-commerce store efficiently
               </motion.p>
             </div>
             
@@ -33,16 +83,32 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="w-full max-w-sm space-y-4 mx-auto"
+              className="w-full max-w-sm mx-auto space-y-4"
             >
+              <div className="flex gap-2">
+                <Input
+                  type="text"
+                  placeholder="Enter your store name"
+                  value={storeHandle}
+                  onChange={(e) => setStoreHandle(e.target.value)}
+                  className="flex-1"
+                />
+                <Button 
+                  onClick={handleStoreSearch}
+                  className="bg-gradient-button text-white"
+                >
+                  <Search className="h-4 w-4" />
+                </Button>
+              </div>
+              <p className="text-sm text-zinc-500">or</p>
               <Button 
                 className="w-full bg-gradient-button text-white hover:opacity-90 group text-lg py-6" 
                 size="lg"
               >
-                <span>ابدأ الآن مجاناً</span>
-                <ArrowRight className="mr-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <span>Start Free Trial</span>
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-              <p className="text-sm text-zinc-500">لا تحتاج إلى بطاقة ائتمان للبدء</p>
+              <p className="text-sm text-zinc-500">No credit card required</p>
             </motion.div>
 
             <motion.div
@@ -53,19 +119,16 @@ export const Hero = () => {
             >
               {[
                 {
-                  icon: <ShoppingBag className="h-6 w-6 text-primary" />,
-                  title: "متجر احترافي",
-                  description: "قوالب جاهزة وتخصيص كامل"
+                  title: "Professional Store",
+                  description: "Ready-made templates & full customization"
                 },
                 {
-                  icon: <Zap className="h-6 w-6 text-primary" />,
-                  title: "أداء عالي",
-                  description: "سرعة تحميل فائقة وتجربة سلسة"
+                  title: "High Performance",
+                  description: "Lightning-fast loading & smooth experience"
                 },
                 {
-                  icon: <Shield className="h-6 w-6 text-primary" />,
-                  title: "حماية متكاملة",
-                  description: "تشفير SSL وحماية ضد الاختراق"
+                  title: "Complete Protection",
+                  description: "SSL encryption & security features"
                 }
               ].map((feature, index) => (
                 <motion.div
@@ -75,9 +138,6 @@ export const Hero = () => {
                   transition={{ duration: 0.5, delay: 0.8 + (index * 0.1) }}
                   className="flex flex-col items-center p-4 bg-white/50 backdrop-blur-sm rounded-xl shadow-sm"
                 >
-                  <div className="p-2 bg-primary/10 rounded-full mb-3">
-                    {feature.icon}
-                  </div>
                   <h3 className="font-semibold mb-1">{feature.title}</h3>
                   <p className="text-sm text-muted-foreground text-center">
                     {feature.description}
