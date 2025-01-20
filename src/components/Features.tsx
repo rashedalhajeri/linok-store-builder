@@ -18,7 +18,7 @@ export const Features = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex items-center space-x-4 space-x-reverse p-4 rounded-lg bg-white shadow-sm"
+              className="flex items-center space-x-4 space-x-reverse p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-primary/10">
                 <Check className="w-5 h-5 text-primary" />

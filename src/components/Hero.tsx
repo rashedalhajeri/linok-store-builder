@@ -1,10 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, LogIn, UserPlus } from "lucide-react";
 
 export const Hero = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/10 to-background">
+      <div className="absolute top-4 left-4 flex gap-2">
+        <Button variant="outline" size="sm" className="flex items-center gap-2">
+          <LogIn className="w-4 h-4" />
+          تسجيل الدخول
+        </Button>
+        <Button variant="outline" size="sm" className="flex items-center gap-2">
+          <UserPlus className="w-4 h-4" />
+          حساب جديد
+        </Button>
+      </div>
+      
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 items-center">
           <div className="flex flex-col justify-center space-y-8 text-center">
@@ -33,7 +44,7 @@ export const Hero = () => {
               className="w-full max-w-sm space-y-4 mx-auto"
             >
               <Button 
-                className="w-full bg-primary hover:bg-primary/90 group" 
+                className="w-full bg-primary hover:bg-primary/90 text-white group" 
                 size="lg"
               >
                 <span>ابدأ الآن مجاناً</span>
@@ -45,7 +56,7 @@ export const Hero = () => {
         </div>
       </div>
       <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
-        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#C8B6FF,transparent)]" />
+        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#D6BCFA,transparent)]" />
       </div>
     </div>
   );

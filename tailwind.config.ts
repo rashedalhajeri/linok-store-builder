@@ -26,16 +26,16 @@ export default {
         foreground: "hsl(var(--foreground))",
         charcoal: "#403E43",
         primary: {
-          DEFAULT: "#86efac",
-          foreground: "#052e16",
-          light: "#bbf7d0",
-          dark: "#4ade80"
+          DEFAULT: "#9b87f5",
+          foreground: "#FFFFFF",
+          light: "#D6BCFA",
+          dark: "#7E69AB"
         },
         secondary: {
-          DEFAULT: "#22c55e",
+          DEFAULT: "#6E59A5",
           foreground: "#FFFFFF",
-          light: "#4ade80",
-          dark: "#16a34a"
+          light: "#8B5CF6",
+          dark: "#1A1F2C"
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -47,10 +47,10 @@ export default {
           dark: "#8A898C"
         },
         accent: {
-          DEFAULT: "#86efac",
-          foreground: "#052e16",
-          light: "#bbf7d0",
-          dark: "#4ade80"
+          DEFAULT: "#D946EF",
+          foreground: "#FFFFFF",
+          light: "#D6BCFA",
+          dark: "#8B5CF6"
         },
         card: {
           DEFAULT: "hsl(var(--card))",
