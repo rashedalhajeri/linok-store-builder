@@ -1,36 +1,26 @@
 import { Hero } from "@/components/Hero";
 import { Features } from "@/components/Features";
 import { motion } from "framer-motion";
-import { Building2, Users, ShoppingBag, Globe } from "lucide-react";
+import { Building2, Users, ShoppingBag, Globe2, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 
 const Index = () => {
+  const { toast } = useToast();
+  
   const stats = [
-    { icon: <Building2 className="w-6 h-6" />, value: "1000+", label: "متجر نشط" },
-    { icon: <Users className="w-6 h-6" />, value: "50K+", label: "عميل سعيد" },
-    { icon: <ShoppingBag className="w-6 h-6" />, value: "100K+", label: "طلب شهري" },
-    { icon: <Globe className="w-6 h-6" />, value: "24/7", label: "دعم فني" },
+    { icon: <Building2 className="w-6 h-6 text-primary" />, value: "10K+", label: "متجر نشط" },
+    { icon: <Users className="w-6 h-6 text-primary" />, value: "100K+", label: "عميل سعيد" },
+    { icon: <ShoppingBag className="w-6 h-6 text-primary" />, value: "1M+", label: "طلب شهري" },
+    { icon: <Globe2 className="w-6 h-6 text-primary" />, value: "24/7", label: "دعم فني" },
   ];
 
-  const plans = [
-    {
-      name: "مجاني",
-      price: "0",
-      features: ["متجر أساسي", "دعم محدود", "تخصيص بسيط"],
-      popular: false
-    },
-    {
-      name: "احترافي",
-      price: "49",
-      features: ["متجر متقدم", "دعم على مدار الساعة", "تخصيص كامل", "تحليلات متقدمة"],
-      popular: true
-    },
-    {
-      name: "أعمال",
-      price: "99",
-      features: ["متجر متعدد", "دعم VIP", "تخصيص غير محدود", "تقارير مفصلة", "API كامل"],
-      popular: false
-    }
-  ];
+  const handleDemoRequest = () => {
+    toast({
+      title: "تم استلام طلبك",
+      description: "سيتواصل معك فريقنا قريباً لعرض المنصة",
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -38,7 +28,7 @@ const Index = () => {
       <Features />
       
       {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-b from-background to-gray-50">
+      <section className="py-16 bg-gradient-to-b from-background to-primary/5">
         <div className="container px-4 md:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -47,12 +37,14 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex flex-col items-center space-y-2 p-6 bg-white rounded-2xl shadow-lg"
+                className="flex flex-col items-center space-y-2 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
               >
                 <div className="p-3 bg-primary/10 rounded-full">
                   {stat.icon}
                 </div>
-                <h3 className="text-2xl font-bold">{stat.value}</h3>
+                <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                  {stat.value}
+                </h3>
                 <p className="text-muted-foreground text-sm">{stat.label}</p>
               </motion.div>
             ))}
@@ -60,81 +52,88 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* How It Works */}
       <section className="py-16 bg-white">
         <div className="container px-4 md:px-6">
-          <h2 className="text-3xl font-bold text-center mb-12">باقات الاشتراك</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {plans.map((plan, index) => (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold mb-4">كيف تعمل المنصة؟</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              خطوات بسيطة تفصلك عن متجرك الإلكتروني
+            </p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "اختر قالبك",
+                description: "مجموعة متنوعة من القوالب الاحترافية الجاهزة",
+                icon: "🎨"
+              },
+              {
+                title: "خصص متجرك",
+                description: "أضف منتجاتك وخصص تصميم متجرك بسهولة",
+                icon: "⚡"
+              },
+              {
+                title: "ابدأ البيع",
+                description: "استقبل الطلبات وابدأ في تحقيق المبيعات",
+                icon: "🚀"
+              }
+            ].map((step, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`p-6 rounded-2xl shadow-lg ${
-                  plan.popular ? 'border-2 border-primary relative' : 'border border-gray-200'
-                }`}
+                className="flex flex-col items-center p-6 bg-gradient-to-b from-white to-primary/5 rounded-2xl shadow-lg hover:shadow-xl transition-all"
               >
-                {plan.popular && (
-                  <span className="absolute -top-3 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm">
-                    الأكثر شعبية
-                  </span>
-                )}
-                <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
-                <div className="mb-4">
-                  <span className="text-3xl font-bold">${plan.price}</span>
-                  <span className="text-muted-foreground">/شهرياً</span>
-                </div>
-                <ul className="space-y-3 mb-6">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <svg
-                        className="w-5 h-5 text-primary"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  className={`w-full py-2 rounded-lg transition-colors ${
-                    plan.popular
-                      ? 'bg-primary text-primary-foreground hover:bg-primary/90'
-                      : 'bg-gray-100 hover:bg-gray-200'
-                  }`}
-                >
-                  اختر الباقة
-                </button>
+                <span className="text-4xl mb-4">{step.icon}</span>
+                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                <p className="text-muted-foreground text-center">{step.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-16 bg-gradient-to-b from-gray-50 to-background">
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-store">
         <div className="container px-4 md:px-6">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">هل لديك أسئلة؟</h2>
-            <p className="text-muted-foreground mb-8">
-              فريقنا جاهز للمساعدة في أي وقت. تواصل معنا الآن!
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-6"
             >
-              تواصل معنا
-            </motion.button>
+              <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground">
+                جاهز لبدء رحلة نجاحك في التجارة الإلكترونية؟
+              </h2>
+              <p className="text-primary-foreground/90 text-lg">
+                انضم إلى آلاف التجار الناجحين على منصتنا
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  size="lg"
+                  className="bg-white text-primary hover:bg-white/90 text-lg group"
+                  onClick={handleDemoRequest}
+                >
+                  اطلب عرضاً تجريبياً
+                  <ArrowRight className="mr-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-transparent border-white text-white hover:bg-white/10 text-lg"
+                >
+                  تواصل معنا
+                </Button>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
