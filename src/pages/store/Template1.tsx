@@ -24,6 +24,32 @@ import { Input } from "@/components/ui/input";
 import { StoreCover } from "@/components/store/StoreCover";
 import { SocialLinks } from "@/components/store/SocialLinks";
 
+interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+  image: string;
+}
+
+const products: Product[] = [
+  {
+    id: 1,
+    name: "Product 1",
+    description: "Description for product 1",
+    price: "29.99 KD",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8"
+  },
+  {
+    id: 2,
+    name: "Product 2",
+    description: "Description for product 2",
+    price: "39.99 KD",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8"
+  },
+  // Add more products as needed
+];
+
 const StoreTemplate1 = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
@@ -33,7 +59,7 @@ const StoreTemplate1 = () => {
   const [selectedCategory, setSelectedCategory] = useState(0);
   const searchRef = useRef<HTMLDivElement>(null);
   
-  const t = translations[currentLanguage] || {};
+  const t = translations[currentLanguage] || translations.ar; // Provide a fallback
 
   const socialLinks = [
     { 
@@ -90,6 +116,8 @@ const StoreTemplate1 = () => {
       }
     }
   };
+
+  // ... keep existing code (rest of the component implementation)
 
   return (
     <div className="min-h-screen bg-[#F7F9FA]" dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}>
