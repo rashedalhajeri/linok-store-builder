@@ -28,8 +28,18 @@ export const Hero = () => {
   };
 
   return (
-    <div className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-linok" dir={language === 'ar' ? 'rtl' : 'ltr'}>
-      <div className="container px-4 md:px-6">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7" 
+          alt="Background" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/90 to-primary-dark/90 mix-blend-multiply" />
+      </div>
+
+      <div className="container px-4 md:px-6 relative z-10">
         {/* Language Toggle */}
         <div className="absolute top-4 right-4">
           <LanguageSwitcher />
@@ -40,14 +50,14 @@ export const Hero = () => {
           <Button 
             variant="outline" 
             size="sm"
-            className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+            className="bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm"
           >
             {t.signIn}
           </Button>
           <Button 
             variant="default" 
             size="sm"
-            className="bg-white text-primary hover:bg-white/90"
+            className="bg-white text-primary hover:bg-white/90 backdrop-blur-sm"
           >
             {t.register}
           </Button>
@@ -55,29 +65,27 @@ export const Hero = () => {
 
         <div className="grid gap-6 items-center">
           <div className="flex flex-col justify-center space-y-8 text-center">
-            <div className="space-y-4">
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-white"
-              >
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-4"
+            >
+              <h1 className="text-6xl md:text-7xl font-bold tracking-tighter text-white mb-4">
+                Linok.me
+              </h1>
+              <p className="text-xl md:text-2xl font-light text-white/90 max-w-[600px] mx-auto">
                 {t.storeDescription}
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="max-w-[600px] text-white/80 md:text-xl mx-auto"
-              >
+              </p>
+              <p className="text-lg text-white/80">
                 {t.storeSubDescription}
-              </motion.p>
-            </div>
+              </p>
+            </motion.div>
             
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="w-full max-w-sm mx-auto space-y-4"
             >
               <div className="flex gap-2">
@@ -86,18 +94,18 @@ export const Hero = () => {
                   placeholder={t.enterStoreName}
                   value={storeHandle}
                   onChange={(e) => setStoreHandle(e.target.value)}
-                  className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:bg-white/20"
+                  className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:bg-white/20 backdrop-blur-sm"
                 />
                 <Button 
                   onClick={handleStoreSearch}
-                  className="bg-white text-primary hover:bg-white/90"
+                  className="bg-white text-primary hover:bg-white/90 backdrop-blur-sm"
                 >
                   <Search className="h-4 w-4" />
                 </Button>
               </div>
               <p className="text-sm text-white/60">{t.or}</p>
               <Button 
-                className="w-full bg-white text-primary hover:bg-white/90 group text-lg py-6" 
+                className="w-full bg-white text-primary hover:bg-white/90 group text-lg py-6 backdrop-blur-sm" 
                 size="lg"
               >
                 <span>{t.startFreeTrial}</span>
@@ -111,7 +119,7 @@ export const Hero = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
               className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8"
             >
               {[
@@ -138,10 +146,10 @@ export const Hero = () => {
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.8 + (index * 0.1) }}
-                  className="flex flex-col items-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20"
+                  transition={{ duration: 0.5, delay: 0.6 + (index * 0.1) }}
+                  className="flex flex-col items-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/20 transition-colors"
                 >
-                  <h3 className="font-semibold text-white mb-1">{feature.title}</h3>
+                  <h3 className="font-semibold text-white text-lg mb-2">{feature.title}</h3>
                   <p className="text-sm text-white/80 text-center">
                     {feature.description}
                   </p>
@@ -152,7 +160,7 @@ export const Hero = () => {
         </div>
       </div>
       
-      {/* Background Pattern */}
+      {/* Animated Background Pattern */}
       <div className="absolute inset-0 -z-10 h-full w-full">
         <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_800px_at_50%_-100px,#7B7EF7,transparent)]" />
       </div>
