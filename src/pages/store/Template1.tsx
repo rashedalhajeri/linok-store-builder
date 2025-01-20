@@ -46,8 +46,7 @@ const products: Product[] = [
     description: "Description for product 2",
     price: "39.99 KD",
     image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8"
-  },
-  // Add more products as needed
+  }
 ];
 
 const StoreTemplate1 = () => {
@@ -116,8 +115,6 @@ const StoreTemplate1 = () => {
       }
     }
   };
-
-  // ... keep existing code (rest of the component implementation)
 
   return (
     <div className="min-h-screen bg-[#F7F9FA]" dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}>
