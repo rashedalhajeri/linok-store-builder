@@ -13,6 +13,7 @@ const Index = () => {
       <header className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-md border-b border-white/10 z-50">
         <nav className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-20">
+            {/* Logo */}
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -23,27 +24,49 @@ const Index = () => {
               </span>
             </motion.div>
 
+            {/* Mobile Navigation */}
             <motion.div 
               className="flex items-center gap-2 md:gap-4"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <LanguageSwitcher />
-              
-              <Button 
-                variant="ghost" 
-                size="sm"
-                className="text-white hover:text-primary hover:bg-primary/5 hidden md:inline-flex"
-              >
-                {t.signIn}
-              </Button>
-              
-              <Button 
-                size="sm"
-                className="bg-primary text-background hover:bg-primary/90 whitespace-nowrap"
-              >
-                {t.startNow}
-              </Button>
+              {/* Mobile View */}
+              <div className="flex md:hidden items-center gap-2">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  className="text-white bg-transparent border border-white/20 hover:bg-white/5"
+                >
+                  {t.signIn}
+                </Button>
+                
+                <Button 
+                  size="sm"
+                  className="bg-white text-background hover:bg-white/90"
+                >
+                  {t.startNow}
+                </Button>
+              </div>
+
+              {/* Desktop View */}
+              <div className="hidden md:flex items-center gap-4">
+                <LanguageSwitcher />
+                
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  className="text-white hover:text-primary hover:bg-primary/5"
+                >
+                  {t.signIn}
+                </Button>
+                
+                <Button 
+                  size="sm"
+                  className="bg-primary text-background hover:bg-primary/90 whitespace-nowrap"
+                >
+                  {t.startNow}
+                </Button>
+              </div>
             </motion.div>
           </div>
         </nav>
