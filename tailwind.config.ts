@@ -22,40 +22,46 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        charcoal: "#403E43",
+        background: "#FFFFFF",
+        foreground: "#1D1D1D",
         primary: {
-          DEFAULT: "#8B5CF6",
+          DEFAULT: "#5D60EF",
           foreground: "#FFFFFF",
-          light: "#A78BFA",
-          dark: "#7C3AED"
+          light: "#7B7EF7",
+          dark: "#4548E8"
         },
         secondary: {
-          DEFAULT: "#0EA5E9",
+          DEFAULT: "#A1A1B4",
           foreground: "#FFFFFF",
-          light: "#38BDF8",
-          dark: "#0284C7"
+          light: "#BBBBC8",
+          dark: "#8A8A9D"
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "#8E9196",
-          foreground: "#C8C8C9",
-          dark: "#8A898C"
+          DEFAULT: "#A1A1B4",
+          foreground: "#F0F0F0",
+          dark: "#8A8A9D"
         },
         accent: {
-          DEFAULT: "#FEF7CD",
-          foreground: "#1A1F2C",
-          light: "#FEF9E7",
-          dark: "#FDF2B3"
+          DEFAULT: "#5D60EF",
+          foreground: "#FFFFFF",
+          light: "#7B7EF7",
+          dark: "#4548E8"
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "#FFFFFF",
+          foreground: "#1D1D1D",
         },
+        linok: {
+          white: "#FFFFFF",
+          black: "#1D1D1D",
+          blue: "#5D60EF",
+          gray1: "#A1A1B4",
+          gray2: "#F0F0F0",
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -99,9 +105,9 @@ export default {
         "scale-in": "scale-in 0.2s ease-out",
       },
       backgroundImage: {
-        'gradient-store': 'linear-gradient(102.3deg, #A78BFA 5.9%, #8B5CF6 64%, #7C3AED 89%)',
-        'gradient-card': 'linear-gradient(to bottom, #f5f5f5 0%, #ffffff 100%)',
-        'gradient-button': 'linear-gradient(to right, #7C3AED 0%, #8B5CF6 100%)',
+        'gradient-linok': 'linear-gradient(135deg, #5D60EF 0%, #7B7EF7 100%)',
+        'gradient-card': 'linear-gradient(to bottom, #FFFFFF 0%, #F8F9FA 100%)',
+        'gradient-button': 'linear-gradient(to right, #4548E8 0%, #5D60EF 100%)',
       },
     },
   },
