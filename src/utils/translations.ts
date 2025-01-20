@@ -1,4 +1,4 @@
-export type Language = 'en' | 'ar' | 'fr' | 'zh';
+export type Language = 'en' | 'ar' | 'fr' | 'zh' | 'es' | 'hi' | 'pt' | 'id' | 'ru' | 'ja';
 
 export const translations = {
   en: {
@@ -72,6 +72,114 @@ export const translations = {
     templates: "模板",
     pricing: "价格",
     support: "支持"
+  },
+  es: {
+    storeName: "Nombre de la Tienda",
+    storeHandle: "@sutienda",
+    storeDescription: "Cree su tienda en línea profesional en minutos",
+    showMore: "Mostrar más",
+    showLess: "Mostrar menos",
+    location: "Ubicación",
+    allProducts: "Todo",
+    bestSellers: "Más Vendidos",
+    startNow: "Empezar Ahora",
+    signIn: "Iniciar Sesión",
+    register: "Registrarse",
+    searchStore: "Buscar tienda",
+    features: "Características",
+    templates: "Plantillas",
+    pricing: "Precios",
+    support: "Soporte"
+  },
+  hi: {
+    storeName: "स्टोर का नाम",
+    storeHandle: "@आपकास्टोर",
+    storeDescription: "मिनटों में अपना पेशेवर ऑनलाइन स्टोर बनाएं",
+    showMore: "और दिखाएं",
+    showLess: "कम दिखाएं",
+    location: "स्थान",
+    allProducts: "सभी",
+    bestSellers: "बेस्ट सेलर",
+    startNow: "अभी शुरू करें",
+    signIn: "साइन इन",
+    register: "रजिस्टर",
+    searchStore: "स्टोर खोजें",
+    features: "विशेषताएं",
+    templates: "टेम्पलेट्स",
+    pricing: "मूल्य",
+    support: "सहायता"
+  },
+  pt: {
+    storeName: "Nome da Loja",
+    storeHandle: "@sualoja",
+    storeDescription: "Crie sua loja online profissional em minutos",
+    showMore: "Mostrar mais",
+    showLess: "Mostrar menos",
+    location: "Localização",
+    allProducts: "Todos",
+    bestSellers: "Mais Vendidos",
+    startNow: "Começar Agora",
+    signIn: "Entrar",
+    register: "Registrar",
+    searchStore: "Procurar loja",
+    features: "Recursos",
+    templates: "Modelos",
+    pricing: "Preços",
+    support: "Suporte"
+  },
+  id: {
+    storeName: "Nama Toko",
+    storeHandle: "@tokoanda",
+    storeDescription: "Buat toko online profesional Anda dalam hitungan menit",
+    showMore: "Tampilkan lebih banyak",
+    showLess: "Tampilkan lebih sedikit",
+    location: "Lokasi",
+    allProducts: "Semua",
+    bestSellers: "Terlaris",
+    startNow: "Mulai Sekarang",
+    signIn: "Masuk",
+    register: "Daftar",
+    searchStore: "Cari toko",
+    features: "Fitur",
+    templates: "Template",
+    pricing: "Harga",
+    support: "Dukungan"
+  },
+  ru: {
+    storeName: "Название Магазина",
+    storeHandle: "@вашмагазин",
+    storeDescription: "Создайте профессиональный онлайн-магазин за считанные минуты",
+    showMore: "Показать больше",
+    showLess: "Показать меньше",
+    location: "Местоположение",
+    allProducts: "Все",
+    bestSellers: "Бестселлеры",
+    startNow: "Начать сейчас",
+    signIn: "Войти",
+    register: "Регистрация",
+    searchStore: "Поиск магазина",
+    features: "Функции",
+    templates: "Шаблоны",
+    pricing: "Цены",
+    support: "Поддержка"
+  },
+  ja: {
+    storeName: "ストア名",
+    storeHandle: "@あなたのストア",
+    storeDescription: "数分でプロフェッショナルなオンラインストアを作成",
+    showMore: "もっと見る",
+    showLess: "閉じる",
+    location: "場所",
+    allProducts: "すべて",
+    bestSellers: "人気商品",
+    startNow: "今すぐ始める",
+    signIn: "ログイン",
+    register: "登録",
+    searchStore: "ストアを検索",
+    features: "機能",
+    templates: "テンプレート",
+    pricing: "料金",
+    support: "サポート"
   }
 };
 
@@ -79,7 +187,13 @@ export const languageNames = {
   en: "English",
   ar: "العربية",
   fr: "Français",
-  zh: "中文"
+  zh: "中文",
+  es: "Español",
+  hi: "हिन्दी",
+  pt: "Português",
+  id: "Bahasa Indonesia",
+  ru: "Русский",
+  ja: "日本語"
 };
 
 // Most common languages for e-commerce globally
