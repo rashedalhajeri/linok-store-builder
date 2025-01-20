@@ -24,35 +24,6 @@ const Index = () => {
               </span>
             </motion.div>
 
-            {/* Navigation */}
-            <div className="hidden md:flex items-center gap-8 order-1 md:order-2">
-              <Button 
-                variant="ghost" 
-                className="text-white hover:text-primary hover:bg-primary/5"
-              >
-                {t.features}
-                <ChevronDown className="mr-2 h-4 w-4" />
-              </Button>
-              <Button 
-                variant="ghost" 
-                className="text-white hover:text-primary hover:bg-primary/5"
-              >
-                {t.templates}
-              </Button>
-              <Button 
-                variant="ghost" 
-                className="text-white hover:text-primary hover:bg-primary/5"
-              >
-                {t.pricing}
-              </Button>
-              <Button 
-                variant="ghost" 
-                className="text-white hover:text-primary hover:bg-primary/5"
-              >
-                {t.support}
-              </Button>
-            </div>
-
             {/* Actions */}
             <motion.div 
               className="flex items-center gap-3 md:gap-4 order-3"
