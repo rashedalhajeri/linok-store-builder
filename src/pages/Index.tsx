@@ -10,7 +10,6 @@ const Index = () => {
   
   return (
     <div className="min-h-screen bg-background" dir={language === 'ar' ? 'rtl' : 'ltr'}>
-      {/* Header */}
       <header className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-md border-b border-white/10 z-50">
         <nav className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-20">
@@ -73,7 +72,7 @@ const Index = () => {
                 <Input
                   type="text"
                   placeholder="linok.me/yourname"
-                  className="h-12 text-base bg-white text-background border-2 border-primary/20 focus:border-primary transition-colors"
+                  className="h-12 text-base bg-white text-black border-2 border-primary/20 focus:border-primary transition-colors placeholder:text-gray-500"
                   dir="ltr"
                 />
               </div>
