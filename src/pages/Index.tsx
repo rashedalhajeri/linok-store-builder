@@ -25,33 +25,6 @@ const Index = () => {
               </span>
             </motion.div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-              <motion.div 
-                className="flex items-center gap-8"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-              >
-                {[
-                  { label: t.features, icon: <ChevronDown className="h-4 w-4" /> },
-                  { label: t.templates },
-                  { label: t.pricing },
-                  { label: t.support }
-                ].map((item, index) => (
-                  <a 
-                    key={index}
-                    href="#" 
-                    className="group relative text-gray-600 hover:text-primary transition-colors duration-200 flex items-center gap-1"
-                  >
-                    <span className="font-medium">{item.label}</span>
-                    {item.icon}
-                    <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-                  </a>
-                ))}
-              </motion.div>
-            </div>
-
             {/* Actions */}
             <motion.div 
               className="flex items-center gap-3 md:gap-4"
@@ -150,6 +123,7 @@ const Index = () => {
             className="absolute -bottom-1/2 -left-1/2 w-full h-full bg-gradient-to-tr from-primary-light/10 to-primary/10 rounded-full blur-3xl"
           />
         </div>
+
       </section>
 
       {/* Features Section */}
