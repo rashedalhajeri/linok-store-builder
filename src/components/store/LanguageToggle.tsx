@@ -6,7 +6,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Language, languageNames } from "@/utils/translations";
+import { Language } from "@/utils/translations";
+
+const languageNames = {
+  en: "English",
+  ar: "العربية"
+};
 
 interface LanguageToggleProps {
   language: Language;
