@@ -16,14 +16,13 @@ import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { translations, Language } from "@/utils/translations";
+import { translations } from "@/utils/translations";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Input } from "@/components/ui/input";
 import { StoreCover } from "@/components/store/StoreCover";
 import { SocialLinks } from "@/components/store/SocialLinks";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const products = [
   {
@@ -99,37 +98,43 @@ const categories = [
 
 const StoreTemplate1 = () => {
   const navigate = useNavigate();
-  const { t = translations.en } = useLanguage();
+  const isMobile = useIsMobile();
   const [isExpanded, setIsExpanded] = useState(false);
+  const [language, setLanguage] = useState<'en' | 'ar'>('ar');
   const [showSearch, setShowSearch] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(0);
   const searchRef = useRef<HTMLDivElement>(null);
-  const [currentLanguage, setCurrentLanguage] = useState<Language>("en");
+  
+  const t = translations[language];
 
   const socialLinks = [
-    {
-      id: 1,
-      icon: "/lovable-uploads/instagram.png",
-      label: "Instagram",
-      href: "https://instagram.com/bowlicious",
-      bgColor: "bg-gradient-to-br from-purple-600 to-pink-500"
+    { 
+      id: 1, 
+      icon: "/lovable-uploads/5d02b4d3-9041-47ca-8ac3-08cf337c2be1.png", 
+      label: "Instagram", 
+      href: "https://instagram.com/yourusername",
+      bgColor: "bg-white"
     },
-    {
-      id: 2,
-      icon: "/lovable-uploads/snapchat.png", 
-      label: "Snapchat",
-      href: "https://snapchat.com/add/bowlicious",
-      bgColor: "bg-gradient-to-br from-yellow-400 to-yellow-300"
+    { 
+      id: 2, 
+      icon: "/lovable-uploads/17454f1f-bb90-4fcd-91fc-664c8942f958.png", 
+      label: "WhatsApp", 
+      href: "https://wa.me/96500000000",
+      bgColor: "bg-white"
     },
-    {
-      id: 3,
-      icon: "/lovable-uploads/phone.png",
-      label: "Phone",
-      href: "tel:+1234567890",
-      bgColor: "bg-gradient-to-br from-green-500 to-green-400"
+    { 
+      id: 3, 
+      icon: "/lovable-uploads/b7fc8d57-a3ea-476d-a1c2-c5f272c432e9.png", 
+      label: "TikTok", 
+      href: "https://tiktok.com/@yourusername",
+      bgColor: "bg-white"
     }
   ];
-  
+
+  const toggleLanguage = () => {
+    setLanguage(prev => prev === 'en' ? 'ar' : 'en');
+  };
+
   const handleMapClick = () => {
     window.open('https://maps.google.com/?q=Kuwait+Capital+Governorate+Kuwait', '_blank');
   };
@@ -140,14 +145,19 @@ const StoreTemplate1 = () => {
       setSelectedCategory(0);
     } else {
       setShowSearch(true);
+      searchRef.current?.scrollIntoView({ behavior: 'instant' });
+      const inputElement = searchRef.current?.querySelector('input');
+      if (inputElement) {
+        inputElement.focus();
+      }
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F9FA]" dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}>
+    <div className="min-h-screen bg-[#F7F9FA]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <StoreCover 
-        language={currentLanguage}
-        onToggleLanguage={(lang) => setCurrentLanguage(lang)}
+        language={language}
+        onToggleLanguage={toggleLanguage}
       />
 
       <div className="max-w-[90%] md:max-w-4xl mx-auto px-4 relative">

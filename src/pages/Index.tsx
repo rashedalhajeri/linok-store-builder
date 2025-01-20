@@ -1,17 +1,19 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight } from "lucide-react";
+import { ChevronDown, Globe, ArrowRight, Check, Star, Users, ShoppingBag } from "lucide-react";
 import { motion } from "framer-motion";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const Index = () => {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <header className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-md border-b border-white/10 z-50">
         <nav className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-20">
+            {/* Logo */}
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -22,11 +24,13 @@ const Index = () => {
               </span>
             </motion.div>
 
+            {/* Mobile Navigation */}
             <motion.div 
               className="flex items-center gap-2 md:gap-4"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
             >
+              {/* Mobile View */}
               <div className="flex md:hidden items-center gap-2">
                 <Button 
                   variant="outline" 
@@ -44,7 +48,10 @@ const Index = () => {
                 </Button>
               </div>
 
+              {/* Desktop View */}
               <div className="hidden md:flex items-center gap-4">
+                <LanguageSwitcher />
+                
                 <Button 
                   variant="ghost" 
                   size="sm"
@@ -88,6 +95,7 @@ const Index = () => {
                   <Input
                     type="text"
                     className="h-12 text-base bg-white text-black border-2 border-primary/20 focus:border-primary transition-colors placeholder:text-gray-500 pl-[85px] rounded-xl"
+                    dir="ltr"
                     placeholder="yourname"
                   />
                 </div>
@@ -96,7 +104,7 @@ const Index = () => {
                 size="lg"
                 className="bg-primary text-background hover:bg-primary/90 w-full sm:w-auto h-12 text-base font-medium rounded-xl"
               >
-                Register Now
+                {language === 'ar' ? 'سجل الآن' : 'Register Now'}
               </Button>
             </div>
           </motion.div>
@@ -119,6 +127,7 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Call to Action */}
       <section className="py-12 md:py-20 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
@@ -128,27 +137,30 @@ const Index = () => {
           >
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-2xl md:text-4xl font-bold mb-4 text-white">
-                Start Your Journey with Linok.me Today
+                {language === 'ar' ? 'ابدأ رحلتك مع Linok.me اليوم' : 'Start Your Journey with Linok.me Today'}
               </h2>
               <p className="text-base md:text-lg mb-6 md:mb-8 text-white/80">
-                Join thousands of successful stores and start building your online store
+                {language === 'ar' 
+                  ? 'انضم إلى آلاف المتاجر الناجحة وابدأ في بناء متجرك الإلكتروني' 
+                  : 'Join thousands of successful stores and start building your online store'}
               </p>
               <Button 
                 size="lg"
                 className="bg-white text-primary hover:bg-white/90 group w-full sm:w-auto"
               >
-                Start Now
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                {language === 'ar' ? 'ابدأ الآن' : 'Start Now'}
+                <ArrowRight className="mr-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </div>
           </motion.div>
         </div>
       </section>
 
+      {/* Footer */}
       <footer className="py-6 md:py-8 border-t border-white/10">
         <div className="container mx-auto px-4 text-center">
           <p className="text-white/60 text-sm">
-            © 2024 Linok.me. All rights reserved
+            © 2024 Linok.me. {language === 'ar' ? 'جميع الحقوق محفوظة' : 'All rights reserved'}
           </p>
         </div>
       </footer>
