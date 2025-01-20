@@ -38,7 +38,7 @@ export const Templates = ({ language }: TemplatesProps) => {
   ];
 
   return (
-    <section className="py-16" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+    <div dir={language === 'ar' ? 'rtl' : 'ltr'}>
       {templates.map((template, index) => (
         <motion.div
           key={template.id}
@@ -47,23 +47,16 @@ export const Templates = ({ language }: TemplatesProps) => {
           transition={{ duration: 0.5, delay: index * 0.1 }}
         >
           <Card className="overflow-hidden hover:shadow-lg transition-shadow mb-4">
-            <CardContent className="p-0">
-              <img 
-                src={template.image} 
-                alt={template.name}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="text-xl font-semibold mb-2">{template.name}</h3>
-                <p className="text-zinc-500 mb-4">{template.description}</p>
-                <Button className="w-full">
-                  {language === 'ar' ? "معاينة القالب" : "Preview Template"}
-                </Button>
-              </div>
+            <CardContent>
+              <h3 className="text-xl font-semibold mb-2">{template.name}</h3>
+              <p className="text-zinc-500 mb-4">{template.description}</p>
+              <Button className="w-full">
+                {language === 'ar' ? "معاينة القالب" : "Preview Template"}
+              </Button>
             </CardContent>
           </Card>
         </motion.div>
       ))}
-    </section>
+    </div>
   );
 };
