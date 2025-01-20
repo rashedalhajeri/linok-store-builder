@@ -79,14 +79,6 @@ const Index = () => {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="text-gray-600 hover:text-primary hover:bg-primary/5"
-              >
-                <Search className="h-5 w-5" />
-              </Button>
-              
-              <Button 
-                variant="ghost" 
-                size="icon" 
                 className="text-gray-600 hover:text-primary hover:bg-primary/5 md:hidden"
               >
                 <Menu className="h-5 w-5" />
