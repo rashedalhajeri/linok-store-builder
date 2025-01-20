@@ -11,45 +11,33 @@ export const Features = ({ language }: FeaturesProps) => {
 
   const features = [
     {
-      title: language === 'ar' ? "قوالب احترافية" : "Professional Templates",
-      description: language === 'ar' 
-        ? "مجموعة متنوعة من القوالب الجاهزة للاستخدام الفوري"
-        : "A variety of ready-to-use templates for immediate use",
+      title: t.professionalTemplates,
+      description: t.templatesDescription,
       icon: "🎨"
     },
     {
-      title: language === 'ar' ? "تخصيص متقدم" : "Advanced Customization",
-      description: language === 'ar'
-        ? "أدوات تخصيص متقدمة لتعديل كل تفاصيل متجرك"
-        : "Advanced customization tools to modify all your store details",
+      title: t.advancedCustomization,
+      description: t.customizationDescription,
       icon: "⚡"
     },
     {
-      title: language === 'ar' ? "دعم متواصل" : "Continuous Support",
-      description: language === 'ar'
-        ? "فريق دعم فني متخصص على مدار الساعة"
-        : "Specialized technical support team available 24/7",
+      title: t.continuousSupport,
+      description: t.supportDescription,
       icon: "🛟"
     },
     {
-      title: language === 'ar' ? "تحديثات مستمرة" : "Regular Updates",
-      description: language === 'ar'
-        ? "تحديثات وتحسينات مستمرة لمتجرك"
-        : "Continuous updates and improvements for your store",
+      title: t.regularUpdates,
+      description: t.updatesDescription,
       icon: "🚀"
     },
     {
-      title: language === 'ar' ? "تجربة مستخدم مميزة" : "Outstanding UX",
-      description: language === 'ar'
-        ? "واجهة سهلة وبسيطة لعملائك"
-        : "Easy and simple interface for your customers",
+      title: t.outstandingUX,
+      description: t.uxDescription,
       icon: "🛍️"
     },
     {
-      title: language === 'ar' ? "تحليلات متقدمة" : "Advanced Analytics",
-      description: language === 'ar'
-        ? "إحصائيات وتقارير تفصيلية عن أداء متجرك"
-        : "Detailed statistics and reports about your store performance",
+      title: t.advancedAnalytics,
+      description: t.analyticsDescription,
       icon: "📊"
     }
   ];
@@ -64,12 +52,10 @@ export const Features = ({ language }: FeaturesProps) => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl font-bold mb-4">
-            {language === 'ar' ? "مميزات المنصة" : "Platform Features"}
+            {t.platformFeatures}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            {language === 'ar' 
-              ? "كل ما تحتاجه لإدارة متجرك الإلكتروني في مكان واحد"
-              : "Everything you need to manage your online store in one place"}
+            {t.featuresDescription}
           </p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -87,11 +73,11 @@ export const Features = ({ language }: FeaturesProps) => {
               <ul className="mt-4 space-y-2">
                 <li className="flex items-center text-sm text-muted-foreground">
                   <Check className="h-4 w-4 text-primary mr-2" />
-                  {language === 'ar' ? "تفعيل فوري" : "Instant activation"}
+                  {t.instantActivation}
                 </li>
                 <li className="flex items-center text-sm text-muted-foreground">
                   <Check className="h-4 w-4 text-primary mr-2" />
-                  {language === 'ar' ? "تحديثات مجانية" : "Free updates"}
+                  {t.freeUpdates}
                 </li>
               </ul>
             </motion.div>
