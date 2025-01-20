@@ -33,7 +33,15 @@ export const translations = {
     advancedAnalytics: "Advanced Analytics",
     analyticsDescription: "Detailed statistics and reports about your store performance",
     instantActivation: "Instant activation",
-    freeUpdates: "Free updates"
+    freeUpdates: "Free updates",
+    enterStoreName: "Enter store name",
+    enterStoreNameDesc: "Please enter a store name to search",
+    storeSearch: "Store Search",
+    searchingForStore: "Searching for store:",
+    storeSubDescription: "Create and manage your online store with powerful tools and features",
+    or: "or",
+    startFreeTrial: "Start Free Trial",
+    noCreditCard: "No credit card required"
   },
   ar: {
     storeName: "اسم المتجر",
@@ -67,7 +75,15 @@ export const translations = {
     advancedAnalytics: "تحليلات متقدمة",
     analyticsDescription: "إحصائيات وتقارير تفصيلية عن أداء متجرك",
     instantActivation: "تفعيل فوري",
-    freeUpdates: "تحديثات مجانية"
+    freeUpdates: "تحديثات مجانية",
+    enterStoreName: "أدخل اسم المتجر",
+    enterStoreNameDesc: "الرجاء إدخال اسم المتجر للبحث",
+    storeSearch: "بحث عن متجر",
+    searchingForStore: "جاري البحث عن المتجر:",
+    storeSubDescription: "أنشئ وأدر متجرك الإلكتروني بأدوات ومميزات قوية",
+    or: "أو",
+    startFreeTrial: "ابدأ النسخة التجريبية المجانية",
+    noCreditCard: "لا تحتاج إلى بطاقة ائتمان"
   },
   fr: {
     storeName: "Nom de la Boutique",
@@ -101,7 +117,15 @@ export const translations = {
     advancedAnalytics: "Analyses Avancées",
     analyticsDescription: "Statistiques et rapports détaillés sur les performances de votre boutique",
     instantActivation: "Activation instantanée",
-    freeUpdates: "Mises à jour gratuites"
+    freeUpdates: "Mises à jour gratuites",
+    enterStoreName: "Entrez le nom de la boutique",
+    enterStoreNameDesc: "Veuillez entrer un nom de boutique pour rechercher",
+    storeSearch: "Recherche de boutique",
+    searchingForStore: "Recherche de la boutique:",
+    storeSubDescription: "Créez et gérez votre boutique en ligne avec des outils et fonctionnalités puissants",
+    or: "ou",
+    startFreeTrial: "Commencer l'essai gratuit",
+    noCreditCard: "Aucune carte de crédit requise"
   },
   zh: {
     storeName: "店铺名称",
@@ -135,7 +159,15 @@ export const translations = {
     advancedAnalytics: "高级分析",
     analyticsDescription: "详细的统计和商店性能报告",
     instantActivation: "即时激活",
-    freeUpdates: "免费更新"
+    freeUpdates: "免费更新",
+    enterStoreName: "输入商店名称",
+    enterStoreNameDesc: "请输入商店名称进行搜索",
+    storeSearch: "商店搜索",
+    searchingForStore: "正在搜索商店：",
+    storeSubDescription: "使用强大的工具和功能创建和管理您的在线商店",
+    or: "或",
+    startFreeTrial: "开始免费试用",
+    noCreditCard: "无需信用卡"
   },
   es: {
     storeName: "Nombre de la Tienda",
@@ -169,7 +201,15 @@ export const translations = {
     advancedAnalytics: "Análisis Avanzado",
     analyticsDescription: "Estadísticas y reportes detallados sobre el rendimiento de tu tienda",
     instantActivation: "Activación instantánea",
-    freeUpdates: "Actualizaciones gratuitas"
+    freeUpdates: "Actualizaciones gratuitas",
+    enterStoreName: "Ingrese el nombre de la tienda",
+    enterStoreNameDesc: "Por favor ingrese un nombre de tienda para buscar",
+    storeSearch: "Búsqueda de tienda",
+    searchingForStore: "Buscando tienda:",
+    storeSubDescription: "Cree y administre su tienda en línea con herramientas y funciones poderosas",
+    or: "o",
+    startFreeTrial: "Comenzar prueba gratuita",
+    noCreditCard: "No se requiere tarjeta de crédito"
   },
   hi: {
     storeName: "स्टोर का नाम",
@@ -203,7 +243,15 @@ export const translations = {
     advancedAnalytics: "उन्नत विश्लेषण",
     analyticsDescription: "आपकी दुकान के प्रदर्शन के बारे में विस्तृत आंकड़े और रिपोर्ट",
     instantActivation: "तत्काल सक्रियण",
-    freeUpdates: "मुफ्त अपडेट्स"
+    freeUpdates: "मुफ्त अपडेट्स",
+    enterStoreName: "स्टोर का नाम दर्ज करें",
+    enterStoreNameDesc: "खोजने के लिए स्टोर का नाम दर्ज करें",
+    storeSearch: "स्टोर खोज",
+    searchingForStore: "स्टोर की खोज की जा रही है:",
+    storeSubDescription: "शक्तिशाली टूल्स और सुविधाओं के साथ अपना ऑनलाइन स्टोर बनाएं और प्रबंधित करें",
+    or: "या",
+    startFreeTrial: "निःशुल्क परीक्षण प्रारंभ करें",
+    noCreditCard: "क्रेडिट कार्ड की आवश्यकता नहीं है"
   },
   pt: {
     storeName: "Nome da Loja",
@@ -237,7 +285,15 @@ export const translations = {
     advancedAnalytics: "Análises Avançadas",
     analyticsDescription: "Estatísticas e relatórios detalhados sobre o desempenho da sua loja",
     instantActivation: "Ativação instantânea",
-    freeUpdates: "Atualizações gratuitas"
+    freeUpdates: "Atualizações gratuitas",
+    enterStoreName: "Digite o nome da loja",
+    enterStoreNameDesc: "Por favor, digite um nome de loja para pesquisar",
+    storeSearch: "Pesquisa de loja",
+    searchingForStore: "Procurando loja:",
+    storeSubDescription: "Crie e gerencie sua loja online com ferramentas e recursos poderosos",
+    or: "ou",
+    startFreeTrial: "Iniciar teste gratuito",
+    noCreditCard: "Não é necessário cartão de crédito"
   },
   id: {
     storeName: "Nama Toko",
@@ -271,7 +327,15 @@ export const translations = {
     advancedAnalytics: "Analitik Lanjutan",
     analyticsDescription: "Statistik dan laporan terperinci tentang kinerja toko Anda",
     instantActivation: "Aktivasi instan",
-    freeUpdates: "Pembaruan gratis"
+    freeUpdates: "Pembaruan gratis",
+    enterStoreName: "Masukkan nama toko",
+    enterStoreNameDesc: "Silakan masukkan nama toko untuk mencari",
+    storeSearch: "Pencarian toko",
+    searchingForStore: "Mencari toko:",
+    storeSubDescription: "Buat dan kelola toko online Anda dengan alat dan fitur yang kuat",
+    or: "atau",
+    startFreeTrial: "Mulai Uji Coba Gratis",
+    noCreditCard: "Tidak perlu kartu kredit"
   },
   ru: {
     storeName: "Название Магазина",
@@ -305,7 +369,15 @@ export const translations = {
     advancedAnalytics: "Расширенная Аналитика",
     analyticsDescription: "Подробная статистика и отчеты о работе вашего магазина",
     instantActivation: "Мгновенная активация",
-    freeUpdates: "Бесплатные обновления"
+    freeUpdates: "Бесплатные обновления",
+    enterStoreName: "Введите название магазина",
+    enterStoreNameDesc: "Пожалуйста, введите название магазина для поиска",
+    storeSearch: "Поиск магазина",
+    searchingForStore: "Поиск магазина:",
+    storeSubDescription: "Создавайте и управляйте своим онлайн-магазином с мощными инструментами и функциями",
+    or: "или",
+    startFreeTrial: "Начать бесплатную пробную версию",
+    noCreditCard: "Кредитная карта не требуется"
   },
   ja: {
     storeName: "ストア名",
@@ -339,7 +411,15 @@ export const translations = {
     advancedAnalytics: "高度な分析",
     analyticsDescription: "ストアのパフォーマンスに関する詳細な統計とレポート",
     instantActivation: "即時アクティベーション",
-    freeUpdates: "無料アップデート"
+    freeUpdates: "無料アップデート",
+    enterStoreName: "ストア名を入力",
+    enterStoreNameDesc: "検索するストア名を入力してください",
+    storeSearch: "ストア検索",
+    searchingForStore: "ストアを検索中：",
+    storeSubDescription: "強力なツールと機能でオンラインストアを作成・管理",
+    or: "または",
+    startFreeTrial: "無料トライアルを開始",
+    noCreditCard: "クレジットカード不要"
   }
 };
 
