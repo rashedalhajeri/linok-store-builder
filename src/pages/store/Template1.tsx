@@ -23,6 +23,7 @@ import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carouse
 import { Input } from "@/components/ui/input";
 import { StoreCover } from "@/components/store/StoreCover";
 import { SocialLinks } from "@/components/store/SocialLinks";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const products = [
   {
@@ -98,39 +99,11 @@ const categories = [
 
 const StoreTemplate1 = () => {
   const navigate = useNavigate();
-  const isMobile = useIsMobile();
+  const { language, t = {} } = useLanguage(); // Provide default empty object
   const [isExpanded, setIsExpanded] = useState(false);
-  const [language, setLanguage] = useState<'en' | 'ar'>('ar');
   const [showSearch, setShowSearch] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(0);
-  const searchRef = useRef<HTMLDivElement>(null);
   
-  const t = translations[language];
-
-  const socialLinks = [
-    { 
-      id: 1, 
-      icon: "/lovable-uploads/5d02b4d3-9041-47ca-8ac3-08cf337c2be1.png", 
-      label: "Instagram", 
-      href: "https://instagram.com/yourusername",
-      bgColor: "bg-white"
-    },
-    { 
-      id: 2, 
-      icon: "/lovable-uploads/17454f1f-bb90-4fcd-91fc-664c8942f958.png", 
-      label: "WhatsApp", 
-      href: "https://wa.me/96500000000",
-      bgColor: "bg-white"
-    },
-    { 
-      id: 3, 
-      icon: "/lovable-uploads/b7fc8d57-a3ea-476d-a1c2-c5f272c432e9.png", 
-      label: "TikTok", 
-      href: "https://tiktok.com/@yourusername",
-      bgColor: "bg-white"
-    }
-  ];
-
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'en' ? 'ar' : 'en');
   };
@@ -145,13 +118,20 @@ const StoreTemplate1 = () => {
       setSelectedCategory(0);
     } else {
       setShowSearch(true);
-      searchRef.current?.scrollIntoView({ behavior: 'instant' });
-      const inputElement = searchRef.current?.querySelector('input');
-      if (inputElement) {
-        inputElement.focus();
-      }
     }
   };
+
+  // Provide default values for translations
+  const defaultTranslations = {
+    storeName: "Store Name",
+    storeDescription: "Store Description",
+    showMore: "Show More",
+    showLess: "Show Less",
+    // Add other translation keys as needed
+  };
+
+  // Merge default translations with actual translations
+  const translations = { ...defaultTranslations, ...t };
 
   return (
     <div className="min-h-screen bg-[#F7F9FA]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
@@ -190,7 +170,7 @@ const StoreTemplate1 = () => {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 flex items-center gap-2">
-                    {t.storeName}
+                    {translations.storeName}
                     <CircleCheck className="w-5 h-5 text-[#1DA1F2] inline-block" />
                   </h1>
                   <p className="text-sm md:text-base text-gray-500 font-medium">
@@ -217,13 +197,13 @@ const StoreTemplate1 = () => {
               </div>
 
               <p className="text-sm md:text-base text-gray-700 mt-4 leading-relaxed">
-                {isExpanded ? t.storeDescription : t.storeDescription.slice(0, 75)}
-                {t.storeDescription.length > 75 && (
+                {isExpanded ? translations.storeDescription : translations.storeDescription.slice(0, 75)}
+                {translations.storeDescription.length > 75 && (
                   <button
                     onClick={() => setIsExpanded(!isExpanded)}
                     className="mr-1 text-primary hover:underline focus:outline-none"
                   >
-                    {isExpanded ? t.showLess : t.showMore}
+                    {isExpanded ? translations.showLess : translations.showMore}
                   </button>
                 )}
               </p>
@@ -284,7 +264,7 @@ const StoreTemplate1 = () => {
                     <div className="relative aspect-square rounded-lg overflow-hidden mb-2 bg-gray-50">
                       <img 
                         src={category.image} 
-                        alt={t[category.name]}
+                        alt={translations[category.name]}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent group-hover:from-black/40 transition-colors" />
@@ -297,7 +277,7 @@ const StoreTemplate1 = () => {
                             : 'text-gray-700'
                         } group-hover:text-gray-900`}
                       >
-                        {t[category.name]}
+                        {translations[category.name]}
                       </span>
                     </div>
                   </button>
@@ -336,13 +316,13 @@ const StoreTemplate1 = () => {
                 <div className="relative aspect-square">
                   <img 
                     src={product.image} 
-                    alt={t[product.name]} 
+                    alt={translations[product.name]} 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-4 pt-6">
                   <h3 className="font-medium text-sm md:text-base text-gray-900 mb-1.5">
-                    {t[product.name]}
+                    {translations[product.name]}
                   </h3>
                   <p className="text-gray-900 font-bold text-base md:text-lg">
                     {product.price}
