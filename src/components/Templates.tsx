@@ -13,32 +13,26 @@ export const Templates = ({ language }: TemplatesProps) => {
   const templates = [
     {
       id: 1,
-      name: language === 'ar' ? "القالب الكلاسيكي" : "Classic Template",
-      description: language === 'ar' 
-        ? "تصميم أنيق وبسيط يناسب جميع أنواع المتاجر"
-        : "Elegant and simple design suitable for all types of stores",
+      name: "Classic Template",
+      description: "Elegant and simple design suitable for all types of stores",
       image: "/placeholder.svg"
     },
     {
       id: 2,
-      name: language === 'ar' ? "القالب العصري" : "Modern Template",
-      description: language === 'ar'
-        ? "تصميم عصري مع تأثيرات حركية جذابة"
-        : "Modern design with attractive animations",
+      name: "Modern Template",
+      description: "Modern design with attractive animations",
       image: "/placeholder.svg"
     },
     {
       id: 3,
-      name: language === 'ar' ? "القالب المتقدم" : "Advanced Template",
-      description: language === 'ar'
-        ? "تصميم متقدم مع ميزات إضافية للمتاجر الكبيرة"
-        : "Advanced design with additional features for large stores",
+      name: "Advanced Template",
+      description: "Advanced design with additional features for large stores",
       image: "/placeholder.svg"
     }
   ];
 
   return (
-    <div dir={language === 'ar' ? 'rtl' : 'ltr'}>
+    <div>
       {templates.map((template, index) => (
         <motion.div
           key={template.id}
@@ -51,7 +45,7 @@ export const Templates = ({ language }: TemplatesProps) => {
               <h3 className="text-xl font-semibold mb-2">{template.name}</h3>
               <p className="text-zinc-500 mb-4">{template.description}</p>
               <Button className="w-full">
-                {language === 'ar' ? "معاينة القالب" : "Preview Template"}
+                Preview Template
               </Button>
             </CardContent>
           </Card>

@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { LanguageToggle } from "./LanguageToggle";
+import { Language } from "@/utils/translations";
 
 interface StoreCoverProps {
-  language: 'en' | 'ar';
+  language: Language;
   onToggleLanguage: () => void;
 }
 
