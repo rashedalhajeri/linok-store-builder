@@ -56,7 +56,7 @@ export const translations = {
     location: "الموقع",
     allProducts: "الكل",
     bestSellers: "الأكثر مبيعاً",
-    startNow: "ابدأ الآن",
+    startNow: "تسجيل الدخول",
     signIn: "تسجيل الدخول",
     register: "التسجيل",
     searchStore: "ابحث عن متجر",
