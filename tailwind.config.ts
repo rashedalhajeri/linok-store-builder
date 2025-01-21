@@ -22,46 +22,40 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#151B28",
-        foreground: "#FFFFFF",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        charcoal: "#403E43",
         primary: {
-          DEFAULT: "#00E6CA",
-          foreground: "#151B28",
-          light: "#33EBD4",
-          dark: "#00B39E"
+          DEFAULT: "#86efac",
+          foreground: "#052e16",
+          light: "#bbf7d0",
+          dark: "#4ade80"
         },
         secondary: {
-          DEFAULT: "#A1A1B4",
+          DEFAULT: "#22c55e",
           foreground: "#FFFFFF",
-          light: "#BBBBC8",
-          dark: "#8A8A9D"
+          light: "#4ade80",
+          dark: "#16a34a"
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "#A1A1B4",
-          foreground: "#F0F0F0",
-          dark: "#8A8A9D"
+          DEFAULT: "#8E9196",
+          foreground: "#C8C8C9",
+          dark: "#8A898C"
         },
         accent: {
-          DEFAULT: "#00E6CA",
-          foreground: "#151B28",
-          light: "#33EBD4",
-          dark: "#00B39E"
+          DEFAULT: "#86efac",
+          foreground: "#052e16",
+          light: "#bbf7d0",
+          dark: "#4ade80"
         },
         card: {
-          DEFAULT: "#1D2433",
-          foreground: "#FFFFFF",
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
         },
-        linok: {
-          white: "#FFFFFF",
-          black: "#151B28",
-          teal: "#00E6CA",
-          gray1: "#A1A1B4",
-          gray2: "#F0F0F0",
-        }
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -105,9 +99,9 @@ export default {
         "scale-in": "scale-in 0.2s ease-out",
       },
       backgroundImage: {
-        'gradient-linok': 'linear-gradient(135deg, #5D60EF 0%, #7B7EF7 100%)',
-        'gradient-card': 'linear-gradient(to bottom, #FFFFFF 0%, #F8F9FA 100%)',
-        'gradient-button': 'linear-gradient(to right, #4548E8 0%, #5D60EF 100%)',
+        'gradient-store': 'linear-gradient(102.3deg, #bbf7d0 5.9%, #86efac 64%, #4ade80 89%)',
+        'gradient-card': 'linear-gradient(to bottom, #f5f5f5 0%, #ffffff 100%)',
+        'gradient-button': 'linear-gradient(to right, #16a34a 0%, #22c55e 100%)',
       },
     },
   },

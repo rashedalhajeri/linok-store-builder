@@ -24,28 +24,75 @@ import { Input } from "@/components/ui/input";
 import { StoreCover } from "@/components/store/StoreCover";
 import { SocialLinks } from "@/components/store/SocialLinks";
 
-interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: string;
-  image: string;
-}
-
-const products: Product[] = [
+const products = [
   {
     id: 1,
-    name: "Product 1",
-    description: "Description for product 1",
-    price: "29.99 KD",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8"
+    name: "luxuryBags",
+    price: "125 د.ك",
+    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3"
   },
   {
     id: 2,
-    name: "Product 2",
-    description: "Description for product 2",
-    price: "39.99 KD",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8"
+    name: "classicWatch",
+    price: "250 د.ك",
+    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314"
+  },
+  {
+    id: 3,
+    name: "sunglassesProduct",
+    price: "75 د.ك",
+    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f"
+  },
+  {
+    id: 4,
+    name: "luxuryPerfume",
+    price: "95 د.ك",
+    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f"
+  }
+];
+
+const categories = [
+  { 
+    id: 0,
+    name: "allProducts", 
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8",
+    showImage: true
+  },
+  { 
+    id: 1, 
+    name: "bestSellers", 
+    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3",
+    showImage: true
+  },
+  { 
+    id: 2, 
+    name: "bags", 
+    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314",
+    showImage: true
+  },
+  { 
+    id: 3, 
+    name: "watches", 
+    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
+    showImage: true
+  },
+  { 
+    id: 4, 
+    name: "sunglasses", 
+    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f",
+    showImage: true
+  },
+  { 
+    id: 5, 
+    name: "perfumes", 
+    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
+    showImage: true
+  },
+  { 
+    id: 6, 
+    name: "accessories", 
+    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314",
+    showImage: true
   }
 ];
 
@@ -53,12 +100,12 @@ const StoreTemplate1 = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
   const [isExpanded, setIsExpanded] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState<'en' | 'ar'>('ar');
+  const [language, setLanguage] = useState<'en' | 'ar'>('ar');
   const [showSearch, setShowSearch] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(0);
   const searchRef = useRef<HTMLDivElement>(null);
   
-  const t = translations[currentLanguage] || translations.ar; // Provide a fallback
+  const t = translations[language];
 
   const socialLinks = [
     { 
@@ -84,18 +131,8 @@ const StoreTemplate1 = () => {
     }
   ];
 
-  const categories = [
-    { id: 0, name: "allProducts" },
-    { id: 1, name: "bestSellers" },
-    { id: 2, name: "bags" },
-    { id: 3, name: "watches" },
-    { id: 4, name: "sunglasses" },
-    { id: 5, name: "perfumes" },
-    { id: 6, name: "accessories" }
-  ];
-
   const toggleLanguage = () => {
-    setCurrentLanguage(prev => prev === 'en' ? 'ar' : 'en');
+    setLanguage(prev => prev === 'en' ? 'ar' : 'en');
   };
 
   const handleMapClick = () => {
@@ -117,9 +154,9 @@ const StoreTemplate1 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white" dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}>
+    <div className="min-h-screen bg-[#F7F9FA]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <StoreCover 
-        language={currentLanguage}
+        language={language}
         onToggleLanguage={toggleLanguage}
       />
 
@@ -153,7 +190,7 @@ const StoreTemplate1 = () => {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 flex items-center gap-2">
-                    {t.storeName || 'Store Name'}
+                    {t.storeName}
                     <CircleCheck className="w-5 h-5 text-[#1DA1F2] inline-block" />
                   </h1>
                   <p className="text-sm md:text-base text-gray-500 font-medium">
@@ -164,29 +201,29 @@ const StoreTemplate1 = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="rounded-full hover:bg-gray-50 text-gray-600 border-gray-200"
+                    className="rounded-full hover:bg-gray-50"
                     onClick={handleSearchClick}
                   >
-                    <Search className="h-4 w-4" />
+                    <Search className="h-4 w-4 text-gray-900" />
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="rounded-full hover:bg-gray-50 text-gray-600 border-gray-200"
+                    className="rounded-full hover:bg-gray-50"
                   >
-                    <ExternalLink className="h-4 w-4" />
+                    <ExternalLink className="h-4 w-4 text-gray-900" />
                   </Button>
                 </div>
               </div>
 
               <p className="text-sm md:text-base text-gray-700 mt-4 leading-relaxed">
-                {isExpanded ? t.storeDescription || 'Store Description' : (t.storeDescription || 'Store Description').slice(0, 75)}
-                {(t.storeDescription || 'Store Description').length > 75 && (
+                {isExpanded ? t.storeDescription : t.storeDescription.slice(0, 75)}
+                {t.storeDescription.length > 75 && (
                   <button
                     onClick={() => setIsExpanded(!isExpanded)}
                     className="mr-1 text-primary hover:underline focus:outline-none"
                   >
-                    {isExpanded ? t.showLess || 'Show Less' : t.showMore || 'Show More'}
+                    {isExpanded ? t.showLess : t.showMore}
                   </button>
                 )}
               </p>
@@ -225,22 +262,63 @@ const StoreTemplate1 = () => {
         </div>
 
         <div className="bg-white shadow-sm rounded-2xl mb-6 overflow-hidden">
-          <div className="flex gap-4 p-4 overflow-x-auto scrollbar-hide">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`whitespace-nowrap px-4 py-2 rounded-lg transition-all duration-300 ${
-                  category.id === selectedCategory
-                    ? 'bg-primary text-white font-medium'
-                    : 'text-[#8E9196] hover:bg-gray-50'
-                }`}
-              >
-                {t[category.name] || category.name}
-              </button>
-            ))}
-          </div>
+          <Carousel
+            opts={{
+              align: "end",
+              loop: true,
+              dragFree: true,
+            }}
+            className="w-full p-4"
+            dir="rtl"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {categories.map((category) => (
+                <CarouselItem 
+                  key={category.id} 
+                  className={`pl-2 md:pl-4 basis-1/4 md:basis-1/5 lg:basis-1/6 ${category.id === 0 ? 'order-first' : ''}`}
+                >
+                  <button
+                    onClick={() => setSelectedCategory(category.id)}
+                    className="w-full group focus:outline-none"
+                  >
+                    <div className="relative aspect-square rounded-lg overflow-hidden mb-2 bg-gray-50">
+                      <img 
+                        src={category.image} 
+                        alt={t[category.name]}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent group-hover:from-black/40 transition-colors" />
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <span 
+                        className={`text-xs md:text-sm font-medium transition-all duration-300 ${
+                          category.id === selectedCategory 
+                            ? 'text-gray-900 scale-110 font-bold' 
+                            : 'text-gray-700'
+                        } group-hover:text-gray-900`}
+                      >
+                        {t[category.name]}
+                      </span>
+                    </div>
+                  </button>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
+
+        {showSearch && (
+          <div 
+            ref={searchRef}
+            className="bg-white rounded-2xl shadow-sm p-4 mb-6 animate-fade-in"
+          >
+            <Input
+              placeholder="ابحث عن المنتجات..."
+              className="w-full"
+              autoFocus
+            />
+          </div>
+        )}
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 pb-8">
           {products.map((product, index) => (

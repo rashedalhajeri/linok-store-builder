@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Share2, ShoppingCart, Clock } from "lucide-react";
+import { ArrowRight, Share2, Heart, Clock, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
+import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/components/ui/use-toast";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { SocialLinks } from "@/components/store/SocialLinks";
 
 const ProductTemplate4 = () => {
   const navigate = useNavigate();
@@ -17,7 +17,9 @@ const ProductTemplate4 = () => {
   const { toast } = useToast();
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isFavorite, setIsFavorite] = useState(false);
 
+  // Temporary mock data - replace with actual data fetching
   const product = {
     id: productId,
     name: "برجر لحم واجيو",
@@ -27,29 +29,11 @@ const ProductTemplate4 = () => {
       "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
       "https://images.unsplash.com/photo-1586190848861-99aa4a171e90",
       "https://images.unsplash.com/photo-1550547660-d9450f859349",
-      "https://images.unsplash.com/photo-1551782450-17144efb9c50",
-      "https://images.unsplash.com/photo-1553979459-d2229ba7433b"
     ],
+    ingredients: ["لحم واجيو", "جبنة شيدر", "خس", "طماطم", "بصل", "مخلل", "صلصة خاصة"],
     category: "برجر",
     preparationTime: "20-25 دقيقة"
   };
-
-  const socialLinks = [
-    {
-      id: 1,
-      icon: "/lovable-uploads/f4e6c555-66b3-45c1-a211-25bca9083a81.png",
-      label: "WhatsApp",
-      href: `https://wa.me/?text=${encodeURIComponent(`${product.name} - ${window.location.href}`)}`,
-      bgColor: "bg-[#25D366]/10 hover:bg-[#25D366]/20"
-    },
-    {
-      id: 2,
-      icon: "/lovable-uploads/b7fc8d57-a3ea-476d-a1c2-c5f272c432e9.png",
-      label: "X",
-      href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${product.name} - ${window.location.href}`)}`,
-      bgColor: "bg-black/10 hover:bg-black/20"
-    }
-  ];
 
   const handleShare = async () => {
     try {
@@ -67,148 +51,162 @@ const ProductTemplate4 = () => {
     }
   };
 
-  const handleAddToCart = () => {
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
     toast({
-      title: "تمت الإضافة إلى السلة",
-      description: "تم إضافة المنتج إلى سلة المشتريات",
+      title: isFavorite ? "تمت إزالة المنتج من المفضلة" : "تمت إضافة المنتج للمفضلة",
+      duration: 2000,
     });
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Header */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="fixed top-0 left-0 right-0 z-50 bg-transparent"
+        className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100"
       >
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Button
             variant="ghost"
             size="icon"
-            className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-sm shadow-sm text-charcoal hover:bg-white/80 transition-all duration-300"
+            className="text-charcoal hover:bg-gray-100 rounded-full transition-colors"
             onClick={() => navigate(-1)}
           >
-            <ArrowRight className="h-5 w-5" />
+            <ArrowRight className="h-6 w-6" />
           </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="w-10 h-10 rounded-full bg-white/60 backdrop-blur-sm shadow-sm text-charcoal hover:bg-white/80 transition-all duration-300"
-            onClick={handleShare}
-          >
-            <Share2 className="h-5 w-5" />
-          </Button>
+          <div className="flex gap-3">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-charcoal hover:bg-gray-100 rounded-full transition-colors"
+              onClick={toggleFavorite}
+            >
+              <Heart className={`h-6 w-6 transition-colors ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-charcoal hover:bg-gray-100 rounded-full transition-colors"
+              onClick={handleShare}
+            >
+              <Share2 className="h-6 w-6" />
+            </Button>
+          </div>
         </div>
       </motion.div>
 
-      {/* Main Content */}
-      <div className="w-full">
-        {/* Product Images Carousel */}
-        <div className="w-full aspect-square relative">
-          <motion.div 
-            className="relative w-full h-full"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isImageLoaded ? 1 : 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Carousel 
-              className="w-full h-full"
-              onSlideChange={setCurrentSlide}
-              opts={{
-                loop: true,
-                align: "start",
-              }}
-            >
-              <CarouselContent className="h-full">
-                {product.images.map((image, index) => (
-                  <CarouselItem key={index} className="h-full">
-                    <motion.div
-                      className="relative w-full h-full"
-                      initial={{ scale: 1.1 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <img
-                        src={image}
-                        alt={`${product.name} - صورة ${index + 1}`}
-                        className="w-full h-full object-cover"
-                        onLoad={() => setIsImageLoaded(true)}
-                      />
-                    </motion.div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
-          </motion.div>
-        </div>
-
-        {/* Product Details */}
-        <motion.div 
-          className="relative px-4 sm:px-6 lg:px-8 pb-8 -mt-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
+      {/* Product Images Carousel */}
+      <motion.div 
+        className="relative w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1] mt-16"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isImageLoaded ? 1 : 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Carousel 
+          className="w-full h-full"
+          onSlideChange={setCurrentSlide}
         >
-          <div className="bg-white rounded-3xl p-6 shadow-sm">
-            {/* Thumbnails - Moved here */}
-            <div className="mb-2">
-              <div className="grid grid-cols-5 gap-1">
-                {product.images.map((image, index) => (
-                  <button
+          <CarouselContent className="h-full">
+            {product.images.map((image, index) => (
+              <CarouselItem key={index} className="h-full">
+                <motion.img
+                  src={image}
+                  alt={`${product.name} - صورة ${index + 1}`}
+                  className="w-full h-full object-cover rounded-b-3xl"
+                  onLoad={() => setIsImageLoaded(true)}
+                  initial={{ scale: 1.1 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+        
+        {/* Pagination Dots */}
+        <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3">
+          {product.images.map((_, index) => (
+            <motion.div
+              key={index}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                index === currentSlide 
+                  ? "bg-white scale-110 shadow-lg" 
+                  : "bg-white/40 backdrop-blur-sm"
+              }`}
+              whileHover={{ scale: 1.2 }}
+            />
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Product Details */}
+      <motion.div 
+        className="relative -mt-8 px-6 pb-8 max-w-2xl mx-auto"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+      >
+        <div className="bg-white rounded-3xl p-6 shadow-lg shadow-gray-100/50">
+          <div className="space-y-6">
+            {/* Category & Time Badge */}
+            <div className="flex items-center justify-between">
+              <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20 border-0">
+                <Tag className="w-4 h-4 ml-1" />
+                {product.category}
+              </Badge>
+              <Badge variant="outline" className="bg-gray-50 flex items-center gap-1">
+                <Clock className="w-4 h-4" />
+                {product.preparationTime}
+              </Badge>
+            </div>
+
+            {/* Title and Price */}
+            <div className="space-y-4">
+              <h1 className="text-2xl sm:text-3xl font-bold text-charcoal">{product.name}</h1>
+              <div className="flex items-center justify-between">
+                <span className="text-xl sm:text-2xl font-bold text-primary">
+                  {product.price}
+                </span>
+              </div>
+            </div>
+
+            {/* Description */}
+            <p className="text-muted leading-relaxed text-base sm:text-lg">
+              {product.description}
+            </p>
+
+            {/* Ingredients */}
+            <div className="space-y-3">
+              <h3 className="text-lg font-semibold text-charcoal">المكونات:</h3>
+              <div className="flex flex-wrap gap-2">
+                {product.ingredients.map((ingredient, index) => (
+                  <Badge
                     key={index}
-                    onClick={() => setCurrentSlide(index)}
-                    className={`relative aspect-square w-full rounded-md overflow-hidden transition-all duration-300 ${
-                      index === currentSlide 
-                        ? 'ring-1 ring-primary ring-offset-1' 
-                        : 'opacity-60 hover:opacity-100'
-                    }`}
+                    variant="outline"
+                    className="bg-gray-50/50 text-muted border-gray-100 text-sm py-1.5 px-3 rounded-full"
                   >
-                    <img
-                      src={image}
-                      alt={`صورة مصغرة ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </button>
+                    {ingredient}
+                  </Badge>
                 ))}
               </div>
             </div>
 
-            {/* Title and Price */}
-            <div className="flex justify-between items-center mb-4">
-              <h1 className="text-xl font-bold text-charcoal">{product.name}</h1>
-              <span className="text-lg font-bold text-primary">
-                {product.price}
-              </span>
-            </div>
-
-            {/* Preparation Time */}
-            <div className="flex items-center gap-2 text-muted mb-4">
-              <Clock className="w-4 h-4" />
-              <span className="text-sm">{product.preparationTime}</span>
-            </div>
-
-            {/* Description */}
-            <p className="text-gray-600 text-sm leading-relaxed mb-6">
-              {product.description}
-            </p>
-
-            {/* Social Links */}
-            <div className="flex justify-center mb-6">
-              <SocialLinks links={socialLinks} />
-            </div>
-
             {/* Add to Cart Button */}
-            <Button
-              onClick={handleAddToCart}
-              className="w-full bg-gradient-button hover:opacity-90 transition-opacity duration-300 gap-2"
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <ShoppingCart className="w-5 h-5" />
-              إضافة إلى السلة
-            </Button>
+              <Button 
+                className="w-full bg-gradient-button text-white py-6 rounded-xl text-lg font-semibold shadow-lg shadow-primary/20 transition-all duration-300"
+              >
+                إضافة إلى السلة
+              </Button>
+            </motion.div>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </div>
   );
 };
